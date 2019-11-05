@@ -1,0 +1,37 @@
+[
+  {
+    "type": "mobile",
+    "title": "手機遊戲",
+    "link": "/news/mobile"
+  },
+  {
+    "type": "pc",
+    "title": "PC 遊戲",
+    "link": "/news/pc"
+  },
+  {
+    "type": "tv",
+    "title": "TV 掌機",
+    "link": "/news/tv"
+  },
+  {
+    "type": "animate",
+    "title": "動漫畫",
+    "link": "/news/animate"
+  },
+  {
+    "type": "subject",
+    "title": "主題報導",
+    "link": "/news/subject"
+  },
+  {
+    "type": "event",
+    "title": "活動展覽",
+    "link": "/news/event"
+  },
+  {
+    "type": "esport",
+    "title": "電競賽式",
+    "link": "/news/esport"
+  }
+]
