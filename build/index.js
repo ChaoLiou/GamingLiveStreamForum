@@ -3,7 +3,8 @@ const fs = require("fs");
 fs.writeFileSync(
   "./build/rev.json",
   JSON.stringify({
-    version: grs.short(),
+    short: grs.short(),
+    long: grs.long(),
     build_dt:
       new Date().toLocaleDateString() + ", " + new Date().toLocaleTimeString()
   }),

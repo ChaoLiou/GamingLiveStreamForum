@@ -5,13 +5,14 @@
   "author": "Chaol",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "npm run prebuild && nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "node ./build/index.js",
+    "generate": "npm run prebuild && nuxt generate",
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "prebuild": "node ./build/index.js"
   },
   "dependencies": {
     "cross-env": "^5.2.0",

@@ -24,7 +24,14 @@
     </v-content>
     <v-footer color="#025266" dark>
       <v-spacer></v-spacer>
-      version: {{rev.version}} - build at {{rev.build_dt}}
+      <div>
+        version:
+        <a
+          href="https://github.com/ChaoLiou/GamingLiveStreamForum/commits/master"
+          target="_blank"
+        >{{rev.short}}</a>
+        - build at {{rev.build_dt}}
+      </div>
     </v-footer>
   </v-app>
 </template>
