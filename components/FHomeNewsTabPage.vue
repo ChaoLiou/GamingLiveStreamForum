@@ -13,7 +13,7 @@
     <div class="news-container">
       <template v-for="(item, index) in filteredSource">
         <div class="news-item" :key="index">
-          <div class="news-tag">{{item.type}}</div>
+          <div class="news-tag">{{item.type.title}}</div>
           <div class="news-title">{{item.title}}</div>
         </div>
         <v-divider :key="`divider-${index}`"></v-divider>
@@ -41,7 +41,7 @@ export default {
   },
   data() {
     return {
-      newsTypes,
+      newsTypes: newsTypes.map(x => x.title),
       selectedType: -1
     };
   },
@@ -50,8 +50,8 @@ export default {
       return this.source
         .filter(
           x =>
-            !newsTypes[this.selectedType] ||
-            x.type === newsTypes[this.selectedType]
+            !this.newsTypes[this.selectedType] ||
+            x.type.title === this.newsTypes[this.selectedType]
         )
         .slice(0, 6);
     }

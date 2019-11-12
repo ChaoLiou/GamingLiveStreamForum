@@ -1,34 +1,34 @@
 [
   {
     "title": "斗魚直播",
-    "icon": "platform_icons/icn_douyu_B.png"
+    "icon": "/platform_icons/icn_douyu_B.png"
   },
   {
     "title": "金剛直播",
-    "icon": "platform_icons/icn_kingkong_B.png"
+    "icon": "/platform_icons/icn_kingkong_B.png"
   },
   {
     "title": "火山直播",
-    "icon": "platform_icons/icn_huoshan_B.png"
+    "icon": "/platform_icons/icn_huoshan_B.png"
   },
   {
     "title": "快手直播",
-    "icon": "platform_icons/icn_kuaishou_B.png"
+    "icon": "/platform_icons/icn_kuaishou_B.png"
   },
   {
     "title": "騰訊直播",
-    "icon": "platform_icons/icn_TS_B.png"
+    "icon": "/platform_icons/icn_TS_B.png"
   },
   {
     "title": "網易直播",
-    "icon": "platform_icons/icn_V163_B.png"
+    "icon": "/platform_icons/icn_V163_B.png"
   },
   {
     "title": "Now直播",
-    "icon": "platform_icons/icn_NOW_B.png"
+    "icon": "/platform_icons/icn_NOW_B.png"
   },
   {
     "title": "Twitch",
-    "icon": "platform_icons/icn_twitch_B.png"
+    "icon": "/platform_icons/icn_twitch_B.png"
   }
 ]

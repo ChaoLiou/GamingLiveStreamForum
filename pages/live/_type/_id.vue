@@ -8,7 +8,10 @@
         :title="mainTitle"
         background-color="#f2ecf6"
       >
-        <f-home-stream-carousel v-if="$route.params.id === '斗魚直播'" :streams="topDouyuStreams"></f-home-stream-carousel>
+        <f-home-stream-carousel
+          v-if="$route.params.id === '斗魚直播'"
+          :streams="topDouyuStreams.slice(0, 5)"
+        ></f-home-stream-carousel>
         <f-home-stream-carousel v-else :streams="topStreams"></f-home-stream-carousel>
       </f-block>
       <div>
@@ -99,8 +102,8 @@ export default {
       this.platformIcon = platform
         ? platform.icon
         : this.$route.params.type == "hot"
-        ? "platform_icons/icn_hot_B.png"
-        : "platform_icons/icn_push_B.png";
+        ? "/platform_icons/icn_hot_B.png"
+        : "/platform_icons/icn_push_B.png";
     },
     async getStreams(amount) {
       const { streams, _total } = await this.$axios.$get(
@@ -115,7 +118,7 @@ export default {
         }
       );
       const gstreams = streams.map(x => ({
-        id: x.channel._id,
+        id: x.channel._id.toString(),
         source: `https://player.twitch.tv/?channel=${x.channel.name}&autoplay=true`,
         preview: x.preview.template,
         viewers: x.viewers,
@@ -125,7 +128,8 @@ export default {
         streamer_name: x.channel.display_name,
         game: x.game,
         description: x.channel.description,
-        chatSource: `https://www.twitch.tv/embed/${x.channel.name}/chat`
+        chatSource: `https://www.twitch.tv/embed/${x.channel.name}/chat`,
+        platform: "Twitch"
       }));
       this.streams = gstreams;
       this.totals = _total;
@@ -134,24 +138,25 @@ export default {
     async getDouyuStreams(begin, size) {
       const aid = "12345";
       const streams = await this.$axios.$get(
-        `https://woolive.ark-program.com/stream/douyu/PCgame/?begin=${
+        `https://woolive.ark-program.com/stream/list?src=douyu&begin=${
           begin ? begin : 0
         }&size=${size ? size : 4}`
       );
       const gstreams = streams.map(x => ({
-        id: x.ownerUserId,
+        id: x.baseId,
         source: `https://open.douyu.com/tpl/h5/chain2/${aid}/${x.roomId}`,
         preview: x.roomImg,
         viewers: x.online,
-        streamer_image: "",
+        streamer_image: x.avatar,
         title: x.roomName,
         streamer_name: x.ownerName,
-        game: "",
+        game: x.gameName,
         description: x.roomDesc,
-        platform: "斗魚直播"
+        platform: "斗魚直播",
+        externalLink: x.streamUrl,
+        follows: x.fans
       }));
-      this.douyuStreams = gstreams;
-      this.topDouyuStreams = gstreams.slice(0, 5);
+      this.topDouyuStreams = this.douyuStreams = gstreams;
     }
   }
 };

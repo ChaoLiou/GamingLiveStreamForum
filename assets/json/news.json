@@ -1,452 +1,602 @@
 [
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/03/e7e68670587139c9a4b21985b516pfb5.JPG",
-        "title": "《陰陽師》手機遊戲動畫化《陰陽百鬼物語》明年開播 杉山紀彰、釘宮理惠參演",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187912"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/72/27efce3ca22c52bd48afcd170416peg5.JPG",
-        "title": "《Pokemon GO》生涯營收達 30 億美元 得力於「GO 火箭隊」等更新今年有望再創佳績",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187910"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/01/7bcbea29f9562ad1eba8e03b5116p9p5.JPG",
-        "title": "猴子對抗家電的大戰？！《毛線卡比》開發團隊 Switch 新作《猴子桶戰》11 月 7 日推出",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187906"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/00/d571014540bfc570f776fbb72516p9o5.JPG",
-        "title": "《仁王 2》確定 2020 年 3 月推出 預定 11 月 1 日至 10 日舉辦公開測試",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187905"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/67/4678d56dfc262756ccb172264116ph35.JPG",
-        "title": "我們要成為偶像！偽娘題材新作《閃亮七姐妹 Shiny Sisters》公開",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187918"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/16/3126bc3b10b507800c7a03c40916pfo5.JPG",
-        "title": "《哥吉拉》將於二次元之森主題公園推出「國立哥吉拉淡路島研究中心」主題區",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187917"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/13/eb4408bba677d2fa7c1ec9155616pfl5.JPG",
-        "title": "《天堂 2：革命》日版 x《二之國》合作開跑 推出一系列時裝、武器等合作要素",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187915"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/39/849828f35d3df0acfd7677d27816pdj5.JPG",
-        "title": "軍武兔女郎亮麗登場 蚩尤畫冊《Bunny Bunny Bang！》在台上市",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187909"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/07/b164428b60548008bfd2c47c4116pcn5.JPG",
-        "title": "【試片】粉絲向泡麵番《天華百劍 ～歡迎來到銘治館！～》刀劍女子們的女僕物語",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187908"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/19/759afca94c6c9890d77e00e77516pfr5.JPG",
-        "title": "《出賽準備競爭》釋出 v1.1 更新 新增 2019 年車輛與賽道",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187916"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/11/64955f3845277755ef9c75d3c716pfj5.JPG",
-        "title": "《AOD 龍之怒吼》萬人跨服對戰即將開放 首位「龍城霸主」即將現身",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187914"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/05/74a82e979727ad012a047af38216pfd5.JPG",
-        "title": "《牧羊人之心》推出多項萬聖節活動 《小林家的龍女僕》二期聯動進行中",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187913"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/04/ff2e95535ff2a803aa9bdabef416pfc5.JPG",
-        "title": "《新神鵰俠侶》推出「南瓜頭冒險」、「萬聖夜驚魂」等萬聖節日活動",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187911"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/59/2e2704dde12392a56bd12f8ad816pbb5.PNG",
-        "title": "《Dragalia Lost ～失落的龍絆～》釋出劇情活動「闇影疑雲‧消失的少女」舉辦公告",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187907"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/99/1f54a972a3aaf2928af6de084916p9n5.JPG?v=1572450392",
-        "title": "《漫威復仇者聯盟》釋出遊戲系統介紹影片 扮演小粉絲重新集結最強英雄團隊",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187904"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/98/ad4e80a8775065724b174156a916p9m5.JPG?v=1572448102",
-        "title": "《FAIRY TAIL 魔導少年》公布首波宣傳影片 跟隨問題魔導士公會展開奇幻冒險",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187903"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/95/f1f0caa6334726b5f23e8c4d0016p9j5.JPG?v=1572445845",
-        "title": "《死亡擱淺》釋出上市宣傳影片 穿梭破碎的美國探究生與死的真正意義",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187902"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/60/0bf106c8a0d2d056c96cd2e16a16p8k5.JPG",
-        "title": "《賭博默示錄 Final Game》真人版電影釋出預告影片 天海祐希等前作演員回歸參演",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187892"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/53/810cba749fa940331cefb8afc216p8d5.JPG",
-        "title": "「DEEMO 特展」搶先看 預計展出珍貴動畫手稿與設定圖 開放體驗《DEEMO -Reborn-》",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187890"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/85/7d280faf476bdbdfd2772955d212swh5.JPG",
-        "title": "PS4 全球累計銷售突破 1 億 280 萬台 超越初代 PS 成史上第二暢銷家用主機",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187882"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/80/dec3cf9d2834a9f0996effc1aa11v3o5.PNG",
-        "title": "EA 宣布取消《勁爆美國職籃 20》 將為下一代遊戲主機打造新作",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187880"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/00/aad741b22a636a2eabdd690f8a16p445.JPG",
-        "title": "《戰地風雲》系列最新作預計將作為次世代遊戲在 2022 年 3 月底前發售",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187875"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/75/196bf2c8d9eab7f3a8259d451116p3f5.JPG",
-        "title": "童話冒險風 MMORPG 《精靈之望》全球版本正式推出 跟隨三神之旅開啟奇幻歷程",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187869"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/63/632011be8cd40a9d3b177faadf16p335.JPG",
-        "title": "《星際大戰 絕地：組織殞落》公布上市前宣傳影片 化身絕地武士踏上傳奇旅程",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187868"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/74/7f1c4aa7f171c07556f3e9b04f16p0m5.JPG",
-        "title": "一併收錄經典原版內容！《泡泡龍 4 伙伴》NS 版 12 月上市 將透過網路更新支援中文",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187857"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/42/ff5bcb53d06a65ff5b0603c3e816ozq5.JPG",
-        "title": "《時空幻境》系列新作《Tales of Crestoria》宣布延期上市 新情報預計 12 月公開",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187851"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/01/61e5c2b26b076bdd65f40b062c16oyl5.JPG",
-        "title": "《英雄聯盟》正式揭露新團體「真傷樂團 TRUE DAMAGE」 曝光融合 LV 要素姬亞娜造型",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187849"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/18/fe8855839e0ee483cdaa55f27216owa5.JPG",
-        "title": "《瑪利歐賽車巡迴賽》發行首月下載量達 1.239 億為史上第二 僅次於《Pokemon GO》",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187844"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/01/e735299057583d81009b28056216ovt5.JPG",
-        "title": "EA 遊戲宣布回歸 Steam！Origin 和 Steam 玩家將可一起遊玩",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187843"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/96/d7e61a0f0f34d04139a766efda16ovo5.JPG",
-        "title": "為防詐騙 《絕對武力：全球攻勢》取消戰利品箱鑰匙的交易功能",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187842"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/84/abe2a80344d12e6b6e04aaf9fe16p985.JPG",
-        "title": "【BZ 19】BlizzCon 腳步接近 《暴雪英霸》《爐石戰記》三位知名研發高層傳出已經離職",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187901"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/82/47ed230b3fe38c16d4d6edfcad16p965.PNG",
-        "title": "《超異域公主連結☆Re:Dive》劇情活動「鈴奈的彩虹舞臺」即將登場 伊緒（夏日）現身",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187900"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/65/7bc1b4d31bc8b8ef6d4285ce5e16p8p5.JPG",
-        "title": "《劫薪日》系列前研發成員打造新作《GTFO》公開新研發影片 在地下世界面對未知怪物",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187896"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/39/1866f438efa6e193a62f501bb416p7z5.JPG",
-        "title": "華納 x 網易聯手打造卡牌 RPG《哈利波特：魔法覺醒》曝光 同步開放事前預約",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187883"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/08/e2bbbc344fb757bd4647660dd310sgs5.JPG",
-        "title": "《鬥神》系列手機遊戲《Alteil NEO》經歷 1 年時光即將劃下句點",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187878"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/81/0e9fb014d0a32bd9685765ca7416p3l5.JPG",
-        "title": "《AION 永恆紀元》7.2 傳說時代改版 11 月 6 日登場",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187873"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/38/4d7f457b7112fcd665b7a2b3ad16p2e5.JPG",
-        "title": "戰略性動畫 RPG《revisions next stage》於日本推出 操控戰偶展開棋盤上的攻防戰",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187865"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/21/6debc76fe8389cf997d6b494ac16p1x5.JPG",
-        "title": "《銀之匙》恢復作品連載 故事即將進入最終章",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187862"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/22/003af81173e32ef0616293b70a16p1y5.PNG",
-        "title": "《爐石戰記》亞太區大師職業賽在聰哥事件發生後傳出贊助商停止贊助",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187861"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/29/01d57bc4bf9431fd3a0f8193b31622d5.JPG",
-        "title": "《祖先：人類奧德賽》Xbox One 和 PS4 版確認將於 12 月 6 日上市",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187860"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/09/e1bd22d6a9e0773aa94f0f12ea16p1l5.JPG",
-        "title": "《邊緣禁地 3》於官方節目公開下個免費內容以及週年慶帶來的「恐怖驚喜」",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187859"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/75/1f929e25cb47df84c635ccffcd16p0n5.JPG",
-        "title": "戰國美少女動作 RPG《新千姬大亂鬥》事前登錄活動開跑 與性轉武將一同闖蕩亂世",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187858"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/65/c8d62564488527e1ad5b82c26416p0d5.JPG",
-        "title": "《OVERHIT》x《初音未來》特別合作活動開跑 SSR + 英雄「初音未來 V4X」參戰",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187856"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/51/484e0e230d71680a204feb7c8c16ozz5.JPG",
-        "title": "《新天堂 2》新職業「死亡騎士」今日正式現身 使用蘊含火之力的靈魂彈攻擊",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187854"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/45/a7dc8370e6603ce7de2bd59cb316ozt5.PNG",
-        "title": "【BZ 19】《魔獸爭霸 3：淬鍊重生》多人遊戲模式限量測試預定本週開跑",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187852"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/20/20945749b91ca9cbe776e241bf16oz45.JPG",
-        "title": "開放世界冒險遊戲《原神》釋出「開發組回信第三期」以及「提瓦特大陸遊記：蒙德城」",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187850"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/00/f397487842e64e98fcc6e74df316oyk5.PNG",
-        "title": "女性向養成遊戲《魔法使的約定》宣布 11 月於日本推出 同步公開開頭動畫",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187848"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/60/830315d17dcb4fdf3b04f4ebf116oxg5.JPG",
-        "title": "《達爾文遊戲》動畫釋出首支宣傳影片 更新製作團隊與聲優名單情報",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187845"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/05/e18a9e2877d6edbc256c15e1b316p495.JPG",
-        "title": "【模型】Taurus Studio 推出《暗黑破壞神 3》英普瑞斯 1/4 模型",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187874"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/70/e2a923b052e10ee5134ca08f2e16p8u5.JPG",
-        "title": "《要塞英雄》釋出萬聖節限時活動影片 合作挑戰風暴之王",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187898"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/66/f973f72269845fa171a8d618de16p8q5.JPG",
-        "title": "《食夢計劃》推出新角色「狄希斯」「伊妮德」萬聖節造型同步登場",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187897"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/63/08a7a0b2e144ceba51be5677ba16p8n5.JPG",
-        "title": "《三國大戰 Smash！》x《神劍闖江湖》合作活動開跑 緋村劍心、齋藤一等人參戰",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187895"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/62/1b7d4f6f399acc85419cf2bee316p8m5.JPG",
-        "title": "《King’s Raid – 王之逆襲》攜手 Meido Land 女僕聯萌打造期間限定「形象概念示範店」",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187894"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/54/b287fdc649ca9a7d5994f7ece016p8e5.JPG",
-        "title": "《雲裳羽衣》推出萬聖節限定活動「鏡靈殿」同時預告下波改版資訊",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187891"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/52/fb6542ba0d367ba7e113aca1ba16p8c5.JPG",
-        "title": "《獵魂覺醒》萬聖節特別活動登場 同步推出占卜獎池全新禮裝「獵殺者」與「極鋒」",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187889"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/49/8a6f416b0b6dac8eb93849ac8816p895.JPG",
-        "title": "《陰陽師 Onmyoji》SP 鬼王酒吞童子降臨 同步開啟追憶繪卷",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187887"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/38/bdf9f00c8b3fb8c73c48170d3d16p7y5.JPG",
-        "title": "桌上遊戲《食用系少女 - 美食街大騷動》預定於本週末 PF31 首發",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187884"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/10/f97316ddff5d9c6960231ccadd16ds25.JPG",
-        "title": "《名偵探柯南》工藤新一配音員 劉傑等人獻聲《重甲機神：神降臨》動畫即將上映",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187881"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/13/01cd232c9c061d337457811d7016p795.JPG",
-        "title": "《Blockstorm》開發商新作《依然存在 Still There》11 月底登場 探索揮之不去的傷痛",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187879"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/06/78a2012788ea245bac9b1da25516p4a5.JPG",
-        "title": "《TrymenT —獻給渴望改變的你—》公布登場角色 預定 11 月 22 日推出體驗版",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187876"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/97/6f7640f3a4121ca650ee6fd63416p415.JPG",
-        "title": "《天氣之子》在台推出應援場 11 月 2 日起將於樂聲、威秀合作影城展開",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187872"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/80/492b39bb13b4a4521b947192a716p3k5.JPG",
-        "title": "《劇場版 角落生物》公開主題曲「冬のこもりうた」宣傳影像",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187871"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/42/355adfa86cdccd1f29bdb7de2616p2i5.JPG",
-        "title": "《工作細胞》推出免費閱讀的《乾癬編》減少大眾誤解與偏見",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187867"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/35/efd969ab6c8626c8fe6aa7242416p2b5.JPG",
-        "title": "大逃殺類射擊遊戲《APEX 英雄》全球玩家數突破 7 千萬人",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187864"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/36/57c50439e164db001686af9d5016p2c5.JPG",
-        "title": "《阿達一族》動畫電影即將上映 莎莉賽隆和克蘿伊摩蕾茲配音幕後花絮公開",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187863"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/62/5c7c9acd71a147cac96707e78716oxi5.JPG",
-        "title": "穿越時空找出真相《忒修斯之船》竹內涼真主演漫畫改編電視劇將於 1 月開播",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187847"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/77/4b94294945372825f30cc1851716oxx5.JPG",
-        "title": "《碧血狂殺 2》線上模式推出全新對決「闇夜恐懼」",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187855"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/18/c6bbb3c9e1cc355dd14294e5b616p4m5.JPG",
-        "title": "《薔薇少女 新裝版》典藏紀念套組預購開始 預計 1 月 8 日在台上市",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187877"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/78/d14b2b99c884a0809c25bdb66816p3i5.JPG",
-        "title": "《LoveLive！Sunshine!!》津島善子聲優 小林愛香宣布將以歌手身分出道",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187870"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/41/f6041ca01a241c4aed3c8a146716p2h5.JPG",
-        "title": "【模型】KADOKAWA《Re：從零開始的異世界生活》雷姆 藍色慶生內衣 Ver. 3 月發售",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187866"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/50/32395e282de3fbff8f6bda386216ozy5.JPG",
-        "title": "【模型】FREEing《不起眼女主角培育法♭》澤村·史賓瑟·英梨梨 裸足兔女郎 Ver. 5 月販售",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187853"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/61/c8389fff58402d4bbd5369ac1416oxh5.JPG",
-        "title": "《HiGH＆LOW THE GAME ANOTHER WORLD》於日本推出 EXILE 放浪兄弟參戰",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187846"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/90/51458f5ee5581fa4fc48a2ccfe16ovi5.JPG?v=1572363872",
-        "title": "充實的暑假之旅！《女神異聞錄 5 亂戰：魅影攻手》釋出周遊日本各地電視廣告影片",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187841"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/77/bf4b39002e47dd20e85d87ee8716ov55.JPG",
-        "title": "AI 協助《CS：GO》對抗遊戲內謾罵等惡意言論 一個半月封鎖兩萬個帳號",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187839"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/58/5b3df65e2fc10732b7de6b68c916oum5.JPG",
-        "title": "《碧藍航線》限時活動「紅染的參訪者」即將登場 收集「繪馬」兌換各式獎勵",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187833"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/30/53c8b723c6a7769166f1ef346b16otu5.PNG",
-        "title": "《FGO》日版活動「Saber Wars 2」明日登場「太空・伊斯塔」「災星・簡」參戰",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187830"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/88/4589d12abf83cdaf062bfefd1016ovg5.JPG",
-        "title": "《萊莎的鍊金工房 ~常闇女王與秘密藏身處~》PC 版正式登陸 Steam　揭露後續更新內容",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187829"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/15/bdc7014815ab478cb42f3ec9b916otf5.JPG",
-        "title": "《東京喰種：re CALL to EXIST》公開可遊玩角色介紹影片 喰種對策局搜查官集結",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187828"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/85/be9a4fd3c8d0f4293e7d74681316osl5.JPG",
-        "title": "【試片】沒有芳文社的秋天就讓《美妙射擊部》陪伴 美少女們的光線步槍四格改編作",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187823"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/64/b33b961ccd85d0d1bbb813059816ous5.JPG",
-        "title": "《極速快感：熱焰》公開上市預告影片 運用 APP 預先設計車輛風格",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187835"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/71/8eb887c8b97e9e3974ee9ebba316os75.JPG",
-        "title": "《巫師》卡牌遊戲《昆特牌 》iOS 版本上架 以強大戰力摧毀敵軍、以妙計智取對手",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187822"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/71/959316304225d95282bde334ec16ouz5.JPG",
-        "title": "ASUS ProArt 創作者系列新品正式在台上市 打造滿足使用者在動畫及遊戲開發等專業需求產品",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187837"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/61/3ae7180a11e8c4eff68782cf9e16oup5.JPG",
-        "title": "《封印者：CLOSERS》PVP 實體總決賽 11 月 2 日開打 公開八強選手名單與賽程資訊",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187834"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/57/f089e991b8dd268346948993af16oul5.JPG",
-        "title": "《勁舞團 M》明日起解鎖全新挑戰「潔西的記憶」同步追加新歌曲及時裝",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187832"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/21/414ccd74b203aa63415f06c31c16otl5.JPG",
-        "title": "《轟啊坦克 M》萬聖節開放新吸血鬼坦克「達克拉」永久 A 級造型",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187827"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/69/9d100d36b107b51d22a292ca8716os55.JPG",
-        "title": "《黑色契約》預告新系統「收藏冊」與五款造型翅膀即將上線 新烈焰副本同步開放",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187821"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/67/a7bb64e9de36b7856407c887ac16os35.JPG",
-        "title": "HTC 與金門大學打造全台首座結合 MR 與電競場域 期望吸引年輕學子投入未來科技創新的行列",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187819"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/17/d7d39095549c2e29de12194c1016oth5.JPG",
-        "title": "《戰靈 M》事前預約突破 30 萬 公開「動作捕捉」特色系統",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187826"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/86/a150bef8fdad587ed96fcbae2416osm5.PNG",
-        "title": "【試玩】殺戮才是生路！《血魔伊甸園 M》強調陣營對抗玩法",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187824"
-    },
-    {
-        "image": "https://p2.bahamut.com.tw/B/2KU/68/2159b8493598c6a8494adaf13d16ouw5.JPG",
-        "title": "【直播】《DEEMO -Reborn-》用 PSVR 來玩節奏遊戲是什麼感覺？",
-        "link": "https://gnn.gamer.com.tw/detail.php?sn=187840"
-    }
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/06/67fca77dc49aa41ee5dfd1647f16squ5.JPG",
+    "title": "柯宥希《許個願吧！大喜》漫畫授權日本 即日起上架電子書平台「Cmoa」",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188263",
+    "brief": "台灣漫畫家 柯宥希的漫畫作品《許個願吧！大喜》授權日本雙葉社，電子書版本陸續於近日上架，日文書名訂為《あの頃、僕たちは天使が見えた。～ベッドの上の彼女に恋した 365 日～》(直譯：那個時候我們看見了天使～與床上少女相戀的 365 天) 》... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/13/cbec5209afd2a844a8ada817c416sr15.JPG",
+    "title": "雙人合作解謎冒險遊戲《遙遠的距離》近日更新多人模式",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188266",
+    "brief": "由挪威獨立遊戲開發團隊 Moondrop 研發、Modus Games 發行的冒險遊戲《遙遠的距離（暫譯，原名：Degrees of separation）》近日更新多人模式。 《遙遠的距離》是一款解謎冒險遊戲，描述男孩霜（Rim... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/12/bf7b028d6c4d4b2dc2d817c7e416sr05.PNG",
+    "title": "觸不到的戀人？《LOVE PLUS EVERY》維修再開 預計將於 11 月 29 日恢復服務",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188265",
+    "brief": "KONAMI 旗下智慧型手機戀愛新作《LOVE PLUS EVERY（暫譯，原名：ラブプラス EVERY）》（iOS / Android）在 10 月 31 日於日本正式推出，但卻因為造訪的玩家過多導致伺服器出現異常狀態，因此展開一連串的緊... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/84/c9d0e15201343489d49cf28bb616sq85.JPG",
+    "title": "《新櫻花大戰》公開出現在帝都的上級降魔「朧」以及巨大傀儡機兵",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188264",
+    "brief": "SEGA Games 預計在 2019 年 12 月 12 日（四）發售的 PlayStation 4 遊戲《新櫻花大戰》，本次公開了出現在帝都的上級降魔「朧」的相關情報。 朧（CV：岸尾だいすけ） 角色設計：久保帯人與... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/79/cc72e70af08f035271e8eaea2f16sq35.JPG",
+    "title": "Netflix 強調專注創造優秀電視節目 不打算進軍遊戲串流服務市場",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188262",
+    "brief": "在 Google、Amazon、微軟等國際大廠紛紛以雲端串流服務搶攻遊戲領域時，以提供動畫與影劇串流服務的 Netflix 卻決定要專注於影劇不打算進軍遊戲串流服務市場。  Netflix 執行長 Reed Hastin... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/76/8049990fb305e17faec3b7279416sq05.JPG",
+    "title": "《惡果之地》Nintendo Switch 版登場 人類與水果的終極之戰開打",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188261",
+    "brief": "由宇宙罐（Space Can）研發、心動網絡發行的《惡果之地》Nintendo Switch 版於今（7）日正式發售，美版售價為 14.99 美元，日版售價為 1500 日圓，首週優惠 8 折。   【以下內容... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/65/6c932865cfd1f6a8d033c252eb16spp5.JPG",
+    "title": "《魔獸世界》遊戲內 15 週年慶祝活動限時登場 重溫過往經典首領與戰場「奧特蘭克山谷」",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188258",
+    "brief": "《魔獸世界》15 週年限時慶祝活動於今（7）日起正式在亞洲地區上線，新團隊副本「艾澤拉斯回憶錄」讓玩重溫過去三張資料片的經典首領。 《魔獸世界》15 週年限時慶祝活動正式開跑，亞洲地區於 2019 年 11 月 7 日至 2020... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/54/3c354d9a07e27e5e2e421d0b6716spe5.JPG",
+    "title": "Sensor Tower 公布 2019 年 10 月手機遊戲營收排行 《PUBG M》《王者榮耀》奪前二",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188256",
+    "brief": "根據第三方調查機構 Sensor Tower 近日公開 2019 年 10 月全球手機遊戲營收排行，第一名是由騰訊發行的 《PUBG MOBILE：絕地求生 M（PUBG Mobile）》，該作品於全球營收接近 1.539 億美元，較 20... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/77/80c262e79a12ae62ee81fb6ef116sq15.JPG",
+    "title": "農業 SLG《百萬農青大作戰 20》手機版預計 12 月 3 日推出 同步開放預先註冊",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188260",
+    "brief": "Giants Software 宣布，《百萬農青大作戰 20（Farming Simulator 20）》的智慧型手機版本預計在 12 月 3 日推出，目前已於 App Store 及 Google Play 商店開放預先註冊。《百萬農青大... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/61/d352dafbc86b73996768ef5b5516spl5.JPG",
+    "title": "《冰雪奇緣》期間限定店即將於北中南三地開幕 店面設計與周邊新品曝光",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188257",
+    "brief": "迪士尼《冰雪奇緣 2》即將上映，而「冰雪奇緣期間限定店」也將於 11 月 14 日起於台北、台中、高雄三地搶先開跑，商店設計與相關周邊新品首度曝光。  【以下內容為廠商提供資料原文】 「冰雪奇緣期間限定店」延續... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/72/6c0177139f75136fc1635d747316spw5.JPG",
+    "title": "【模型】Good Smile Arts Shanghai《戀與製作人》黏土人 周棋洛 明年 5 月發售",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188259",
+    "brief": "在 GSC 官網上，公開了由Good Smile Arts Shanghai推出的《戀與製作人》黏土人 周棋洛，並將預定於2020年 5 月發售。為了你，我要站在更高的地方。出自超人氣手機遊戲《戀與製作人》，超級巨星「周棋洛」在黏土人系列中... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/22/82e2bbfff706cf5768fd5e997116soi5.JPG",
+    "title": "桌上遊戲《真相 The Truth》介紹 愛麗絲化身案件偵探找出茶會真相",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188255",
+    "brief": "由 聽劇鳥 與 OUTSIDER工作室 團隊製作，集資中的LARP（live action role-playing）桌遊《真相The Truth》日前舉辦線上試玩，邀請聲音創作者們（街頭配音、撇嘴耳包前滾翻－亞璃、瑪蘿、聲音無限－音箱）一... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/72/8e2ffc50bfde1fd53ff7b203bd16sn45.JPG?v=1573052110",
+    "title": "《任天堂明星大亂鬥 特別版》公布 DLC 新角色 SNK 熱血格鬥家「泰利‧波格」介紹影片",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188254",
+    "brief": "任天堂於今（6）日晚間在官方 YouTube 頻道上直播 Nintendo Switch 對戰動作遊戲《任天堂明星大亂鬥 特別版》DLC 角色「泰利‧波格」的使用方法介紹影片，由遊戲總監櫻井政博親自解說，全長 48 分鐘。&nbs... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/31/ee83fbf3dcc525deba61042f1f16slz5.PNG",
+    "title": "【BZ 19】《鬥陣特攻 2》《鬥陣特攻》將同時存在 Battle.net 上　團隊強調二代內容更多",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188253",
+    "brief": "Blizzard 在本屆 BlizzCon 2019 中公開了《鬥陣特攻 2》，研發團隊解析《鬥陣特攻 2》與一代的差異，包括英雄會隨著引擎在頭髮、肌膚、表情等更新部分，會是一、二代玩家都看得到的，但未來部分造型會是二代才有的；他們希望一、... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/62/21e19f4048c293f438da0fce2016s665.JPG",
+    "title": "《女神異聞錄 5 亂戰：魅影攻手》播出「摩爾加納通信 #1」 介紹遊戲概要與新角色新故事",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188252",
+    "brief": "由 ATLUS 與 KOEI TECMO Games《無雙》系列團隊合作製作，預定 2020 年 2 月 20 日推出的動作角色扮演遊戲《女神異聞錄 5 亂戰：魅影攻手（Persona 5 Scramble: The Phantom Str... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/78/9d0d1daef3119f9435973d1e3116ski5.JPG",
+    "title": "PC 模擬類型新作《動物園之星 Planet Zoo》正式上市 打造具特色的專屬動物園",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188251",
+    "brief": "《模擬星球樂園》團隊 Frontier Developments 旗下模擬類型新作《動物園之星（Planet Zoo）》今（6）日正式上市，玩家將可建造自己的動物園。 《動物園之星》是款由參與《模擬星球樂園》和《動物園大亨（Zoo... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/40/094b8ae28d7785b97682f4c6f416sjg5.JPG",
+    "title": "【G★2019】魔法風雲會 IP 對戰遊戲《Magic：ManaStrike》將揭露玩法",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188244",
+    "brief": "網石公司（Netmarble Corporation）今（6）日公開首款由威世智授權的《魔法風雲會》遊戲《Magic：ManaStrike》最新消息。《Magic：ManaStrike》是由 Netmarble Monster 工作室取得獨... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/14/0584cb9e60f4448eac7d7202f116sae5.JPG",
+    "title": "「亞洲動漫創作展 Petit Fancy 31」Cosplay 照片集錦",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188241",
+    "brief": "以多元活動為取向的「亞洲動漫創作展 Petit Fancy」（簡稱 PF），台灣最大型的模型綜合展覽會「開拓模型祭 Reality Fancy」（簡稱 RF），「原創限定」作品交流活動「台灣原創嘉年華 ComicNova」（簡稱CN），三場... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/29/2ef3c1875526a622ffebb438cf16sgd5.JPG",
+    "title": "《英雄聯盟》戰隊閃電狼大換血？！Hanabi、 Bugi、Betty 等選手確定不續約",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188225",
+    "brief": "Flash Wolves 閃電狼剛剛透過官方粉絲團宣布，旗下《英雄聯盟》戰隊選手包括上路 Hanabi、打野  Bugi、中路 Rather、下路 Betty，與教練  AFei 決定不再續約，合約期滿就將離開閃電狼。&... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/63/0cda7c09f22962a87309360b7616sbr5.JPG",
+    "title": "《碧血狂殺》系列遊戲首次登陸 PC 平台 《碧血狂殺 2》PC 版正式上市、圖像技術升級",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188202",
+    "brief": "《碧血狂殺》系列遊戲首次登陸 PC 平台，《碧血狂殺 2》PC 版經過各種圖像和技術強化，讓畫面更加細膩動人並為亞瑟．摩根和范特林幫派的故事注入新生命的遊戲世界，玩家將可看他們如何在 19 世紀末期躲避執法人員的追捕，浪跡於美國各地。《碧血... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/61/f0fb36714437a76acad7baa66416sbp5.JPG",
+    "title": "來自地獄的使者有望參戰《蜘蛛人：新宇宙》劇本家菲爾洛德透露東映蜘蛛人已有設定",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188201",
+    "brief": "上週末宣布將於 2022 年推出續作電影的《蜘蛛人：新宇宙》，在劇本家菲爾洛德在 Twitter 上回應粉絲時，表示東映版的《蜘蛛人》已有設定，這也表示在續作電影中，觀眾們將有望可以看見東映版蜘蛛人的登場。  在《蜘蛛人... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/58/64a0bc12303c0ca4aebf28390416sbm5.JPG",
+    "title": "4K MMORPG《天堂 2 M》事前登錄突破 700 萬人次 宣布 11 月 27 日在韓國推出",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188200",
+    "brief": "韓國知名遊戲開發商 Ncsoft 旗下，以知名 IP 《天堂 2（Lineage 2）》改編的智慧型手機遊戲 《天堂 2 M（Lineage 2M，리니지 2M）》（iOS / Android / PC）宣布將於 2019 年 11 月 2... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/24/60349052cf40a16f4fa8363ccd16sao5.PNG",
+    "title": "【BZ 19】《魔獸世界：暗影之地》團隊解析新升級機制　50 級前選擇喜愛資料片冒險",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188197",
+    "brief": "Blizzard 此次在 BlizzCon 2019 中，宣布《魔獸世界》最新資料片《魔獸世界：暗影之境》將調整等級與推出靈魂綁定等新系統，研發團隊表示，他們希望在調整等級後，讓玩家可以選擇想要體驗的資料片，決定自己想要體驗某一個資料片完整... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/21/b855379766d76f70c25d1331ff16s7t5.JPG",
+    "title": "《爐石戰記》全新模式「英雄戰場」開放限時搶先體驗 在八人場上施展戰略互相較量",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188191",
+    "brief": "Blizzard 宣布，《爐石戰記》全新模式「英雄戰場」於即日起開放給參與 BlizzCon 現場活動、擁有 BlizzCon 虛擬門票以及預購資料片《降臨！遠古巨龍》的玩家將可搶先體驗。  《爐石戰記：英雄戰場》是《爐... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/77/668767d568cc80e6f5fea17ad616s6l5.PNG",
+    "title": "【BZ 19】你所看到的希瓦娜斯只是冰山一角　團隊談《魔獸世界：暗影之境》故事發展",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188189",
+    "brief": "Blizzard 此次在 BlizzCon 2019 中，結合動畫描述部落領袖希瓦娜斯破壞艾澤拉斯與死者世界間的帷幕，揭開了最新資料片《魔獸世界：暗影之境》，研發團隊透露希瓦娜斯已經知道很多事情，玩家現在所看到的只是女王的冰山一角，而玩家一... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/62/23846d655260f6e4dab0725ada16sk25.JPG",
+    "title": "中國新聞出版署發布新規定 將限制未成年人平日遊玩網路遊戲時間最長為 1.5 小時",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188250",
+    "brief": "根據中國媒體新華社等報導指出，中國新聞出版署近日發出「關於防止未成年人沉迷網絡遊戲的通知」，其中針對未成年人使用網路遊戲的時間長短、未成年人的付費內容等制度進行嚴格規範。而根據「關於防止未成年人沉迷網絡遊戲的通知」內容指出，大致上可分為以下... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/79/7ad85638fb1432552817413f9f16shr5.JPG",
+    "title": "【模型】《戀與製作人》「黏土人 周棋洛」開放預購 以溫暖大男孩之姿攻佔愛好者心房",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188235",
+    "brief": "Good Smile Company Taiwan 今日宣布開放出自手機遊戲《戀與製作人》的「黏土人 周棋洛」預購。在《戀與製作人》中身為超級巨星的周棋洛擁有「絕對吸引力」的超能力，雖然身為巨星，個性卻相當平易近人，是個陽光大男孩總帶給人溫... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/80/ce4ece97267158f57f74c3284616shs5.JPG",
+    "title": "LOAM 電玩動漫樂團第五屆公演「平成 MEGA HITS」將於 11 月底舉行",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188234",
+    "brief": "致力於電玩動漫音樂演出的室內樂團 Laboratory of ACG Music (LOAM)，宣布將於 11 月 24 日即將在蘆洲功學社音樂廳舉辦第五屆公演「5th Stage: 平成MEGA HITS!」的消息。音樂會引用當年 PS2... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/56/a399b3957205baaddb09094fc016sh45.JPG",
+    "title": "【模型】《仙劍奇俠傳三》角色「龍葵」比例模型預定 2020 年 6 月發售",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188232",
+    "brief": "日本模型製造商好微笑 Good Smile Company 今日公開《仙劍奇俠傳三》角色「龍葵」化身為比例模型，預定 2020 年 6 月發售。 繼《仙劍奇俠傳》角色「趙靈兒」黏土人後，大宇資訊再次與好微笑合作，並將推出來自《仙劍... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/40/417622c549581a8e1b7ac25cc316sgo5.JPG",
+    "title": "《HIT：英雄之戰》開發商新作《V4》於韓國開放預先下載 預計 7 日正式展開服務",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188230",
+    "brief": "由 Nexon Korea 與《HIT：英雄之戰》、《OVERHIT》開發商 NAT Games 合作打造的全新 MMORPG 智慧型手機遊戲《V4》（iOS / Android）今日宣布在韓國地區的 App Store、Google Pl... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/32/9c2572eac84314e1a2f3b9307116sgg5.JPG",
+    "title": "《神田川 JET GIRLS》公布 “特技動作” 及 “武器道具” 等最新遊戲情報",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188228",
+    "brief": "Marvelous 將於 1 月 16 日（四）發售的 PlayStation 4 專用遊戲《神田川 JET GIRLS》，近日公布了炒熱賽事的「特技」、「機關」，以及所有賽道詳情等眾多最新遊戲情報。 施展華麗的「特技動作」與勁敵... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/12/197aab7af29d66e975bc329a2216sfw5.JPG",
+    "title": "3D 卡牌遊戲《CODE：SEED 星火之歌》確定在台推出 11 月 12 日展開事前預約登錄",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188218",
+    "brief": "由香港 MoreFun Game 與台灣荷米斯遊戲發行的 3D 卡牌遊戲《CODE：SEED 星火之歌》於今日宣布台港澳確認代理。官方表示，遊戲以末日為背景，無數人類被輻射變異成爲喪屍，危機迅速擴散，全世界陷入一片混亂。作為指揮官的玩家必須... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/11/d5185adba7d3bd1788a9e8baf116sfv5.JPG",
+    "title": "《Pokemon GO》收到來自 GO 火箭隊的訊息 預告將展開大規模襲擊？",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188217",
+    "brief": "《Pokemon GO》營運團隊近日來公布一系列「維羅博士的調查報告」，繼昨日公開如亞洛、希爾拉、克里夫等 GO 火箭隊幹部情報，今日則是由他們發送了訊息，似乎 GO 火箭隊即將展開大規模的襲擊。 2019 年 11 月 5 日主... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/16/46e0cbbda720c79e765fb9c3c8156ko5.JPG",
+    "title": "Nintendo Switch 日本地區累計銷售突破 1000 萬台大關",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188215",
+    "brief": "任天堂 5 日宣布，旗下販售中的可攜式遊樂器主機「Nintendo Switch」家族（包含 Nintendo Switch 與 Nintendo Switch Lite），在日本地區的累計銷售台數（Sell-through）已經於 11 ... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/25/224954e1782a46765d873b9d25160wl5.JPG",
+    "title": "《部落衝突：皇室戰爭》開發商新作《進擊兵團》歷經 3 個月 Beta 測試後 決定終止開發",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188206",
+    "brief": "《荒野亂鬥》、《部落衝突：皇室戰爭》開發商 Supercell 旗下最新作《進擊兵團 Rush Wars（暫譯，英文原名：Rush Wars》（iOS / Android）今日於官方網站宣布，將終止《進擊兵團》Beta 測試。 &... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/62/f6643edeef7ef52431d8ddf4f116sbq5.JPG",
+    "title": "《JUST DANCE 舞力全開 2020》現已上市 收錄「怪美的」「FANCY」等名曲",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188203",
+    "brief": "Ubisoft 今日宣布，音樂電玩遊戲系列最新作品《Just Dance 舞力全開 2020》已正式在 Nintendo Switch、PlayStation 4 Pro、PlayStation 4、Xbox One（包括 Xbox One... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/31/05f107d0cf9b8cebb5615554fa16sav5.JPG",
+    "title": "《ARGONAVIS from BanG Dream!》動畫春季開播 手機遊戲明年下半年推出",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188199",
+    "brief": "由跨媒體作品《BanG Dream!》系列誕生的男性樂團企劃《ARGONAVIS from BanG Dream!》宣布將於明（2020）年春季推出電視動畫。  《ARGONAVIS from BanG Dream!》以... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/25/9a804cb83f57e619bdb6e8cf1416sap5.JPG",
+    "title": "《爆音少女!! 台灣篇》展開連載 藉由台灣品牌產生連結展開異地之旅",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188198",
+    "brief": "由 織本任那所著漫畫《爆音少女!!》，本週起於日本「別冊 Young Champion」上展開外傳「台灣篇」的連載。  《爆音少女!!》故事描述，高中一年級的佐倉羽音由於被上學途中的爬坡道整得慘兮兮，由此為契機而開始對摩... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/34/88e6b8ddc2b7cfbe5f594d5af716s865.JPG",
+    "title": "《Brown Dust－棕色塵埃》大型改版 Android 版本歷經多日延遲後即將上架 釋出補償公告",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188193",
+    "brief": "由韓國公司 NEOWIZ 營運的戰略 RPG 手機遊戲《Brown Dust－棕色塵埃》，繼（31）日宣布推出 6 名 6 魔星助手傭兵，並開放「大逆襲．突破極限」系統後，儘管 App Store 上的 iOS 版本已釋出，但 Google... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/12/b7f78d269648853ebad67476a016s7k5.JPG",
+    "title": "《BanG Dream！少女樂團派對》x《Re：從零開始的異世界生活》合作 11 月 20 日開跑",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188190",
+    "brief": "日本娛樂公司「武士道（Bushiroad）」和 Craft Egg 開發製作的手機音樂節奏遊戲《BanG Dream！少女樂團派對》日版於生放送中公開一系列新情報，當中包含了與《Re：從零開始的異世界生活》的合作消息。  ... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/61/2890b6cabd5808a87f65effa1116s655.JPG",
+    "title": "《女神異聞錄 5 亂戰：魅影攻手》公開「主角」介紹影片 體驗全新動作 RPG 玩法",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188188",
+    "brief": "由 ATLUS 與 KOEI TECMO Games《無雙》系列團隊合作製作，預定 2020 年 2 月 20 日推出的動作角色扮演遊戲《女神異聞錄 5 亂戰：魅影攻手（Persona 5 Scramble: The Phantom Str... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/63/e661c6b957fcb186caa2b42e4d16sej5.JPG",
+    "title": "【試玩】《路易吉洋樓 3》玩家心得 他被嚇倒在地上，你還在哈哈大笑？！",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188207",
+    "brief": "Nintendo發行，由瑪利歐系列的路易吉演出 《路易吉洋樓3》 前幾天滾燙上市。馬上帶大家瞧瞧這經常被玩家忽略的角色，為何引起如此龐大魅力！早在歷代系列作就讓敝人玩得愛不釋手，老實說一開始認為「路易吉這怕鬼的娘娘腔最好能當主角啦」，但現在... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/21/efdff65c6f3b7c9576b35dcdbb16sdd5.JPG",
+    "title": "《Undertale》作者 Toby Fox 宣布為《寶可夢 劍 / 盾》作曲",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188204",
+    "brief": "繼擔任《小鎮英雄》的作曲後，《Undertale》的作者 Toby Fox 今天宣佈受委託為《寶可夢劍．盾》作曲，雖然不是作主樂曲，但他仍希望大家能享受遊戲中的音樂。Toby Fox：嘿，我終於可以宣布：我受委託幫寶可夢劍盾作曲！能製作遊戲... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/54/5bed5d583d5acb535348c6033316sju5.JPG",
+    "title": "《生死格鬥：沙灘排球維納斯假期》追加對應「拽拽」SSR 泳裝 女孩「潛力」覺醒活動開跑",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188248",
+    "brief": "臺灣光榮特庫摩宣布，《生死格鬥：沙灘排球維納斯假期》追加對應可以「拽拽」的 SSR 泳裝「拽拽 Pinchos（環）」，並同步推出可以覺醒女孩「潛力」的遊戲內活動「第一次的攀岩」等內容。 【以下內容為廠商提供資料原文】 ... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/49/07e942f09a005d7ed40694418416sjp5.JPG",
+    "title": "《天使之戀 Online》十三週年慶祝活動開跑 預告 2020 年初進行改版",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188245",
+    "brief": "宇峻奧汀旗下《天使之戀 Online》邁入 13 週年，即日起推連續一個月的慶祝活動。同時官方趁著這個時間，預告遊戲將於 2020 上半年進行改版，失落已久的古文明即將問世。 【以下內容為廠商提供資料原文】  ... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/41/a4feb3208ae79d0625d2a3dcf616sjh5.JPG",
+    "title": "【試閱】《三角的距離無限趨近零》與雙重人格少女扭曲又奇妙的三角戀愛故事",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188243",
+    "brief": "你的身邊有沒有非常矛盾的朋友呢？可能纖細卻又粗曠、可能認真卻又隨便，在某種程度上這樣的人類是不是更自然呢？今天要為介紹的是獲得「這本輕小說真厲害！2019」文庫部門新作第 3 名，由 岬鷺宮創作、台灣繪師 Hiten 擔任插畫的三角戀愛的輕... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/39/bb2a1de59d70c8f2c233b7e36416sjf5.JPG",
+    "title": "台灣獨立遊戲團隊自製文字冒險 PC 遊戲《單身日記》序章《新鮮人篇》上架",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188242",
+    "brief": "由台灣獨立遊戲團隊「特米斯數位娛樂」製作的《單身日記》序章《新鮮人篇》登陸 Steam 平台，並公開四個劇情事件以及角色介紹。  《單身日記》是由台灣獨立遊戲團隊製作的文字冒險遊戲，《新鮮人篇》是整個系列的序章，玩家將扮... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/14/e273793062028864002096fff616siq5.JPG",
+    "title": "《名偵探柯南》與英國百年織品老店 MOON 合作推出四款托特包",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188240",
+    "brief": "知名動漫《名偵探柯南》即日起推出以作中角色為主題的托特包，並使用了英國傳統的毛織物「粗花呢（Tweed）」。  本次官方與擁有 180 年歷史的英國織品老牌 MOON 合作，推出了柯南、灰原、赤井、安室四款不同的托特包，... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/13/cfb95a7c0b3b408cb07242ce1c16sip5.JPG",
+    "title": "MMORPG《天若有情》事前登錄活動開啟 同步釋出遊戲特色及玩法介紹",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188239",
+    "brief": "初心網絡科技股份有限公司 （ORIGIN MOOD LIMITED）今（6）日宣佈，MMORPG《天若有情》事前登錄正式開啟，即日起參加活動即可領取限定好禮。  【以下內容為廠商提供資料原文】 權傾天下，一夢江... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/01/7e768e54a8ab586f47d4fa848c16sid5.JPG",
+    "title": "《King’s Raid – 王之逆襲》「千日紀念感謝祭」活動開跑 2019 全新「職業時裝」初次登場",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188238",
+    "brief": "韓商 Vespa Inc. 自研自營的冒險 3D 手機遊戲《King’s Raid – 王之逆襲》今（5）日宣布，《King’s Raid – 王之逆襲》全球上線即將邁入 1000 日，官方宣... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/91/3dd7f003422eb07d6a44f4e7b316si35.JPG",
+    "title": "《AVABEL Lupinus 聖境之花》舉辦期間限定活動「每天都跟寵物在一起！不離不棄！」",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188237",
+    "brief": "日本開發商 ASOBIMO 在台關係企業「量子遊戲」宣布，王道 MMORPG《AVABEL Lupinus 聖境之花》將於今（6）日起舉辦包含期間限定活動「每天都跟寵物在一起！不離不棄！」等追加內容的遊戲更新，詳情請參考以下資訊。。&nbs... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/81/8c4af9a1f09f806bd28cc89d0716sht5.JPG",
+    "title": "3D MMORPG《覓仙緣》今日正式上線 於仙界中體驗修仙故事",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188236",
+    "brief": "由香港商 Goodfun Games 推出的 3D MMORPG《覓仙緣》於今（6）日正式上線，玩家可前往事前登錄頁面下載遊戲，而事前登錄獎勵也將於遊戲中發放。官方表示，《覓仙緣》包含了豐富的遊戲內容，並在世界中開啟新篇章，以嶄新面貌帶領玩... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/63/98eaba7cce2a7867e2579b5c9516shb5.JPG",
+    "title": "《戰車世界：閃擊戰》第四屆世界賽「旋風盃」冠軍賽周末正式開打",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188233",
+    "brief": "戰遊網旗下《戰車世界：閃擊戰》今天正式宣布，第四屆《戰車世界：閃擊戰》世界賽「旋風盃」（Blitz Twister Cup）將於台灣時間 11 月 9 日 19 點 00 分正式開打，來自世界各地的 6 支隊伍將角逐最高榮耀及總計 10 萬... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/55/2c0dff18a109682b956607855816sh35.JPG",
+    "title": "回合兵陣戰爭 SLG《三國點將錄》雙平台正式上線 同步釋出「聯盟系統」「競技玩法」指南",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188231",
+    "brief": "由 Gacraze 代理的策略遊戲《三國點將錄》於今（6）日正式公測，目前已在台港澳 iOS、Android 雙平台正式上線。官方現公佈最新「聯盟系統」、「競技玩法」指南，幫助玩家在遊戲中游刃有餘，運籌帷幄，開啟九州霸業。 &nb... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/39/fd5aecd95bdef6dfdeda05199b16sgn5.JPG",
+    "title": "《遺落大陸》推出最新資料片「血魔降臨 闇夜重生」新職業「血魔」登場",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188229",
+    "brief": "由 Gamamobi 遊戲平台代理、「完美世界」開發的西方魔幻 3D MMORPG《遺落大陸》今（6）日推出最新資料片「血魔降臨，闇夜重生」。除了全新職業「血魔」在這次資料片中神秘現身外，還公布了可以轉換新身份的「重生系統」、神秘符石「聖紋... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/30/563cb5dc977441f8a6e4b93f3216sge5.JPG",
+    "title": "戰國美少女 ARPG《新千姬大亂鬥》釋出五位角色介紹 事前登錄持續進行中",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188226",
+    "brief": "由辣椒方舟代理的戰國美少女 ARPG《新千姬大亂鬥》今（6）日搶先釋出五位角色介紹，詳細解說各武將的背景與技能。另外本作事前登錄持續進行中，只要完成登錄就可獲得 SR 武將繪馬等多項好禮。  【以下內容為廠商提供資料原文... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/26/f225a4701657717abc9b0afa6b16sga5.JPG",
+    "title": "《結城友奈是勇者》動畫音樂精選專輯「勇気の歌」試聽影片公開",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188224",
+    "brief": "由 タカヒロ 擔任劇本原案、岸誠二 擔當監督一職、著名畫師 BUNBUN 擔任角色原案、動畫公司 Studio 五組製作的動畫《結城友奈是勇者》，宣布將製作《結城友奈是勇者》音樂精選專輯，預定將於11月6日發售，官方近日公開《結城友奈是勇者... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/22/7b9d3c227b75593e8ba602a73316sg65.JPG",
+    "title": "《佐賀偶像是傳奇》主題餐廳預計將於 12 月在台北開幕",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188223",
+    "brief": "由 MAPPA、avex pictures、Cygames 合作推出的原創動畫《佐賀偶像是傳奇》，動畫周邊代理商提恩傳媒今(5)日宣布《佐賀偶像是傳奇》確定將與台北的店面餐廳合作，主題餐廳預計將在12月開幕。主題餐廳為期間限定，為期2個月，... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/16/4fe00f5476e3b1392de0f7e41716sg05.JPG",
+    "title": "《三國殺名將傳》推出全新跨服 PVP 王者之戰 同步開放武將界限突破",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188222",
+    "brief": "由 Eskyfun 遊戲平台發行的動作策略卡牌遊戲《三國殺名將傳》，今（6）日改版更新推出全民競技 PVP 玩法「王者之戰」，並同步開放四位橙色武將曹丕、袁紹、關羽、甘寧的界限突破，讓橙將也能化身為最強紅將。  【以下內... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/15/a1d6be292ad92232d0b656d79b16sfz5.JPG",
+    "title": "《假面騎士劇場版 ZI-O Over Quartzer》電影預售票將於 11 月 11 日啟售",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188221",
+    "brief": "代理商木棉花宣布，預定於 12 月 13 日上映的《假面騎士劇場版 ZI-O Over Quartzer》，預售票在 11 月 11 日正式開賣的消息。此外，同場將加映久違大螢幕的戰隊系列《快盜戰隊魯邦連者 VS 警察戰隊巡邏連者 en f... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/14/ec3230667c4f398e7a61b553e116sfy5.JPG",
+    "title": "《拳皇命運》SSR 新格鬥家「覺醒．金」登場 同步釋出技能情報",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188220",
+    "brief": "SNK 正版授權手機遊戲《拳皇命運》今（6）日更新版本，開放 SSR 新格鬥家「覺醒．金」，讓玩家再次感受他的跆拳道威力。現搶先釋出該角色介紹，供感興趣的玩家參考。 《拳皇命運》SSR 格鬥家「覺醒．金」登場【以下內容為廠商提供資... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/90/0489ca6c57ff35f49f232a527816sfa5.JPG",
+    "title": "《黑色沙漠 MOBILE》太古等級飾品、煉金石全新開放",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188211",
+    "brief": "韓國開發商珍艾碧絲 PEARL ABYSS 旗下 MMORPG 手機遊戲《黑色沙漠 MOBILE》，本日（6 日）宣佈於今更新後，增加「太古」等級飾品、煉金石，以及 6 世代寵物技能等級擴張系統，為冒險家的冒險旅程，增加更多力量。 ... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/84/656a36c1b284ae781dc567ff6116sf45.JPG",
+    "title": "動畫電影《天氣之子》公開主題曲「大丈夫」音樂影像",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188210",
+    "brief": "知名動畫導演新海誠的最新作《天氣之子》，官方於近日公開由RADWIMPS所演唱的主題曲「大丈夫」音樂影像，此外《天氣之子》專輯將於2019年11月27日發售。「天気の子 complete version」RADWIMPS＜完全生産限定BOX... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/73/f82c90989a710b881d94ed4f8916set5.JPG",
+    "title": "動畫《BEASTARS》公開片尾曲「Le zoo」全曲試聽影片",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188209",
+    "brief": "以 板垣巴留的漫畫為原著所製作的電視動畫《BEASTARS》，官方近日公開片尾主題曲「Le zoo」全曲試聽影片，預計在2019年11月20日發售。這次所釋出的是動畫片尾主題曲「Le zoo」，是由 YURiKA所演唱。YURiKA「Le ... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/62/93ecc964a91f0ee203eed3e5b916sei5.JPG",
+    "title": "《超級瑪利歐》推出餐桌用品系列 招待大家一起來舉辦餐會吧！",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188205",
+    "brief": "任天堂在11月29日將會以「超級瑪利歐」當主題，推出一系列的餐桌用品，一共有13種類，讓大家舉辦餐會可以更加開心！超多款的商品，讓我們依序介紹！馬克杯套組，售價2800日圓（不含稅，以下均不含稅）海底世界吸管玻璃杯，售價1800日圓地底世界... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/43/ab49c56161cca4c8b3400e184216s035.JPG",
+    "title": "WWE 超級巨星加入《英靈神殿大亂鬥》羅曼・瑞恩斯、送葬者等人跨界登場",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188196",
+    "brief": "Ubisoft 宣布，WWE 超級巨星羅曼・瑞恩斯（Roman Reigns）、送葬者（The Undertaker）、明日華（Asuka）和 WWE 名人堂巨星「猛男」蘭迪・沙瓦吉（\"Macho Man\" Randy ... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/31/bf658703fe6c46e0c8e9b5ced816s835.JPG",
+    "title": "《BanG Dream！少女樂團派對》日版宣布將與《Re：從零開始的異世界生活》展開合作",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188192",
+    "brief": "日本娛樂公司「武士道（Bushiroad）」和 Craft Egg 開發製作的手機音樂節奏遊戲《BanG Dream！少女樂團派對》日版，在今（4）日進行的「@ハロハピCiRCLE放送局 第30回」當中宣布將與動畫《Re：從零開始的異世界生... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/64/37df2445dcbc735ffd51ecab4216sek5.JPG",
+    "title": "實境遊戲《The Myth of Allegories 穹頂計畫》介紹",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188208",
+    "brief": "Hi，大家好，我是烏拉拉。俄國老司機，應該說作家、哲學家與革命主義者車爾尼雪夫斯基，曾說：「藝術源於生活，又高於生活。」許多生活常見的點滴，經常成為創作靈感成為經典作品。然而這些經典卻往往被放入殿堂中，遠離我們，產生了距離感。好在現在出現了... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/01/3745fa2df02092b23ce91cb7b016sa15.JPG",
+    "title": "【試玩】《王都創世物語》遊玩心得 體驗開羅遊戲帶來的王國經營！",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188194",
+    "brief": "遊戲名稱／王都創世物語（冒険キングダム島）遊戲平台／iOS、Android支援語系／繁體中文、日文等上市日期／國際版（中文）2019-09-04日文版為2018-12-04遊戲類型／建設、養成收費方式／免費商城制於八月底推出的王都創世物語，... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/04/b540272b8a9a334ab7e17c8f5116sfo5.JPG",
+    "title": "【模型】Maxfactory《刀劍神域外傳 Gun Gale Online》figma 蓮 預定 4 月發售",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188216",
+    "brief": "日本 Max Factory公司發表了旗下新作商品「《刀劍神域外傳 Gun Gale Online》figma 蓮」目前已開放預購，並釋出了商品預覽圖片。AGI特化型“粉紅惡魔”出自TV動畫《刀劍神域外傳Gun Gale Online》，“... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/93/a2292fbee58383573b5c569f0116sfd5.JPG",
+    "title": "【模型】BROCCOLI《死亡終局 輪迴試煉》二之宮椎菜 預定2020年6月發售",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188214",
+    "brief": "BROCCOLI模型出品，PC、PS4平台推出的驚悚RPG遊戲《死亡終局 輪迴試煉》之角色「二之宮 椎菜」商品化，於5號正式開始預購，發售日為2020年6月預定！由 Compile Heart 遊戲公司製作的《死亡終局 輪迴試煉》之女主角「... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/91/6d119667142835e94f4a9a9fae16sfb5.JPG",
+    "title": "【模型】Maxfactory《初音未來 -Project DIVA- F 2nd》初音未來 Vintage Dress Ver. 11 月發售",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188212",
+    "brief": "由Max Factory 網站宣布，出自《初音未來 -Project DIVA- F 2nd》初音未來 Vintage Dress Ver.，並將預定於2019年11月發售。於SEGA的音樂節奏遊戲『初音未來 -Project DIVA- ... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/13/e3a5d74dc3e861b26441ad092d16sfx5.JPG",
+    "title": "膝蓋上的蒲田君《哥吉拉》第二型態 PC 抱枕將於 2020 年 2 月推出",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188219",
+    "brief": "「蒲田君」是「哥吉拉第二型態」的可愛稱呼！現在推出了PC抱枕，讓你可以抱著他工作喔！哥吉拉第二型態，外表像是深海魚一樣圓滾滾的眼睛，張開大嘴，頸部兩側有像腮一般的器官，會排出像血液一般的紅色體液，後腳比前腳還要粗壯，以匍匐的方式前進，看起來... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/31/a1d9fc82ef73f86081d56ee8be16sgf5.JPG",
+    "title": "聲優歌手 斉藤朱夏首張單曲「36℃」釋出 37 秒音樂影像",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188227",
+    "brief": "校園偶像企劃《Love Live! Sunshine!!》當中飾演 渡辺曜 作為 Aqours 的成員活躍中 ，並於先前出道後推出首張迷你專輯「くつひも」的聲優歌手・斉藤朱夏，預定 11 月 20 日發售的首張的單曲「36℃/パパパ」 ，官... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/92/f48a6654f9533ef7d37d85c23d16sfc5.PNG",
+    "title": "【開箱】桌上遊戲《小小世界 征戰地底》玩家簡易開箱",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188213",
+    "brief": "《小小世界》中文版消息一出的時候我就十分感動，想說雖然家裡都已經有英文版了，但怎麼樣都還是得收一盒回來放著～可是又不想兩盒都收，想來想去最後收了Underground版，也就是今天要開箱的這盒《征戰地底》啦～為什麼選這盒？原因大家看到最後就... 繼續閱讀"
+  },
+  {
+    "image": "",
+    "title": "《全民打棒球 2 Online》12 週年 推出 CPBL 紅卡潛力重評、成長保存券、高級抽卡系統",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188249",
+    "brief": ""
+  },
+  {
+    "image": "",
+    "title": "《絕殺三國》即將推出 故事背景、夥伴、通靈系統特色搶先看",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188247",
+    "brief": ""
+  },
+  {
+    "image": "",
+    "title": "《皇城三國傳》公測登場 介紹國家、陣營、國戰玩法特色",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188246",
+    "brief": ""
+  },
+  {
+    "image": "",
+    "title": "《洛汗 M》遊戲系統介紹",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188195",
+    "brief": ""
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/43/73b3aca391343cf95f108f205116s5n5.JPG",
+    "title": "BANDAI 推出 PlayStation 與 SEGA Saturn 主機塑膠模型 體驗親手組裝一代名機的樂趣",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188187",
+    "brief": "BANDAI SPIRITS 日前宣布，預定 2020 年 3 月推出的「BEST HIT CHRONICLE」系列塑膠模型產品「BEST HIT CHRONICLE 2/5 “PlayStation” (SCPH-... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/02/4b3ba74fc1c0ec7e9b9c460efe16s4i5.JPG",
+    "title": "《無雙 OROCHI 蛇魔 3 Ultimate》製作人介紹新要素 透露還有一名「神格化」角色",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188182",
+    "brief": "戰術動作遊戲《無雙 OROCHI 蛇魔 3 Ultimate》PlayStation 4／Nintendo Switch 版即將在 12 月 19 日發售（Steam 版預計 2020 年 2 月 14 日發售），臺灣光榮特庫摩近日特別邀請... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/85/0e8564c87c42f79e70726ecbb916s415.JPG",
+    "title": "《重甲機神：神降臨》本週五即將上映 今日首映會眾配音員齊聚暢談分享參演心情",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188179",
+    "brief": "由 紀敦智、黃瀛洲共同執導，台灣首部原創機器人科幻動畫電影，以台灣為主舞台的熱血動畫電影《重甲機神：神降臨》即將於本週五（11 月 8 日）正式在全台上映。今（5 日）也舉行了媒體試片暨首映會，導演黃瀛洲、紀敦智率領眾聲優們齊聚一堂，兩位導... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/70/874fbdc81beb32f220249d1f0f16s3m5.JPG",
+    "title": "《Fate/Grand Order》繁中版迎來全新主線劇情「Lostbelt No.1 永久凍土帝國」",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188176",
+    "brief": "《Fate/Grand Order》繁中版（中文名：命運 - 冠位指定，以下簡稱《FGO》繁中版）將於 11 月 7 日（四）正式開啟全新主線劇情「Lostbelt No.1 永久凍土帝國－安娜塔西亞：獸國的皇女」。從天空而來的侵略，讓人類... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/08/78c85fe2f82cb3f190461b804716s1w5.PNG",
+    "title": "《迷你四驅車 超速大賽》於日本開放事前登錄 跟著星馬烈、星馬豪兄弟等人享受競速樂趣",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188170",
+    "brief": "日本萬代南夢宮娛樂（BANDAI NAMCO Entertainment Inc.）與模型製造商田宮（TAMIYA）及小學館合作，以玩具賽車「迷你四驅車」為題材的智慧型手機遊戲《迷你四驅車 超速大賽（暫譯，ミニ四駆 超速グランプリ）》（iO... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/21/488891b5777fe3822003805c0616s515.JPG",
+    "title": "《古劍奇譚網路版》中國版 11 月底推出資料片「夢與時空」 內容與《古劍奇譚 3》結合",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188184",
+    "brief": "網元聖唐宣布，由開發團隊上海燭龍科技《古劍奇譚網路版》中國版將於 11 月 21 日推出新資料片「夢與時空」，內容將結合《古劍奇譚 3》內容。 《古劍奇譚網路版》是一款以《古劍奇譚》為背景、耗時多年打造的線上多人角色扮演遊戲。在今... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/08/edbb1f5c577d9eba10fa7ed50f16s4o5.JPG",
+    "title": "《神魔之塔》預告七周年即將到來 預計復刻雙黑金並推出連環免費 14 抽等活動",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188183",
+    "brief": "《神魔之塔》營運團隊今（5）日宣布，為了慶祝即將到來的七周年，官方將推出一系列活動。而活動將包括連環免費 14 連抽、七周年預熱登入賞及直播活動。官方也表示，預計在 11 月 8 日晚間 7 : 00 的七週年預熱慶典直播公布 12 月接踵... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/37/e0bd87e0f8ef02f5674d3bca6616s2p5.JPG",
+    "title": "《新櫻花大戰》公開由上海華擊團的黃郁所演唱的「彩虹的彼端」MV",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188175",
+    "brief": "SEGA Games 製作，預定 2019 年 12 月 12 日發售的 PS4 遊戲《新櫻花大戰》，公開了登場人物「黃郁（CV：上坂菫）」所演唱的「彩虹的彼端（虹の彼方）」MV（Short ver.）。  黃郁（上坂す... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/16/1f9b1fd66d81ca3e994ea5147716s245.JPG",
+    "title": "迎接凜冬《天堂 M》推出「對抗寒冬大作戰」活動 同步開放「試煉之塔」",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188172",
+    "brief": "由遊戲橘子代理韓國遊戲大廠 NCSOFT 開發的《天堂 M》，明日（11/6）將釋出全新 11 月活動「對抗寒冬大作戰」，每周將會於遊戲內推出多元活動，與玩家一起迎接冬天的到來。大型活動副本「試煉之塔」也將於明日推出，玩家除了要在有限的條件... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/09/0595c26709aec20b90fc38ccf016s1x5.JPG",
+    "title": "《大富翁 10》免費更新新增自定義選項 預告新角色「莎拉公主」與「大老千」即將現身",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188171",
+    "brief": "大宇資訊宣布，《大富翁 10》於今（5）日推出免費更新，新增自定義選項將大幅提升玩家的遊戲體驗，同時預告 11 月將首波新增「莎拉公主」和「大老千」兩名新角色，以及一張地圖格總數 200 格以上的大型地圖。 《大富翁 10》推出免... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/89/d333957ae7c33451b5e12c121c16s1d5.JPG",
+    "title": "《阿宅的戀愛太難》釋出最新宣傳影片 賀來賢人等人參與本作演出",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188168",
+    "brief": "以 ふじた漫畫《阿宅的戀愛太難》改編拍攝的同名真人版電影，官方於今（5）日宣布 賀來賢人、室剛、佐藤二朗等人將參與演出，並且釋出了全新的宣傳影片。  《阿宅的戀愛太難》描述，極力隱瞞自己是腐女的上班族成海，在新公司與長相... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/84/66b4545824ea557736927ada2216s185.JPG",
+    "title": "《魔獸世界》15 週年慶祝活動預定 11 月 7 日亞洲地區上線 再次挑戰過去資料片代表首領",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188166",
+    "brief": "《魔獸世界》15 週年限時慶祝活動即將於 11 月 7 日起在亞洲地區開跑，屆時將開放新副本「艾澤拉斯的回憶（暫譯，原名：Memories of Azeroth）」，同時將有機會可以重返奧特蘭克山谷。  今年五月，Bli... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/03/5a130526c944fcddcd4f795aa216s4j5.JPG",
+    "title": "《封印者：CLOSERS》PVP 電競賽事結果揭曉 上屆王者蟬聯巔峰之戰冠軍",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188181",
+    "brief": "《封印者：CLOSERS》2019 年度第七屆王者榮耀 PVP 聯賽總決賽於日前圓滿落幕，「新人王戰」及「巔峰之戰」的八強選手至現場舞台展開最終對決，最後由蔡和祥、李家偉分別奪下本次賽事冠軍。 【以下內容為廠商提供資料原... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/36/4859776fa15e5cb5427cb51fac16s2o5.JPG",
+    "title": "三國放置遊戲《丞相開戰啦》雙平台上架 公開 PVP 競技、國戰系統介紹",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188174",
+    "brief": "放置類新作《丞相開戰啦》營運團隊今日宣布，iOS 、Android 版及網頁版已正式上架。官方表示，《丞相開戰啦》除了有忠於歷史、惡搞 KUSO 的武將等待玩家收集，PVP 競技、國戰系統也讓玩家能體驗競爭的樂趣。  【... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/41/7472af01e3a3925e43c744f52f16kz95.JPG",
+    "title": "【試玩】策略模擬遊戲《霸王之野望》在戰國中善用謀略成就霸業",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188167",
+    "brief": "霸王之野望是一款以戰國為背景的SGL遊戲，這類型的遊戲大家應該都不陌生了，各種歷史題材也很頻繁被應用在此類遊戲中，不過霸王之野望還是有不少特色與可玩之處，以下就來分享一下。 ◆純正的戰國元素 以日本戰國為背景的遊戲不少，但有的只有形式，對於... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/35/0e8e5098ce9b8e3fe1fd21021716s2n5.JPG",
+    "title": "【TiCA20】《藥師少女的獨語》中文第 4 集特裝版將於動漫節首賣 即日起預購開跑",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188173",
+    "brief": "宮廷推理之作《藥師少女的獨語》第四集將於明年在台推出，台灣角川也將在 2020 動漫節推出輕小說《藥師少女的獨語》第 4 集特裝版，收錄台灣獨家特典「貓貓x貓貓 隨身御用包」，即日起開放官網預購，截止日期為 11 月 26 日 16:00，... 繼續閱讀"
+  },
+  {
+    "image": "https://p2.bahamut.com.tw/S/2KU/24/4f7f7163cf127afb36207f471616s545.JPG",
+    "title": "【直播】 《Just Dance 舞力全開 2020》一年一度火熱跳起來!",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188185",
+    "brief": "巴哈姆特電玩瘋預定今（5）日晚間 20:00～21:00 直播 XBOX ONE 《Just Dance 舞力全開 2020》 ，由編輯小鈺與 nico 主持。《舞力全開 2020》收錄了 40 首全球知名的勁歌金曲，包含創下連續佔據全美告... 繼續閱讀"
+  },
+  {
+    "image": "",
+    "title": "曜越公開 Level 20 HT/Level 20 HT 雪白版高直立式強化玻璃機殼",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188180",
+    "brief": ""
+  },
+  {
+    "image": "",
+    "title": "《紫羅蘭永恆花園 外傳》首週全台票房直逼 350 萬 官方推出紀念信封抽獎活動",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188178",
+    "brief": ""
+  },
+  {
+    "image": "",
+    "title": "《跑跑卡丁車》第一屆 TT 曜越電競聯賽・車神競速系列 32 強 11 月 2 日場結果公布",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188177",
+    "brief": ""
+  },
+  {
+    "image": "",
+    "title": "《夏目友人帳》兩米大貓咪老師將於台北翻轉動漫祭登場 11 月 28 日起揭幕",
+    "link": "https://gnn.gamer.com.tw/detail.php?sn=188169",
+    "brief": ""
+  }
 ]

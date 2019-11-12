@@ -1,6 +1,18 @@
 [
-  "新聞",
-  "公告",
-  "活動",
-  "賽事"
+  {
+    "title": "新聞",
+    "value": "main"
+  },
+  {
+    "title": "公告",
+    "value": "announcement"
+  },
+  {
+    "title": "活動",
+    "value": "events"
+  },
+  {
+    "title": "賽事",
+    "value": "games"
+  }
 ]

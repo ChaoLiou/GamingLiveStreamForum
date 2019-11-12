@@ -8,7 +8,7 @@
       <div class="content-grid__main">
         <f-home-news-area></f-home-news-area>
         <f-block
-          icon="platform_icons/icn_push_B.png"
+          icon="/platform_icons/icn_push_B.png"
           background-color="#f2ecf6"
           more
           to="/live/recommend"
@@ -22,13 +22,13 @@
           :tabs="['月榜']"
           :font-size="30"
           :line-height="3"
-          icon="platform_icons/icn_star_B.png"
+          icon="/platform_icons/icn_star_B.png"
           @tab-change="tabChange"
         >
           <f-stream-ranking :streams="streamRankingSource"></f-stream-ranking>
         </f-block>
         <f-block
-          icon="platform_icons/icn_hot_B.png"
+          icon="/platform_icons/icn_hot_B.png"
           background-color="#f2ecf6"
           title="熱門遊戲"
           to="/live/hot"
@@ -130,7 +130,7 @@ export default {
         }
       );
       this.streams = streams.map(x => ({
-        id: x.channel._id,
+        id: x.channel._id.toString(),
         source: `https://player.twitch.tv/?channel=${x.channel.name}&autoplay=true`,
         preview: x.preview.template,
         viewers: x.viewers,
@@ -148,21 +148,23 @@ export default {
     async getDouyuStreams(begin, size) {
       const aid = "12345";
       const streams = await this.$axios.$get(
-        `https://woolive.ark-program.com/stream/douyu/PCgame/?begin=${
+        `https://woolive.ark-program.com/stream/list?src=douyu&begin=${
           begin ? begin : 0
         }&size=${size ? size : 4}`
       );
       this.douyuStreams = streams.map(x => ({
-        id: x.ownerUserId,
+        id: x.baseId,
         source: `https://open.douyu.com/tpl/h5/chain2/${aid}/${x.roomId}`,
         preview: x.roomImg,
         viewers: x.online,
-        streamer_image: "",
+        streamer_image: x.avatar,
         title: x.roomName,
         streamer_name: x.ownerName,
-        game: "",
+        game: x.gameName,
         description: x.roomDesc,
-        platform: "斗魚直播"
+        platform: "斗魚直播",
+        externalLink: x.streamUrl,
+        follows: x.fans
       }));
     },
     tabChange(index) {

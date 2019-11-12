@@ -23,7 +23,9 @@ export default {
   },
   computed: {
     carouselSource() {
-      return news.slice(0, 6);
+      return this.news
+        .slice(0, 6)
+        .map(x => ({ ...x, image: x.image.replace("/S/", "/B/") }));
     }
   }
 };

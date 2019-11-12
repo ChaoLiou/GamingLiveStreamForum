@@ -1,6 +1,30 @@
 <template>
   <div class="f-home-stream-preview">
     <v-card class="stream-preview__container">
+      <div class="stream-frame__block" v-show="frameLoaded && player">
+        <div class="stream-frame__shadow"></div>
+        <nuxt-link :to="streamLink" target="_blank">
+          <div class="stream-frame__info stream-brief">
+            <v-avatar size="96px" tile>
+              <v-img :src="logoImageSource"></v-img>
+            </v-avatar>
+            <div class="stream-brief__content">
+              <div class="stream-brief__title text-truncate" :title="stream.title">
+                <nuxt-link :to="streamLink" target="_blank">{{stream.title}}</nuxt-link>
+              </div>
+              <div class="stream-brief__name text-truncate" :title="stream.streamer_name">
+                <nuxt-link :to="streamLink" target="_blank">{{stream.streamer_name}}</nuxt-link>
+              </div>
+              <div class="stream-brief__game text-truncate" :title="stream.game">
+                <a>{{stream.game}}</a>
+              </div>
+              <div class="stream-brief__platform text-truncate" :title="stream.platform">
+                <a>{{stream.platform}}</a>
+              </div>
+            </div>
+          </div>
+        </nuxt-link>
+      </div>
       <iframe
         v-show="frameLoaded && player"
         ref="frame"
@@ -116,7 +140,65 @@ export default {
 .stream-link .v-image {
   z-index: 1;
 }
-.stream-link .v-avatar {
+.v-avatar {
   margin: 10px;
+}
+.stream-frame__shadow {
+  width: 100%;
+  height: 125px;
+  position: absolute;
+  z-index: 3;
+  background: linear-gradient(180deg, black, 80%, transparent);
+  opacity: 0.5;
+  border-radius: 15px 15px 0px 0px;
+}
+.stream-frame__info {
+  width: 100%;
+  height: 125px;
+  position: absolute;
+  z-index: 4;
+}
+.stream-frame__block {
+  width: 100%;
+  height: 125px;
+  position: absolute;
+  z-index: 4;
+  cursor: pointer;
+}
+.stream-brief {
+  display: grid;
+  grid-template-columns: 116px calc(100% - 116px);
+}
+.stream-brief > div {
+  margin: 5px;
+}
+.stream-brief__title a {
+  font-weight: 900;
+  font-size: 22px;
+  color: white;
+}
+.stream-brief__name a,
+.stream-brief__game a,
+.stream-brief__platform a {
+  font-size: 19px;
+  color: white;
+}
+.stream-brief__content a {
+  text-decoration: none;
+}
+.stream-brief__content > div {
+  margin-bottom: 2px;
+  height: 23px;
+}
+.stream-brief__content > div:first-child {
+  height: 26px;
+}
+.stream-frame__info,
+.stream-frame__shadow {
+  display: none;
+}
+.stream-frame__block:hover .stream-frame__info,
+.stream-frame__block:hover .stream-frame__shadow {
+  display: grid;
 }
 </style>

@@ -3,7 +3,7 @@
     <div class="f-tab__tabs" :style="tabStyles" v-if="title">
       <div
         :class="['f-tab__tab-item', tab.active ? 'active' : '']"
-        v-for="(tab, index) in [{title}, ...tabs]"
+        v-for="(tab, index) in [{title, link}, ...tabs]"
         :key="index"
       >
         <nuxt-link v-if="tab.link" :to="tab.link">
@@ -21,6 +21,10 @@ export default {
     title: {
       type: String,
       default: "Page"
+    },
+    link: {
+      type: String,
+      default: undefined
     },
     tabs: {
       type: Array,

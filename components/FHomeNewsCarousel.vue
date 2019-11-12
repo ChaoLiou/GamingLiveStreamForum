@@ -1,9 +1,16 @@
 <template>
   <div class="f-home-news-carousel">
-    <v-carousel hide-delimiters :interval="interval" height="360px">
-      <v-carousel-item v-for="(item,i) in source" :key="i" :src="item.image">
-        <div class="carousel__title text-truncate">{{item.title}}</div>
-        <div class="carousel__title-shadow"></div>
+    <v-carousel hide-delimiters :interval="interval" :height="height">
+      <v-carousel-item v-for="(item,i) in source" :key="i">
+        <nuxt-link target="_blank" :to="`/news/${item.type.value}/0`">
+          <v-img :src="item.image" :height="height">
+            <div
+              class="carousel__title text-truncate"
+              :style="{ top: `calc(${height} - 30px)` }"
+            >{{item.title}}</div>
+            <div class="carousel__title-shadow" :style="{ top: `calc(${height} - 40px)` }"></div>
+          </v-img>
+        </nuxt-link>
       </v-carousel-item>
     </v-carousel>
   </div>
@@ -20,6 +27,10 @@ export default {
     intervalSeconds: {
       type: Number,
       default: 1
+    },
+    height: {
+      type: String,
+      default: "360px"
     }
   },
   data() {
@@ -37,9 +48,8 @@ export default {
 .carousel__title-shadow {
   position: absolute;
   left: 0px;
-  bottom: 0px;
-  height: 35px;
-  border-radius: 5px;
+  top: 0px;
+  height: 40px;
 }
 .carousel__title {
   color: white;

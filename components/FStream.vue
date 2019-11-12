@@ -9,7 +9,6 @@
       </div>
       <div class="f-stream__title-video">
         <iframe
-          v-if="stream.name"
           :src="stream.source"
           height="100%"
           width="100%"
@@ -23,7 +22,7 @@
           <span>實況主:</span>
           <a>{{stream.streamer_name}}</a>
         </div>
-        <div class="f-stream__viewer">{{stream.viewers}}人觀看</div>
+        <div class="f-stream__viewer">{{viewers}}人觀看</div>
         <div>
           <v-btn depressed to="/live/recommend">回實況總覽</v-btn>
           <v-btn depressed>關聯商品</v-btn>
@@ -51,13 +50,19 @@
   </div>
 </template>
 <script>
+import formatter from "@/assets/utils/formatter";
 export default {
   props: {
     stream: {
       type: Object,
       default() {
-        return { channel: {} };
+        return {};
       }
+    }
+  },
+  computed: {
+    viewers() {
+      return formatter.fviewers(this.stream.viewers);
     }
   }
 };

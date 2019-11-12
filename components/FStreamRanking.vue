@@ -37,7 +37,7 @@
             </div>
           </v-img>
           <div :style="{ margin: '10px', display: 'grid', 'grid-template-columns': '46px 84px' }">
-            <v-img width="46px" src="platform_icons/icn_twitch_B.png"></v-img>
+            <v-img width="46px" src="/platform_icons/icn_twitch_B.png"></v-img>
             <div :style="{ 'margin-left': '10px', color: '#6540a7', 'font-size': '18px' }">
               <div class="text-truncate">{{item.streamer_name}}</div>
               <div>{{item.platform}}</div>
@@ -73,6 +73,7 @@ function scrollTo(element, to, duration) {
 }
 
 import ranks from "@/assets/json/ranks";
+import formatter from "@/assets/utils/formatter";
 export default {
   props: {
     streams: {
@@ -86,6 +87,7 @@ export default {
     return { ranks };
   },
   methods: {
+    fviewers: formatter.fviewers,
     scrollTo,
     goLeft() {
       this.scrollTo(

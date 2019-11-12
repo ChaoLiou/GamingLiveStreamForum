@@ -19,7 +19,7 @@
         <div class="fixed-mask live-mask">Live</div>
         <div class="fixed-mask viewer-mask">
           <div class="viewer-mask__container">
-            <div class="viewer-mask__content">{{stream.viewers}}位觀眾</div>
+            <div class="viewer-mask__content">{{viewers}}位觀眾</div>
             <div class="viewer-mask__background"></div>
           </div>
         </div>
@@ -45,7 +45,7 @@
           <div class="stream-brief__platform text-truncate" :title="stream.platform">
             <a>{{stream.platform}}</a>
           </div>
-          <div v-if="player" class="stream-brief__viewers">{{stream.viewers}}位觀眾</div>
+          <div v-if="player" class="stream-brief__viewers">{{viewers}}位觀眾</div>
         </div>
       </div>
       <div class="stream-tags">
@@ -56,6 +56,7 @@
   </div>
 </template>
 <script>
+import formatter from "@/assets/utils/formatter";
 export default {
   props: {
     stream: {
@@ -83,6 +84,9 @@ export default {
     };
   },
   computed: {
+    viewers() {
+      return formatter.fviewers(this.stream.viewers);
+    },
     tags() {
       return this.rawTags.map(t => t.localization_names["zh-tw"]);
     },
@@ -103,7 +107,10 @@ export default {
   mounted() {
     // this.getStreamerInfo();
     // this.getGameInfo();
-    this.getTagsInfo();
+    if (this.stream.id.startsWith("douyu")) {
+    } else {
+      this.getTagsInfo();
+    }
   },
   methods: {
     turnPlayer(on) {
@@ -225,7 +232,7 @@ export default {
 }
 .viewer-mask__container {
   position: relative;
-  width: 90px;
+  width: 110px;
   height: 25px;
 }
 .viewer-mask__container > div {

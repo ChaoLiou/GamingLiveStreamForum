@@ -29,11 +29,11 @@ module.exports = {
         rel: "stylesheet",
         href:
           "https://fonts.googleapis.com/css?family=Noto+Sans+SC&display=swap"
-      },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/earlyaccess/cwtexyen.css"
       }
+      // {
+      //   rel: "stylesheet",
+      //   href: "https://fonts.googleapis.com/earlyaccess/cwtexyen.css"
+      // }
     ],
     script: [
       {

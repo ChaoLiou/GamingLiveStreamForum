@@ -3,7 +3,7 @@
     <v-toolbar fixed>
       <v-toolbar-items>
         <nuxt-link to="/" class="home-link">
-          <v-img class="logo" src="logo.png" width="120px" height="56px"></v-img>
+          <v-img class="logo" src="/logo.png" width="120px" height="56px"></v-img>
         </nuxt-link>
         <div class="nav-items">
           <nuxt-link to="/live/recommend">直播平台</nuxt-link>
