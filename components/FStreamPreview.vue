@@ -221,6 +221,7 @@ export default {
   top: 0px;
   left: 0px;
   background: red;
+  color: white;
   border: 2px black solid;
   border-radius: 5px;
   padding: 0px 5px;

@@ -20,24 +20,10 @@ module.exports = {
         href:
           "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"
       },
-      // {
-      //   rel: "stylesheet",
-      //   href:
-      //     "https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap"
-      // },
       {
         rel: "stylesheet",
         href:
           "https://fonts.googleapis.com/css?family=Noto+Sans+SC&display=swap"
-      }
-      // {
-      //   rel: "stylesheet",
-      //   href: "https://fonts.googleapis.com/earlyaccess/cwtexyen.css"
-      // }
-    ],
-    script: [
-      {
-        src: "https://embed.twitch.tv/embed/v1.js"
       }
     ]
   },

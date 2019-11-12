@@ -22,13 +22,19 @@
     <v-content>
       <nuxt />
     </v-content>
-    <v-footer color="#025266"></v-footer>
+    <v-footer color="#025266" dark>
+      <v-spacer></v-spacer>
+      version: {{rev.version}} - build at {{rev.build_dt}}
+    </v-footer>
   </v-app>
 </template>
 <script>
+import rev from "@/build/rev";
 export default {
   data() {
-    return {};
+    return {
+      rev
+    };
   }
 };
 </script>
