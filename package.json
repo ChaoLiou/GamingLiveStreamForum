@@ -8,7 +8,7 @@
     "dev": "npm run prebuild && nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "npm run prebuild && nuxt generate",
+    "generate": "npm run prebuild && nuxt generate && npm run deploy",
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",

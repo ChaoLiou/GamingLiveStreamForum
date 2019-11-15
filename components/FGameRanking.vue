@@ -1,36 +1,74 @@
 <template>
-  <div
-    class="f-game-ranking"
-    :style="{ display: 'grid', 'grid-template-columns': 'repeat(6, 1fr)', 'grid-gap': '15px' }"
-  >
+  <div class="f-game-ranking">
     <v-card
-      v-for="(item, index) in games"
+      v-for="(item, index) in sortedRanking"
+      class="game-ranking__game-board"
       color="#eadbf8"
       :key="index"
-      :style="{ 'border-radius': '5px', display: 'grid' }"
-      :to="`/live/hot/${item.game.name}`"
+      :to="`/live/hot/${item.game.id}`"
     >
-      <v-img :src="item.game.box.large"></v-img>
-      <div
-        :style="{ padding:'10px', color:'#6540a7', 'justify-self': 'center', 'align-self': 'center', 'text-align': 'center', 'font-weight': 'bold', height: '60px' }"
-      >{{item.game.name}}</div>
+      <v-img :title="getTitle(item.amount, item.amountByGroups)" :src="item.game.image"></v-img>
+      <div class="game-board__title">{{item.game.title}}</div>
     </v-card>
   </div>
 </template>
 <script>
 export default {
-  props: {
-    games: {
-      type: Array,
-      default() {
-        return [];
-      }
+  props: {},
+  data() {
+    return {
+      ranking: []
+    };
+  },
+  computed: {
+    sortedRanking() {
+      const temp = this.ranking.map(x => x);
+      return temp
+        .sort((a, b) => a.index - b.index)
+        .sort((a, b) => b.amount - a.amount)
+        .slice(0, 6);
     }
   },
-  data() {
-    return {};
+  mounted() {
+    this.getStreamsByGame().then(promises => {
+      promises.forEach(p => {
+        p.then(res => this.ranking.push(res));
+      });
+    });
+  },
+  methods: {
+    getTitle(totalAmount, proportionSource) {
+      return totalAmount
+        ? `${totalAmount} (${this.getProportion(proportionSource)})`
+        : "0";
+    },
+    getProportion(source) {
+      return source.map(x => `${x.platform} : ${x.amount}`).join(" ; ");
+    }
   }
 };
 </script>
 <style scoped>
+.f-game-ranking {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 15px;
+}
+.game-ranking__game-board {
+  border-radius: 5px;
+  display: grid;
+}
+.game-ranking__game-board:hover {
+  box-shadow: 4px 8px 5px rgba(0, 0, 0, 0.5);
+}
+.game-board__title {
+  font-size: 18px;
+  padding: 5px 10px;
+  color: #6540a7;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  font-weight: bold;
+  height: 60px;
+}
 </style>

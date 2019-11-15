@@ -2,7 +2,7 @@
   <div class="index">
     <div class="landing-background"></div>
     <div class="landing">
-      <f-home-stream-carousel :streams="streams.slice(0, 5)"></f-home-stream-carousel>
+      <f-home-stream-carousel :streams="streams.all.slice(0, 5)"></f-home-stream-carousel>
     </div>
     <div class="content-grid">
       <div class="content-grid__main">
@@ -14,18 +14,17 @@
           to="/live/recommend"
           title="推薦實況"
         >
-          <f-stream-container :streams="streams.slice(0, 8)"></f-stream-container>
+          <f-stream-container :streams="streams.all.slice(0, 8)"></f-stream-container>
         </f-block>
         <f-block
           background-color="#f2ecf6"
-          title="本週播主榜"
-          :tabs="['月榜']"
+          title="當紅播主榜"
           :font-size="30"
           :line-height="3"
           icon="/platform_icons/icn_star_B.png"
           @tab-change="tabChange"
         >
-          <f-stream-ranking :streams="streamRankingSource"></f-stream-ranking>
+          <f-stream-ranking :streams="streamRanking"></f-stream-ranking>
         </f-block>
         <f-block
           icon="/platform_icons/icn_hot_B.png"
@@ -35,19 +34,18 @@
           more
           more-title="更多遊戲"
         >
-          <f-game-ranking :games="games"></f-game-ranking>
+          <f-game-ranking></f-game-ranking>
         </f-block>
         <f-block
           background-color="#f2ecf6"
           more
-          :to="`/live/recommend/${item.title.toLowerCase()}`"
+          :to="`/live/recommend/${item.id}`"
           :title="item.title"
           :icon="item.icon"
           v-for="(item, index) in platforms"
           :key="index"
         >
-          <f-stream-container v-if="item.title === '斗魚直播'" :streams="douyuStreams.slice(0, 8)"></f-stream-container>
-          <f-stream-container v-else :streams="streams.slice(0, 8)"></f-stream-container>
+          <f-stream-container :streams="streams[item.id ? item.id : 'all']"></f-stream-container>
         </f-block>
       </div>
       <div class="content-grid__side">
@@ -77,96 +75,30 @@ export default {
   },
   data() {
     return {
-      streams: [],
-      douyuStreams: [],
-      totals: 0,
+      streams: { all: [], douyu: [], bilibili: [], twitch: [], now: [] },
       platforms,
-      selectedRankingType: -1,
-      games: []
+      selectedRankingType: -1
     };
   },
   computed: {
-    streamRankingSource() {
-      return this.selectedRankingType === -1
-        ? this.streams
-        : this.streams
-            .map(x => {
-              const rand = Math.floor(Math.random() * 4) + 1;
-              return { ...x, viewers: rand * x.viewers };
-            })
-            .sort((a, b) => b.viewers - a.viewers);
+    streamRanking() {
+      const temp = this.streams.all.map(x => x);
+      return temp.sort((a, b) => b.viewers - a.viewers).slice(0, 20);
     }
   },
   mounted() {
-    this.getGames(6);
-    this.getStreams(20);
-    this.getDouyuStreams(0, 8);
+    this.getStreams(0, 20).then(streams => (this.streams.all = streams));
+    this.getStreams(0, 8, "douyu").then(
+      streams => (this.streams.douyu = streams)
+    );
+    this.getStreams(0, 8, "bilibili").then(
+      streams => (this.streams.bilibili = streams)
+    );
+    this.getTwitchStreams(8).then(streams => {
+      streams.forEach(s => s.then(res => this.streams.twitch.push(res)));
+    });
   },
   methods: {
-    async getGames(amount) {
-      const { _totas, top } = await this.$axios.$get(
-        `https://api.twitch.tv/kraken/games/top?limit=${
-          amount ? amount : 4
-        }&language=zh-tw`,
-        {
-          headers: {
-            "Client-ID": "6zvm0fafre0cbqse6zez4q0nattl7h",
-            Accept: "application/vnd.twitchtv.v5+json"
-          }
-        }
-      );
-      this.games = top;
-    },
-    async getStreams(amount) {
-      const { streams, _total } = await this.$axios.$get(
-        `https://api.twitch.tv/kraken/streams/?limit=${
-          amount ? amount : 4
-        }&language=zh-tw`,
-        {
-          headers: {
-            "Client-ID": "6zvm0fafre0cbqse6zez4q0nattl7h",
-            Accept: "application/vnd.twitchtv.v5+json"
-          }
-        }
-      );
-      this.streams = streams.map(x => ({
-        id: x.channel._id.toString(),
-        source: `https://player.twitch.tv/?channel=${x.channel.name}&autoplay=true`,
-        preview: x.preview.template,
-        viewers: x.viewers,
-        streamer_image: x.channel.logo,
-        title: x.channel.status,
-        name: x.channel.name,
-        streamer_name: x.channel.display_name,
-        game: x.game,
-        description: x.channel.description,
-        chatSource: `https://www.twitch.tv/embed/${x.channel.name}/chat`,
-        platform: "Twitch"
-      }));
-      this.totals = _total;
-    },
-    async getDouyuStreams(begin, size) {
-      const aid = "12345";
-      const streams = await this.$axios.$get(
-        `https://woolive.ark-program.com/stream/list?src=douyu&begin=${
-          begin ? begin : 0
-        }&size=${size ? size : 4}`
-      );
-      this.douyuStreams = streams.map(x => ({
-        id: x.baseId,
-        source: `https://open.douyu.com/tpl/h5/chain2/${aid}/${x.roomId}`,
-        preview: x.roomImg,
-        viewers: x.online,
-        streamer_image: x.avatar,
-        title: x.roomName,
-        streamer_name: x.ownerName,
-        game: x.gameName,
-        description: x.roomDesc,
-        platform: "斗魚直播",
-        externalLink: x.streamUrl,
-        follows: x.fans
-      }));
-    },
     tabChange(index) {
       this.selectedRankingType = index;
     }

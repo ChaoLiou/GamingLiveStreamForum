@@ -3,36 +3,36 @@
     <f-tab title="精彩實況" :tabs="tabs"></f-tab>
     <div class="content">
       <f-block
-        :icon="$route.params.type == 'hot' ? 'platform_icons/icn_hot_B.png' : 'platform_icons/icn_push_B.png'"
+        :icon="$route.params.type === 'hot' ? '/platform_icons/icn_hot_B.png' : '/platform_icons/icn_push_B.png'"
         :to="`/live/${$route.params.type}`"
         :title="mainTitle"
         background-color="#f2ecf6"
       >
         <f-home-stream-carousel
-          v-if="$route.params.id === '斗魚直播'"
-          :streams="topDouyuStreams.slice(0, 5)"
+          :streams="$route.params.type === 'hot' ? streamsByGame[$route.params.id] ? streamsByGame[$route.params.id].slice(0, 5) : streams['all'].slice(0, 5) : streams[$route.params.id ? $route.params.id : 'all'].slice(0, 5)"
         ></f-home-stream-carousel>
-        <f-home-stream-carousel v-else :streams="topStreams"></f-home-stream-carousel>
       </f-block>
       <div>
         <div v-if="multiple">
           <f-block
             more
-            :to="`/live/${$route.params.type}/${item.title.toLowerCase()}`"
+            :to="`/live/${$route.params.type}/${item.id}`"
             :title="item.title"
             :icon="item.icon"
             v-for="(item, index) in multipleSource"
             :key="index"
             background-color="#f2ecf6"
           >
-            <f-stream-container v-if="item.title === '斗魚直播'" :streams="topDouyuStreams.slice(0, 4)"></f-stream-container>
-            <f-stream-container v-else :streams="topStreams.slice(0, 4)"></f-stream-container>
+            <f-stream-container
+              :streams="$route.params.type === 'hot' ? streamsByGame[item.id] ? streamsByGame[item.id].slice(0, 4) : [] : streams[item.id ? item.id : 'all'].slice(0, 4)"
+            ></f-stream-container>
           </f-block>
         </div>
         <div v-else>
           <f-block :icon="platformIcon" :title="title" background-color="#f2ecf6">
-            <f-stream-container v-if="title === '斗魚直播'" :streams="douyuStreams"></f-stream-container>
-            <f-stream-container v-else :streams="streams"></f-stream-container>
+            <f-stream-container
+              :streams="$route.params.type === 'hot' ? streamsByGame[$route.params.id] ? streamsByGame[$route.params.id] : [] : streams[$route.params.id ? $route.params.id : 'all']"
+            ></f-stream-container>
           </f-block>
         </div>
       </div>
@@ -62,10 +62,14 @@ export default {
       tabs: [],
       multiple: true,
       multipleSource: [],
-      topStreams: [],
-      streams: [],
-      topDouyuStreams: [],
-      douyuStreams: [],
+      streams: {
+        all: [],
+        douyu: [],
+        bilibili: [],
+        twitch: [],
+        now: []
+      },
+      streamsByGame: {},
       totals: 0,
       title: "",
       pageIndex: 1,
@@ -83,18 +87,32 @@ export default {
     this.multiple = this.$route.params.id === undefined;
     this.multipleSource = this.$route.params.type === "hot" ? games : platforms;
     if (!this.multiple) {
-      this.title = this.$route.params.id;
-      this.title = [this.title[0].toUpperCase(), ...this.title.slice(1)].join(
-        ""
-      );
+      this.title = this.multipleSource.find(
+        x => x.id === this.$route.params.id
+      ).title;
       this.initPlatformIcon();
     }
     this.tabs = liveTabs.map(x => ({
       ...x,
       active: this.$route.params.type === x.type
     }));
-    this.getStreams(20);
-    this.getDouyuStreams(0, 20);
+    this.getStreams(0, 20).then(streams => (this.streams.all = streams));
+    this.getStreams(0, 20, "douyu").then(
+      streams => (this.streams.douyu = streams)
+    );
+    this.getStreams(0, 20, "bilibili").then(
+      streams => (this.streams.bilibili = streams)
+    );
+    this.getTwitchStreams(20).then(promises => {
+      promises.forEach(p => p.then(res => this.streams.twitch.push(res)));
+    });
+    this.getStreamsByGame().then(promises => {
+      promises.forEach(p =>
+        p.then(
+          res => (this.streamsByGame[res.game.id] = res.streams.slice(0, 20))
+        )
+      );
+    });
   },
   methods: {
     initPlatformIcon() {
@@ -104,59 +122,6 @@ export default {
         : this.$route.params.type == "hot"
         ? "/platform_icons/icn_hot_B.png"
         : "/platform_icons/icn_push_B.png";
-    },
-    async getStreams(amount) {
-      const { streams, _total } = await this.$axios.$get(
-        `https://api.twitch.tv/kraken/streams/?limit=${
-          amount ? amount : 5
-        }&language=zh-tw`,
-        {
-          headers: {
-            "Client-ID": "6zvm0fafre0cbqse6zez4q0nattl7h",
-            Accept: "application/vnd.twitchtv.v5+json"
-          }
-        }
-      );
-      const gstreams = streams.map(x => ({
-        id: x.channel._id.toString(),
-        source: `https://player.twitch.tv/?channel=${x.channel.name}&autoplay=true`,
-        preview: x.preview.template,
-        viewers: x.viewers,
-        streamer_image: x.channel.logo,
-        title: x.channel.status,
-        name: x.channel.name,
-        streamer_name: x.channel.display_name,
-        game: x.game,
-        description: x.channel.description,
-        chatSource: `https://www.twitch.tv/embed/${x.channel.name}/chat`,
-        platform: "Twitch"
-      }));
-      this.streams = gstreams;
-      this.totals = _total;
-      this.topStreams = gstreams.slice(0, 5);
-    },
-    async getDouyuStreams(begin, size) {
-      const aid = "12345";
-      const streams = await this.$axios.$get(
-        `https://woolive.ark-program.com/stream/list?src=douyu&begin=${
-          begin ? begin : 0
-        }&size=${size ? size : 4}`
-      );
-      const gstreams = streams.map(x => ({
-        id: x.baseId,
-        source: `https://open.douyu.com/tpl/h5/chain2/${aid}/${x.roomId}`,
-        preview: x.roomImg,
-        viewers: x.online,
-        streamer_image: x.avatar,
-        title: x.roomName,
-        streamer_name: x.ownerName,
-        game: x.gameName,
-        description: x.roomDesc,
-        platform: "斗魚直播",
-        externalLink: x.streamUrl,
-        follows: x.fans
-      }));
-      this.topDouyuStreams = this.douyuStreams = gstreams;
     }
   }
 };

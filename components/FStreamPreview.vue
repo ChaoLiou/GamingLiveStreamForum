@@ -10,21 +10,48 @@
       scrolling="no"
       allowfullscreen="true"
     ></iframe>
-    <nuxt-link v-else :to="streamLink" target="_blank">
-      <v-img
-        lazy
-        :src="imageSource"
-        :style="{ 'background-color': backgroundColor, 'border-radius': `${backgroundColor ? '15px' : undefined } ${backgroundColor ? '15px' : undefined } 0px 0px` }"
-      >
-        <div class="fixed-mask live-mask">Live</div>
-        <div class="fixed-mask viewer-mask">
-          <div class="viewer-mask__container">
-            <div class="viewer-mask__content">{{viewers}}位觀眾</div>
-            <div class="viewer-mask__background"></div>
+    <template v-else>
+      <a v-if="toExternal" :href="stream.externalLink" target="_blank">
+        <v-img
+          lazy
+          :src="imageSource"
+          contain
+          :style="{ 'background-color': backgroundColor, 'border-radius': `${backgroundColor ? '15px' : undefined } ${backgroundColor ? '15px' : undefined } 0px 0px` }"
+        >
+          <div class="fixed-mask play-mask">
+            <v-icon large>play_circle_outline</v-icon>
+            <div class="fixed-mask play-mask__background"></div>
           </div>
-        </div>
-      </v-img>
-    </nuxt-link>
+          <div class="fixed-mask live-mask">Live</div>
+          <div class="fixed-mask viewer-mask">
+            <div class="viewer-mask__container">
+              <div class="viewer-mask__content">{{viewers}}位觀眾</div>
+              <div class="viewer-mask__background"></div>
+            </div>
+          </div>
+        </v-img>
+      </a>
+      <nuxt-link v-else :to="streamLink" target="_blank">
+        <v-img
+          lazy
+          :src="imageSource"
+          contain
+          :style="{ 'background-color': backgroundColor, 'border-radius': `${backgroundColor ? '15px' : undefined } ${backgroundColor ? '15px' : undefined } 0px 0px` }"
+        >
+          <div class="fixed-mask play-mask">
+            <v-icon large>play_circle_outline</v-icon>
+            <div class="fixed-mask play-mask__background"></div>
+          </div>
+          <div class="fixed-mask live-mask">Live</div>
+          <div class="fixed-mask viewer-mask">
+            <div class="viewer-mask__container">
+              <div class="viewer-mask__content">{{viewers}}位觀眾</div>
+              <div class="viewer-mask__background"></div>
+            </div>
+          </div>
+        </v-img>
+      </nuxt-link>
+    </template>
     <div
       :style="{ 'background-color': backgroundColor, 'border-radius': `0px 0px  ${backgroundColor ? '15px' : undefined } ${backgroundColor ? '15px' : undefined }` }"
     >
@@ -34,16 +61,17 @@
         </v-avatar>
         <div class="stream-brief__content">
           <div v-if="!player" class="stream-brief__title text-truncate" :title="stream.title">
-            <nuxt-link :to="streamLink" target="_blank">{{stream.title}}</nuxt-link>
+            <a v-if="toExternal" :href="stream.externalLink" target="_blank">{{stream.title}}</a>
+            <nuxt-link v-else :to="streamLink" target="_blank">{{stream.title}}</nuxt-link>
           </div>
           <div class="stream-brief__name text-truncate" :title="stream.streamer_name">
-            <nuxt-link :to="streamLink" target="_blank">{{stream.streamer_name}}</nuxt-link>
+            <a>{{stream.streamer_name}}</a>
           </div>
-          <div class="stream-brief__game text-truncate" :title="stream.game">
-            <a>{{stream.game}}</a>
+          <div class="stream-brief__game text-truncate" :title="game">
+            <a>{{game}}</a>
           </div>
-          <div class="stream-brief__platform text-truncate" :title="stream.platform">
-            <a>{{stream.platform}}</a>
+          <div class="stream-brief__platform text-truncate" :title="platform">
+            <a>{{platform}}</a>
           </div>
           <div v-if="player" class="stream-brief__viewers">{{viewers}}位觀眾</div>
         </div>
@@ -57,6 +85,8 @@
 </template>
 <script>
 import formatter from "@/assets/utils/formatter";
+import games from "@/assets/json/games";
+import platforms from "@/assets/json/platforms";
 export default {
   props: {
     stream: {
@@ -77,7 +107,6 @@ export default {
   data() {
     return {
       streamer: {},
-      game: {},
       rawTags: [],
       width: 530,
       height: 300
@@ -88,7 +117,16 @@ export default {
       return formatter.fviewers(this.stream.viewers);
     },
     tags() {
-      return this.rawTags.map(t => t.localization_names["zh-tw"]);
+      return this.stream.tags
+        ? this.stream.tags
+            .map(t =>
+              t.localization_names ? t.localization_names["zh-tw"] : t
+            )
+            .filter(t => !!t)
+        : [];
+    },
+    toExternal() {
+      return this.stream.platform === "bilibili";
     },
     streamLink() {
       return `/stream/${this.stream.platform}/${this.stream.id}`;
@@ -102,37 +140,20 @@ export default {
     },
     streamSource() {
       return this.stream.source;
+    },
+    game() {
+      const target = games.find(x => x.id === this.stream.game);
+      return target ? target.title : this.stream.game;
+    },
+    platform() {
+      const target = platforms.find(x => x.id === this.stream.platform);
+      return target ? target.title : this.stream.platform;
     }
   },
-  mounted() {
-    // this.getStreamerInfo();
-    // this.getGameInfo();
-    if (this.stream.id.startsWith("douyu")) {
-    } else {
-      this.getTagsInfo();
-    }
-  },
+  mounted() {},
   methods: {
     turnPlayer(on) {
       this.$refs.frame.src = on ? this.streamSource : "about:blank";
-    },
-    async getStreamerInfo() {
-      this.streamer = (await this.$axios.$get(
-        `https://api.twitch.tv/helix/users?id=${this.stream.user_id}`,
-        { headers: { "Client-ID": "6zvm0fafre0cbqse6zez4q0nattl7h" } }
-      )).data[0];
-    },
-    async getGameInfo() {
-      this.game = (await this.$axios.$get(
-        `https://api.twitch.tv/helix/games?id=${this.stream.game_id}`,
-        { headers: { "Client-ID": "6zvm0fafre0cbqse6zez4q0nattl7h" } }
-      )).data[0];
-    },
-    async getTagsInfo() {
-      this.rawTags = (await this.$axios.$get(
-        `https://api.twitch.tv/helix/streams/tags?broadcaster_id=${this.stream.id}`,
-        { headers: { "Client-ID": "6zvm0fafre0cbqse6zez4q0nattl7h" } }
-      )).data;
     }
   }
 };
@@ -216,6 +237,40 @@ export default {
 .fixed-mask {
   position: absolute;
 }
+.play-mask {
+  transition: all 0.1s ease-out;
+  top: calc(50% - 36px);
+  left: calc(50% - 36px);
+  width: 72px;
+  height: 72px;
+  opacity: 0;
+}
+.v-image:hover .play-mask {
+  opacity: 1;
+}
+.v-image:hover .play-mask .v-icon {
+  opacity: 1;
+  transform: scale(2);
+}
+.play-mask .v-icon {
+  opacity: 0;
+  transition: all 0.3s ease-out;
+  transform: scale(3);
+  color: rgba(255, 255, 255);
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  position: absolute;
+}
+.play-mask__background {
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.4;
+  z-index: 1;
+  border-radius: 50%;
+}
 .live-mask {
   font-weight: bold;
   top: 0px;
@@ -267,5 +322,13 @@ export default {
 .player .stream-brief__name a,
 .player .stream-brief__game a {
   color: #6f5ba3;
+}
+</style>
+<style>
+.f-stream-preview .v-image .v-image__image {
+  transition: all 0.3s ease-out;
+}
+.f-stream-preview .v-image:hover .v-image__image {
+  transform: scale(1.1);
 }
 </style>

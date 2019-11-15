@@ -5,6 +5,11 @@
     "link": "/live/recommend"
   },
   {
+    "type": "tw",
+    "title": "台灣專區",
+    "link": "/live/tw"
+  },
+  {
     "type": "hot",
     "title": "熱門遊戲",
     "link": "/live/hot"

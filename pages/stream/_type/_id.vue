@@ -71,7 +71,7 @@ export default {
           }
         })).stream
       ].map(x => ({
-        id: x.channel._id,
+        id: x.channel._id.toString(),
         source: `https://player.twitch.tv/?channel=${x.channel.name}&autoplay=true`,
         preview: x.preview.template,
         viewers: x.viewers,
@@ -119,7 +119,7 @@ export default {
         }
       );
       this.streams = streams.map(x => ({
-        id: x.channel._id,
+        id: x.channel._id.toString(),
         source: `https://player.twitch.tv/?channel=${x.channel.name}&autoplay=true`,
         preview: x.preview.template,
         viewers: x.viewers,

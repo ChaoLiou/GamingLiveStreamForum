@@ -1,0 +1,6 @@
+{
+  "douyu": {
+    "aid": "12345",
+    "sourceTemplate": "https://open.douyu.com/tpl/h5/chain2/{0}/{1}"
+  }
+}

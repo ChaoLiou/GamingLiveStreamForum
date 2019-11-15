@@ -5,12 +5,14 @@
         :class="['f-tab__tab-item', tab.active ? 'active' : '']"
         v-for="(tab, index) in [{title, link}, ...tabs]"
         :key="index"
+        @mouseover="mouseOver(index)"
       >
         <nuxt-link v-if="tab.link" :to="tab.link">
           <div>{{tab.title}}</div>
         </nuxt-link>
         <div v-else>{{tab.title}}</div>
       </div>
+      <div class="bottom-hovery"></div>
     </div>
     <slot></slot>
   </div>
@@ -43,13 +45,16 @@ export default {
         "grid-template-columns": `repeat(${this.tabs.length + 1}, 120px)`
       };
     }
+  },
+  methods: {
+    mouseOver(index) {}
   }
 };
 </script>
 <style scoped>
 .f-tab {
   width: 100vw;
-  background-color: #e7d6fa;
+  background-color: #8e75ae;
   display: grid;
   justify-items: center;
   height: 50px;
@@ -57,6 +62,7 @@ export default {
 .f-tab__tabs {
   display: grid;
   justify-items: center;
+  position: relative;
 }
 .f-tab__tab-item {
   border-bottom: 5px solid transparent;
@@ -70,7 +76,12 @@ export default {
   width: 100%;
   background-color: #55287e;
 }
-.f-tab__tab-item.active {
+.f-tab__tabs:hover .f-tab__tab-item.active {
+  border-bottom-color: transparent;
+}
+.f-tab__tabs:hover .f-tab__tab-item.active:hover,
+.f-tab__tabs .f-tab__tab-item.active,
+.f-tab__tabs .f-tab__tab-item:hover {
   border-bottom-color: #55287e;
 }
 .f-tab__tab-item * {
@@ -92,5 +103,12 @@ export default {
   position: fixed;
   top: 64px;
   z-index: 999;
+}
+.bottom-hovery {
+  position: absolute;
+  width: 100px;
+  height: 5px;
+  border-bottom-color: #55287e;
+  bottom: 0px;
 }
 </style>

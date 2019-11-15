@@ -86,7 +86,7 @@ export default {
       return `/stream/${this.stream.platform}/${this.stream.id}`;
     },
     streamSource() {
-      return this.stream.source;
+      return this.player ? this.stream.source : "about:blank";
     },
     imageSource() {
       return this.stream.preview

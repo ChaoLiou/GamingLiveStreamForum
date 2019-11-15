@@ -123,10 +123,10 @@ export default {
 @media (min-width: 1900px) {
   .f-stream {
     grid-template-columns: minmax(1280px, auto) 435px;
-    height: 830px;
+    height: 100vh;
   }
   .f-stream__title-video {
-    height: 720px;
+    height: calc(100% - 300px);
   }
   .f-stream__chat {
     width: 435px;

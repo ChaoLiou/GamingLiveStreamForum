@@ -1,6 +1,11 @@
+import configs from "@/assets/json/configs";
 export default {
   fviewers,
-  fdate
+  fdate,
+  fstring,
+  fsource,
+  fpreview,
+  favatar
 };
 
 function fviewers(viewers) {
@@ -23,4 +28,54 @@ function fviewers(viewers) {
 function fdate(date) {
   const dateObj = new Date(date);
   return `${dateObj.getMonth() + 1} 月 ${dateObj.getDate()} 日`;
+}
+
+function fstring(template, args) {
+  let fsting_result = template;
+  let rex_result = {};
+  while (rex_result) {
+    rex_result = /{(\d)}/.exec(fsting_result);
+    if (rex_result) {
+      const target = rex_result[0];
+      const index = parseInt(rex_result[1]);
+      if (args.length > index) {
+        const arg = args[index];
+        fsting_result = fsting_result.replace(target, arg);
+      } else {
+        break;
+      }
+    }
+  }
+  return fsting_result;
+}
+
+function fsource(stream) {
+  let args = [];
+  const config = configs[stream.src];
+  switch (stream.src) {
+    case "douyu":
+      args = [config.aid, stream.roomId];
+      break;
+    default:
+      break;
+  }
+  return config ? fstring(config.sourceTemplate, args) : "about:blank";
+}
+
+function fpreview(stream) {
+  switch (stream.src) {
+    case "bilibili":
+      return stream.roomImg.replace("https:", "http:");
+    default:
+      return stream.roomImg;
+  }
+}
+
+function favatar(stream) {
+  switch (stream.src) {
+    case "bilibili":
+      return stream.avatar.replace("https:", "http:") + "@100w_100h.webp";
+    default:
+      return stream.avatar;
+  }
 }
