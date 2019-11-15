@@ -2,21 +2,25 @@
   {
     "title": "斗魚直播",
     "icon": "/platform_icons/icn_douyu_B.png",
+    "link": "https://www.douyu.com/",
     "id": "douyu"
   },
   {
     "title": "Bilibili",
-    "icon": "",
+    "icon": "/platform_icons/icn_Bili_B.png",
+    "link": "https://www.bilibili.com/",
     "id": "bilibili"
   },
   {
     "title": "Twitch",
     "icon": "/platform_icons/icn_twitch_B.png",
+    "link": "https://www.twitch.tv/",
     "id": "twitch"
   },
   {
     "title": "Now直播",
     "icon": "/platform_icons/icn_NOW_B.png",
+    "link": "https://now.qq.com/",
     "id": "now"
   }
 ]

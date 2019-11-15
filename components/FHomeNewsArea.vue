@@ -1,13 +1,15 @@
 <template>
   <div class="f-home-news-area">
-    <f-home-news-carousel :source="carouselSource" :interval-seconds="10"></f-home-news-carousel>
+    <f-home-news-carousel
+      :source="carouselSource"
+      :interval-seconds="10"
+    ></f-home-news-carousel>
     <f-home-news-tab-page :source="news"></f-home-news-tab-page>
   </div>
 </template>
 <script>
 import FHomeNewsCarousel from "@/components/FHomeNewsCarousel";
 import FHomeNewsTabPage from "@/components/FHomeNewsTabPage";
-import news from "@/assets/json/news";
 import newsTypes from "@/assets/json/news-types";
 export default {
   components: {
@@ -16,9 +18,7 @@ export default {
   },
   data() {
     return {
-      news: news.map((x, index) => {
-        return { ...x, type: newsTypes[index % 4] };
-      })
+      news: []
     };
   },
   computed: {
@@ -27,6 +27,15 @@ export default {
         .slice(0, 6)
         .map(x => ({ ...x, image: x.image.replace("/S/", "/B/") }));
     }
+  },
+  mounted() {
+    this.getNews(0, 24).then(
+      res =>
+        (this.news = res.map((x, index) => ({
+          ...x,
+          type: newsTypes[index % 4]
+        })))
+    );
   }
 };
 </script>

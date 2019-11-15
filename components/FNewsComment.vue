@@ -1,15 +1,15 @@
 <template>
   <div class="f-news-comment">
-    <v-btn @click="allComments = !allComments">
-      <v-icon>{{allComments ? 'expand_more' : 'expand_less'}}</v-icon>
-      {{expandCommentButtonText}}
+    <v-btn @click="allComments = !allComments" v-if="source.length > showNews">
+      <v-icon>{{ allComments ? "expand_more" : "expand_less" }}</v-icon>
+      {{ expandCommentButtonText }}
     </v-btn>
     <div v-for="(item, index) in filterSource" :key="index">
       <div class="news-comment__item">
         <v-img width="40px" height="40px" :src="item.avatar"></v-img>
         <div>
-          <span class="news-comment__commentator">{{item.name}}：</span>
-          <span class="news-comment__content">{{item.message.join('\t')}}</span>
+          <span class="news-comment__commentator">{{ item.name }}：</span>
+          <span class="news-comment__content">{{ item.message }}</span>
         </div>
         <v-btn small class="report-btn">檢舉</v-btn>
       </div>
@@ -53,7 +53,7 @@ export default {
         : `顯示所有 ${this.source.length} 則評語`;
     },
     filterSource() {
-      return this.allComments
+      return this.source.length < this.showNews || this.allComments
         ? this.source
         : this.source.slice(this.source.length - this.showNews);
     }

@@ -3,27 +3,42 @@
     <v-card class="stream-preview__container">
       <div class="stream-frame__block" v-show="frameLoaded && player">
         <div class="stream-frame__shadow"></div>
-        <nuxt-link :to="streamLink" target="_blank">
+        <f-link
+          :link="stream.externalLink ? stream.externalLink : streamLink"
+          :external="!!stream.externalLink"
+        >
           <div class="stream-frame__info stream-brief">
             <v-avatar size="96px" tile>
               <v-img :src="logoImageSource"></v-img>
             </v-avatar>
             <div class="stream-brief__content">
-              <div class="stream-brief__title text-truncate" :title="stream.title">
-                <nuxt-link :to="streamLink" target="_blank">{{stream.title}}</nuxt-link>
+              <div
+                class="stream-brief__title text-truncate"
+                :title="stream.title"
+              >
+                <a>{{ stream.title }}</a>
               </div>
-              <div class="stream-brief__name text-truncate" :title="stream.streamer_name">
-                <nuxt-link :to="streamLink" target="_blank">{{stream.streamer_name}}</nuxt-link>
+              <div
+                class="stream-brief__name text-truncate"
+                :title="stream.streamer_name"
+              >
+                <a>{{ stream.streamer_name }}</a>
               </div>
-              <div class="stream-brief__game text-truncate" :title="stream.game">
-                <a>{{stream.game}}</a>
+              <div
+                class="stream-brief__game text-truncate"
+                :title="stream.game"
+              >
+                <a>{{ stream.game }}</a>
               </div>
-              <div class="stream-brief__platform text-truncate" :title="stream.platform">
-                <a>{{stream.platform}}</a>
+              <div
+                class="stream-brief__platform text-truncate"
+                :title="stream.platform"
+              >
+                <a>{{ stream.platform }}</a>
               </div>
             </div>
           </div>
-        </nuxt-link>
+        </f-link>
       </div>
       <iframe
         v-show="frameLoaded && player"
@@ -35,23 +50,33 @@
         scrolling="no"
         allowfullscreen="true"
       ></iframe>
-      <v-img width="100%" height="100%" :src="imageSource">
-        <nuxt-link
+      <v-img
+        width="100%"
+        height="100%"
+        :src="imageSource"
+        max-height="100%"
+        max-width="100%"
+      >
+        <f-link
           class="stream-link"
-          :to="streamLink"
-          target="_blank"
+          :link="stream.externalLink ? stream.externalLink : streamLink"
+          :external="!!stream.externalLink"
           :style="{ right: right ? '0px' : undefined }"
         >
           <v-avatar tile>
             <v-img :src="logoImageSource"></v-img>
           </v-avatar>
-        </nuxt-link>
+        </f-link>
       </v-img>
     </v-card>
   </div>
 </template>
 <script>
+import FLink from "@/components/FLink";
 export default {
+  components: {
+    FLink
+  },
   props: {
     stream: {
       type: Object,

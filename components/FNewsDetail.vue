@@ -1,16 +1,21 @@
 <template>
   <div class="f-news-detail">
-    <div class="news-detail__title">{{news.title}}</div>
+    <div class="news-detail__title">{{ news.title }}</div>
     <div
-      :style="{ display: 'grid', 'grid-template-columns': '1fr 100px', margin: '5px 0px', 'align-items': 'center' }"
+      :style="{
+        display: 'grid',
+        'grid-template-columns': '1fr 100px',
+        margin: '5px 0px',
+        'align-items': 'center'
+      }"
     >
-      <div>{{news.time}}</div>
+      <div>{{ news.time }}</div>
       <v-btn small color="primary" width="100px">
         <v-icon left small>thumb_up</v-icon>讚
       </v-btn>
     </div>
     <v-divider></v-divider>
-    <div class="news-detail__content" v-html="news.content"></div>
+    <div class="news-detail__content" v-html="fcontent"></div>
     <v-btn small color="primary" width="100px">
       <v-icon left small>local_offer</v-icon>收藏
     </v-btn>
@@ -24,6 +29,13 @@ export default {
       default() {
         return {};
       }
+    }
+  },
+  computed: {
+    fcontent() {
+      return this.news.content
+        ? this.news.content.replace(/data-src=/g, "src=")
+        : "";
     }
   }
 };
@@ -47,5 +59,8 @@ export default {
 .f-news-detail ul {
   list-style: none;
 }
+.video-container iframe {
+  width: 776px !important;
+  height: 436px !important;
+}
 </style>
-

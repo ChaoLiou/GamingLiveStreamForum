@@ -1,27 +1,68 @@
 <template>
   <div class="f-stream-ranking">
     <f-container-slide-control left @slide="goLeft"></f-container-slide-control>
-    <f-container-slide-control right @slide="goRight"></f-container-slide-control>
+    <f-container-slide-control
+      right
+      @slide="goRight"
+    ></f-container-slide-control>
     <div class="stream-ranking__grid" ref="content">
-      <div class="stream-ranking__item" v-for="(item, index) in streams" :key="index">
+      <div
+        class="stream-ranking__item"
+        v-for="(item, index) in streams"
+        :key="index"
+      >
         <v-avatar class="ranking-board" size="80px" color="#eadbf8">
           <v-img v-if="index < 3" :src="ranks[index]"></v-img>
-          <div v-else class="ranking-board__content font-italic font-weight-black">{{index + 1}}</div>
+          <div
+            v-else
+            class="ranking-board__content font-italic font-weight-black"
+          >
+            {{ index + 1 }}
+          </div>
         </v-avatar>
         <v-card class="stream-board" color="#eadbf8">
-          <v-img
-            class="stream-board__stream-avatar"
-            width="180px"
-            height="180px"
-            :src="item.streamer_image"
+          <f-link
+            :link="
+              item.externalLink
+                ? item.externalLink
+                : `/stream/${item.platform}/${item.id}`
+            "
+            :external="!!item.externalLink"
           >
-            <f-stream-viewers :viewers="item.viewers"></f-stream-viewers>
-          </v-img>
+            <v-img
+              class="stream-board__stream-avatar"
+              width="180px"
+              height="180px"
+              :src="item.streamer_image"
+            >
+              <f-stream-viewers :viewers="item.viewers"></f-stream-viewers>
+            </v-img>
+          </f-link>
           <div class="stream-board__stream-info">
-            <v-img width="46px" :src="getPlatformIcon(item.platform)"></v-img>
+            <f-link :link="getPlatformInfo(item.platform, 'link')" external>
+              <v-img
+                width="46px"
+                :src="getPlatformInfo(item.platform, 'icon')"
+              ></v-img>
+            </f-link>
             <div class="stream-info__text">
-              <div class="text-truncate">{{item.streamer_name}}</div>
-              <div>{{item.platform}}</div>
+              <div class="text-truncate">
+                <f-link
+                  :link="
+                    item.externalLink
+                      ? item.externalLink
+                      : `/stream/${item.platform}/${item.id}`
+                  "
+                  :external="!!item.externalLink"
+                >
+                  {{ item.streamer_name }}
+                </f-link>
+              </div>
+              <div>
+                <f-link :link="getPlatformInfo(item.platform, 'link')" external>
+                  {{ getPlatformInfo(item.platform, "title") }}
+                </f-link>
+              </div>
             </div>
           </div>
         </v-card>
@@ -55,10 +96,12 @@ function scrollTo(element, to, duration) {
 import ranks from "@/assets/json/ranks";
 import platforms from "@/assets/json/platforms";
 import FStreamViewers from "@/components/FStreamViewers";
+import FLink from "@/components/FLink";
 import FContainerSlideControl from "@/components/FContainerSlideControl";
 export default {
   components: {
     FStreamViewers,
+    FLink,
     FContainerSlideControl
   },
   props: {
@@ -88,9 +131,9 @@ export default {
         300
       );
     },
-    getPlatformIcon(platform_title) {
-      const platform = platforms.find(x => x.title === platform_title);
-      return platform ? platform.icon : "";
+    getPlatformInfo(platform_id, key) {
+      const platform = platforms.find(x => x.id === platform_id);
+      return platform ? platform[key] : "";
     }
   }
 };

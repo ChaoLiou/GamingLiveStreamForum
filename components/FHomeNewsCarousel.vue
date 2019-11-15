@@ -1,14 +1,19 @@
 <template>
   <div class="f-home-news-carousel">
     <v-carousel hide-delimiters :interval="interval" :height="height">
-      <v-carousel-item v-for="(item,i) in source" :key="i">
+      <v-carousel-item v-for="(item, i) in source" :key="i">
         <nuxt-link target="_blank" :to="`/news/${item.type.value}/0`">
           <v-img :src="item.image" :height="height">
             <div
               class="carousel__title text-truncate"
               :style="{ top: `calc(${height} - 30px)` }"
-            >{{item.title}}</div>
-            <div class="carousel__title-shadow" :style="{ top: `calc(${height} - 40px)` }"></div>
+            >
+              {{ item.title }}
+            </div>
+            <div
+              class="carousel__title-shadow"
+              :style="{ top: `calc(${height} - 40px)` }"
+            ></div>
           </v-img>
         </nuxt-link>
       </v-carousel-item>

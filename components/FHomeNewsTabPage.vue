@@ -13,8 +13,10 @@
     <div class="news-container">
       <template v-for="(item, index) in filteredSource">
         <div class="news-item" :key="index">
-          <div class="news-tag">{{item.type.title}}</div>
-          <div class="news-title">{{item.title}}</div>
+          <div class="news-tag">{{ item.type.title }}</div>
+          <div class="news-title">
+            <div>{{ item.title }}</div>
+          </div>
         </div>
         <v-divider :key="`divider-${index}`"></v-divider>
       </template>
@@ -67,7 +69,7 @@ export default {
 .news-item {
   background-color: #f2e9fc;
   display: grid;
-  grid-template-columns: 50px auto;
+  grid-template-columns: 60px auto;
   font-size: 16px;
 }
 .news-tag {
@@ -86,6 +88,8 @@ export default {
   height: 48px;
   font-weight: bold;
   width: 95%;
+  display: grid;
+  align-items: center;
 }
 .more-link {
   display: grid;

@@ -1,5 +1,5 @@
 <template>
-  <div :class="['f-stream-preview', player ? 'player': '' ]">
+  <div :class="['f-stream-preview', player ? 'player' : '']">
     <iframe
       ref="frame"
       v-if="player"
@@ -11,12 +11,20 @@
       allowfullscreen="true"
     ></iframe>
     <template v-else>
-      <a v-if="toExternal" :href="stream.externalLink" target="_blank">
+      <f-link
+        :link="stream.externalLink ? stream.externalLink : streamLink"
+        :external="!!stream.externalLink"
+      >
         <v-img
           lazy
           :src="imageSource"
           contain
-          :style="{ 'background-color': backgroundColor, 'border-radius': `${backgroundColor ? '15px' : undefined } ${backgroundColor ? '15px' : undefined } 0px 0px` }"
+          :style="{
+            'background-color': backgroundColor,
+            'border-radius': `${backgroundColor ? '15px' : undefined} ${
+              backgroundColor ? '15px' : undefined
+            } 0px 0px`
+          }"
         >
           <div class="fixed-mask play-mask">
             <v-icon large>play_circle_outline</v-icon>
@@ -25,61 +33,67 @@
           <div class="fixed-mask live-mask">Live</div>
           <div class="fixed-mask viewer-mask">
             <div class="viewer-mask__container">
-              <div class="viewer-mask__content">{{viewers}}位觀眾</div>
+              <div class="viewer-mask__content">{{ viewers }}位觀眾</div>
               <div class="viewer-mask__background"></div>
             </div>
           </div>
         </v-img>
-      </a>
-      <nuxt-link v-else :to="streamLink" target="_blank">
-        <v-img
-          lazy
-          :src="imageSource"
-          contain
-          :style="{ 'background-color': backgroundColor, 'border-radius': `${backgroundColor ? '15px' : undefined } ${backgroundColor ? '15px' : undefined } 0px 0px` }"
-        >
-          <div class="fixed-mask play-mask">
-            <v-icon large>play_circle_outline</v-icon>
-            <div class="fixed-mask play-mask__background"></div>
-          </div>
-          <div class="fixed-mask live-mask">Live</div>
-          <div class="fixed-mask viewer-mask">
-            <div class="viewer-mask__container">
-              <div class="viewer-mask__content">{{viewers}}位觀眾</div>
-              <div class="viewer-mask__background"></div>
-            </div>
-          </div>
-        </v-img>
-      </nuxt-link>
+      </f-link>
     </template>
     <div
-      :style="{ 'background-color': backgroundColor, 'border-radius': `0px 0px  ${backgroundColor ? '15px' : undefined } ${backgroundColor ? '15px' : undefined }` }"
+      :style="{
+        'background-color': backgroundColor,
+        'border-radius': `0px 0px  ${backgroundColor ? '15px' : undefined} ${
+          backgroundColor ? '15px' : undefined
+        }`
+      }"
     >
       <div class="stream-brief">
         <v-avatar size="80px">
           <v-img :src="stream.streamer_image"></v-img>
         </v-avatar>
         <div class="stream-brief__content">
-          <div v-if="!player" class="stream-brief__title text-truncate" :title="stream.title">
-            <a v-if="toExternal" :href="stream.externalLink" target="_blank">{{stream.title}}</a>
-            <nuxt-link v-else :to="streamLink" target="_blank">{{stream.title}}</nuxt-link>
+          <div
+            v-if="!player"
+            class="stream-brief__title text-truncate"
+            :title="stream.title"
+          >
+            <a v-if="toExternal" :href="stream.externalLink" target="_blank">{{
+              stream.title
+            }}</a>
+            <nuxt-link v-else :to="streamLink" target="_blank">{{
+              stream.title
+            }}</nuxt-link>
           </div>
-          <div class="stream-brief__name text-truncate" :title="stream.streamer_name">
-            <a>{{stream.streamer_name}}</a>
+          <div
+            class="stream-brief__name text-truncate"
+            :title="stream.streamer_name"
+          >
+            <a>{{ stream.streamer_name }}</a>
           </div>
           <div class="stream-brief__game text-truncate" :title="game">
-            <a>{{game}}</a>
+            <a>{{ game }}</a>
           </div>
           <div class="stream-brief__platform text-truncate" :title="platform">
-            <a>{{platform}}</a>
+            <a>{{ platform }}</a>
           </div>
-          <div v-if="player" class="stream-brief__viewers">{{viewers}}位觀眾</div>
+          <div v-if="player" class="stream-brief__viewers">
+            {{ viewers }}位觀眾
+          </div>
         </div>
       </div>
       <div class="stream-tags">
-        <span class="tag" v-for="(tag, index) in tags.slice(0, player ? 2 : 2)" :key="index">{{tag}}</span>
+        <span
+          class="tag"
+          v-for="(tag, index) in tags.slice(0, player ? 2 : 2)"
+          :key="index"
+        >
+          {{ tag }}
+        </span>
       </div>
-      <div v-if="player" class="stream-description">{{stream.description}}</div>
+      <div v-if="player" class="stream-description">
+        {{ stream.description }}
+      </div>
     </div>
   </div>
 </template>
@@ -87,7 +101,11 @@
 import formatter from "@/assets/utils/formatter";
 import games from "@/assets/json/games";
 import platforms from "@/assets/json/platforms";
+import FLink from "@/components/FLink";
 export default {
+  components: {
+    FLink
+  },
   props: {
     stream: {
       type: Object,

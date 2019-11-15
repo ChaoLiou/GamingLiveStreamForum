@@ -9,7 +9,10 @@
             <f-news-comment :source="newsDetail.comments"></f-news-comment>
           </f-block-box>
           <f-block-box title="相關新聞">
-            <f-news-relatives :keyword="newsDetail.keyword" :source="newsDetail.relatives"></f-news-relatives>
+            <f-news-relatives
+              :keyword="newsDetail.keyword"
+              :source="newsDetail.relatives"
+            ></f-news-relatives>
             <div class="more-link">
               <a href="#">更多</a>
             </div>
@@ -22,7 +25,11 @@
           </f-block-box>
         </template>
         <template v-else>
-          <f-home-news-carousel :source="carouselSource" :interval-seconds="10" height="60vh"></f-home-news-carousel>
+          <f-home-news-carousel
+            :source="carouselSource"
+            :interval-seconds="10"
+            height="60vh"
+          ></f-home-news-carousel>
           <f-news-container :source="news"></f-news-container>
         </template>
       </div>
@@ -45,7 +52,6 @@ import FBlockBox from "@/components/FBlockBox";
 import newsTabs from "@/assets/json/tabs/news";
 import news from "@/assets/json/news";
 import newsTypes from "@/assets/json/news-types";
-import newsDetails from "@/assets/news/news-list";
 export default {
   components: {
     FTab,
@@ -62,7 +68,7 @@ export default {
     return {
       tabs: [],
       news: [],
-      newsDetails
+      newsDetail: {}
     };
   },
   computed: {
@@ -75,21 +81,22 @@ export default {
       return this.$route.params.type
         ? newsTabs.find(x => this.$route.params.type === x.type).title
         : "";
-    },
-    newsDetail() {
-      return this.newsDetails.find(
-        x => x.id.toString() === this.$route.params.id
-      );
     }
   },
   mounted() {
-    this.news = news
-      .map((x, index) => ({
-        ...x,
-        type: newsTypes[index % 4],
-        date: new Date(2019, 10, 7 - Math.floor(index / 16)).toISOString()
-      }))
-      .filter(x => !this.mainTitle || x.type.title === this.mainTitle);
+    if (this.$route.params.id) {
+      this.getNewsById(this.$route.params.id).then(
+        res => (this.newsDetail = res)
+      );
+    } else {
+      this.getNews(0, 50).then(
+        res =>
+          (this.news = res.map((x, index) => ({
+            ...x,
+            type: newsTypes[index % 4]
+          })))
+      );
+    }
     this.tabs = newsTabs.map((x, index) => ({
       ...x,
       active: this.$route.params.type === x.type

@@ -3,13 +3,23 @@
     <f-tab title="精彩實況" :tabs="tabs"></f-tab>
     <div class="content">
       <f-block
-        :icon="$route.params.type === 'hot' ? '/platform_icons/icn_hot_B.png' : '/platform_icons/icn_push_B.png'"
+        :icon="
+          $route.params.type === 'hot'
+            ? '/platform_icons/icn_hot_B.png'
+            : '/platform_icons/icn_push_B.png'
+        "
         :to="`/live/${$route.params.type}`"
         :title="mainTitle"
         background-color="#f2ecf6"
       >
         <f-home-stream-carousel
-          :streams="$route.params.type === 'hot' ? streamsByGame[$route.params.id] ? streamsByGame[$route.params.id].slice(0, 5) : streams['all'].slice(0, 5) : streams[$route.params.id ? $route.params.id : 'all'].slice(0, 5)"
+          :streams="
+            $route.params.type === 'hot'
+              ? streamsByGame[$route.params.id]
+                ? streamsByGame[$route.params.id].slice(0, 5)
+                : streams['all'].slice(0, 5)
+              : streams[$route.params.id ? $route.params.id : 'all'].slice(0, 5)
+          "
         ></f-home-stream-carousel>
       </f-block>
       <div>
@@ -24,21 +34,37 @@
             background-color="#f2ecf6"
           >
             <f-stream-container
-              :streams="$route.params.type === 'hot' ? streamsByGame[item.id] ? streamsByGame[item.id].slice(0, 4) : [] : streams[item.id ? item.id : 'all'].slice(0, 4)"
+              :streams="
+                $route.params.type === 'hot'
+                  ? streamsByGame[item.id]
+                    ? streamsByGame[item.id].slice(0, 4)
+                    : []
+                  : streams[item.id ? item.id : 'all'].slice(0, 4)
+              "
             ></f-stream-container>
           </f-block>
         </div>
         <div v-else>
-          <f-block :icon="platformIcon" :title="title" background-color="#f2ecf6">
+          <f-block
+            :icon="platformIcon"
+            :title="title"
+            background-color="#f2ecf6"
+          >
             <f-stream-container
-              :streams="$route.params.type === 'hot' ? streamsByGame[$route.params.id] ? streamsByGame[$route.params.id] : [] : streams[$route.params.id ? $route.params.id : 'all']"
+              :streams="
+                $route.params.type === 'hot'
+                  ? streamsByGame[$route.params.id]
+                    ? streamsByGame[$route.params.id]
+                    : []
+                  : streams[$route.params.id ? $route.params.id : 'all']
+              "
             ></f-stream-container>
           </f-block>
         </div>
       </div>
     </div>
-    <div class="pagination-container" v-if="!multiple">
-      <v-pagination color="#3e006f" v-model="pageIndex" :length="15" :total-visible="7"></v-pagination>
+    <div class="more-btn-container" v-if="!multiple">
+      <v-btn dark block @click="loadMore">載入更多直播</v-btn>
     </div>
   </div>
 </template>
@@ -72,7 +98,7 @@ export default {
       streamsByGame: {},
       totals: 0,
       title: "",
-      pageIndex: 1,
+      pageIndex: 0,
       platformIcon: ""
     };
   },
@@ -103,7 +129,7 @@ export default {
     this.getStreams(0, 20, "bilibili").then(
       streams => (this.streams.bilibili = streams)
     );
-    this.getTwitchStreams(20).then(promises => {
+    this.getTwitchStreams(0, 20, true).then(promises => {
       promises.forEach(p => p.then(res => this.streams.twitch.push(res)));
     });
     this.getStreamsByGame().then(promises => {
@@ -115,8 +141,29 @@ export default {
     });
   },
   methods: {
+    loadMore() {
+      this.pageIndex++;
+      if (this.$route.params.type === "hot") {
+      } else {
+        if (this.$route.params.id === "twitch") {
+          this.getTwitchStreams(this.pageIndex, 20, true).then(promises =>
+            promises.forEach(p => {
+              p.then(res => {
+                this.streams[this.$route.params.id].push(res);
+              });
+            })
+          );
+        } else {
+          this.getStreams(this.pageIndex, 20, this.$route.params.id).then(
+            streams => {
+              this.streams[this.$route.params.id].push(...streams);
+            }
+          );
+        }
+      }
+    },
     initPlatformIcon() {
-      const platform = platforms.find(x => x.title === this.$route.params.id);
+      const platform = platforms.find(x => x.id === this.$route.params.id);
       this.platformIcon = platform
         ? platform.icon
         : this.$route.params.type == "hot"
@@ -141,5 +188,13 @@ export default {
 .f-home-stream-carousel {
   justify-self: center;
   margin-top: 0px !important;
+}
+.more-btn-container {
+  margin-bottom: 20px;
+}
+.more-btn-container .v-btn {
+  width: 80%;
+  margin: auto;
+  background: linear-gradient(45deg, #6540a7, 49%, #dab4ff, 51%, #6540a7);
 }
 </style>

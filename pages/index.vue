@@ -2,7 +2,9 @@
   <div class="index">
     <div class="landing-background"></div>
     <div class="landing">
-      <f-home-stream-carousel :streams="streams.all.slice(0, 5)"></f-home-stream-carousel>
+      <f-home-stream-carousel
+        :streams="streams.all.slice(0, 5)"
+      ></f-home-stream-carousel>
     </div>
     <div class="content-grid">
       <div class="content-grid__main">
@@ -14,7 +16,9 @@
           to="/live/recommend"
           title="推薦實況"
         >
-          <f-stream-container :streams="streams.all.slice(0, 8)"></f-stream-container>
+          <f-stream-container
+            :streams="streams.all.slice(0, 8)"
+          ></f-stream-container>
         </f-block>
         <f-block
           background-color="#f2ecf6"
@@ -45,7 +49,9 @@
           v-for="(item, index) in platforms"
           :key="index"
         >
-          <f-stream-container :streams="streams[item.id ? item.id : 'all']"></f-stream-container>
+          <f-stream-container
+            :streams="streams[item.id ? item.id : 'all']"
+          ></f-stream-container>
         </f-block>
       </div>
       <div class="content-grid__side">
@@ -94,7 +100,7 @@ export default {
     this.getStreams(0, 8, "bilibili").then(
       streams => (this.streams.bilibili = streams)
     );
-    this.getTwitchStreams(8).then(streams => {
+    this.getTwitchStreams(0, 8, true).then(streams => {
       streams.forEach(s => s.then(res => this.streams.twitch.push(res)));
     });
   },
