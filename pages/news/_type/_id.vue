@@ -23,7 +23,7 @@
         </template>
         <template v-else>
           <f-home-news-carousel :source="carouselSource" :interval-seconds="10" height="60vh"></f-home-news-carousel>
-          <f-news-container :source="news" @more="loadMore"></f-news-container>
+          <f-news-container :source="fnews" @more="loadMore"></f-news-container>
         </template>
       </div>
       <div class="content-grid__side">
@@ -67,7 +67,7 @@ export default {
   },
   computed: {
     carouselSource() {
-      return this.news.slice(0, 7).map(x => ({
+      return this.fnews.slice(0, 7).map(x => ({
         ...x,
         image: x.image ? x.image.replace("/S/", "/B/") : ""
       }));
@@ -76,6 +76,12 @@ export default {
       return this.$route.params.type
         ? newsTabs.find(x => this.$route.params.type === x.type).title
         : "";
+    },
+    fnews() {
+      return this.news.filter(
+        x =>
+          !this.$route.params.type || x.type.value === this.$route.params.type
+      );
     }
   },
   mounted() {
