@@ -196,7 +196,9 @@ Vue.mixin({
         streamer_name: x.snippet.channelTitle,
         game: "",
         description: x.snippet.description,
-        chatSource: `https://www.youtube.com/live_chat?v=${x.id}`,
+        chatSource:
+          `https://www.youtube.com/live_chat?v=${x.id}&embed_domain=` +
+          location.host,
         platform: "youtube",
         tags: x.snippet.tags
       }))[0];
