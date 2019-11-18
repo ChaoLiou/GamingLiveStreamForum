@@ -95,7 +95,9 @@ Vue.mixin({
     },
     async getTwitchStreams(offset = 0, amount = 4, needTags, game) {
       const { streams } = await this.$axios.$get(
-        `https://api.twitch.tv/kraken/streams/?offset=${offset}&limit=${amount}&language=zh-tw&game=${game}`,
+        `https://api.twitch.tv/kraken/streams/?offset=${offset}&limit=${amount}&language=zh-tw${
+          game ? "&game=" + game : ""
+        }`,
         {
           headers: {
             "Client-ID": "6zvm0fafre0cbqse6zez4q0nattl7h",
