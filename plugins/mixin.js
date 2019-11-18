@@ -14,10 +14,17 @@ Vue.mixin({
   methods: {
     async getNews(begin = 0, size = 20) {
       const url = `${this.apiOrigin}/news/list/gamer?begin=${begin}&size=${size}`;
-      return await this.$axios.$get(url);
+      return (await this.$axios.$get(url)).map(x => {
+        const result = /\d{4}-\d{2}-\d{2}/.exec(x.time);
+        return {
+          ...x,
+          date: result ? result[0] : x.time
+        };
+      });
     },
     async getNewsById(id) {
       const url = `${this.apiOrigin}/news/findById/${id}`;
+      console.log(url);
       return (await this.$axios.$get(url)).info;
     },
     async getStreamsByGame(begin = 0, size = 300) {
@@ -25,6 +32,7 @@ Vue.mixin({
         .filter(game => !!game.id)
         .map(async (game, index) => {
           const url = `${this.apiOrigin}/stream/list?sort=${game.id}&begin=${begin}&size=${size}`;
+          console.log(url);
           const streams = await this.$axios.$get(url);
           const groups = helper
             .groupby(streams, "src")
@@ -36,7 +44,7 @@ Vue.mixin({
               id: x.baseId,
               source: formatter.fsource(x),
               preview: formatter.fpreview(x),
-              viewers: Math.floor(x.online / 400),
+              viewers: x.online,
               streamer_image: formatter.favatar(x),
               title: x.roomName,
               streamer_name: x.ownerName,
@@ -52,21 +60,26 @@ Vue.mixin({
           };
         });
     },
-    async getStreams(begin = 0, size = 4, src) {
+    async getStreams(
+      begin = 0,
+      size = 4,
+      { src, sort } = { src: undefined, sort: undefined }
+    ) {
       const url = `${this.apiOrigin}/stream/list?${
         src ? "src=" + src + "&" : ""
-      }begin=${begin}&size=${size}`;
+      }begin=${begin}&size=${size}${sort ? "&sort=" + sort : ""}`;
+      console.log(url);
       const streams = await this.$axios.$get(url);
       let twitchStreams = [];
       if (!src) {
-        twitchStreams = await this.getTwitchStreams(0, size);
+        twitchStreams = await this.getTwitchStreams(0, size, true, sort);
       }
       return streams
         .map(x => ({
           id: x.baseId,
           source: formatter.fsource(x),
           preview: formatter.fpreview(x),
-          viewers: Math.floor(x.online / 400),
+          viewers: x.online,
           streamer_image: formatter.favatar(x),
           title: x.roomName,
           streamer_name: x.ownerName,
@@ -80,9 +93,9 @@ Vue.mixin({
         .concat(twitchStreams)
         .sort((a, b) => b.viewers - a.viewers);
     },
-    async getTwitchStreams(offset = 0, amount = 4, needTags) {
+    async getTwitchStreams(offset = 0, amount = 4, needTags, game) {
       const { streams } = await this.$axios.$get(
-        `https://api.twitch.tv/kraken/streams/?offset=${offset}&limit=${amount}&language=zh-tw`,
+        `https://api.twitch.tv/kraken/streams/?offset=${offset}&limit=${amount}&language=zh-tw&game=${game}`,
         {
           headers: {
             "Client-ID": "6zvm0fafre0cbqse6zez4q0nattl7h",

@@ -45,11 +45,7 @@
           </f-block>
         </div>
         <div v-else>
-          <f-block
-            :icon="platformIcon"
-            :title="title"
-            background-color="#f2ecf6"
-          >
+          <f-block :icon="platformIcon" :title="title" background-color="#f2ecf6">
             <f-stream-container
               :streams="
                 $route.params.type === 'hot'
@@ -95,7 +91,20 @@ export default {
         twitch: [],
         now: []
       },
-      streamsByGame: {},
+      streamsByGame: {
+        jdqs: [],
+        how: [],
+        lol: [],
+        wzry: [],
+        dota2rpg: [],
+        hpjy: [],
+        dwrg: [],
+        apex: [],
+        deadline: [],
+        csgo: [],
+        lolm: [],
+        overwatch: []
+      },
       totals: 0,
       title: "",
       pageIndex: 0,
@@ -123,11 +132,14 @@ export default {
       active: this.$route.params.type === x.type
     }));
     this.getStreams(0, 20).then(streams => (this.streams.all = streams));
-    this.getStreams(0, 20, "douyu").then(
+    this.getStreams(0, 20, { src: "douyu" }).then(
       streams => (this.streams.douyu = streams)
     );
-    this.getStreams(0, 20, "bilibili").then(
+    this.getStreams(0, 20, { src: "bilibili" }).then(
       streams => (this.streams.bilibili = streams)
+    );
+    this.getStreams(0, 20, { src: "now" }).then(
+      streams => (this.streams.now = streams)
     );
     this.getTwitchStreams(0, 20, true).then(promises => {
       promises.forEach(p => p.then(res => this.streams.twitch.push(res)));
@@ -144,6 +156,11 @@ export default {
     loadMore() {
       this.pageIndex++;
       if (this.$route.params.type === "hot") {
+        this.getStreams(this.pageIndex, 20, {
+          sort: this.$route.params.id
+        }).then(streams => {
+          this.streamsByGame[this.$route.params.id].push(...streams);
+        });
       } else {
         if (this.$route.params.id === "twitch") {
           this.getTwitchStreams(this.pageIndex, 20, true).then(promises =>
@@ -154,11 +171,11 @@ export default {
             })
           );
         } else {
-          this.getStreams(this.pageIndex, 20, this.$route.params.id).then(
-            streams => {
-              this.streams[this.$route.params.id].push(...streams);
-            }
-          );
+          this.getStreams(this.pageIndex, 20, {
+            src: this.$route.params.id
+          }).then(streams => {
+            this.streams[this.$route.params.id].push(...streams);
+          });
         }
       }
     },

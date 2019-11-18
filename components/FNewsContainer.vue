@@ -10,6 +10,9 @@
         </template>
       </template>
     </div>
+    <div class="more-btn-container">
+      <v-btn dark block @click="loadMore">載入更多新聞</v-btn>
+    </div>
   </div>
 </template>
 <script>
@@ -33,11 +36,21 @@ export default {
   },
   computed: {
     sourceGroupbyDate() {
-      return helper.groupby(this.source, "date");
+      const groups = helper.groupby(this.source, "date");
+      groups.forEach(g => {
+        return {
+          key: g.key,
+          list: g.list.sort((a, b) => (a.image ? -1 : 1))
+        };
+      });
+      return groups;
     }
   },
   methods: {
-    fdate: formatter.fdate
+    fdate: formatter.fdate,
+    loadMore() {
+      this.$emit("more");
+    }
   }
 };
 </script>
@@ -51,5 +64,12 @@ export default {
   margin-top: 20px;
   color: #f79646;
   font-weight: bold;
+}
+.more-btn-container {
+  margin: 20px 0px;
+}
+.more-btn-container .v-btn {
+  margin: auto;
+  background: linear-gradient(45deg, #6540a7, 49%, #dab4ff, 51%, #6540a7);
 }
 </style>

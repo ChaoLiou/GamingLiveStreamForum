@@ -9,10 +9,7 @@
             <f-news-comment :source="newsDetail.comments"></f-news-comment>
           </f-block-box>
           <f-block-box title="相關新聞">
-            <f-news-relatives
-              :keyword="newsDetail.keyword"
-              :source="newsDetail.relatives"
-            ></f-news-relatives>
+            <f-news-relatives :keyword="newsDetail.keyword" :source="newsDetail.relatives"></f-news-relatives>
             <div class="more-link">
               <a href="#">更多</a>
             </div>
@@ -25,12 +22,8 @@
           </f-block-box>
         </template>
         <template v-else>
-          <f-home-news-carousel
-            :source="carouselSource"
-            :interval-seconds="10"
-            height="60vh"
-          ></f-home-news-carousel>
-          <f-news-container :source="news"></f-news-container>
+          <f-home-news-carousel :source="carouselSource" :interval-seconds="10" height="60vh"></f-home-news-carousel>
+          <f-news-container :source="news" @more="loadMore"></f-news-container>
         </template>
       </div>
       <div class="content-grid__side">
@@ -68,14 +61,16 @@ export default {
     return {
       tabs: [],
       news: [],
-      newsDetail: {}
+      newsDetail: {},
+      pageIndex: 0
     };
   },
   computed: {
     carouselSource() {
-      return this.news
-        .slice(0, 7)
-        .map(x => ({ ...x, image: x.image.replace("/S/", "/B/") }));
+      return this.news.slice(0, 7).map(x => ({
+        ...x,
+        image: x.image ? x.image.replace("/S/", "/B/") : ""
+      }));
     },
     mainTitle() {
       return this.$route.params.type
@@ -89,7 +84,7 @@ export default {
         res => (this.newsDetail = res)
       );
     } else {
-      this.getNews(0, 50).then(
+      this.getNews(this.pageIndex, 50).then(
         res =>
           (this.news = res.map((x, index) => ({
             ...x,
@@ -101,6 +96,19 @@ export default {
       ...x,
       active: this.$route.params.type === x.type
     }));
+  },
+  methods: {
+    loadMore() {
+      this.pageIndex++;
+      this.getNews(this.pageIndex, 50).then(res =>
+        this.news.push(
+          ...res.map((x, index) => ({
+            ...x,
+            type: newsTypes[index % 4]
+          }))
+        )
+      );
+    }
   }
 };
 </script>

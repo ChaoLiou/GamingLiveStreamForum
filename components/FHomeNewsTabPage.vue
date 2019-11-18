@@ -15,7 +15,7 @@
         <div class="news-item" :key="index">
           <div class="news-tag">{{ item.type.title }}</div>
           <div class="news-title">
-            <div>{{ item.title }}</div>
+            <nuxt-link target="_blank" :to="`/news/${item.type.value}/${item.id}`">{{ item.title }}</nuxt-link>
           </div>
         </div>
         <v-divider :key="`divider-${index}`"></v-divider>
@@ -90,6 +90,10 @@ export default {
   width: 95%;
   display: grid;
   align-items: center;
+}
+.news-title > a {
+  text-decoration: none;
+  color: inherit;
 }
 .more-link {
   display: grid;
