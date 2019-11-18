@@ -22,5 +22,11 @@
     "icon": "/platform_icons/icn_NOW_B.png",
     "link": "https://now.qq.com/",
     "id": "now"
+  },
+  {
+    "title": "Youtube",
+    "icon": "/platform_icons/icn_Youtube_B.png",
+    "link": "https://www.youtube.com/",
+    "id": "youtube"
   }
 ]

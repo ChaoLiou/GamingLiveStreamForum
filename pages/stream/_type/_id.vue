@@ -52,10 +52,15 @@ export default {
   },
   mounted() {
     if (this.$route.params.id) {
-      if (this.$route.params.id.startsWith("douyu")) {
+      if (this.$route.params.type === "douyu") {
         this.getDouyuStream(this.$route.params.id);
         this.getDouyuStreams(0, 13);
-      } else {
+      } else if (this.$route.params.type === "youtube") {
+        this.getYoutubeStream(this.$route.params.id).then(
+          stream => (this.stream = stream)
+        );
+        this.getYoutubeStreams(0, 13).then(streams => (this.streams = streams));
+      } else if (this.$route.params.type === "twitch") {
         this.getStream(this.$route.params.id);
         this.getStreams(13);
       }

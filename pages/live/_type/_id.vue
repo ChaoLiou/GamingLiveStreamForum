@@ -89,7 +89,8 @@ export default {
         douyu: [],
         bilibili: [],
         twitch: [],
-        now: []
+        now: [],
+        youtube: []
       },
       streamsByGame: {
         jdqs: [],
@@ -108,7 +109,8 @@ export default {
       totals: 0,
       title: "",
       pageIndex: 0,
-      platformIcon: ""
+      platformIcon: "",
+      youtubeNextPageToken: ""
     };
   },
   computed: {
@@ -144,6 +146,10 @@ export default {
     this.getTwitchStreams(0, 20, true).then(promises => {
       promises.forEach(p => p.then(res => this.streams.twitch.push(res)));
     });
+    this.getYoutubeStreams(0, 20).then(streams => {
+      this.youtubeNextPageToken = streams[0].nextPageToken;
+      this.streams.youtube = streams;
+    });
     this.getStreamsByGame().then(promises => {
       promises.forEach(p =>
         p.then(
@@ -170,6 +176,15 @@ export default {
               });
             })
           );
+        } else if (this.$route.params.id === "youtube") {
+          this.getYoutubeStreams(
+            this.pageIndex,
+            20,
+            this.youtubeNextPageToken
+          ).then(streams => {
+            this.youtubeNextPageToken = streams[0].nextPageToken;
+            this.streams[this.$route.params.id].push(...streams);
+          });
         } else {
           this.getStreams(this.pageIndex, 20, {
             src: this.$route.params.id

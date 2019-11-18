@@ -1,9 +1,11 @@
 <template>
   <div class="f-news-headlines">
     <div class="news-headline__item" v-for="(head, index) in source" :key="index">
-      <v-img width="150px" :src="head.image"></v-img>
+      <a :href="head.link" target="_blank">
+        <v-img width="180px" :src="head.image"></v-img>
+      </a>
       <div class="news-headline__title">
-        <a href="#">{{head.title}}</a>
+        <a :href="head.link" target="_blank">{{head.title}}</a>
       </div>
     </div>
   </div>
@@ -23,14 +25,18 @@ export default {
 <style scoped>
 .f-news-headlines {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-column-gap: 10px;
+  grid-template-columns: repeat(5, 180px);
+  grid-column-gap: 15px;
   margin-bottom: 40px;
 }
 .news-headline__item {
   justify-items: center;
+  grid-row-gap: 10px;
   display: grid;
-  grid-template-rows: 150px auto;
+  grid-template-rows: 180px auto;
+}
+.news-headline__title {
+  font-size: 16px;
 }
 .news-headline__title a {
   color: black;

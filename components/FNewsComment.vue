@@ -9,7 +9,10 @@
         <v-img width="40px" height="40px" :src="item.avatar"></v-img>
         <div>
           <span class="news-comment__commentator">{{ item.name }}：</span>
-          <span class="news-comment__content">{{ item.message }}</span>
+          <span class="news-comment__content">
+            <span>{{ item.message }}</span>
+            <span class="news-comment__time">{{item.time}}</span>
+          </span>
         </div>
         <v-btn small class="report-btn">檢舉</v-btn>
       </div>
@@ -76,8 +79,13 @@ export default {
 }
 .news-comment__commentator {
   color: #0055aa;
+  font-size: 16px;
 }
 .news-comment__content {
   color: #737277;
+  font-size: 16px;
+}
+.news-comment__time {
+  margin-left: 16px;
 }
 </style>

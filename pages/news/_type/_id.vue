@@ -9,7 +9,7 @@
             <f-news-comment :source="newsDetail.comments"></f-news-comment>
           </f-block-box>
           <f-block-box title="相關新聞">
-            <f-news-relatives :keyword="newsDetail.keyword" :source="newsDetail.relatives"></f-news-relatives>
+            <f-news-relatives :keywords="newsDetail.keywords" :source="newsDetail.relatives"></f-news-relatives>
             <div class="more-link">
               <a href="#">更多</a>
             </div>

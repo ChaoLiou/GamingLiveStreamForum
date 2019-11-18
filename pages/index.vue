@@ -75,7 +75,14 @@ export default {
   },
   data() {
     return {
-      streams: { all: [], douyu: [], bilibili: [], twitch: [], now: [] },
+      streams: {
+        all: [],
+        douyu: [],
+        bilibili: [],
+        twitch: [],
+        now: [],
+        youtube: []
+      },
       platforms,
       selectedRankingType: -1
     };
@@ -100,6 +107,9 @@ export default {
     this.getTwitchStreams(0, 8, true).then(streams => {
       streams.forEach(s => s.then(res => this.streams.twitch.push(res)));
     });
+    this.getYoutubeStreams(0, 8).then(
+      streams => (this.streams.youtube = streams)
+    );
   },
   methods: {
     tabChange(index) {

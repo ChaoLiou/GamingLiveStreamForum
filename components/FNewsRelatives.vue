@@ -2,13 +2,14 @@
   <div class="f-news-relatives">
     <div class="news-relatives__item" v-for="(relative, index) in source" :key="index">
       <v-icon left>arrow_right</v-icon>
-      <a href="#">{{relative}}</a>
+      <a :href="relative.link" target="_blank">{{relative.title}}</a>
     </div>
-    <div class="news-relatives__item">
-      <div></div>
-      <div>
-        關鍵字：
-        <a href="#">{{keyword}}</a>
+    <div class="keywords-row">
+      <div>關鍵字：</div>
+      <div class="keywords-container">
+        <div class="keywords-item" v-for="(keyword, index) in keywords" :key="index">
+          <a :href="keyword.link" target="_blank">{{keyword.title}}</a>
+        </div>
       </div>
     </div>
   </div>
@@ -22,9 +23,11 @@ export default {
         return [];
       }
     },
-    keyword: {
-      type: String,
-      default: ""
+    keywords: {
+      type: Array,
+      default() {
+        return [];
+      }
     }
   }
 };
@@ -46,6 +49,24 @@ export default {
 }
 .news-relatives__item:hover a {
   color: #0055aa;
+  text-decoration: underline;
+}
+.keywords-row {
+  display: grid;
+  font-size: 18px;
+  grid-template-columns: 75px auto;
+}
+.keywords-container {
+  display: inline;
+}
+.keywords-item {
+  display: inline;
+  margin-right: 10px;
+}
+.keywords-item a {
+  text-decoration: none;
+}
+.keywords-item:hover a {
   text-decoration: underline;
 }
 </style>

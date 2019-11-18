@@ -8,6 +8,7 @@ Vue.mixin({
   data() {
     return {
       apiOrigin: "https://woolive.ark-program.com",
+      googleAPIKey: "AIzaSyBP2admYTppwm4L9FP7YpAX2DAA3oO61sU",
       toExternals: ["bilibili", "now"]
     };
   },
@@ -146,6 +147,59 @@ Vue.mixin({
           { headers: { "Client-ID": "6zvm0fafre0cbqse6zez4q0nattl7h" } }
         )
       ).data;
+    },
+    async getYoutubeStreams(begin = 0, size = 20, nextPageToken) {
+      const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&eventType=live&type=video&videoCategoryId=20&maxResults=${size}&key=${
+        this.googleAPIKey
+      }&relevanceLanguage=zh-Hans&q=${[
+        "絕地求生",
+        "英雄聯盟",
+        "傳說對決",
+        "自走棋",
+        "鬥陣特工",
+        "絕對武力",
+        "黎明死線",
+        "第五人格"
+      ].join("|")}${begin ? "&pageToken=" + nextPageToken : ""}`;
+      console.log(url);
+      const streams = await this.$axios.$get(url);
+      return streams.items.map(x => ({
+        nextPageToken: streams.nextPageToken,
+        id: x.id.videoId.toString(),
+        source: `https://www.youtube.com/embed/${x.id.videoId}`,
+        preview: x.snippet.thumbnails.high.url,
+        viewers: 0,
+        streamer_image: "",
+        title: x.snippet.title,
+        name: x.snippet.channelTitle,
+        streamer_name: x.snippet.channelTitle,
+        game: "",
+        description: x.snippet.description,
+        chatSource: `https://www.youtube.com/live_chat?v=${x.id.videoId}`,
+        platform: "youtube",
+        tags: []
+      }));
+    },
+    async getYoutubeStream(id) {
+      const streams = await this.$axios.$get(
+        `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${id}&key=${this.googleAPIKey}`
+      );
+
+      return streams.items.map(x => ({
+        id: x.id.toString(),
+        source: `https://www.youtube.com/embed/${x.id}`,
+        preview: x.snippet.thumbnails.high.url,
+        viewers: x.statistics.viewCount,
+        streamer_image: "",
+        title: x.snippet.title,
+        name: x.snippet.channelTitle,
+        streamer_name: x.snippet.channelTitle,
+        game: "",
+        description: x.snippet.description,
+        chatSource: `https://www.youtube.com/live_chat?v=${x.id}`,
+        platform: "youtube",
+        tags: x.snippet.tags
+      }))[0];
     }
   }
 });
