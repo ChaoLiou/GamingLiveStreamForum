@@ -22,9 +22,9 @@
             :icon="item.icon"
             v-for="(item, index) in multipleSource"
             :key="index"
-            v-show="getFStreams(item.id, 4).length > 0"
+            v-show="getFStreams(item.id).length > 0"
           >
-            <f-stream-container :streams="getFStreams(item.id, 4)"></f-stream-container>
+            <f-stream-container :streams="getFStreams(item.id)"></f-stream-container>
           </f-block>
         </div>
         <div v-else>
@@ -72,9 +72,9 @@ export default {
         how: [],
         lol: [],
         wzry: [],
-        dota2rpg: [],
-        hpjy: [],
-        dwrg: [],
+        chess: [],
+        pubg: [],
+        identityv: [],
         apex: [],
         deadline: [],
         csgo: [],
@@ -125,32 +125,35 @@ export default {
       active: this.$route.params.type === x.type
     }));
     this.getStreams(0, 20).then(streams => (this.streams.all = streams));
-    this.getStreams(0, 20, { src: "douyu" }).then(
-      streams => (this.streams.douyu = streams)
-    );
-    this.getStreams(0, 20, { src: "bilibili" }).then(
-      streams => (this.streams.bilibili = streams)
-    );
-    this.getStreams(0, 20, { src: "now" }).then(
-      streams => (this.streams.now = streams)
-    );
-    this.getTwitchStreams(0, 20, true).then(promises => {
-      promises.forEach(p => p.then(res => this.streams.twitch.push(res)));
-    });
-    this.getYoutubeStreams(0, 20).then(streams => {
-      this.youtubeNextPageToken = streams[0].nextPageToken;
-      this.streams.youtube = streams;
-    });
-    this.getStreamsByGame().then(promises => {
-      promises.forEach(p =>
-        p.then(
-          res => (this.streamsByGame[res.game.id] = res.streams.slice(0, 20))
-        )
+    if (this.$route.params.type === "hot") {
+      this.getStreamsByGame().then(promises => {
+        promises.forEach(p =>
+          p.then(
+            res => (this.streamsByGame[res.game.id] = res.streams.slice(0, 20))
+          )
+        );
+      });
+    } else {
+      this.getStreams(0, 20, { src: "douyu" }).then(
+        streams => (this.streams.douyu = streams)
       );
-    });
+      this.getStreams(0, 20, { src: "bilibili" }).then(
+        streams => (this.streams.bilibili = streams)
+      );
+      this.getStreams(0, 20, { src: "now" }).then(
+        streams => (this.streams.now = streams)
+      );
+      this.getTwitchStreams(0, 20, true).then(promises => {
+        promises.forEach(p => p.then(res => this.streams.twitch.push(res)));
+      });
+      this.getYoutubeStreams(0, 20).then(streams => {
+        this.youtubeNextPageToken = streams[0].nextPageToken;
+        this.streams.youtube = streams;
+      });
+    }
   },
   methods: {
-    getFStreams(id, sliced) {
+    getFStreams(id, sliced = 4) {
       return this.$route.params.type === "hot"
         ? this.streamsByGame[id]
           ? this.streamsByGame[id].slice(0, sliced)

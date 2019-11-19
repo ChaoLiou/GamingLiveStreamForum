@@ -6,7 +6,7 @@
       <div class="triangle" :style="triangleStyles"></div>
       <div class="rectangle" :style="rectangleStyles"></div>
       <div class="content" :style="contentStyles">
-        <div v-if="tabs.length > 0" @click="$emit('tab-change', -1)">{{text}}</div>
+        <div v-if="tabs.length > 0" @click="tabChange(-1)">{{text}}</div>
         <nuxt-link v-else :to="to">{{text}}</nuxt-link>
       </div>
       <div class="more" v-if="more" :style="moreLinkStyles">

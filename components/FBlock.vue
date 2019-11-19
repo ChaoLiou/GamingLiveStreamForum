@@ -41,7 +41,7 @@ export default {
     },
     backgroundColor: {
       type: String,
-      default: "#fafafa"
+      default: "#f2ecf6"
     },
     tabs: {
       type: Array,
