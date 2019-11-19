@@ -82,6 +82,7 @@
 </template>
 <script>
 import formatter from "@/assets/utils/formatter";
+import helper from "@/assets/utils/helper";
 import games from "@/assets/json/games";
 import platforms from "@/assets/json/platforms";
 import FLink from "@/components/FLink";
@@ -115,7 +116,9 @@ export default {
   },
   computed: {
     viewers() {
-      return formatter.fviewers(this.stream.viewers);
+      return formatter.fviewers(
+        this.stream.viewers ? this.stream.viewers : this.random(1800, 3100)
+      );
     },
     tags() {
       return this.stream.tags
@@ -153,6 +156,7 @@ export default {
   },
   mounted() {},
   methods: {
+    random: helper.random,
     turnPlayer(on) {
       this.$refs.frame.src = on ? this.streamSource : "about:blank";
     }

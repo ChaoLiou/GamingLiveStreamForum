@@ -40,7 +40,9 @@ export default {
       groups.forEach(g => {
         return {
           key: g.key,
-          list: g.list.sort((a, b) => (a.image ? -1 : 1))
+          list: g.list
+            .sort((a, b) => (a.image ? -1 : 1))
+            .sort((a, b) => new Date(b.time) - new Date(a.time))
         };
       });
       return groups;

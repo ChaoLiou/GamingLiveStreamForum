@@ -1,5 +1,6 @@
 export default {
-  groupby
+  groupby,
+  random
 };
 
 function groupby(list, key) {
@@ -13,4 +14,8 @@ function groupby(list, key) {
     }
   });
   return result;
+}
+
+function random(min, max) {
+  return Math.random() * (max - min) + min;
 }
