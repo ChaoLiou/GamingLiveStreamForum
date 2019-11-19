@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-toolbar fixed height="70px">
+    <v-toolbar fixed height="78px">
       <v-toolbar-items>
         <nuxt-link to="/" class="home-link">
           <v-img class="logo" src="/logo.png" width="150px" height="70px"></v-img>
@@ -95,13 +95,13 @@ export default {
   padding: 5px 15px;
   border-radius: 15px 0px 0px 15px;
   outline-color: transparent;
-  height: 30px;
+  height: 43px;
   width: 450px;
 }
 .search__action {
   border-radius: 0px 15px 15px 0px;
   justify-self: start;
-  height: 30px;
+  height: 43px;
   width: 60px;
   margin-left: 0px;
 }
