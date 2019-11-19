@@ -12,15 +12,7 @@
         :title="mainTitle"
         background-color="#f2ecf6"
       >
-        <f-home-stream-carousel
-          :streams="
-            $route.params.type === 'hot'
-              ? streamsByGame[$route.params.id]
-                ? streamsByGame[$route.params.id].slice(0, 5)
-                : streams['all'].slice(0, 5)
-              : streams[$route.params.id ? $route.params.id : 'all'].slice(0, 5)
-          "
-        ></f-home-stream-carousel>
+        <f-home-stream-carousel :streams="fstreams_slice5"></f-home-stream-carousel>
       </f-block>
       <div>
         <div v-if="multiple">
@@ -32,29 +24,14 @@
             v-for="(item, index) in multipleSource"
             :key="index"
             background-color="#f2ecf6"
+            v-show="getFStreams(item.id, 4).length > 0"
           >
-            <f-stream-container
-              :streams="
-                $route.params.type === 'hot'
-                  ? streamsByGame[item.id]
-                    ? streamsByGame[item.id].slice(0, 4)
-                    : []
-                  : streams[item.id ? item.id : 'all'].slice(0, 4)
-              "
-            ></f-stream-container>
+            <f-stream-container :streams="getFStreams(item.id, 4)"></f-stream-container>
           </f-block>
         </div>
         <div v-else>
           <f-block :icon="platformIcon" :title="title" background-color="#f2ecf6">
-            <f-stream-container
-              :streams="
-                $route.params.type === 'hot'
-                  ? streamsByGame[$route.params.id]
-                    ? streamsByGame[$route.params.id]
-                    : []
-                  : streams[$route.params.id ? $route.params.id : 'all']
-              "
-            ></f-stream-container>
+            <f-stream-container :streams="fstreams"></f-stream-container>
           </f-block>
         </div>
       </div>
@@ -114,6 +91,22 @@ export default {
     };
   },
   computed: {
+    fstreams() {
+      return this.$route.params.type === "hot"
+        ? this.streamsByGame[this.$route.params.id]
+          ? this.streamsByGame[this.$route.params.id]
+          : []
+        : this.streams[this.$route.params.id ? this.$route.params.id : "all"];
+    },
+    fstreams_slice5() {
+      return this.$route.params.type === "hot"
+        ? this.streamsByGame[this.$route.params.id]
+          ? this.streamsByGame[this.$route.params.id].slice(0, 5)
+          : this.streams["all"].slice(0, 5)
+        : this.streams[
+            this.$route.params.id ? this.$route.params.id : "all"
+          ].slice(0, 5);
+    },
     mainTitle() {
       return this.$route.params.type
         ? liveTabs.find(x => this.$route.params.type === x.type).title
@@ -159,6 +152,13 @@ export default {
     });
   },
   methods: {
+    getFStreams(id, sliced) {
+      return this.$route.params.type === "hot"
+        ? this.streamsByGame[id]
+          ? this.streamsByGame[id].slice(0, sliced)
+          : []
+        : this.streams[id ? id : "all"].slice(0, sliced);
+    },
     loadMore() {
       this.pageIndex++;
       if (this.$route.params.type === "hot") {
