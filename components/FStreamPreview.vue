@@ -30,7 +30,7 @@
             <v-icon large>play_circle_outline</v-icon>
             <div class="fixed-mask play-mask__background"></div>
           </div>
-          <div class="fixed-mask live-mask">Live</div>
+          <div class="fixed-mask live-mask">LIVE</div>
           <div class="fixed-mask viewer-mask">
             <div class="viewer-mask__container">
               <div class="viewer-mask__content">{{ viewers }}位觀眾</div>
@@ -282,12 +282,13 @@ export default {
   font-weight: bold;
   top: 0px;
   left: 0px;
-  background: red;
-  color: white;
-  border: 2px black solid;
-  border-radius: 5px;
-  padding: 0px 5px;
-  margin: 5px;
+  background: white;
+  color: red;
+  border: 2px red solid;
+  padding: 0px 2px;
+  height: 18px;
+  line-height: 14px;
+  margin: 10px;
 }
 .viewer-mask {
   right: 0px;

@@ -1,25 +1,13 @@
 <template>
   <div class="f-stream-ranking">
     <f-container-slide-control left @slide="goLeft"></f-container-slide-control>
-    <f-container-slide-control
-      right
-      @slide="goRight"
-    ></f-container-slide-control>
+    <f-container-slide-control right @slide="goRight"></f-container-slide-control>
     <div class="stream-ranking__grid" ref="content">
-      <div
-        class="stream-ranking__item"
-        v-for="(item, index) in streams"
-        :key="index"
-      >
-        <v-avatar class="ranking-board" size="80px" color="#eadbf8">
+      <div class="stream-ranking__item" v-for="(item, index) in streams" :key="index">
+        <div :class="['ranking-board', index < 3 ? 'ranking-board__icon' : '']">
           <v-img v-if="index < 3" :src="ranks[index]"></v-img>
-          <div
-            v-else
-            class="ranking-board__content font-italic font-weight-black"
-          >
-            {{ index + 1 }}
-          </div>
-        </v-avatar>
+          <div v-else class="ranking-board__content font-italic font-weight-black">{{ index + 1 }}</div>
+        </div>
         <v-card class="stream-board" color="#eadbf8">
           <f-link
             :link="
@@ -40,10 +28,7 @@
           </f-link>
           <div class="stream-board__stream-info">
             <f-link :link="getPlatformInfo(item.platform, 'link')" external>
-              <v-img
-                width="46px"
-                :src="getPlatformInfo(item.platform, 'icon')"
-              ></v-img>
+              <v-img width="46px" :src="getPlatformInfo(item.platform, 'icon')"></v-img>
             </f-link>
             <div class="stream-info__text">
               <div class="text-truncate">
@@ -54,14 +39,13 @@
                       : `/stream/${item.platform}/${item.id}`
                   "
                   :external="!!item.externalLink"
-                >
-                  {{ item.streamer_name }}
-                </f-link>
+                >{{ item.streamer_name }}</f-link>
               </div>
               <div>
-                <f-link :link="getPlatformInfo(item.platform, 'link')" external>
-                  {{ getPlatformInfo(item.platform, "title") }}
-                </f-link>
+                <f-link
+                  :link="getPlatformInfo(item.platform, 'link')"
+                  external
+                >{{ getPlatformInfo(item.platform, "title") }}</f-link>
               </div>
             </div>
           </div>
@@ -150,20 +134,34 @@ export default {
   margin: 0px 20px;
 }
 .stream-ranking__item {
+  position: relative;
   height: 100%;
   width: 100%;
 }
+.ranking-board.ranking-board__icon {
+  z-index: 2;
+}
 .ranking-board {
-  margin: 0px auto -10px auto;
-  display: block;
+  left: 60px;
+  width: 80px;
+  height: 100px;
+  text-align: center;
+  margin: 0px auto 0px auto;
+  z-index: 1;
+  position: absolute;
 }
 .ranking-board__content {
   color: #8e75ae;
   font-size: 45px;
   margin-bottom: 10px;
+  background: #eadbf8;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
 }
 .stream-board {
   padding: 10px 0px;
+  margin-top: 70px;
   margin-bottom: 10px;
   border-radius: 10px;
   width: 200px;
@@ -171,7 +169,7 @@ export default {
   z-index: 1;
 }
 .stream-ranking__item:hover .stream-board,
-.stream-ranking__item:hover .ranking-board {
+.stream-ranking__item:hover .ranking-board__content {
   box-shadow: 4px 8px 5px rgba(0, 0, 0, 0.5);
 }
 .stream-board__stream-avatar {

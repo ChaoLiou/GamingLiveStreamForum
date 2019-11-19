@@ -10,7 +10,6 @@
         "
         :to="`/live/${$route.params.type}`"
         :title="mainTitle"
-        background-color="#f2ecf6"
       >
         <f-home-stream-carousel :streams="fstreams_slice5"></f-home-stream-carousel>
       </f-block>
@@ -23,14 +22,13 @@
             :icon="item.icon"
             v-for="(item, index) in multipleSource"
             :key="index"
-            background-color="#f2ecf6"
             v-show="getFStreams(item.id, 4).length > 0"
           >
             <f-stream-container :streams="getFStreams(item.id, 4)"></f-stream-container>
           </f-block>
         </div>
         <div v-else>
-          <f-block :icon="platformIcon" :title="title" background-color="#f2ecf6">
+          <f-block :icon="platformIcon" :title="title">
             <f-stream-container :streams="fstreams"></f-stream-container>
           </f-block>
         </div>

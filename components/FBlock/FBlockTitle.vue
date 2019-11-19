@@ -2,6 +2,7 @@
   <div class="f-block-title">
     <div class="bar" :style="barStyles">
       <div class="background" :style="backgroundStyles"></div>
+      <div class="background-line" :style="backgroundLineStyles"></div>
       <div class="triangle" :style="triangleStyles"></div>
       <div class="rectangle" :style="rectangleStyles"></div>
       <div class="content" :style="contentStyles">
@@ -13,13 +14,14 @@
       </div>
       <div v-else class="tab-bar" :style="tabBarStyles">
         <div class="tab-container" :style="tabContainerStyles">
-          <div v-for="(tab, index) in tabs" :key="index" :style="getTabStyles(index)">
+          <div
+            v-for="(tab, index) in tabs"
+            :key="index"
+            :class="{ 'selected': selectedIndex === index }"
+            :style="getTabStyles(index)"
+          >
             <div class="tab__left-trangle" :style="tabLeftTriangleStyles"></div>
-            <div
-              class="tab__content"
-              :style="tabContentStyles"
-              @click="$emit('tab-change', index)"
-            >{{tab}}</div>
+            <div class="tab__content" :style="tabContentStyles" @click="tabChange(index)">{{tab}}</div>
             <div class="tab__right-trangle" :style="tabRightTriangleStyles"></div>
           </div>
         </div>
@@ -80,7 +82,8 @@ export default {
   data() {
     return {
       tabColor: "#8e75ae",
-      barMarginLeft: 30
+      barMarginLeft: 30,
+      selectedIndex: -1
     };
   },
   computed: {
@@ -122,7 +125,16 @@ export default {
     backgroundStyles() {
       return {
         height: `${this.height}px`,
-        width: this.icon ? `calc(100% - ${this.barMarginLeft}px)` : undefined
+        width: `${this.titleWidth + this.triangleWidth}px`
+      };
+    },
+    backgroundLineStyles() {
+      return {
+        height: `${this.height}px`,
+        width: `calc(100% - ${this.titleWidth +
+          this.triangleWidth +
+          (this.icon ? this.barMarginLeft : 0)}px)`,
+        left: `${this.titleWidth + this.triangleWidth}px`
       };
     },
     contentStyles() {
@@ -183,6 +195,10 @@ export default {
     }
   },
   methods: {
+    tabChange(index) {
+      this.selectedIndex = index;
+      this.$emit("tab-change", index);
+    },
     getTabStyles(index) {
       return {
         "margin-left": `-${
@@ -207,6 +223,13 @@ export default {
   position: absolute;
   top: 0px;
   left: 0px;
+  width: 100%;
+  background: linear-gradient(90deg, #7e13ec, #af25dd);
+  z-index: 1;
+}
+.background-line {
+  position: absolute;
+  top: 0px;
   width: 100%;
   background-color: #5e3b8b;
   z-index: 1;
@@ -248,9 +271,21 @@ export default {
   color: white;
   display: grid;
 }
+.selected > .tab__content {
+  background: #7b3bae !important;
+}
+.selected > .tab__left-trangle {
+  border-color: transparent #7b3bae transparent transparent !important;
+}
+.selected > .tab__right-trangle {
+  border-color: transparent transparent transparent #7b3bae !important;
+}
 .tab__content {
   text-align: center;
   cursor: pointer;
+}
+.tab__content:hover {
+  color: #f7a12f;
 }
 .tab__left-trangle,
 .tab__right-trangle {

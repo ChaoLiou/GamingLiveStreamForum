@@ -7,17 +7,10 @@
     <div class="content-grid">
       <div class="content-grid__main">
         <f-home-news-area></f-home-news-area>
-        <f-block
-          icon="/platform_icons/icn_push_B.png"
-          background-color="#f2ecf6"
-          more
-          to="/live/recommend"
-          title="推薦實況"
-        >
+        <f-block icon="/platform_icons/icn_push_B.png" more to="/live/recommend" title="推薦實況">
           <f-stream-container :streams="streams.all.slice(0, 8)"></f-stream-container>
         </f-block>
         <f-block
-          background-color="#f2ecf6"
           title="當紅播主榜"
           :font-size="30"
           :line-height="3"
@@ -28,7 +21,6 @@
         </f-block>
         <f-block
           icon="/platform_icons/icn_hot_B.png"
-          background-color="#f2ecf6"
           title="熱門遊戲"
           to="/live/hot"
           more
@@ -37,7 +29,6 @@
           <f-game-ranking></f-game-ranking>
         </f-block>
         <f-block
-          background-color="#f2ecf6"
           more
           :to="`/live/recommend/${item.id}`"
           :title="item.title"
