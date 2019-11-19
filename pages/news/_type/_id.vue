@@ -67,10 +67,13 @@ export default {
   },
   computed: {
     carouselSource() {
-      return this.fnews.slice(0, 7).map(x => ({
-        ...x,
-        image: x.image ? x.image.replace("/S/", "/B/") : ""
-      }));
+      return this.fnews
+        .filter(x => !!x.image)
+        .slice(0, 7)
+        .map(x => ({
+          ...x,
+          image: x.image ? x.image.replace("/S/", "/B/") : ""
+        }));
     },
     mainTitle() {
       return this.$route.params.type

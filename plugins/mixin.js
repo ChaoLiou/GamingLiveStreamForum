@@ -16,6 +16,7 @@ Vue.mixin({
   methods: {
     async getNews(begin = 0, size = 20) {
       const url = `${this.apiOrigin}/news/list/gamer?begin=${begin}&size=${size}`;
+      console.log(url);
       return (await this.$axios.$get(url)).map(x => {
         const result = /\d{4}-\d{2}-\d{2}/.exec(x.time);
         return {

@@ -1,9 +1,6 @@
 <template>
   <div class="f-home-news-area">
-    <f-home-news-carousel
-      :source="carouselSource"
-      :interval-seconds="10"
-    ></f-home-news-carousel>
+    <f-home-news-carousel :source="carouselSource" :interval-seconds="10"></f-home-news-carousel>
     <f-home-news-tab-page :source="news"></f-home-news-tab-page>
   </div>
 </template>
@@ -24,6 +21,7 @@ export default {
   computed: {
     carouselSource() {
       return this.news
+        .filter(x => !!x.image)
         .slice(0, 6)
         .map(x => ({ ...x, image: x.image.replace("/S/", "/B/") }));
     }
