@@ -117,7 +117,9 @@ export default {
   computed: {
     viewers() {
       return formatter.fviewers(
-        this.stream.viewers ? this.stream.viewers : this.random(1800, 3100)
+        this.stream.viewers
+          ? this.stream.viewers
+          : Math.floor(this.random(1800, 3100))
       );
     },
     tags() {

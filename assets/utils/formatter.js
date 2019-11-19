@@ -21,9 +21,7 @@ function fviewers(viewers) {
     index++;
   }
   return `${
-    index > 0
-      ? parseFloat(viewers_double.toFixed(1)) + map[index - 1]
-      : viewers.toFixed(0)
+    index > 0 ? parseFloat(viewers_double.toFixed(1)) + map[index - 1] : viewers
   }`;
 }
 
