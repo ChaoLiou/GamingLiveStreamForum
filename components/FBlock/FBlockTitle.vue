@@ -163,9 +163,9 @@ export default {
     },
     tabLeftTriangleStyles() {
       return {
-        "border-width": `0 ${this.trangleSlope *
-          (this.whiteBarHeight - this.lineHeight)}px ${this.whiteBarHeight -
-          this.lineHeight}px 0`,
+        "border-width": `0 ${Math.ceil(
+          this.trangleSlope * (this.whiteBarHeight - this.lineHeight)
+        )}px ${this.whiteBarHeight - this.lineHeight}px 0`,
         "border-color": `transparent ${this.tabColor} transparent transparent`
       };
     },
@@ -178,9 +178,10 @@ export default {
     },
     tabRightTriangleStyles() {
       return {
-        "border-width": `${this.whiteBarHeight - this.lineHeight}px 0 0 ${this
-          .trangleSlope *
-          (this.whiteBarHeight - this.lineHeight)}px`,
+        "border-width": `${this.whiteBarHeight -
+          this.lineHeight}px 0 0 ${Math.ceil(
+          this.trangleSlope * (this.whiteBarHeight - this.lineHeight)
+        )}px`,
         "border-color": `transparent transparent transparent ${this.tabColor}`
       };
     },
@@ -204,9 +205,11 @@ export default {
         "margin-left": `-${
           index ? (this.fontSize * 7) / 10 : (this.fontSize * 5) / 7
         }px`,
-        "grid-template-columns": `${this.trangleSlope *
-          (this.whiteBarHeight - this.lineHeight)}px ${this.fontSize * 2 +
-          1}px ${this.trangleSlope * (this.whiteBarHeight - this.lineHeight)}px`
+        "grid-template-columns": `${Math.ceil(
+          this.trangleSlope * (this.whiteBarHeight - this.lineHeight)
+        )}px ${this.fontSize * 2 + 1}px ${Math.ceil(
+          this.trangleSlope * (this.whiteBarHeight - this.lineHeight)
+        )}px`
       };
     }
   }
@@ -270,6 +273,13 @@ export default {
 .tab-container > div {
   color: white;
   display: grid;
+}
+.tab-container > div {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+}
+.tab-container > div:hover {
+  margin-top: -4px;
+  margin-right: 2px;
 }
 .selected > .tab__content {
   background: #7b3bae !important;

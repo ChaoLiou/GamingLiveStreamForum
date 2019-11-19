@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <v-toolbar fixed>
+    <v-toolbar fixed height="112px">
       <v-toolbar-items>
         <nuxt-link to="/" class="home-link">
-          <v-img class="logo" src="/logo.png" width="120px" height="56px"></v-img>
+          <v-img class="logo" src="/logo.png" width="240px" height="112px"></v-img>
         </nuxt-link>
         <div class="nav-items">
           <nuxt-link to="/live/recommend">直播平台</nuxt-link>
@@ -17,7 +17,9 @@
         </div>
       </v-toolbar-items>
       <v-spacer></v-spacer>
-      <v-btn>登入/註冊</v-btn>
+      <div class="login-container">
+        <v-btn>登入/註冊</v-btn>
+      </div>
     </v-toolbar>
     <v-content>
       <nuxt />
@@ -49,9 +51,13 @@ export default {
 .v-toolbar {
   z-index: 9999;
   background: linear-gradient(180deg, #dab4ff, #eadbf8);
+  height: 128px;
+}
+.v-toolbar__items {
+  height: 100%;
 }
 .v-content {
-  margin-top: 56px;
+  margin-top: 112px;
 }
 .logo {
   margin-right: 20px;
@@ -63,6 +69,7 @@ export default {
   justify-items: center;
   align-items: center;
   grid-column-gap: 20px;
+  height: 100%;
 }
 .nav-items > a {
   color: #55287e;
@@ -76,9 +83,11 @@ export default {
   font-size: 16px;
 }
 .search {
+  margin-left: 20px;
   display: grid;
   grid-template-columns: 5fr 1fr;
   align-items: center;
+  height: inherit;
 }
 .search__text {
   background: white;
@@ -87,11 +96,17 @@ export default {
   outline-color: transparent;
   height: 24px;
   justify-self: end;
+  width: 450px;
 }
 .search__action {
   border-radius: 0px 15px 15px 0px;
   justify-self: start;
   height: 24px;
   margin-left: 0px;
+}
+.login-container {
+  height: 100%;
+  display: grid;
+  align-items: center;
 }
 </style>
