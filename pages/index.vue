@@ -11,7 +11,7 @@
           <f-stream-container :streams="streams.all.slice(0, 8)"></f-stream-container>
         </f-block>
         <f-block
-          title="當紅播主榜"
+          title="熱門主播榜"
           :font-size="30"
           :line-height="3"
           icon="/platform_icons/icn_star_B.png"
