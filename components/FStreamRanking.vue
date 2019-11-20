@@ -9,14 +9,7 @@
           <div v-else class="ranking-board__content font-italic font-weight-black">{{ index + 1 }}</div>
         </div>
         <v-card class="stream-board" color="#eadbf8">
-          <f-link
-            :link="
-              item.externalLink
-                ? item.externalLink
-                : `/stream/${item.platform}/${item.id}`
-            "
-            :external="!!item.externalLink"
-          >
+          <f-link :link="`/stream/${item.platform}/${item.id}`">
             <v-img
               class="stream-board__stream-avatar"
               width="180px"
@@ -32,14 +25,7 @@
             </f-link>
             <div class="stream-info__text">
               <div class="text-truncate">
-                <f-link
-                  :link="
-                    item.externalLink
-                      ? item.externalLink
-                      : `/stream/${item.platform}/${item.id}`
-                  "
-                  :external="!!item.externalLink"
-                >{{ item.streamer_name }}</f-link>
+                <f-link :link="`/stream/${item.platform}/${item.id}`">{{ item.streamer_name }}</f-link>
               </div>
               <div>
                 <f-link

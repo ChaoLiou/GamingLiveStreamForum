@@ -14,6 +14,23 @@ Vue.mixin({
     };
   },
   methods: {
+    mappingStream(raw) {
+      return {
+        id: raw.baseId,
+        source: formatter.fsource(raw),
+        preview: formatter.fpreview(raw),
+        viewers: raw.online,
+        streamer_image: formatter.favatar(raw),
+        title: raw.roomName,
+        streamer_name: raw.ownerName,
+        game: raw.sort,
+        description: raw.roomDesc,
+        platform: raw.src,
+        externalLink: this.toExternals.includes(raw.src) ? raw.streamUrl : "",
+        follows: raw.fans,
+        tags: raw.tags ? raw.tags : []
+      };
+    },
     async getNews(begin = 0, size = 20) {
       const url = `${this.apiOrigin}/news/list/gamer?begin=${begin}&size=${size}`;
       console.log(url);
@@ -43,21 +60,7 @@ Vue.mixin({
           return {
             index,
             game,
-            streams: streams.map(x => ({
-              id: x.baseId,
-              source: formatter.fsource(x),
-              preview: formatter.fpreview(x),
-              viewers: x.online,
-              streamer_image: formatter.favatar(x),
-              title: x.roomName,
-              streamer_name: x.ownerName,
-              game: x.sort,
-              description: x.roomDesc,
-              platform: x.src,
-              externalLink: this.toExternals.includes(x.src) ? x.streamUrl : "",
-              follows: x.fans,
-              tags: x.tags ? x.tags : []
-            })),
+            streams: streams.map(this.mappingStream),
             amount: streams.length,
             amountByGroups: groups
           };
@@ -78,36 +81,26 @@ Vue.mixin({
         twitchStreams = await this.getTwitchStreams(0, size, true, sort);
       }
       return streams
-        .map(x => ({
-          id: x.baseId,
-          source: formatter.fsource(x),
-          preview: formatter.fpreview(x),
-          viewers: x.online,
-          streamer_image: formatter.favatar(x),
-          title: x.roomName,
-          streamer_name: x.ownerName,
-          game: x.sort,
-          description: x.roomDesc,
-          platform: x.src,
-          externalLink: this.toExternals.includes(x.src) ? x.streamUrl : "",
-          follows: x.fans,
-          tags: x.tags ? x.tags : []
-        }))
+        .map(this.mappingStream)
         .concat(twitchStreams)
         .sort((a, b) => b.viewers - a.viewers);
     },
+    async getStream(id) {
+      const url = `${this.apiOrigin}/stream/findByBaseId/${id}`;
+      console.log(url);
+      const stream = await this.$axios.$get(url);
+      return this.mappingStream(stream.info);
+    },
     async getTwitchStreams(offset = 0, amount = 4, needTags, game) {
-      const { streams } = await this.$axios.$get(
-        `https://api.twitch.tv/kraken/streams/?offset=${offset}&limit=${amount}&language=zh-tw${
-          game ? "&game=" + game : ""
-        }`,
-        {
-          headers: {
-            "Client-ID": "6zvm0fafre0cbqse6zez4q0nattl7h",
-            Accept: "application/vnd.twitchtv.v5+json"
-          }
+      const url = `https://api.twitch.tv/kraken/streams/?offset=${offset}&limit=${amount}&language=zh-tw${
+        game ? "&game=" + game : ""
+      }`;
+      const { streams } = await this.$axios.$get(url, {
+        headers: {
+          "Client-ID": "6zvm0fafre0cbqse6zez4q0nattl7h",
+          Accept: "application/vnd.twitchtv.v5+json"
         }
-      );
+      });
       if (needTags) {
         return await streams.map(async x => ({
           id: x.channel._id.toString(),
@@ -141,6 +134,31 @@ Vue.mixin({
           tags: []
         }));
       }
+    },
+    async getTwitchStream(id) {
+      return [
+        (
+          await this.$axios.$get(`https://api.twitch.tv/kraken/streams/${id}`, {
+            headers: {
+              "Client-ID": "6zvm0fafre0cbqse6zez4q0nattl7h",
+              Accept: "application/vnd.twitchtv.v5+json"
+            }
+          })
+        ).stream
+      ].map(x => ({
+        id: x.channel._id.toString(),
+        source: `https://player.twitch.tv/?channel=${x.channel.name}&autoplay=true`,
+        preview: x.preview.template,
+        viewers: x.viewers,
+        streamer_image: x.channel.logo,
+        title: x.channel.status,
+        name: x.channel.name,
+        streamer_name: x.channel.display_name,
+        game: x.game,
+        description: x.channel.description,
+        chatSource: `https://www.twitch.tv/embed/${x.channel.name}/chat`,
+        platform: "twitch"
+      }))[0];
     },
     async getTwitchTagsInfo(id) {
       return (

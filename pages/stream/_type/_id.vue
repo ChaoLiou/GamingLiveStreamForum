@@ -52,115 +52,29 @@ export default {
   },
   mounted() {
     if (this.$route.params.id) {
-      if (this.$route.params.type === "douyu") {
-        this.getDouyuStream(this.$route.params.id);
-        this.getDouyuStreams(0, 13);
-      } else if (this.$route.params.type === "youtube") {
+      if (this.$route.params.type === "youtube") {
         this.getYoutubeStream(this.$route.params.id).then(
           stream => (this.stream = stream)
         );
         this.getYoutubeStreams(0, 13).then(streams => (this.streams = streams));
       } else if (this.$route.params.type === "twitch") {
-        this.getStream(this.$route.params.id);
-        this.getStreams(13);
+        this.getTwitchStream(this.$route.params.id).then(
+          stream => (this.stream = stream)
+        );
+        this.getTwitchStreams(0, 13, true).then(streams => {
+          streams.forEach(s => s.then(res => this.streams.push(res)));
+        });
+      } else {
+        this.getStream(this.$route.params.id).then(
+          stream => (this.stream = stream)
+        );
+        this.getStreams(0, 13, { src: this.$route.params.type }).then(
+          streams => (this.streams = streams)
+        );
       }
     }
   },
-  methods: {
-    async getStream(id) {
-      this.stream = [
-        (await this.$axios.$get(`https://api.twitch.tv/kraken/streams/${id}`, {
-          headers: {
-            "Client-ID": "6zvm0fafre0cbqse6zez4q0nattl7h",
-            Accept: "application/vnd.twitchtv.v5+json"
-          }
-        })).stream
-      ].map(x => ({
-        id: x.channel._id.toString(),
-        source: `https://player.twitch.tv/?channel=${x.channel.name}&autoplay=true`,
-        preview: x.preview.template,
-        viewers: x.viewers,
-        streamer_image: x.channel.logo,
-        title: x.channel.status,
-        name: x.channel.name,
-        streamer_name: x.channel.display_name,
-        game: x.game,
-        description: x.channel.description,
-        chatSource: `https://www.twitch.tv/embed/${x.channel.name}/chat`,
-        platform: "Twitch"
-      }))[0];
-    },
-    async getDouyuStream(id) {
-      const aid = "12345";
-      this.stream = [
-        (await this.$axios.$get(
-          `https://woolive.ark-program.com/stream/findByBaseId/${id}`
-        )).info
-      ].map(x => ({
-        id: x.baseId,
-        source: `https://open.douyu.com/tpl/h5/chain2/${aid}/${x.roomId}`,
-        preview: x.roomImg,
-        viewers: x.online,
-        streamer_image: x.avatar,
-        title: x.roomName,
-        streamer_name: x.ownerName,
-        game: x.gameName,
-        description: x.roomDesc,
-        platform: "斗魚直播",
-        externalLink: x.streamUrl,
-        follows: x.fans
-      }))[0];
-    },
-    async getStreams(amount) {
-      const { streams, _total } = await this.$axios.$get(
-        `https://api.twitch.tv/kraken/streams/?limit=${
-          amount ? amount : 5
-        }&language=zh-tw`,
-        {
-          headers: {
-            "Client-ID": "6zvm0fafre0cbqse6zez4q0nattl7h",
-            Accept: "application/vnd.twitchtv.v5+json"
-          }
-        }
-      );
-      this.streams = streams.map(x => ({
-        id: x.channel._id.toString(),
-        source: `https://player.twitch.tv/?channel=${x.channel.name}&autoplay=true`,
-        preview: x.preview.template,
-        viewers: x.viewers,
-        streamer_image: x.channel.logo,
-        title: x.channel.status,
-        name: x.channel.name,
-        streamer_name: x.channel.display_name,
-        game: x.game,
-        description: x.channel.description,
-        chatSource: `https://www.twitch.tv/embed/${x.channel.name}/chat`,
-        platform: "Twitch"
-      }));
-    },
-    async getDouyuStreams(begin, size) {
-      const aid = "12345";
-      const streams = await this.$axios.$get(
-        `https://woolive.ark-program.com/stream/list?src=douyu&begin=${
-          begin ? begin : 0
-        }&size=${size ? size : 4}`
-      );
-      this.streams = streams.map(x => ({
-        id: x.baseId,
-        source: `https://open.douyu.com/tpl/h5/chain2/${aid}/${x.roomId}`,
-        preview: x.roomImg,
-        viewers: x.online,
-        streamer_image: x.avatar,
-        title: x.roomName,
-        streamer_name: x.ownerName,
-        game: x.gameName,
-        description: x.roomDesc,
-        platform: "斗魚直播",
-        externalLink: x.streamUrl,
-        follows: x.fans
-      }));
-    }
-  }
+  methods: {}
 };
 </script>
 <style scoped>

@@ -8,7 +8,11 @@
         <div class="f-stream__title">{{stream.title}}</div>
       </div>
       <div class="f-stream__title-video">
+        <f-link v-if="stream.externalLink" :link="stream.externalLink" external>
+          <f-image-preview :image="stream.preview"></f-image-preview>
+        </f-link>
         <iframe
+          v-else
           :src="stream.source"
           height="100%"
           width="100%"
@@ -51,7 +55,13 @@
 </template>
 <script>
 import formatter from "@/assets/utils/formatter";
+import FLink from "@/components/FLink";
+import FImagePreview from "@/components/FImagePreview";
 export default {
+  components: {
+    FLink,
+    FImagePreview
+  },
   props: {
     stream: {
       type: Object,
@@ -101,10 +111,10 @@ export default {
 }
 .f-stream__chat {
   position: fixed;
-  top: 114px;
-  right: 100px;
+  top: 138px;
+  right: 0px;
   width: 340px;
-  height: calc(100% - 150px);
+  height: calc(100% - 174px);
 }
 .stream-info {
   display: grid;
@@ -119,6 +129,9 @@ export default {
 }
 .stream-info__content {
   background-color: #fafafa;
+}
+.f-link {
+  height: 100%;
 }
 @media (min-width: 1900px) {
   .f-stream {

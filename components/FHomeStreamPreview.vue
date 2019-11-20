@@ -3,37 +3,22 @@
     <v-card class="stream-preview__container">
       <div class="stream-frame__block" v-show="frameLoaded && player">
         <div class="stream-frame__shadow"></div>
-        <f-link
-          :link="stream.externalLink ? stream.externalLink : streamLink"
-          :external="!!stream.externalLink"
-        >
+        <f-link :link="streamLink">
           <div class="stream-frame__info stream-brief">
             <v-avatar size="96px" tile>
               <v-img :src="logoImageSource"></v-img>
             </v-avatar>
             <div class="stream-brief__content">
-              <div
-                class="stream-brief__title text-truncate"
-                :title="stream.title"
-              >
+              <div class="stream-brief__title text-truncate" :title="stream.title">
                 <a>{{ stream.title }}</a>
               </div>
-              <div
-                class="stream-brief__name text-truncate"
-                :title="stream.streamer_name"
-              >
+              <div class="stream-brief__name text-truncate" :title="stream.streamer_name">
                 <a>{{ stream.streamer_name }}</a>
               </div>
-              <div
-                class="stream-brief__game text-truncate"
-                :title="stream.game"
-              >
+              <div class="stream-brief__game text-truncate" :title="stream.game">
                 <a>{{ stream.game }}</a>
               </div>
-              <div
-                class="stream-brief__platform text-truncate"
-                :title="stream.platform"
-              >
+              <div class="stream-brief__platform text-truncate" :title="stream.platform">
                 <a>{{ stream.platform }}</a>
               </div>
             </div>
@@ -41,7 +26,7 @@
         </f-link>
       </div>
       <iframe
-        v-show="frameLoaded && player"
+        v-show="frameLoaded && player && !stream.externalLink"
         ref="frame"
         :src="streamSource"
         height="100%"
@@ -50,32 +35,29 @@
         scrolling="no"
         allowfullscreen="true"
       ></iframe>
-      <v-img
-        width="100%"
-        height="100%"
-        :src="imageSource"
-        max-height="100%"
-        max-width="100%"
-      >
-        <f-link
-          class="stream-link"
-          :link="stream.externalLink ? stream.externalLink : streamLink"
-          :external="!!stream.externalLink"
-          :style="{ right: right ? '0px' : undefined }"
-        >
-          <v-avatar tile>
-            <v-img :src="logoImageSource"></v-img>
-          </v-avatar>
-        </f-link>
-      </v-img>
+      <f-link :link="stream.externalLink" external>
+        <f-image-preview :image="imageSource">
+          <f-link
+            class="stream-link"
+            :link="streamLink"
+            :style="{ right: right ? '0px' : undefined }"
+          >
+            <v-avatar tile>
+              <v-img :src="logoImageSource"></v-img>
+            </v-avatar>
+          </f-link>
+        </f-image-preview>
+      </f-link>
     </v-card>
   </div>
 </template>
 <script>
 import FLink from "@/components/FLink";
+import FImagePreview from "@/components/FImagePreview";
 export default {
   components: {
-    FLink
+    FLink,
+    FImagePreview
   },
   props: {
     stream: {
@@ -225,5 +207,14 @@ export default {
 .stream-frame__block:hover .stream-frame__info,
 .stream-frame__block:hover .stream-frame__shadow {
   display: grid;
+}
+.f-link {
+  height: 100%;
+  max-height: 100%;
+  width: 100%;
+  max-width: 100%;
+}
+.f-image-preview {
+  border-radius: 15px;
 }
 </style>

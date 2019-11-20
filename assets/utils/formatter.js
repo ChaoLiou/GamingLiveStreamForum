@@ -66,6 +66,8 @@ function fpreview(stream) {
   switch (stream.src) {
     case "bilibili":
       return stream.roomImg.replace("https:", "http:");
+    case "now":
+      return stream.roomImg.replace("/360x", "/");
     default:
       return stream.roomImg;
   }

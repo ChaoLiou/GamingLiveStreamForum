@@ -11,10 +11,7 @@
       allowfullscreen="true"
     ></iframe>
     <template v-else>
-      <f-link
-        :link="stream.externalLink ? stream.externalLink : streamLink"
-        :external="!!stream.externalLink"
-      >
+      <f-link :link="streamLink">
         <v-img
           lazy
           :src="imageSource"
