@@ -35,7 +35,7 @@
         scrolling="no"
         allowfullscreen="true"
       ></iframe>
-      <f-link :link="stream.externalLink" external>
+      <f-link :link="streamLink">
         <f-image-preview :image="imageSource">
           <f-link
             class="stream-link"
