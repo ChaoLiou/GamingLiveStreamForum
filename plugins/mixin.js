@@ -10,7 +10,7 @@ Vue.mixin({
       apiOrigin: "https://woolive.ark-program.com",
       // googleAPIKey: "AIzaSyBP2admYTppwm4L9FP7YpAX2DAA3oO61sU",
       googleAPIKey: "AIzaSyA7m7LP26mFpKNuRGa7BQFGwuv3w-HpJz4",
-      internals: ["youtube", "twitch"]
+      internals: ["youtube", "twitch", "douyu"]
     };
   },
   methods: {

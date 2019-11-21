@@ -36,8 +36,8 @@
       </div>
     </v-footer>
     <v-dialog v-model="dialog" width="500px" scrollable>
-      <f-login-form @close="dialog = false"></f-login-form>
-      <!-- <f-register-form @close="dialog = false"></f-register-form> -->
+      <f-register-form v-if="needRegisteration" @close="closeRegisterForm"></f-register-form>
+      <f-login-form v-else @close="dialog = false" @login="needRegisteration = true"></f-login-form>
     </v-dialog>
   </v-app>
 </template>
@@ -53,8 +53,15 @@ export default {
   data() {
     return {
       dialog: false,
-      rev
+      rev,
+      needRegisteration: false
     };
+  },
+  methods: {
+    closeRegisterForm() {
+      this.dialog = false;
+      this.needRegisteration = false;
+    }
   }
 };
 </script>

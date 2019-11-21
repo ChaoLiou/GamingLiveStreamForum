@@ -65,7 +65,7 @@
           <v-checkbox hide-details height="24px" v-model="remainLoginStatus" label="保持登入狀態"></v-checkbox>
         </div>
         <div class="login-tips">公用電腦請記得登出，或開啟無痕模式</div>
-        <v-btn block color="#8e75ae" dark>登入</v-btn>
+        <v-btn block color="#8e75ae" dark @click="$emit('login')">登入</v-btn>
       </div>
       <!-- <div class="divider-container">
         <div class="line"></div>
