@@ -67,7 +67,7 @@
         <div class="login-tips">公用電腦請記得登出，或開啟無痕模式</div>
         <v-btn block color="#8e75ae" dark>登入</v-btn>
       </div>
-      <div class="divider-container">
+      <!-- <div class="divider-container">
         <div class="line"></div>
         <div>或是</div>
         <div class="line"></div>
@@ -75,7 +75,7 @@
       <div class="oauth-container">
         <div>微信登入</div>
         <div>QQ登入</div>
-      </div>
+      </div>-->
       <div>
         <div class="login-claims">
           登入後即代表您同意牽手論壇

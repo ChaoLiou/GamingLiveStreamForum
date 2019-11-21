@@ -88,7 +88,7 @@ export default {
   mounted() {
     this.getStreams(0, 20).then(streams => (this.streams.all = streams));
     platforms
-      .filter(x => !x.usingOfficalAPI)
+      .filter(x => !x.usingOfficialAPI)
       .forEach(p => {
         this.getStreams(0, 8, { src: p.id }).then(
           streams => (this.streams[p.id] = streams)
