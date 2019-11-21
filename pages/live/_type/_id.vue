@@ -136,7 +136,7 @@ export default {
       });
     } else {
       platforms
-        .filter(x => !x.usingOfficalAPI)
+        .filter(x => !x.usingOfficialAPI)
         .forEach(p => {
           this.getStreams(0, 20, { src: p.id }).then(
             streams => (this.streams[p.id] = streams)
