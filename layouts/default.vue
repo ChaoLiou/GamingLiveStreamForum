@@ -17,7 +17,7 @@
         </div>
       </v-toolbar-items>
       <v-spacer></v-spacer>
-      <div class="login-container" @click="dialog = true">
+      <div class="login-container" @click="openLoginForm">
         <v-btn>登入/註冊</v-btn>
       </div>
     </v-toolbar>
@@ -37,7 +37,13 @@
     </v-footer>
     <v-dialog v-model="dialog" width="500px" scrollable>
       <f-register-form v-if="needRegisteration" @close="closeRegisterForm"></f-register-form>
-      <f-login-form v-else @close="dialog = false" @login="needRegisteration = true"></f-login-form>
+      <f-login-form
+        v-else
+        :captcha-key="captchaKey"
+        @close="dialog = false"
+        @login="needRegisteration = true"
+        @refresh-captcha="generateCaptchaKey"
+      ></f-login-form>
     </v-dialog>
   </v-app>
 </template>
@@ -45,6 +51,7 @@
 import rev from "@/build/rev";
 import FLoginForm from "@/components/FLoginForm";
 import FRegisterForm from "@/components/FRegisterForm";
+import helper from "@/assets/utils/helper";
 export default {
   components: {
     FLoginForm,
@@ -54,10 +61,18 @@ export default {
     return {
       dialog: false,
       rev,
-      needRegisteration: false
+      needRegisteration: false,
+      captchaKey: ""
     };
   },
   methods: {
+    openLoginForm() {
+      this.dialog = true;
+      this.generateCaptchaKey();
+    },
+    generateCaptchaKey() {
+      this.captchaKey = helper.randomString(5, "aA#");
+    },
     closeRegisterForm() {
       this.dialog = false;
       this.needRegisteration = false;

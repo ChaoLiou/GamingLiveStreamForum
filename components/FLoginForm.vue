@@ -36,14 +36,17 @@
       </div>
       <div class="captcha-container">
         <v-label>圖文驗證碼</v-label>
-        <v-text-field
-          dark
-          single-line
-          hide-details
-          outline
-          v-model="captchaInput"
-          placeholder="請輸入圖片內文字及數字"
-        ></v-text-field>
+        <div class="captcha-grid">
+          <v-text-field
+            dark
+            single-line
+            hide-details
+            outline
+            v-model="captchaKey"
+            placeholder="請輸入圖片內文字及數字"
+          ></v-text-field>
+          <f-identify :identify-code="captchaKey" @refresh="$emit('refresh-captcha')"></f-identify>
+        </div>
       </div>
       <div class="sms-validation-container">
         <v-label>簡訊驗證碼</v-label>
@@ -88,7 +91,17 @@
   </v-card>
 </template>
 <script>
+import FIdentify from "@/components/FIdentify";
 export default {
+  components: {
+    FIdentify
+  },
+  props: {
+    captchaKey: {
+      type: String,
+      default: ""
+    }
+  },
   data() {
     return {
       areaCodes: ["CN+86"],
@@ -100,7 +113,8 @@ export default {
       rememberPhoneNumber: false,
       remainLoginStatus: false
     };
-  }
+  },
+  mounted() {}
 };
 </script>
 <style scoped>
@@ -161,9 +175,10 @@ export default {
   margin-top: 5px;
   color: red;
 }
-.sms-validation-grid {
+.sms-validation-grid,
+.captcha-grid {
   display: grid;
-  grid-template-columns: auto 110px;
+  grid-template-columns: auto 150px;
 }
 .v-btn {
   border-radius: 5px;
@@ -173,6 +188,9 @@ export default {
   margin-top: 0px;
   margin-bottom: 0px;
   margin-right: 0px;
+}
+.f-identify {
+  margin-left: 8px;
 }
 .login-container {
   margin-top: 5px !important;
