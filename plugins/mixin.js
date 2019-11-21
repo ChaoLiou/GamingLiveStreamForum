@@ -10,7 +10,7 @@ Vue.mixin({
       apiOrigin: "https://woolive.ark-program.com",
       // googleAPIKey: "AIzaSyBP2admYTppwm4L9FP7YpAX2DAA3oO61sU",
       googleAPIKey: "AIzaSyA7m7LP26mFpKNuRGa7BQFGwuv3w-HpJz4",
-      toExternals: ["bilibili", "now"]
+      internals: ["youtube", "twitch"]
     };
   },
   methods: {
@@ -26,7 +26,7 @@ Vue.mixin({
         game: raw.sort,
         description: raw.roomDesc,
         platform: raw.src,
-        externalLink: this.toExternals.includes(raw.src) ? raw.streamUrl : "",
+        externalLink: this.internals.includes(raw.src) ? "" : raw.streamUrl,
         follows: raw.fans,
         tags: raw.tags ? raw.tags : []
       };

@@ -75,10 +75,10 @@ export default {
 }
 </style>
 <style>
-.f-image-preview .v-image .v-image__image {
+.f-image-preview.v-image .v-image__image {
   transition: all 0.3s ease-out;
 }
-.f-image-preview .v-image:hover .v-image__image {
+.f-image-preview.v-image:hover .v-image__image {
   transform: scale(1.1);
 }
 </style>

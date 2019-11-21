@@ -65,7 +65,8 @@ export default {
         bilibili: [],
         twitch: [],
         now: [],
-        youtube: []
+        youtube: [],
+        cc163: []
       },
       streamsByGame: {
         jdqs: [],
@@ -134,15 +135,13 @@ export default {
         );
       });
     } else {
-      this.getStreams(0, 20, { src: "douyu" }).then(
-        streams => (this.streams.douyu = streams)
-      );
-      this.getStreams(0, 20, { src: "bilibili" }).then(
-        streams => (this.streams.bilibili = streams)
-      );
-      this.getStreams(0, 20, { src: "now" }).then(
-        streams => (this.streams.now = streams)
-      );
+      platforms
+        .filter(x => !x.usingOfficalAPI)
+        .forEach(p => {
+          this.getStreams(0, 20, { src: p.id }).then(
+            streams => (this.streams[p.id] = streams)
+          );
+        });
       this.getTwitchStreams(0, 20, true).then(promises => {
         promises.forEach(p => p.then(res => this.streams.twitch.push(res)));
       });

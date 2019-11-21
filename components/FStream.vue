@@ -49,7 +49,15 @@
       </div>
     </div>
     <div class="f-stream__chat">
-      <iframe frameborder="0" scrolling="yes" :src="stream.chatSource" height="100%" width="100%"></iframe>
+      <f-temp-ad v-if="stream.externalLink"></f-temp-ad>
+      <iframe
+        v-else
+        frameborder="0"
+        scrolling="yes"
+        :src="stream.chatSource"
+        height="100%"
+        width="100%"
+      ></iframe>
     </div>
   </div>
 </template>
@@ -57,10 +65,12 @@
 import formatter from "@/assets/utils/formatter";
 import FLink from "@/components/FLink";
 import FImagePreview from "@/components/FImagePreview";
+import FTempAd from "@/components/FTempAd";
 export default {
   components: {
     FLink,
     FImagePreview
+    // FTempAd
   },
   props: {
     stream: {

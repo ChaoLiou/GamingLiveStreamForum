@@ -72,7 +72,8 @@ export default {
         bilibili: [],
         twitch: [],
         now: [],
-        youtube: []
+        youtube: [],
+        cc163: []
       },
       platforms,
       selectedRankingType: -1
@@ -86,15 +87,13 @@ export default {
   },
   mounted() {
     this.getStreams(0, 20).then(streams => (this.streams.all = streams));
-    this.getStreams(0, 8, { src: "douyu" }).then(
-      streams => (this.streams.douyu = streams)
-    );
-    this.getStreams(0, 8, { src: "bilibili" }).then(
-      streams => (this.streams.bilibili = streams)
-    );
-    this.getStreams(0, 8, { src: "now" }).then(
-      streams => (this.streams.now = streams)
-    );
+    platforms
+      .filter(x => !x.usingOfficalAPI)
+      .forEach(p => {
+        this.getStreams(0, 8, { src: p.id }).then(
+          streams => (this.streams[p.id] = streams)
+        );
+      });
     this.getTwitchStreams(0, 8, true).then(streams => {
       streams.forEach(s => s.then(res => this.streams.twitch.push(res)));
     });

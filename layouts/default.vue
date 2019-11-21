@@ -17,7 +17,7 @@
         </div>
       </v-toolbar-items>
       <v-spacer></v-spacer>
-      <div class="login-container">
+      <div class="login-container" @click="dialog = true">
         <v-btn>登入/註冊</v-btn>
       </div>
     </v-toolbar>
@@ -35,13 +35,24 @@
         - build at {{rev.build_dt}}
       </div>
     </v-footer>
+    <v-dialog v-model="dialog" width="500px" scrollable>
+      <f-login-form @close="dialog = false"></f-login-form>
+      <!-- <f-register-form @close="dialog = false"></f-register-form> -->
+    </v-dialog>
   </v-app>
 </template>
 <script>
 import rev from "@/build/rev";
+import FLoginForm from "@/components/FLoginForm";
+import FRegisterForm from "@/components/FRegisterForm";
 export default {
+  components: {
+    FLoginForm,
+    FRegisterForm
+  },
   data() {
     return {
+      dialog: false,
       rev
     };
   }
@@ -49,7 +60,7 @@ export default {
 </script>
 <style scoped>
 .v-toolbar {
-  z-index: 9999;
+  z-index: 999;
   background: linear-gradient(180deg, #dab4ff, #eadbf8);
   height: 86px;
 }
@@ -109,5 +120,10 @@ export default {
   height: 100%;
   display: grid;
   align-items: center;
+}
+</style>
+<style>
+.v-dialog__content {
+  z-index: 1000 !important;
 }
 </style>

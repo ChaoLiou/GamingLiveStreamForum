@@ -15,7 +15,8 @@
     "title": "Twitch",
     "icon": "/platform_icons/icn_twitch_B.png",
     "link": "https://www.twitch.tv/",
-    "id": "twitch"
+    "id": "twitch",
+    "usingOfficialAPI": true
   },
   {
     "title": "Now直播",
@@ -27,6 +28,13 @@
     "title": "Youtube",
     "icon": "/platform_icons/icn_Youtube_B.png",
     "link": "https://www.youtube.com/",
-    "id": "youtube"
+    "id": "youtube",
+    "usingOfficialAPI": true
+  },
+  {
+    "title": "CC直播",
+    "icon": "/platform_icons/icn_CC_B.png",
+    "link": "https://cc.163.com/",
+    "id": "cc163"
   }
 ]
