@@ -10,12 +10,15 @@
         viewBox="0 0 80 100"
         preserveAspectRatio="none"
       >
-        <path d="M80,100
+        <path
+          d="M80,100
            L80,0
-           C30,5 50,95 0,100z" :fill="backgroundColor" />
+           C30,5 50,95 0,100z"
+          :fill="backgroundColor"
+        />
       </svg>
       <div class="content" :style="contentStyles">
-        <nuxt-link :to="to">{{text}}</nuxt-link>
+        <nuxt-link :to="to">{{ text }}</nuxt-link>
       </div>
     </div>
   </div>
@@ -87,7 +90,7 @@ export default {
       };
     },
     barStyles() {
-      return { height: `${this.height}px` };
+      return { height: `${this.height + 3}px` };
     }
   }
 };
@@ -98,7 +101,7 @@ export default {
   position: relative;
   color: white;
   width: 100%;
-  border: 0.5px rgb(218, 216, 216) solid;
+  border: 1px rgb(0, 0, 0, 0.5) solid;
 }
 .background {
   position: absolute;
@@ -135,6 +138,6 @@ export default {
   top: 0px;
   position: absolute;
   z-index: 3;
-  border-bottom: 0.5px rgb(218, 216, 216) solid;
+  /* border-bottom: 1px rgb(0, 0, 0, 0.5) solid; */
 }
 </style>

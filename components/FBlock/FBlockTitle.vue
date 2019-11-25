@@ -6,23 +6,32 @@
       <div class="triangle" :style="triangleStyles"></div>
       <div class="rectangle" :style="rectangleStyles"></div>
       <div class="content" :style="contentStyles">
-        <div v-if="tabs.length > 0" @click="tabChange(-1)">{{text}}</div>
-        <nuxt-link v-else :to="to">{{text}}</nuxt-link>
+        <div v-if="tabs.length > 0" @click="tabChange(-1)">{{ text }}</div>
+        <nuxt-link v-else :to="to">{{ text }}</nuxt-link>
       </div>
       <div class="more" v-if="more" :style="moreLinkStyles">
-        <nuxt-link :to="to">{{moreTitle}}></nuxt-link>
+        <nuxt-link :to="to">{{ moreTitle }}></nuxt-link>
       </div>
       <div v-else class="tab-bar" :style="tabBarStyles">
         <div class="tab-container" :style="tabContainerStyles">
           <div
             v-for="(tab, index) in tabs"
             :key="index"
-            :class="{ 'selected': selectedIndex === index }"
+            :class="{ selected: selectedIndex === index }"
             :style="getTabStyles(index)"
           >
             <div class="tab__left-trangle" :style="tabLeftTriangleStyles"></div>
-            <div class="tab__content" :style="tabContentStyles" @click="tabChange(index)">{{tab}}</div>
-            <div class="tab__right-trangle" :style="tabRightTriangleStyles"></div>
+            <div
+              class="tab__content"
+              :style="tabContentStyles"
+              @click="tabChange(index)"
+            >
+              {{ tab }}
+            </div>
+            <div
+              class="tab__right-trangle"
+              :style="tabRightTriangleStyles"
+            ></div>
           </div>
         </div>
       </div>
@@ -146,7 +155,8 @@ export default {
     barStyles() {
       return {
         height: `${this.height}px`,
-        "margin-left": this.icon ? `${this.barMarginLeft}px` : undefined
+        "margin-left": this.icon ? `${this.barMarginLeft}px` : undefined,
+        width: `calc(100% - 1px)`
       };
     },
     tabBarStyles() {

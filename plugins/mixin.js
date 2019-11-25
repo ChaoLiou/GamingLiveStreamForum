@@ -8,12 +8,36 @@ Vue.mixin({
   data() {
     return {
       apiOrigin: "https://woolive.ark-program.com",
+      memberApiPrefix: "http://13.76.2.148:8000/api/v1",
       // googleAPIKey: "AIzaSyBP2admYTppwm4L9FP7YpAX2DAA3oO61sU",
       googleAPIKey: "AIzaSyA7m7LP26mFpKNuRGa7BQFGwuv3w-HpJz4",
-      internals: ["youtube", "twitch", "douyu"]
+      internals: ["youtube", "twitch", "douyu"],
+      cookie_ns: "glsf",
+      cookieKeys: ["id", "username", "token"]
     };
   },
+  computed: {
+    cookieKeysWithNS() {
+      return this.cookieKeys.map(key => `${this.cookie_ns}.${key}`);
+    }
+  },
   methods: {
+    async getMemberByLoginuser() {
+      const id = this.getCookie("id");
+      if (!!id) {
+        return await this.login(parseInt(id));
+      }
+    },
+    async login(id) {
+      const member = await this.$axios.$get(
+        `${this.memberApiPrefix}/user/${id}`
+      );
+      return {
+        ...member,
+        id,
+        avatar: "/nobody.jpg"
+      };
+    },
     mappingStream(raw) {
       return {
         id: raw.baseId,
@@ -30,6 +54,21 @@ Vue.mixin({
         follows: raw.fans,
         tags: raw.tags ? raw.tags : []
       };
+    },
+    setCookie(data, key) {
+      const fullKey = `${this.cookie_ns}.${key}`;
+      this.$cookies.set(fullKey, data);
+    },
+    getCookie(key) {
+      return this.$cookies.get(`${this.cookie_ns}.${key}`);
+    },
+    removeCookie(key) {
+      this.$cookies.remove(key);
+    },
+    logout() {
+      this.cookieKeysWithNS.forEach(key => {
+        this.removeCookie(key);
+      });
     },
     async getNews(begin = 0, size = 20) {
       const url = `${this.apiOrigin}/news/list/gamer?begin=${begin}&size=${size}`;

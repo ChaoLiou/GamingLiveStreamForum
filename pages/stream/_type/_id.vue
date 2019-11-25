@@ -14,12 +14,15 @@
       </div>
       <div class="stream-below-info">
         <f-block-box title="播主資訊" background-color="#f2ecf6">
-          <div>{{stream ? stream.description : ''}}</div>
+          <div v-html="stream.description"></div>
         </f-block-box>
       </div>
       <div class="stream-comment">
         <f-block-box title="熱門推薦" background-color="#f2ecf6">
-          <f-stream-container :col-count="3" :streams="filteredStreams"></f-stream-container>
+          <f-stream-container
+            :col-count="3"
+            :streams="filteredStreams"
+          ></f-stream-container>
         </f-block-box>
       </div>
     </div>

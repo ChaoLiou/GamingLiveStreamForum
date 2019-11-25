@@ -12,8 +12,10 @@
       :more-title="moreTitle"
       :font-size="fontSize"
       :line-height="lineHeight"
+      :content-left-margin="contentLeftMargin"
+      :content-right-margin="contentRightMargin"
       :background-color="backgroundColor"
-      @tab-change="(index) => $emit('tab-change', index)"
+      @tab-change="index => $emit('tab-change', index)"
     ></f-block-title>
     <div class="content">
       <slot></slot>
@@ -64,6 +66,14 @@ export default {
     icon: {
       type: String,
       default: ""
+    },
+    contentLeftMargin: {
+      type: Number,
+      default: 38
+    },
+    contentRightMargin: {
+      type: Number,
+      default: 10
     }
   }
 };
@@ -74,8 +84,7 @@ export default {
 }
 .content {
   display: grid;
-  padding: 15px 0px;
-  margin: 10px 0px 40px 0px;
+  padding: 0px 0px 40px 0px;
   border-radius: 5px;
 }
 .f-block__icon {

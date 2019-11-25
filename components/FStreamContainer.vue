@@ -1,5 +1,5 @@
 <template>
-  <div class="f-stream-cotainer">
+  <div class="f-stream-container">
     <div class="stream-grid" :style="{ 'grid-template-columns': `repeat(${colCount}, 1fr)`}">
       <f-stream-preview
         v-for="(item, index) in streams"

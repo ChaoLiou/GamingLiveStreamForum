@@ -1,6 +1,11 @@
 <template>
   <div class="f-identify">
-    <canvas id="f-canvas" :width="contentWidth" :height="contentHeight" @click="$emit('refresh')"></canvas>
+    <canvas
+      id="f-canvas"
+      :width="contentWidth"
+      :height="contentHeight"
+      @click="$emit('refresh')"
+    ></canvas>
   </div>
 </template>
 <script>
@@ -52,7 +57,7 @@ export default {
     contentHeight: {
       //容器高度
       type: Number,
-      default: 38
+      default: 33
     }
   },
 

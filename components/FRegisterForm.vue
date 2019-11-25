@@ -1,5 +1,6 @@
 <template>
   <v-card class="f-register-form" color="#eadbf8">
+    {{ data }}
     <v-btn dark class="close-btn" icon color="#8e75ae" @click="$emit('close')">
       <v-icon>clear</v-icon>
     </v-btn>
@@ -19,7 +20,7 @@
         />
       </div>
       <v-btn color="#8e75ae" dark @click="choose">上傳</v-btn>
-      <div class="validation-message">{{validationMessage}}</div>
+      <div class="validation-message">{{ validationMessage.avatar }}</div>
       <div class="upload-info">檔案格式：JPG﹑PNG(500KB 以內)</div>
     </v-card-title>
     <v-card-text class="content">
@@ -28,11 +29,21 @@
         <v-text-field
           dark
           outline
+          single-line
+          hide-details
           v-model="nickname"
           placeholder="取個讓人印象深刻的暱稱吧"
-          counter="16"
-          :rules="[v => !!v || '暱稱不能為空', v => v.length <= 16 || '超過字數']"
+          @input="nicknameInput"
         ></v-text-field>
+        <div class="nickname-input__container">
+          <div class="validation-message">{{ validationMessage.nickname }}</div>
+          <div
+            :class="[
+              'nickname-counter',
+              isNicknameOutOfLimit ? 'validation-message' : ''
+            ]"
+          >{{ nicknameCounter }} / {{ nicknameCounterLimits }}</div>
+        </div>
       </div>
       <div>
         <v-label>性別：</v-label>
@@ -50,28 +61,104 @@
         ></v-select>
       </div>
       <div class="register-container">
-        <v-btn block color="#8e75ae" dark>完成</v-btn>
+        <v-btn block color="#8e75ae" dark @click="register">完成</v-btn>
       </div>
     </v-card-text>
   </v-card>
 </template>
 <script>
 export default {
+  props: {
+    data: {
+      type: Object,
+      default() {
+        return {};
+      }
+    }
+  },
   data() {
     return {
       nickname: "",
       gender: "",
       avatar: undefined,
-      validationMessage: "",
-      selectedGender: "1",
-      genders: [
-        { text: "男生", value: "1" },
-        { text: "女生", value: "0" },
-        { text: "你猜猜", value: "-1" }
-      ]
+      validationMessage: {
+        nickname: "",
+        avatar: ""
+      },
+      selectedGender: 1,
+      genders: [{ text: "男生", value: 1 }, { text: "女生", value: 2 }],
+      otpFailed: false,
+      memberUpdated: true,
+      nicknameCounter: 0,
+      nicknameCounterLimits: 16
     };
   },
+  computed: {
+    isNicknameOutOfLimit() {
+      return this.nicknameCounter > this.nicknameCounterLimits;
+    }
+  },
   methods: {
+    nicknameInput(value) {
+      this.validationMessage.nickname = "";
+      let counter = 0;
+      [...value].forEach(char => {
+        if (/[\u4e00-\u9fa5\u3105-\u3129]/.test(char)) {
+          counter += 2;
+        } else {
+          counter++;
+        }
+      });
+      this.nicknameCounter = counter;
+    },
+    async register() {
+      if (!this.nickname) {
+        this.validationMessage.nickname = "暱稱不能為空";
+        return;
+      } else if (this.isNicknameOutOfLimit) {
+        this.validationMessage.nickname = "暱稱太長了";
+      }
+
+      let response = {};
+      try {
+        response = await this.$axios.post(
+          `${this.memberApiPrefix}/user/LoginOrRegister/`,
+          { ...this.data }
+        );
+      } catch (err) {
+        this.otpFailed =
+          err.response.status === 403 &&
+          err.response.data === "otp auth failed!";
+        console.dir(err);
+      }
+
+      if (!this.otpFailed && response && response.data) {
+        this.setCookie(response.data.token, "token");
+        this.setCookie(response.data.username, "username");
+        this.setCookie(response.data.id, "id");
+
+        try {
+          const formData = new FormData();
+          formData.append("avatar", this.avatar ? this.avatar : {});
+          formData.append("nickname", this.nickname);
+          formData.append("gender", this.selectedGender);
+          const { data } = await this.$axios.put(
+            `${this.memberApiPrefix}/user/${response.data.id}/`,
+            formData
+          );
+        } catch (err) {
+          this.memberUpdated = false;
+          console.dir(err);
+        }
+
+        if (this.memberUpdated) {
+          this.$emit("register");
+        }
+      } else {
+        console.log("otp auth failed!");
+        console.log({ ...this.data });
+      }
+    },
     async change() {
       const types = ["image/jpeg", "image/jpg", "image/png"];
       const file = this.$refs.fileInput.files[0];
@@ -85,12 +172,12 @@ export default {
             img.src = e.target.result;
           };
           reader.readAsDataURL(file);
-          this.validationMessage = "";
+          this.validationMessage.avatar = "";
         } else {
-          this.validationMessage = "檔案大小超過 500 KB";
+          this.validationMessage.avatar = "檔案大小超過 500 KB";
         }
       } else {
-        this.validationMessage = "檔案類型不是 JPG 或 PNG";
+        this.validationMessage.avatar = "檔案類型不是 JPG 或 PNG";
       }
     },
     choose() {
@@ -159,8 +246,17 @@ img {
   margin-top: 5px;
 }
 .validation-message {
-  margin-top: 5px;
   color: red;
+}
+.nickname-input__container {
+  margin-top: 5px !important;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.nickname-counter {
+  font-size: 16px;
+  font-weight: bold;
+  justify-self: end;
 }
 .gender__select {
   width: 200px;

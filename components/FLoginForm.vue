@@ -26,13 +26,14 @@
         ></v-select>
         <v-text-field
           dark
+          outline
           single-line
           hide-details
-          outline
           v-model="phoneNumber"
           placeholder="請輸入手機號碼"
+          @keyup="validationMessage.phoneNumber = ''"
         ></v-text-field>
-        <div class="validation-message">{{validationMessage}}</div>
+        <div class="validation-message">{{ validationMessage.phoneNumber }}</div>
       </div>
       <div class="captcha-container">
         <v-label>圖文驗證碼</v-label>
@@ -42,11 +43,13 @@
             single-line
             hide-details
             outline
-            v-model="captchaKey"
+            v-model="captchaInput"
             placeholder="請輸入圖片內文字及數字"
+            @keyup="validationMessage.captchaInput = ''"
           ></v-text-field>
           <f-identify :identify-code="captchaKey" @refresh="$emit('refresh-captcha')"></f-identify>
         </div>
+        <div class="validation-message">{{ validationMessage.captchaInput }}</div>
       </div>
       <div class="sms-validation-container">
         <v-label>簡訊驗證碼</v-label>
@@ -58,8 +61,10 @@
             outline
             v-model="smsValidationInput"
             placeholder="請輸入簡訊驗證碼"
+            @keyup="validationMessage.smsValidationInput = ''"
           ></v-text-field>
-          <v-btn color="#8e75ae" dark>取得驗證碼</v-btn>
+          <v-btn color="#8e75ae" dark @click="smsValidation">取得驗證碼</v-btn>
+          <div class="validation-message">{{ validationMessage.smsValidationInput }}</div>
         </div>
       </div>
       <div class="login-container">
@@ -68,7 +73,8 @@
           <v-checkbox hide-details height="24px" v-model="remainLoginStatus" label="保持登入狀態"></v-checkbox>
         </div>
         <div class="login-tips">公用電腦請記得登出，或開啟無痕模式</div>
-        <v-btn block color="#8e75ae" dark @click="$emit('login')">登入</v-btn>
+        <div class="validation-message">{{ validationMessage.login }}</div>
+        <v-btn block color="#8e75ae" dark @click="login">登入</v-btn>
       </div>
       <!-- <div class="divider-container">
         <div class="line"></div>
@@ -104,17 +110,133 @@ export default {
   },
   data() {
     return {
-      areaCodes: ["CN+86"],
-      selectedAreaCode: "CN+86",
-      phoneNumber: "0928123456",
-      captchaInput: "jw62K",
-      smsValidationInput: "123qwe",
-      validationMessage: "手機號碼不能為空",
+      areaCodes: [
+        { text: "CN+86", value: "+86" },
+        { text: "TW+886", value: "+886" }
+      ],
+      selectedAreaCode: "+886",
+      phoneNumber: "0928452690",
+      captchaInput: "",
+      smsValidationInput: "",
+      validationMessage: {
+        phoneNumber: "",
+        captchaInput: "",
+        smsValidationInput: "",
+        login: ""
+      },
       rememberPhoneNumber: false,
-      remainLoginStatus: false
+      remainLoginStatus: false,
+      uuid: ""
     };
   },
-  mounted() {}
+  computed: {
+    trimmedPhoneNumber() {
+      return this.phoneNumber.startsWith("0")
+        ? this.phoneNumber.slice(1)
+        : this.phoneNumber;
+    },
+    fullPhoneNumber() {
+      return `${this.selectedAreaCode}${this.trimmedPhoneNumber}`;
+    }
+  },
+  watch: {
+    captchaKey(value) {
+      this.captchaInput = value;
+    }
+  },
+  mounted() {
+    this.captchaInput = this.captchaKey;
+  },
+  methods: {
+    async login() {
+      if (this.inputValidation()) {
+        const data = {
+          uuid: this.uuid,
+          otp: this.smsValidationInput,
+          username: this.fullPhoneNumber
+        };
+        if (await this.checkUserExists()) {
+          let response = {};
+          let otpFailed = false;
+          try {
+            response = await this.$axios.post(
+              `${this.memberApiPrefix}/user/LoginOrRegister/`,
+              { ...data }
+            );
+          } catch (err) {
+            otpFailed =
+              err.response.status === 403 &&
+              err.response.data === "otp auth failed!";
+            console.dir(err);
+          }
+
+          if (!otpFailed && response && response.data) {
+            this.setCookie(response.data.token, "token");
+            this.setCookie(response.data.username, "username");
+            this.setCookie(response.data.id, "id");
+            this.$emit("loggedin", response.data.id);
+          } else {
+            console.log("otp auth failed!");
+            console.log({ ...this.data });
+          }
+        } else {
+          this.$emit("redirect-register", data);
+        }
+      }
+    },
+    inputValidation() {
+      let success = true;
+      if (!this.phoneNumber) {
+        this.validationMessage.phoneNumber = "手機號碼不能為空";
+        success = false;
+      }
+      if (!this.captchaInput) {
+        this.validationMessage.captchaInput = "圖文驗證碼不能為空";
+        success = false;
+      }
+      if (!this.smsValidationInput) {
+        this.validationMessage.smsValidationInput = "簡訊驗證碼不能為空";
+        success = false;
+      }
+      if (!success) {
+        return false;
+      }
+
+      if (this.captchaInput !== this.captchaKey) {
+        this.validationMessage.login = "圖文驗證碼錯誤";
+        return false;
+      }
+
+      return true;
+    },
+    async checkUserExists() {
+      let response = {};
+      try {
+        response = await this.$axios.get(
+          `${this.memberApiPrefix}/user/check/${this.fullPhoneNumber}`
+        );
+        return response.data === "User exist";
+      } catch (err) {
+        return !(
+          err.response.status === 404 &&
+          err.response.data === "User does not exist"
+        );
+      }
+    },
+    async smsValidation() {
+      const { data } = await this.$axios.post(
+        `${this.memberApiPrefix}/otp/generate/`,
+        {
+          username: this.fullPhoneNumber,
+          time: 90
+        }
+      );
+      if (data && data.uuid) {
+        this.smsValidationInput = data.otp;
+        this.uuid = data.uuid;
+      }
+    }
+  }
 };
 </script>
 <style scoped>
@@ -169,10 +291,10 @@ export default {
   height: 32px;
 }
 .content > div > * {
-  margin-top: 5px;
+  margin-top: 10px;
 }
-.phone-container .validation-message {
-  margin-top: 5px;
+.validation-message {
+  margin-top: 5px !important;
   color: red;
 }
 .sms-validation-grid,
@@ -184,7 +306,7 @@ export default {
   border-radius: 5px;
 }
 .sms-validation-grid .v-btn {
-  height: 30px;
+  height: 35px;
   margin-top: 0px;
   margin-bottom: 0px;
   margin-right: 0px;
@@ -197,7 +319,7 @@ export default {
 }
 .options-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 150px 150px;
 }
 .options-grid > div {
   margin-top: 0px;
@@ -243,45 +365,5 @@ export default {
   font-size: 18px;
   font-weight: bold;
   color: #55287e;
-}
-</style>
-<style>
-.f-login-form .v-text-field .v-input__control {
-  background: #55287e;
-  border-radius: 5px;
-}
-.f-login-form .v-select__selections input {
-  margin: 0px !important;
-  padding: 0px !important;
-}
-.f-login-form .v-input__slot,
-.f-login-form .v-select__selections {
-  min-height: auto !important;
-  max-height: 32px !important;
-  border-radius: 5px !important;
-  border-color: #55287e !important;
-}
-.f-login-form .v-input__slot:hover {
-  border-color: #55287e !important;
-}
-.f-login-form .v-input__append-inner {
-  margin-top: 0px !important;
-}
-.f-login-form .v-text-field__slot input {
-  margin: 0px !important;
-  padding: 3px 0px !important;
-}
-.v-menu__content .v-list {
-  background: #55287e;
-  border-radius: 5px !important;
-}
-.v-menu__content .v-list__tile__title {
-  font-size: 16px;
-}
-.v-select-list.v-card {
-  background: transparent !important;
-}
-.f-login-form .v-btn__content {
-  font-size: 16px;
 }
 </style>

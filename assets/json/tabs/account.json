@@ -1,0 +1,44 @@
+[
+  {
+    "type": "info",
+    "title": "個人資訊",
+    "link": "/account/info/mydata",
+    "subtabs": [
+      {
+        "type": "mydata",
+        "title": "我的資料",
+        "link": "/account/info/mydata"
+      },
+      {
+        "type": "mystreams",
+        "title": "追蹤實況",
+        "link": "/account/info/mystreams"
+      },
+      {
+        "type": "myforums",
+        "title": "訂閱社區",
+        "link": "/account/info/myforums"
+      },
+      {
+        "type": "mycollection",
+        "title": "收藏文章",
+        "link": "/account/info/mycollection"
+      }
+    ]
+  },
+  {
+    "type": "manage",
+    "title": "個人管理",
+    "link": "/account/manage"
+  },
+  {
+    "type": "quest",
+    "title": "任務/積分",
+    "link": "/account/quest"
+  },
+  {
+    "type": "friend",
+    "title": "好友/聊天",
+    "link": "/account/friend"
+  }
+]

@@ -1,6 +1,9 @@
 <template>
   <div class="f-block-box">
-    <f-block-box-title :background-color="backgroundColor" :text="title"></f-block-box-title>
+    <f-block-box-title
+      :background-color="backgroundColor"
+      :text="title"
+    ></f-block-box-title>
     <div class="content">
       <slot></slot>
     </div>
@@ -26,7 +29,7 @@ export default {
 </script>
 <style scoped>
 .content {
-  border: 1px rgb(218, 216, 216) solid;
+  border: 1px rgb(0, 0, 0, 0.5) solid;
   border-top: none;
   padding: 10px;
 }

@@ -3,7 +3,12 @@
     <v-toolbar fixed height="78px">
       <v-toolbar-items>
         <nuxt-link to="/" class="home-link">
-          <v-img class="logo" src="/logo.png" width="150px" height="70px"></v-img>
+          <v-img
+            class="logo"
+            src="/logo.png"
+            width="150px"
+            height="70px"
+          ></v-img>
         </nuxt-link>
         <div class="nav-items">
           <nuxt-link to="/live/recommend">直播平台</nuxt-link>
@@ -17,8 +22,13 @@
         </div>
       </v-toolbar-items>
       <v-spacer></v-spacer>
-      <div class="login-container" @click="openLoginForm">
-        <v-btn>登入/註冊</v-btn>
+      <div class="login-container">
+        <f-member-block
+          v-if="loggedin"
+          :member="member"
+          @logout="logoutMember"
+        ></f-member-block>
+        <v-btn v-else @click="openLoginForm">登入/註冊</v-btn>
       </div>
     </v-toolbar>
     <v-content>
@@ -31,17 +41,30 @@
         <a
           href="https://github.com/ChaoLiou/GamingLiveStreamForum/commits/master"
           target="_blank"
-        >{{rev.short}}</a>
-        - build at {{rev.build_dt}}
+        >
+          {{ rev.short }}
+        </a>
+        - build at {{ rev.build_dt }}
       </div>
     </v-footer>
-    <v-dialog v-model="dialog" width="500px" scrollable>
-      <f-register-form v-if="needRegisteration" @close="closeRegisterForm"></f-register-form>
+    <v-dialog
+      content-class="dialog-form"
+      v-model="dialog"
+      width="500px"
+      scrollable
+    >
+      <f-register-form
+        :data="data"
+        v-if="needRegisteration"
+        @close="closeRegisterForm"
+        @register="closeRegisterForm"
+      ></f-register-form>
       <f-login-form
         v-else
         :captcha-key="captchaKey"
-        @close="dialog = false"
-        @login="needRegisteration = true"
+        @close="closeLoginForm"
+        @redirect-register="redirectRegister"
+        @loggedin="closeLoginForm"
         @refresh-captcha="generateCaptchaKey"
       ></f-login-form>
     </v-dialog>
@@ -51,21 +74,37 @@
 import rev from "@/build/rev";
 import FLoginForm from "@/components/FLoginForm";
 import FRegisterForm from "@/components/FRegisterForm";
+import FMemberBlock from "@/components/FMemberBlock";
 import helper from "@/assets/utils/helper";
 export default {
   components: {
     FLoginForm,
-    FRegisterForm
+    FRegisterForm,
+    FMemberBlock
   },
   data() {
     return {
       dialog: false,
       rev,
       needRegisteration: false,
-      captchaKey: ""
+      captchaKey: "",
+      data: {},
+      loggedin: false,
+      member: undefined
     };
   },
+  mounted() {
+    this.generateCaptchaKey();
+    this.getMemberByLoginuser().then(member => {
+      this.member = member;
+      this.loggedin = !!member;
+    });
+  },
   methods: {
+    redirectRegister(data) {
+      this.needRegisteration = true;
+      this.data = data;
+    },
     openLoginForm() {
       this.dialog = true;
       this.generateCaptchaKey();
@@ -76,6 +115,20 @@ export default {
     closeRegisterForm() {
       this.dialog = false;
       this.needRegisteration = false;
+    },
+    closeLoginForm(id) {
+      this.dialog = false;
+      this.loggedin = !!id;
+      if (this.loggedin) {
+        this.login(id).then(member => {
+          this.member = member;
+          this.loggedin = true;
+        });
+      }
+    },
+    logoutMember() {
+      this.loggedin = false;
+      this.logout();
     }
   }
 };
@@ -145,7 +198,7 @@ export default {
 }
 </style>
 <style>
-.v-dialog__content {
+.dialog-form.v-dialog__content {
   z-index: 1000 !important;
 }
 </style>

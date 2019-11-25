@@ -1,0 +1,50 @@
+.v-text-field .v-input__control {
+  background: #55287e;
+  border-radius: 5px;
+  font-size: 18px;
+}
+.v-select__selections input {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+.v-text-field .v-input__slot,
+.v-select__selections {
+  border-radius: 5px !important;
+  border-color: #55287e !important;
+}
+.v-text-field--single-line .v-input__slot,
+.v-select__selections {
+  min-height: 38px !important;
+  height: 38px !important;
+}
+.v-input__slot:hover {
+  border-color: #55287e !important;
+}
+.v-input__append-inner {
+  margin-top: 0px !important;
+}
+.v-text-field__slot input {
+  margin: 0px !important;
+  padding: 3px 0px !important;
+}
+.v-menu__content .v-list {
+  background: #55287e;
+  border-radius: 5px !important;
+}
+.v-menu__content .v-list__tile__title {
+  font-size: 16px;
+}
+.v-select-list.v-card {
+  background: transparent !important;
+}
+.v-btn__content {
+  font-size: 16px;
+}
+.v-messages__message,
+.v-counter {
+  font-size: 16px;
+}
+.v-input--selection-controls {
+  margin: auto;
+  padding: 0px;
+}
