@@ -228,6 +228,7 @@ export default {
 .v-navigation-drawer {
   margin-top: 86px !important;
   background: #8e75ae;
+  z-index: 1000;
 }
 .expander-btn {
   top: 86px;
@@ -236,7 +237,7 @@ export default {
   border-radius: 10px;
   width: 50px;
   height: 50px;
-  z-index: 999;
+  z-index: 1000;
   transition: 0.2s cubic-bezier(0.25, 0.8, 0.5, 1);
 }
 .expander-btn.collapsed {
