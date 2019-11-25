@@ -66,7 +66,8 @@ export default {
         twitch: [],
         now: [],
         youtube: [],
-        cc163: []
+        cc163: [],
+        huya: []
       },
       streamsByGame: {
         jdqs: [],

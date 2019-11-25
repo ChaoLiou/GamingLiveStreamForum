@@ -1,14 +1,49 @@
 <template>
   <v-app>
+    <v-btn
+      icon
+      label
+      :class="['expander-btn', drawer ? '' : 'collapsed']"
+      @click="drawer = !drawer"
+    >
+      <v-icon large>{{drawer ? 'keyboard_arrow_left' : 'keyboard_arrow_right'}}</v-icon>
+    </v-btn>
+    <v-navigation-drawer v-model="drawer" clipped temporary fixed app>
+      <v-list dark>
+        <v-list-group active-class="white--text" prepend-icon="star" :value="true">
+          <template v-slot:activator>
+            <v-list-tile>
+              <v-list-tile-title class="drawer-title">熱門主播榜</v-list-tile-title>
+            </v-list-tile>
+          </template>
+          <v-list-tile
+            class="stream-preview-tile"
+            v-for="(stream, index) in streams"
+            :key="`a-${index}`"
+          >
+            <f-stream-inline-preview :stream="stream"></f-stream-inline-preview>
+          </v-list-tile>
+        </v-list-group>
+        <v-list-group active-class="white--text" prepend-icon="remove_red_eye">
+          <template v-slot:activator>
+            <v-list-tile>
+              <v-list-tile-title class="drawer-title">追蹤實況</v-list-tile-title>
+            </v-list-tile>
+          </template>
+          <v-list-tile
+            class="stream-preview-tile"
+            v-for="(stream, index) in streams"
+            :key="`b-${index}`"
+          >
+            <f-stream-inline-preview :stream="stream"></f-stream-inline-preview>
+          </v-list-tile>
+        </v-list-group>
+      </v-list>
+    </v-navigation-drawer>
     <v-toolbar fixed height="78px">
       <v-toolbar-items>
         <nuxt-link to="/" class="home-link">
-          <v-img
-            class="logo"
-            src="/logo.png"
-            width="150px"
-            height="70px"
-          ></v-img>
+          <v-img class="logo" src="/logo.png" width="150px" height="70px"></v-img>
         </nuxt-link>
         <div class="nav-items">
           <nuxt-link to="/live/recommend">直播平台</nuxt-link>
@@ -23,11 +58,7 @@
       </v-toolbar-items>
       <v-spacer></v-spacer>
       <div class="login-container">
-        <f-member-block
-          v-if="loggedin"
-          :member="member"
-          @logout="logoutMember"
-        ></f-member-block>
+        <f-member-block v-if="loggedin" :member="member" @logout="logoutMember"></f-member-block>
         <v-btn v-else @click="openLoginForm">登入/註冊</v-btn>
       </div>
     </v-toolbar>
@@ -41,18 +72,11 @@
         <a
           href="https://github.com/ChaoLiou/GamingLiveStreamForum/commits/master"
           target="_blank"
-        >
-          {{ rev.short }}
-        </a>
+        >{{ rev.short }}</a>
         - build at {{ rev.build_dt }}
       </div>
     </v-footer>
-    <v-dialog
-      content-class="dialog-form"
-      v-model="dialog"
-      width="500px"
-      scrollable
-    >
+    <v-dialog content-class="dialog-form" v-model="dialog" width="500px" scrollable>
       <f-register-form
         :data="data"
         v-if="needRegisteration"
@@ -75,22 +99,26 @@ import rev from "@/build/rev";
 import FLoginForm from "@/components/FLoginForm";
 import FRegisterForm from "@/components/FRegisterForm";
 import FMemberBlock from "@/components/FMemberBlock";
+import FStreamInlinePreview from "@/components/FStreamInlinePreview";
 import helper from "@/assets/utils/helper";
 export default {
   components: {
     FLoginForm,
     FRegisterForm,
-    FMemberBlock
+    FMemberBlock,
+    FStreamInlinePreview
   },
   data() {
     return {
+      drawer: false,
       dialog: false,
       rev,
       needRegisteration: false,
       captchaKey: "",
       data: {},
       loggedin: false,
-      member: undefined
+      member: undefined,
+      streams: []
     };
   },
   mounted() {
@@ -99,6 +127,7 @@ export default {
       this.member = member;
       this.loggedin = !!member;
     });
+    this.getStreams(0, 4).then(streams => this.streams.push(...streams));
   },
   methods: {
     redirectRegister(data) {
@@ -195,6 +224,29 @@ export default {
   height: 100%;
   display: grid;
   align-items: center;
+}
+.v-navigation-drawer {
+  margin-top: 86px !important;
+  background: #8e75ae;
+}
+.expander-btn {
+  top: 86px;
+  position: fixed;
+  transform: translateX(300px);
+  border-radius: 10px;
+  width: 50px;
+  height: 50px;
+  z-index: 999;
+  transition: 0.2s cubic-bezier(0.25, 0.8, 0.5, 1);
+}
+.expander-btn.collapsed {
+  transform: translateX(0px);
+}
+.drawer-title {
+  font-size: 22px;
+}
+.stream-preview-tile {
+  height: 70px;
 }
 </style>
 <style>

@@ -116,9 +116,9 @@ Vue.mixin({
       console.log(url);
       const streams = await this.$axios.$get(url);
       let twitchStreams = [];
-      if (!src) {
-        twitchStreams = await this.getTwitchStreams(0, size, true, sort);
-      }
+      // if (!src) {
+      //   twitchStreams = await this.getTwitchStreams(0, size, true, sort);
+      // }
       return streams
         .map(this.mappingStream)
         .concat(twitchStreams)

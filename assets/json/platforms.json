@@ -36,5 +36,11 @@
     "icon": "/platform_icons/icn_CC_B.png",
     "link": "https://cc.163.com/",
     "id": "cc163"
+  },
+  {
+    "title": "虎牙直播",
+    "icon": "",
+    "link": "https://www.huya.com/",
+    "id": "huya"
   }
 ]

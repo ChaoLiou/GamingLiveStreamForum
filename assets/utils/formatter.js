@@ -68,6 +68,8 @@ function fpreview(stream) {
       return stream.roomImg.replace("https:", "http:");
     case "now":
       return stream.roomImg.replace("/360x", "/");
+    case "huya":
+      return stream.roomImg.replace("w_338,h_190", "w_1280,h_720");
     default:
       return stream.roomImg;
   }
