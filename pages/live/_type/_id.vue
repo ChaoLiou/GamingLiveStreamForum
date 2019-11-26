@@ -71,7 +71,7 @@ export default {
       },
       streamsByGame: {
         jdqs: [],
-        how: [],
+        jdqsm: [],
         lol: [],
         wzry: [],
         chess: [],

@@ -43,7 +43,6 @@ import FNewsHeadlines from "@/components/FNewsHeadlines";
 import FNewsRelatives from "@/components/FNewsRelatives";
 import FBlockBox from "@/components/FBlockBox";
 import newsTabs from "@/assets/json/tabs/news";
-import news from "@/assets/json/news";
 import newsTypes from "@/assets/json/news-types";
 export default {
   components: {

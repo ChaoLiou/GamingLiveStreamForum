@@ -42,9 +42,9 @@
     </v-navigation-drawer>
     <v-toolbar fixed height="78px">
       <v-toolbar-items>
-        <nuxt-link to="/" class="home-link">
+        <a class="home-link" @click="reload">
           <v-img class="logo" src="/logo.png" width="150px" height="70px"></v-img>
-        </nuxt-link>
+        </a>
         <div class="nav-items">
           <nuxt-link to="/live/recommend">直播平台</nuxt-link>
           <nuxt-link to="/live/hot">熱門遊戲</nuxt-link>
@@ -150,6 +150,9 @@ export default {
     this.getStreams(0, 4).then(streams => this.streams.push(...streams));
   },
   methods: {
+    reload() {
+      location.reload();
+    },
     redirectRegister(data) {
       this.needRegisteration = true;
       this.data = data;
