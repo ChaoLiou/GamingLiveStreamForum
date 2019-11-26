@@ -106,6 +106,18 @@ export default {
     captchaKey: {
       type: String,
       default: ""
+    },
+    rememberPhoneNumber: {
+      type: Boolean,
+      default: false
+    },
+    remainLoginStatus: {
+      type: Boolean,
+      default: false
+    },
+    username: {
+      type: String,
+      default: ""
     }
   },
   data() {
@@ -114,8 +126,8 @@ export default {
         { text: "CN+86", value: "+86" },
         { text: "TW+886", value: "+886" }
       ],
-      selectedAreaCode: "+886",
-      phoneNumber: "0928452690",
+      selectedAreaCode: "+86",
+      phoneNumber: "",
       captchaInput: "",
       smsValidationInput: "",
       validationMessage: {
@@ -124,8 +136,6 @@ export default {
         smsValidationInput: "",
         login: ""
       },
-      rememberPhoneNumber: false,
-      remainLoginStatus: false,
       uuid: ""
     };
   },
@@ -142,6 +152,16 @@ export default {
   watch: {
     captchaKey(value) {
       this.captchaInput = value;
+    },
+    username(value) {
+      const res = /^\+(886|86)(.*?)$/.exec(value);
+      if (res && res.length === 3) {
+        this.selectedAreaCode = `+${res[1]}`;
+        this.phoneNumber = `0${res[2]}`;
+      } else {
+        this.selectedAreaCode = this.areaCodes[0].value;
+        this.phoneNumber = "";
+      }
     }
   },
   mounted() {
@@ -155,6 +175,8 @@ export default {
           otp: this.smsValidationInput,
           username: this.fullPhoneNumber
         };
+        this.setCookie(this.rememberPhoneNumber, "rememberPhoneNumber");
+        this.setCookie(this.remainLoginStatus, "remainLoginStatus");
         if (await this.checkUserExists()) {
           let response = {};
           let otpFailed = false;

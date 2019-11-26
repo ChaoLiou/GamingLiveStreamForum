@@ -13,7 +13,7 @@ Vue.mixin({
       googleAPIKey: "AIzaSyA7m7LP26mFpKNuRGa7BQFGwuv3w-HpJz4",
       internals: ["youtube", "twitch", "douyu"],
       cookie_ns: "glsf",
-      cookieKeys: ["id", "username", "token"]
+      cookieKeys: ["id", "token"]
     };
   },
   computed: {

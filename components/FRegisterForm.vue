@@ -1,6 +1,5 @@
 <template>
   <v-card class="f-register-form" color="#eadbf8">
-    {{ data }}
     <v-btn dark class="close-btn" icon color="#8e75ae" @click="$emit('close')">
       <v-icon>clear</v-icon>
     </v-btn>

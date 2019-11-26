@@ -86,6 +86,9 @@
       <f-login-form
         v-else
         :captcha-key="captchaKey"
+        :remember-phone-number="rememberPhoneNumber"
+        :remain-login-status="remainLoginStatus"
+        :username="username"
         @close="closeLoginForm"
         @redirect-register="redirectRegister"
         @loggedin="closeLoginForm"
@@ -118,8 +121,25 @@ export default {
       data: {},
       loggedin: false,
       member: undefined,
-      streams: []
+      streams: [],
+      rememberPhoneNumber: false,
+      remainLoginStatus: false,
+      username: undefined
     };
+  },
+  watch: {
+    dialog(value) {
+      if (!value) {
+        this.username = undefined;
+      } else {
+        this.rememberPhoneNumber =
+          this.getCookie("rememberPhoneNumber") === "true";
+        this.remainLoginStatus = this.getCookie("remainLoginStatus") === "true";
+        if (this.rememberPhoneNumber) {
+          this.username = this.getCookie("username");
+        }
+      }
+    }
   },
   mounted() {
     this.generateCaptchaKey();
