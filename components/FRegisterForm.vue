@@ -151,7 +151,7 @@ export default {
         }
 
         if (this.memberUpdated) {
-          this.$emit("register");
+          this.$emit("register", true);
         }
       } else {
         console.log("otp auth failed!");

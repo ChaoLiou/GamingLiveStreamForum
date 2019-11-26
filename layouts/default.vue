@@ -161,9 +161,10 @@ export default {
     generateCaptchaKey() {
       this.captchaKey = helper.randomString(5, "aA#");
     },
-    closeRegisterForm() {
+    closeRegisterForm(loggedin) {
       this.dialog = false;
       this.needRegisteration = false;
+      this.loggedin = loggedin;
     },
     closeLoginForm(id) {
       this.dialog = false;

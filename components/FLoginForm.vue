@@ -250,7 +250,7 @@ export default {
         `${this.memberApiPrefix}/otp/generate/`,
         {
           username: this.fullPhoneNumber,
-          time: 90
+          time: 90 * 2
         }
       );
       if (data && data.uuid) {
