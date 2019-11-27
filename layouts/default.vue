@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-btn
+      v-if="member"
       icon
       label
       :class="['expander-btn', drawer ? '' : 'collapsed']"
@@ -8,9 +9,9 @@
     >
       <v-icon large>{{drawer ? 'keyboard_arrow_left' : 'keyboard_arrow_right'}}</v-icon>
     </v-btn>
-    <v-navigation-drawer v-model="drawer" clipped temporary fixed app>
+    <v-navigation-drawer v-if="member" v-model="drawer" clipped temporary fixed app>
       <v-list dark>
-        <v-list-group active-class="white--text" prepend-icon="star" :value="true">
+        <v-list-group active-class="white--text" prepend-icon="star">
           <template v-slot:activator>
             <v-list-tile>
               <v-list-tile-title class="drawer-title">熱門主播榜</v-list-tile-title>
@@ -24,7 +25,7 @@
             <f-stream-inline-preview :stream="stream"></f-stream-inline-preview>
           </v-list-tile>
         </v-list-group>
-        <v-list-group active-class="white--text" prepend-icon="remove_red_eye">
+        <v-list-group active-class="white--text" prepend-icon="remove_red_eye" :value="true">
           <template v-slot:activator>
             <v-list-tile>
               <v-list-tile-title class="drawer-title">追蹤實況</v-list-tile-title>
@@ -113,7 +114,7 @@ export default {
   },
   data() {
     return {
-      drawer: false,
+      drawer: true,
       dialog: false,
       rev,
       needRegisteration: false,
@@ -151,7 +152,11 @@ export default {
   },
   methods: {
     reload() {
-      location.reload();
+      if (this.$route.name === "index") {
+        location.reload();
+      } else {
+        this.$router.push({ name: "index" });
+      }
     },
     redirectRegister(data) {
       this.needRegisteration = true;
