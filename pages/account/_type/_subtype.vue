@@ -14,7 +14,8 @@
       </f-block-box>
       <div class="content__main">
         <f-my-data v-if="$route.params.subtype === 'mydata'" :member="member"></f-my-data>
-        <f-my-streams v-else-if="$route.params.subtype === 'mystreams'"></f-my-streams>
+        <f-followed-streams v-else-if="$route.params.subtype === 'followedstreams'"></f-followed-streams>
+        <f-my-message v-else-if="$route.params.subtype === 'mymessage'"></f-my-message>
       </div>
     </div>
   </div>
@@ -24,13 +25,15 @@ import accountTabs from "@/assets/json/tabs/account";
 import FTab from "@/components/FTab";
 import FBlockBox from "@/components/FBlockBox";
 import FMyData from "@/components/FMyData";
-import FMyStreams from "@/components/FMyStreams";
+import FFollowedStreams from "@/components/FFollowedStreams";
+import FMyMessage from "@/components/FMyMessage";
 export default {
   components: {
     FTab,
     FBlockBox,
     FMyData,
-    FMyStreams
+    FFollowedStreams,
+    FMyMessage
   },
   data() {
     return {
