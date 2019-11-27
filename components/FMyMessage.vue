@@ -11,14 +11,14 @@
       <div class="chat-form">
         <div class="chat-form__history-area">
           <div class="history__tabs">
-            <div :class="[selectedTab === 'msg' ? 'active' : '']" @click="selectedTab = 'msg'">
+            <!-- <div :class="[selectedTab === 'msg' ? 'active' : '']" @click="selectedTab = 'msg'">
               <v-badge overlap right color="red">
                 <template v-slot:badge>
                   <span v-if="newMessage"></span>
                 </template>
                 <span>私訊</span>
               </v-badge>
-            </div>
+            </div>-->
             <div :class="[selectedTab === 'amt' ? 'active' : '']" @click="selectedTab = 'amt'">
               <v-badge overlap right color="red">
                 <template v-slot:badge>
@@ -62,12 +62,12 @@
             </template>
             <div v-else class="none-info__chat">目前沒有收到任何訊息喔~</div>
           </div>
-          <div class="collapsed-drawer">
+          <!-- <div class="collapsed-drawer">
             <div>陌生人 ＞</div>
           </div>
           <div class="collapsed-drawer">
             <div>黑名單 ＞</div>
-          </div>
+          </div>-->
         </div>
         <div class="chat-form__room-area">
           <div class="contactor-info">
@@ -160,7 +160,7 @@ export default {
 }
 .history__tabs {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-columns: repeat(2, 1fr); */
   height: 65px;
   justify-items: center;
   align-items: center;
@@ -182,8 +182,10 @@ export default {
 }
 .history__list {
   margin-top: 4px;
-  max-height: calc(100vh - 425px);
-  min-height: calc(100vh - 425px);
+  /* max-height: calc(100vh - 425px);
+  min-height: calc(100vh - 425px); */
+  max-height: calc(100vh - 345px);
+  min-height: calc(100vh - 345px);
   overflow-x: hidden;
   overflow-y: hidden;
 }
