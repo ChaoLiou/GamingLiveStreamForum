@@ -51,6 +51,8 @@ export default {
   height: 100%;
   z-index: 2;
   position: absolute;
+  left: 36px;
+  top: 36px;
 }
 .play-mask__background {
   top: 0px;
