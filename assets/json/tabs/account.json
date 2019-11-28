@@ -29,7 +29,44 @@
   {
     "type": "manage",
     "title": "個人管理",
-    "link": "/account/manage"
+    "link": "/account/manage/livestream",
+    "subtabs": [
+      {
+        "type": "myarticles",
+        "title": "我的文章",
+        "link": "/account/manage/myarticles"
+      },
+      {
+        "type": "drafts",
+        "title": "草稿/排程文章",
+        "link": "/account/manage/drafts"
+      },
+      {
+        "type": "signature",
+        "title": "簽名檔設定",
+        "link": "/account/manage/signature"
+      },
+      {
+        "type": "livestream",
+        "title": "我的實況",
+        "link": "/account/manage/livestream"
+      },
+      {
+        "type": "mailbox",
+        "title": "信件匣",
+        "link": "/account/manage/mailbox"
+      },
+      {
+        "type": "sysnotification",
+        "title": "系統通知",
+        "link": "/account/manage/sysnotification"
+      },
+      {
+        "type": "myforums",
+        "title": "我的社區",
+        "link": "/account/manage/myforums"
+      }
+    ]
   },
   {
     "type": "quest",

@@ -17,6 +17,7 @@ module.exports = {
     "vue/max-attributes-per-line": "off",
     "vue/html-self-closing": "off",
     "vue/mustache-interpolation-spacing": "off",
-    "vue/attributes-order": "off"
+    "vue/attributes-order": "off",
+    "vue/html-indent": "off"
   }
 };

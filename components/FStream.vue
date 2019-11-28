@@ -5,7 +5,7 @@
         <v-avatar size="30px">
           <v-img :src="stream.streamer_image"></v-img>
         </v-avatar>
-        <div class="f-stream__title">{{stream.title}}</div>
+        <div class="f-stream__title">{{ stream.title }}</div>
       </div>
       <div class="f-stream__title-video">
         <f-link v-if="stream.externalLink" :link="stream.externalLink" external>
@@ -24,9 +24,9 @@
       <div class="f-stream__grid">
         <div class="f-stream__streamer">
           <span>實況主:</span>
-          <a>{{stream.streamer_name}}</a>
+          <a>{{ stream.streamer_name }}</a>
         </div>
-        <div class="f-stream__viewer">{{viewers}}人觀看</div>
+        <div class="f-stream__viewer">{{ viewers }}人觀看</div>
         <div>
           <v-btn depressed to="/live/recommend">回實況總覽</v-btn>
           <v-btn depressed>關聯商品</v-btn>
@@ -35,7 +35,13 @@
           </v-btn>
         </div>
         <div
-          :style="{ 'justify-self': 'end', 'align-self': 'center', display: 'grid', 'grid-template-columns': '1fr 1fr', 'grid-gap': '15px' }"
+          :style="{
+            'justify-self': 'end',
+            'align-self': 'center',
+            display: 'grid',
+            'grid-template-columns': '1fr 1fr',
+            'grid-gap': '15px'
+          }"
         >
           <div class="stream-info">
             <div class="stream-info__title">喜歡</div>

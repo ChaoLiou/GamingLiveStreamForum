@@ -9,8 +9,17 @@
       background-color="#eadbf8"
     >
       <div class="avatar-container">
-        <img ref="img" v-show="member.avatar || avatar" :src="member.avatar" @click="choose" />
-        <div class="default-image" v-show="!member.avatar && !avatar" @click="choose"></div>
+        <img
+          ref="img"
+          v-show="member.avatar || avatar"
+          :src="member.avatar"
+          @click="choose"
+        />
+        <div
+          class="default-image"
+          v-show="!member.avatar && !avatar"
+          @click="choose"
+        ></div>
         <input
           ref="fileInput"
           v-show="false"
@@ -91,7 +100,12 @@
           </v-menu>
           <div v-else>{{ member[col.key] }}</div>
           <div class="public-switch-container">
-            <v-switch color="#8e75ae" v-if="col.switch" single-line hide-details></v-switch>
+            <v-switch
+              color="#8e75ae"
+              v-if="col.switch"
+              single-line
+              hide-details
+            ></v-switch>
           </div>
         </div>
       </div>
@@ -107,7 +121,13 @@
       <div class="intro-container">
         <div class="intro-col">
           <div>簡介：</div>
-          <v-textarea outline hide-details auto-grow dark v-model="member.intro"></v-textarea>
+          <v-textarea
+            outline
+            hide-details
+            auto-grow
+            dark
+            v-model="member.intro"
+          ></v-textarea>
           <div class="intro-input-info">輸入不得超過500字元(約250中文字)</div>
         </div>
       </div>
@@ -203,9 +223,7 @@ img {
 .default-image {
   background: linear-gradient(45deg, #8e75ae, 30%, #8e75ae3d, 70%, #8e75ae);
 }
-.validation-message {
-  color: red;
-}
+
 .member-cols-container,
 .intro-container {
   margin: 0px 15px;

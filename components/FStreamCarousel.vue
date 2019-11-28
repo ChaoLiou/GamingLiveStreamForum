@@ -1,15 +1,35 @@
 <template>
   <div class="f-carousel">
     <v-card>
-      <v-btn large icon class="slide-btn slide-btn__prev" dark @click="moveTo(true)">
+      <v-btn
+        large
+        icon
+        class="slide-btn slide-btn__prev"
+        dark
+        @click="moveTo(true)"
+      >
         <v-icon large>keyboard_arrow_left</v-icon>
       </v-btn>
-      <v-btn large icon class="slide-btn slide-btn__next" dark @click="moveTo(false)">
-        <v-icon large>keyboard_arrow_right</v-icon>
+      <v-btn
+        large
+        icon
+        class="slide-btn slide-btn__next"
+        dark
+        @click="moveTo(false)"
+      >
+        <v-icon>keyboard_arrow_right</v-icon>
       </v-btn>
       <v-carousel :cycle="false" hide-delimiters hide-controls height="300px">
-        <v-carousel-item ref="carouselItems" v-for="(item, index) in streams " :key="index">
-          <f-stream-preview ref="streams" player :stream="item"></f-stream-preview>
+        <v-carousel-item
+          ref="carouselItems"
+          v-for="(item, index) in streams"
+          :key="index"
+        >
+          <f-stream-preview
+            ref="streams"
+            player
+            :stream="item"
+          ></f-stream-preview>
         </v-carousel-item>
       </v-carousel>
     </v-card>

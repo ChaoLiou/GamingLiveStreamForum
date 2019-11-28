@@ -18,7 +18,9 @@
     "@nuxtjs/axios": "^5.0.0",
     "cross-env": "^5.2.0",
     "nuxt": "^2.0.0",
+    "nuxt-material-design-icons": "^1.0.4",
     "vue-cookies": "^1.5.13",
+    "vue-underscore": "^0.1.4",
     "vuetify": "^1.2.4"
   },
   "devDependencies": {

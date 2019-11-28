@@ -1,18 +1,40 @@
 <template>
   <div
     class="f-home-stream-carousel"
-    :style="{width: `${(streams.length - 1) * gap + width}px`, height: `${height}px`, 'margin-top': $vuetify.breakpoint.xl ? '-80px' : '0px' }"
+    :style="{
+      width: `${(streams.length - 1) * gap + width}px`,
+      height: `${height}px`,
+      'margin-top': $vuetify.breakpoint.xl ? '-80px' : '0px'
+    }"
   >
-    <v-btn large icon class="slide-btn slide-btn__prev" dark @click="moveTo(false)">
+    <v-btn
+      large
+      icon
+      class="slide-btn slide-btn__prev"
+      dark
+      @click="moveTo(false)"
+    >
       <v-icon large>keyboard_arrow_left</v-icon>
     </v-btn>
-    <v-btn large icon class="slide-btn slide-btn__next" dark @click="moveTo(true)">
+    <v-btn
+      large
+      icon
+      class="slide-btn slide-btn__next"
+      dark
+      @click="moveTo(true)"
+    >
       <v-icon large>keyboard_arrow_right</v-icon>
     </v-btn>
     <div class="stream-preview__container">
       <f-home-stream-preview
         ref="streams"
-        :style="{ left: getLeftStyle(item.index), 'z-index': getZIndexStyle(item.index), width: getWidthStyle(item.index), height: getHeightStyle(item.index), top: getTopStyle(item.index) }"
+        :style="{
+          left: getLeftStyle(item.index),
+          'z-index': getZIndexStyle(item.index),
+          width: getWidthStyle(item.index),
+          height: getHeightStyle(item.index),
+          top: getTopStyle(item.index)
+        }"
         v-for="(item, index) in fstreams"
         :key="index"
         :player="item.player"
@@ -65,9 +87,9 @@ export default {
   },
   watch: {
     streams(value) {
-      const fstreams = Array.apply(null, { length: this.sequence.length }).map(
-        x => ({})
-      );
+      const fstreams = Array.apply(null, {
+        length: this.sequence.length
+      }).map(x => ({}));
       const sequence = this.sequence;
       value
         .map((x, i) => ({

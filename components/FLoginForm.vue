@@ -33,7 +33,9 @@
           placeholder="請輸入手機號碼"
           @keyup="validationMessage.phoneNumber = ''"
         ></v-text-field>
-        <div class="validation-message">{{ validationMessage.phoneNumber }}</div>
+        <div class="validation-message">
+          {{ validationMessage.phoneNumber }}
+        </div>
       </div>
       <div class="captcha-container">
         <v-label>圖文驗證碼</v-label>
@@ -47,9 +49,14 @@
             placeholder="請輸入圖片內文字及數字"
             @keyup="validationMessage.captchaInput = ''"
           ></v-text-field>
-          <f-identify :identify-code="captchaKey" @refresh="$emit('refresh-captcha')"></f-identify>
+          <f-identify
+            :identify-code="captchaKey"
+            @refresh="$emit('refresh-captcha')"
+          ></f-identify>
         </div>
-        <div class="validation-message">{{ validationMessage.captchaInput }}</div>
+        <div class="validation-message">
+          {{ validationMessage.captchaInput }}
+        </div>
       </div>
       <div class="sms-validation-container">
         <v-label>簡訊驗證碼</v-label>
@@ -64,13 +71,25 @@
             @keyup="validationMessage.smsValidationInput = ''"
           ></v-text-field>
           <v-btn color="#8e75ae" dark @click="smsValidation">取得驗證碼</v-btn>
-          <div class="validation-message">{{ validationMessage.smsValidationInput }}</div>
+          <div class="validation-message">
+            {{ validationMessage.smsValidationInput }}
+          </div>
         </div>
       </div>
       <div class="login-container">
         <div class="options-grid">
-          <v-checkbox hide-details height="24px" v-model="rememberPhoneNumber" label="記住手機號碼"></v-checkbox>
-          <v-checkbox hide-details height="24px" v-model="remainLoginStatus" label="保持登入狀態"></v-checkbox>
+          <v-checkbox
+            hide-details
+            height="24px"
+            v-model="rememberPhoneNumber"
+            label="記住手機號碼"
+          ></v-checkbox>
+          <v-checkbox
+            hide-details
+            height="24px"
+            v-model="remainLoginStatus"
+            label="保持登入狀態"
+          ></v-checkbox>
         </div>
         <div class="login-tips">公用電腦請記得登出，或開啟無痕模式</div>
         <div class="validation-message">{{ validationMessage.login }}</div>
@@ -314,10 +333,6 @@ export default {
 }
 .content > div > * {
   margin-top: 10px;
-}
-.validation-message {
-  margin-top: 5px !important;
-  color: red;
 }
 .sms-validation-grid,
 .captcha-grid {

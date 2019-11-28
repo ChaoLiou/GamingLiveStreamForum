@@ -41,7 +41,9 @@
               'nickname-counter',
               isNicknameOutOfLimit ? 'validation-message' : ''
             ]"
-          >{{ nicknameCounter }} / {{ nicknameCounterLimits }}</div>
+          >
+            {{ nicknameCounter }} / {{ nicknameCounterLimits }}
+          </div>
         </div>
       </div>
       <div>
@@ -85,7 +87,10 @@ export default {
         avatar: ""
       },
       selectedGender: 1,
-      genders: [{ text: "男生", value: 1 }, { text: "女生", value: 2 }],
+      genders: [
+        { text: "男生", value: 1 },
+        { text: "女生", value: 2 }
+      ],
       otpFailed: false,
       memberUpdated: true,
       nicknameCounter: 0,
@@ -244,9 +249,7 @@ img {
 .content > div > * {
   margin-top: 5px;
 }
-.validation-message {
-  color: red;
-}
+
 .nickname-input__container {
   margin-top: 5px !important;
   display: grid;

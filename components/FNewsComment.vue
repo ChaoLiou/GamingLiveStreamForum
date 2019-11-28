@@ -11,7 +11,7 @@
           <span class="news-comment__commentator">{{ item.name }}：</span>
           <span class="news-comment__content">
             <span>{{ item.message }}</span>
-            <span class="news-comment__time">{{item.time}}</span>
+            <span class="news-comment__time">{{ item.time }}</span>
           </span>
         </div>
         <v-btn small class="report-btn">檢舉</v-btn>

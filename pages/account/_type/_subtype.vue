@@ -2,7 +2,7 @@
   <div class="account">
     <f-tab title="個人中心" :tabs="tabs"></f-tab>
     <div class="content">
-      <f-block-box title="個人資訊">
+      <f-block-box :title="currentTab.title">
         <div class="side-menu">
           <nuxt-link
             v-for="(item, index) in subtabs"
@@ -16,6 +16,7 @@
         <f-my-data v-if="$route.params.subtype === 'mydata'" :member="member"></f-my-data>
         <f-followed-streams v-else-if="$route.params.subtype === 'followedstreams'"></f-followed-streams>
         <f-my-message v-else-if="$route.params.subtype === 'mymessage'"></f-my-message>
+        <f-live-stream v-else-if="$route.params.subtype === 'livestream'"></f-live-stream>
       </div>
     </div>
   </div>
@@ -27,13 +28,15 @@ import FBlockBox from "@/components/FBlockBox";
 import FMyData from "@/components/FMyData";
 import FFollowedStreams from "@/components/FFollowedStreams";
 import FMyMessage from "@/components/FMyMessage";
+import FLiveStream from "@/components/FLiveStream";
 export default {
   components: {
     FTab,
     FBlockBox,
     FMyData,
     FFollowedStreams,
-    FMyMessage
+    FMyMessage,
+    FLiveStream
   },
   data() {
     return {
@@ -58,12 +61,14 @@ export default {
       }
     };
   },
+  computed: {
+    currentTab() {
+      return accountTabs.find(x => this.$route.params.type === x.type);
+    }
+  },
   mounted() {
-    const currentTab = accountTabs.find(
-      x => this.$route.params.type === x.type
-    );
-    if (currentTab && currentTab.subtabs) {
-      this.subtabs = currentTab.subtabs.map(x => ({
+    if (this.currentTab && this.currentTab.subtabs) {
+      this.subtabs = this.currentTab.subtabs.map(x => ({
         ...x,
         active: this.$route.params.subtype === x.type
       }));

@@ -1,14 +1,22 @@
 <template>
   <div class="f-news-relatives">
-    <div class="news-relatives__item" v-for="(relative, index) in source" :key="index">
-      <v-icon left>arrow_right</v-icon>
-      <a :href="relative.link" target="_blank">{{relative.title}}</a>
+    <div
+      class="news-relatives__item"
+      v-for="(relative, index) in source"
+      :key="index"
+    >
+      <v-icon>arrow_right</v-icon>
+      <a :href="relative.link" target="_blank">{{ relative.title }}</a>
     </div>
     <div class="keywords-row">
       <div>關鍵字：</div>
       <div class="keywords-container">
-        <div class="keywords-item" v-for="(keyword, index) in keywords" :key="index">
-          <a :href="keyword.link" target="_blank">{{keyword.title}}</a>
+        <div
+          class="keywords-item"
+          v-for="(keyword, index) in keywords"
+          :key="index"
+        >
+          <a :href="keyword.link" target="_blank">{{ keyword.title }}</a>
         </div>
       </div>
     </div>
