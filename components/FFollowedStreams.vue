@@ -5,7 +5,7 @@
       :line-height="0"
       :content-left-margin="10"
       :content-right-margin="30"
-      title="推薦實況"
+      :title="$t('fFollowedStreams.recommended_streams')"
       background-color="#eadbf8"
     >
       <f-stream-container :streams="streams.slice(0, 4)"></f-stream-container>
@@ -15,12 +15,12 @@
       :line-height="0"
       :content-left-margin="10"
       :content-right-margin="30"
-      title="追蹤實況"
+      :title="$t('fFollowedStreams.followed_streams')"
       background-color="#eadbf8"
     >
       <f-stream-container :streams="streams"></f-stream-container>
       <div class="more-btn-container">
-        <v-btn dark block @click="loadMore">載入更多直播</v-btn>
+        <v-btn dark block @click="loadMore">{{$t('fFollowedStreams.load_more_streams')}}</v-btn>
       </div>
     </f-block>
   </div>

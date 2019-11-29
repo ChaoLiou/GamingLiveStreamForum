@@ -1,4 +1,5 @@
 const pkg = require("./package");
+const i18nOptions = require("./locales/i18n");
 
 module.exports = {
   mode: "spa",
@@ -32,7 +33,6 @@ module.exports = {
    ** Customize the progress-bar color
    */
   loading: { color: "#fff" },
-
   /*
    ** Global CSS
    */
@@ -54,7 +54,8 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     "@nuxtjs/axios",
-    "nuxt-material-design-icons"
+    "nuxt-material-design-icons",
+    ["nuxt-i18n", i18nOptions]
   ],
   /*
    ** Axios module configuration

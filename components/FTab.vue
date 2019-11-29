@@ -8,7 +8,7 @@
         @mouseover="mouseOver(index)"
       >
         <nuxt-link v-if="tab.link" :to="tab.link">
-          <div>{{tab.title}}</div>
+          <div>{{tab.title ? tab.title : $t(`_tabs.${from}.${tab.type}`)}}</div>
         </nuxt-link>
         <div v-else>{{tab.title}}</div>
       </div>
@@ -37,6 +37,10 @@ export default {
     fixed: {
       type: Boolean,
       default: true
+    },
+    from: {
+      type: String,
+      default: ""
     }
   },
   computed: {

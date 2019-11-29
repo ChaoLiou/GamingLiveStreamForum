@@ -1,6 +1,6 @@
 <template>
   <div class="live-type-id">
-    <f-tab title="精彩實況" :tabs="tabs"></f-tab>
+    <f-tab :title="$t('live_type_id.amazing_streams')" :tabs="tabs" from="live"></f-tab>
     <div class="content">
       <f-block
         :icon="
@@ -18,7 +18,7 @@
           <f-block
             more
             :to="`/live/${$route.params.type}/${item.id}`"
-            :title="item.title"
+            :title="$t(`${localeKey}.${item.id}`)"
             :icon="item.icon"
             v-for="(item, index) in multipleSource"
             :key="index"
@@ -35,7 +35,11 @@
       </div>
     </div>
     <div class="more-btn-container" v-if="!multiple">
-      <v-btn dark block @click="loadMore">載入更多直播</v-btn>
+      <v-btn dark block @click="loadMore">
+        {{
+        $t("live_type_id.load_more_streams")
+        }}
+      </v-btn>
     </div>
   </div>
 </template>
@@ -91,15 +95,21 @@ export default {
     };
   },
   computed: {
+    localeKey() {
+      return this.isGroupByGame ? "_games" : "_platforms";
+    },
+    isGroupByGame() {
+      return this.$route.params.type === "hot";
+    },
     fstreams() {
-      return this.$route.params.type === "hot"
+      return this.isGroupByGame
         ? this.streamsByGame[this.$route.params.id]
           ? this.streamsByGame[this.$route.params.id]
           : []
         : this.streams[this.$route.params.id ? this.$route.params.id : "all"];
     },
     fstreams_slice5() {
-      return this.$route.params.type === "hot"
+      return this.isGroupByGame
         ? this.streamsByGame[this.$route.params.id]
           ? this.streamsByGame[this.$route.params.id].slice(0, 5)
           : this.streams["all"].slice(0, 5)
@@ -108,18 +118,25 @@ export default {
           ].slice(0, 5);
     },
     mainTitle() {
-      return this.$route.params.type
-        ? liveTabs.find(x => this.$route.params.type === x.type).title
-        : liveTabs[0].title;
+      let target = undefined;
+      if (this.$route.params.type) {
+        target = liveTabs.find(x => this.$route.params.type === x.type);
+      } else {
+        target = liveTabs[0];
+      }
+      return target ? this.$t(`_tabs.live.${target.type}`) : "Title";
     }
   },
   mounted() {
     this.multiple = this.$route.params.id === undefined;
-    this.multipleSource = this.$route.params.type === "hot" ? games : platforms;
+    this.multipleSource = this.isGroupByGame ? games : platforms;
     if (!this.multiple) {
-      this.title = this.multipleSource.find(
+      const target = this.multipleSource.find(
         x => x.id === this.$route.params.id
-      ).title;
+      );
+      if (target) {
+        this.title = this.$t(`${this.localeKey}.${target.id}`);
+      }
       this.initPlatformIcon();
     }
     this.tabs = liveTabs.map(x => ({

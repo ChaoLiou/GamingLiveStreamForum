@@ -4,7 +4,7 @@
       <v-icon>clear</v-icon>
     </v-btn>
     <v-card-title primary-title>
-      <div class="form-title">填寫個人資料</div>
+      <div class="form-title">{{$t('fRegisterForm.fill_in_account_info')}}</div>
     </v-card-title>
     <v-card-title class="avatar-container">
       <div>
@@ -18,20 +18,20 @@
           accept="image/jpeg, image/jpg, image/png"
         />
       </div>
-      <v-btn color="#8e75ae" dark @click="choose">上傳</v-btn>
+      <v-btn color="#8e75ae" dark @click="choose">{{$t('fRegisterForm.upload')}}</v-btn>
       <div class="validation-message">{{ validationMessage.avatar }}</div>
-      <div class="upload-info">檔案格式：JPG﹑PNG(500KB 以內)</div>
+      <div class="upload-info">{{$t('fRegisterForm.uploaded_file_limits')}}</div>
     </v-card-title>
     <v-card-text class="content">
       <div>
-        <v-label>暱稱：</v-label>
+        <v-label>{{$t('fRegisterForm.nickname')}}：</v-label>
         <v-text-field
           dark
           outline
           single-line
           hide-details
           v-model="nickname"
-          placeholder="取個讓人印象深刻的暱稱吧"
+          :placeholder="$t('fRegisterForm.nickname_input_placeholder')"
           @input="nicknameInput"
         ></v-text-field>
         <div class="nickname-input__container">
@@ -41,13 +41,11 @@
               'nickname-counter',
               isNicknameOutOfLimit ? 'validation-message' : ''
             ]"
-          >
-            {{ nicknameCounter }} / {{ nicknameCounterLimits }}
-          </div>
+          >{{ nicknameCounter }} / {{ nicknameCounterLimits }}</div>
         </div>
       </div>
       <div>
-        <v-label>性別：</v-label>
+        <v-label>{{$t('fRegisterForm.gender')}}：</v-label>
         <v-select
           class="gender__select"
           dark
@@ -62,12 +60,13 @@
         ></v-select>
       </div>
       <div class="register-container">
-        <v-btn block color="#8e75ae" dark @click="register">完成</v-btn>
+        <v-btn block color="#8e75ae" dark @click="register">{{$t('fRegisterForm.finish')}}</v-btn>
       </div>
     </v-card-text>
   </v-card>
 </template>
 <script>
+import genderOptions from "@/assets/json/options/gender";
 export default {
   props: {
     data: {
@@ -87,10 +86,7 @@ export default {
         avatar: ""
       },
       selectedGender: 1,
-      genders: [
-        { text: "男生", value: 1 },
-        { text: "女生", value: 2 }
-      ],
+      genders: genderOptions,
       otpFailed: false,
       memberUpdated: true,
       nicknameCounter: 0,
@@ -117,10 +113,14 @@ export default {
     },
     async register() {
       if (!this.nickname) {
-        this.validationMessage.nickname = "暱稱不能為空";
+        this.validationMessage.nickname = this.$t(
+          "fRegisterForm.nickname_input_vaildation_1"
+        );
         return;
       } else if (this.isNicknameOutOfLimit) {
-        this.validationMessage.nickname = "暱稱太長了";
+        this.validationMessage.nickname = this.$t(
+          "fRegisterForm.nickname_input_vaildation_2"
+        );
       }
 
       let response = {};
@@ -178,10 +178,14 @@ export default {
           reader.readAsDataURL(file);
           this.validationMessage.avatar = "";
         } else {
-          this.validationMessage.avatar = "檔案大小超過 500 KB";
+          this.validationMessage.avatar = this.$t(
+            "fRegisterForm.avatar_input_vaildation_1"
+          );
         }
       } else {
-        this.validationMessage.avatar = "檔案類型不是 JPG 或 PNG";
+        this.validationMessage.avatar = this.$t(
+          "fRegisterForm.avatar_input_vaildation_2"
+        );
       }
     },
     choose() {

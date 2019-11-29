@@ -8,9 +8,9 @@ export default {
   favatar
 };
 
-function fviewers(viewers) {
+function fviewers(viewers, locale = "zh-cn") {
   if (!viewers) return "";
-  const map = ["萬", "億"];
+  const map = { "zh-tw": ["萬", "億"], "zh-cn": ["万", "亿"] }[locale];
   const unit = 10000;
   let viewers_double = viewers;
   let viewers_integer = Math.floor(viewers_double);

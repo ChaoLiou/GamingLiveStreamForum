@@ -14,13 +14,14 @@
             <span class="news-comment__time">{{ item.time }}</span>
           </span>
         </div>
-        <v-btn small class="report-btn">檢舉</v-btn>
+        <v-btn small class="report-btn">{{$t('fNewsComment.report')}}</v-btn>
       </div>
     </div>
     <div class="news-comment__input">
       <v-text-field
-        placeholder="發表新聞評語...（限50字）"
+        :placeholder="$t('fNewsComment.comment_it')"
         outline
+        dark
         single-line
         hide-details
         append-outer-icon="send"
@@ -52,8 +53,12 @@ export default {
   computed: {
     expandCommentButtonText() {
       return this.allComments
-        ? `縮減至 ${this.showNews} 則評語`
-        : `顯示所有 ${this.source.length} 則評語`;
+        ? `${this.$t("fNewsComment.collapse_to")} ${this.showNews} ${this.$t(
+            "fNewsComment.comments_unit"
+          )}`
+        : `${this.$t("fNewsComment.expand_all")} ${
+            this.source.length
+          } ${this.$t("fNewsComment.comments_unit")}`;
     },
     filterSource() {
       return this.source.length < this.showNews || this.allComments

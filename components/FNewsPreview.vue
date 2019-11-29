@@ -10,7 +10,10 @@
       </div>
       <div class="news-brief" v-html="news.brief ? news.brief.replace('繼續閱讀', '') : ''"></div>
       <div class="more-link" v-if="news.image">
-        <nuxt-link :to="`/news/${news.type.value}/${news.id}`" target="_blank">繼續閱讀</nuxt-link>
+        <nuxt-link
+          :to="`/news/${news.type.value}/${news.id}`"
+          target="_blank"
+        >{{$t('fNewsPreview.continue_reading')}}</nuxt-link>
       </div>
     </div>
   </div>

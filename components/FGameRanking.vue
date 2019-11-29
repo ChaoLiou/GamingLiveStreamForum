@@ -8,7 +8,7 @@
       :to="`/live/hot/${item.game.id}`"
     >
       <v-img :title="getTitle(item.amount, item.amountByGroups)" :src="item.game.image"></v-img>
-      <div class="game-board__title">{{item.game.title}}</div>
+      <div class="game-board__title">{{$t(`_games.${item.game.id}`)}}</div>
     </v-card>
   </div>
 </template>

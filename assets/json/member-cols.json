@@ -1,66 +1,54 @@
 [
   {
-    "title": "ID",
     "key": "id"
   },
   {
-    "title": "暱稱",
     "key": "nickname",
     "type": "input"
   },
   {
-    "title": "積分",
     "key": "score",
     "switch": true
   },
   {
-    "title": "用戶等級",
     "key": "level",
     "switch": true
   },
   {
-    "title": "性別",
     "key": "gender",
     "type": "select",
     "switch": true
   },
   {
-    "title": "生日",
     "key": "birthday",
     "type": "datepicker",
     "switch": true
   },
   {
-    "title": "居住地",
     "key": "location",
     "type": "select",
     "switch": true
   },
   {
-    "title": "E-mail",
     "key": "email",
     "type": "input",
     "switch": true
   },
   {
-    "title": "手機號碼",
     "key": "phone",
     "switch": true
   },
   {
-    "title": "微信",
     "key": "wechat",
     "type": "input",
     "switch": true
   },
   {
-    "title": "QQ",
     "key": "qq",
     "type": "input",
     "switch": true
   },
   {
-    "title": "微博",
     "key": "weibo",
     "type": "input",
     "switch": true

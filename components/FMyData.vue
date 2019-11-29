@@ -5,21 +5,12 @@
       :line-height="0"
       :content-left-margin="10"
       :content-right-margin="30"
-      title="我的頭像"
+      :title="$t('fMyData.my_avatar')"
       background-color="#eadbf8"
     >
       <div class="avatar-container">
-        <img
-          ref="img"
-          v-show="member.avatar || avatar"
-          :src="member.avatar"
-          @click="choose"
-        />
-        <div
-          class="default-image"
-          v-show="!member.avatar && !avatar"
-          @click="choose"
-        ></div>
+        <img ref="img" v-show="member.avatar || avatar" :src="member.avatar" @click="choose" />
+        <div class="default-image" v-show="!member.avatar && !avatar" @click="choose"></div>
         <input
           ref="fileInput"
           v-show="false"
@@ -28,8 +19,8 @@
           accept="image/jpeg, image/jpg, image/png"
         />
         <div class="avatar-actions">
-          <v-btn dark color="#8e75ae" @click="choose">更新</v-btn>
-          <div>檔案格式：JPG、PNG (500KB 以內)</div>
+          <v-btn dark color="#8e75ae" @click="choose">{{$t('fMyData.update')}}</v-btn>
+          <div>{{$t('fMyData.uploaded_file_limits')}}</div>
           <div class="validation-message">{{ validationMessage.avatar }}</div>
         </div>
       </div>
@@ -39,7 +30,7 @@
       :line-height="0"
       :content-left-margin="10"
       :content-right-margin="30"
-      title="基本資訊"
+      :title="$t('fMyData.basic_info')"
       background-color="#eadbf8"
     >
       <div class="member-cols-container">
@@ -47,10 +38,10 @@
           <div></div>
           <div></div>
           <div></div>
-          <div :style="{ 'text-align': 'center', color: '#8e75ae' }">公開</div>
+          <div :style="{ 'text-align': 'center', color: '#8e75ae' }">{{$t('fMyData.public')}}</div>
         </div>
         <div class="member-col" v-for="(col, index) in memberCols" :key="index">
-          <div>{{ col.title }}：</div>
+          <div>{{ $t(`_memberCols.${col.key}`) }}：</div>
           <v-text-field
             v-if="col.type === 'input'"
             outline
@@ -100,12 +91,7 @@
           </v-menu>
           <div v-else>{{ member[col.key] }}</div>
           <div class="public-switch-container">
-            <v-switch
-              color="#8e75ae"
-              v-if="col.switch"
-              single-line
-              hide-details
-            ></v-switch>
+            <v-switch color="#8e75ae" v-if="col.switch" single-line hide-details></v-switch>
           </div>
         </div>
       </div>
@@ -115,25 +101,19 @@
       :line-height="0"
       :content-left-margin="10"
       :content-right-margin="30"
-      title="我的介紹"
+      :title="$t('fMyData.my_intro')"
       background-color="#eadbf8"
     >
       <div class="intro-container">
         <div class="intro-col">
-          <div>簡介：</div>
-          <v-textarea
-            outline
-            hide-details
-            auto-grow
-            dark
-            v-model="member.intro"
-          ></v-textarea>
-          <div class="intro-input-info">輸入不得超過500字元(約250中文字)</div>
+          <div>{{$t('fMyData.brief_intro')}}：</div>
+          <v-textarea outline hide-details auto-grow dark v-model="member.intro"></v-textarea>
+          <div class="intro-input-info">{{$t('fMyData.brief_intro_textarea_info')}}</div>
         </div>
       </div>
     </f-block>
     <div class="save-all-btn">
-      <v-btn block color="#8e75ae" dark>儲存</v-btn>
+      <v-btn block color="#8e75ae" dark>{{$t('fMyData.save')}}</v-btn>
     </div>
   </div>
 </template>
@@ -184,10 +164,14 @@ export default {
           reader.readAsDataURL(file);
           this.validationMessage.avatar = "";
         } else {
-          this.validationMessage.avatar = "檔案大小超過 500 KB";
+          this.validationMessage.avatar = this.$t(
+            "fMyData.avatar_input_validation_1"
+          );
         }
       } else {
-        this.validationMessage.avatar = "檔案類型不是 JPG 或 PNG";
+        this.validationMessage.avatar = this.$t(
+          "fMyData.avatar_input_validation_2"
+        );
       }
     },
     choose() {

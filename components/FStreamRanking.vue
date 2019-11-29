@@ -31,7 +31,7 @@
                 <f-link
                   :link="getPlatformInfo(item.platform, 'link')"
                   external
-                >{{ getPlatformInfo(item.platform, "title") }}</f-link>
+                >{{ $t(`_platforms.${item.platform}`) }}</f-link>
               </div>
             </div>
           </div>

@@ -1,9 +1,7 @@
 import Vue from "vue";
 import formatter from "@/assets/utils/formatter";
 import helper from "@/assets/utils/helper";
-import configs from "@/assets/json/configs";
 import games from "@/assets/json/games";
-import platforms from "@/assets/json/platforms";
 Vue.mixin({
   data() {
     return {

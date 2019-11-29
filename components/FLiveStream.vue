@@ -5,12 +5,12 @@
       :line-height="0"
       :content-left-margin="10"
       :content-right-margin="30"
-      title="我的實況"
+      :title="$t('fLiveStream.my_stream')"
       background-color="#eadbf8"
     >
       <div>
         <div class="toolbar">
-          <v-btn class="theme" @click="dialog = true">申請播主</v-btn>
+          <v-btn class="theme" @click="dialog = true">{{$t('fLiveStream.apply_streamer')}}</v-btn>
         </div>
         <div class="table-headers user-select_none">
           <div>
@@ -21,28 +21,37 @@
           <v-divider vertical></v-divider>
           <div @click="sortCol('platform')">
             <v-btn icon class="sorter-btn">
-              <v-icon color="white">{{
+              <v-icon color="white">
+                {{
                 sort.col === "platform" ? sortIcon : ""
-              }}</v-icon></v-btn
-            >平台
+                }}
+              </v-icon>
+            </v-btn>
+            {{$t('fLiveStream.platform')}}
           </div>
           <v-divider vertical></v-divider>
-          <div>直播標題</div>
+          <div>{{$t('fLiveStream.stream_title')}}</div>
           <v-divider vertical></v-divider>
           <div @click="sortCol('date')">
             <v-btn icon class="sorter-btn">
-              <v-icon color="white">{{
+              <v-icon color="white">
+                {{
                 sort.col === "date" ? sortIcon : ""
-              }}</v-icon></v-btn
-            >日期
+                }}
+              </v-icon>
+            </v-btn>
+            {{$t('fLiveStream.date')}}
           </div>
           <v-divider vertical></v-divider>
           <div @click="sortCol('viewers')">
             <v-btn icon class="sorter-btn">
-              <v-icon color="white">{{
+              <v-icon color="white">
+                {{
                 sort.col === "viewers" ? sortIcon : ""
-              }}</v-icon></v-btn
-            >人氣
+                }}
+              </v-icon>
+            </v-btn>
+            {{$t('fLiveStream.popularity')}}
           </div>
         </div>
         <template v-if="vodList.length > 0">
@@ -52,34 +61,22 @@
             </div>
             <div class="vod-item__platform">{{ vod.platform }}</div>
             <div class="vod-item__content">
-              <v-img
-                width="160px"
-                height="90px"
-                :src="vod.item.preview"
-              ></v-img>
+              <v-img width="160px" height="90px" :src="vod.item.preview"></v-img>
               <div class="main-content">
-                <div class="main-content__title text-truncate">
-                  {{ vod.item.title }}
-                </div>
-                <div class="main-content__description">
-                  {{ vod.item.description }}
-                </div>
+                <div class="main-content__title text-truncate">{{ vod.item.title }}</div>
+                <div class="main-content__description">{{ vod.item.description }}</div>
               </div>
             </div>
             <div class="vod-item__date">{{ vod.date }}</div>
             <div class="vod-item__viewers">{{ fviewers(vod.viewers) }}</div>
           </div>
           <div class="pagination-container">
-            <v-pagination
-              v-model="page"
-              :length="maxPage"
-              :total-visible="7"
-            ></v-pagination>
+            <v-pagination v-model="page" :length="maxPage" :total-visible="7"></v-pagination>
           </div>
         </template>
         <div v-else class="none-info">
-          <div>您還未申請成為我們的直播主</div>
-          <div>快點下左上的「申請播主」與我們分享您的直播吧！</div>
+          <div>{{$t('fLiveStream.not_streamer_default_text_1')}}</div>
+          <div>{{$t('fLiveStream.not_streamer_default_text_2')}}</div>
         </div>
       </div>
     </f-block>
@@ -133,7 +130,7 @@ export default {
           const target = platforms.find(y => y.id === x.platform);
           return {
             ...x,
-            platform: target ? target.title : x.platform,
+            platform: target ? this.$t(`_platforms.${target.id}`) : x.platform,
             checkbox: false
           };
         });

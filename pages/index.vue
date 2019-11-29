@@ -7,11 +7,16 @@
     <div class="content-grid">
       <div class="content-grid__main">
         <f-home-news-area></f-home-news-area>
-        <f-block icon="/platform_icons/icn_push_B.png" more to="/live/recommend" title="推薦實況">
+        <f-block
+          icon="/platform_icons/icn_push_B.png"
+          more
+          to="/live/recommend"
+          :title="$t('index.recommended_streams')"
+        >
           <f-stream-container :streams="streams.all.slice(0, 8)"></f-stream-container>
         </f-block>
         <f-block
-          title="熱門主播榜"
+          :title="$t('index.hot_streamers')"
           :font-size="30"
           :line-height="3"
           icon="/platform_icons/icn_star_B.png"
@@ -21,17 +26,17 @@
         </f-block>
         <f-block
           icon="/platform_icons/icn_hot_B.png"
-          title="熱門遊戲"
+          :title="$t('index.hot_games')"
           to="/live/hot"
           more
-          more-title="更多遊戲"
+          :more-title="$t('index.more_games')"
         >
           <f-game-ranking></f-game-ranking>
         </f-block>
         <f-block
           more
           :to="`/live/recommend/${item.id}`"
-          :title="item.title"
+          :title="$t(`_platforms.${item.id}`)"
           :icon="item.icon"
           v-for="(item, index) in platforms"
           :key="index"

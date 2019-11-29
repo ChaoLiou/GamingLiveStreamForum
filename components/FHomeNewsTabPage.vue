@@ -2,7 +2,7 @@
   <div class="f-home-news-tab-page">
     <f-block-title
       background-color="#e7d6fa"
-      text="新聞快報"
+      :text="$t('fHomeNewsTabPage.newsletter')"
       :content-left-margin="10"
       :content-right-margin="0"
       :font-size="22"
@@ -22,7 +22,7 @@
       </template>
     </div>
     <div class="more-link">
-      <nuxt-link to="/news">更多資訊></nuxt-link>
+      <nuxt-link to="/news">{{$t("fHomeNewsTabPage.more_info")}}></nuxt-link>
     </div>
   </div>
 </template>

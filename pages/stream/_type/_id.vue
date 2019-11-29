@@ -3,9 +3,13 @@
     <f-tab :tabs="[]" :title="''">
       <div class="f-tab__grid">
         <v-btn icon dark>
-          <v-icon>star</v-icon>
+          <v-icon>star_border</v-icon>
         </v-btn>
-        <v-btn to="/live/recommend">直播總覽</v-btn>
+        <v-btn to="/live/recommend">
+          {{
+          $t("account_type_subtype.stream_overview")
+          }}
+        </v-btn>
       </div>
     </f-tab>
     <div class="content">
@@ -13,16 +17,13 @@
         <f-stream v-if="stream" :stream="stream"></f-stream>
       </div>
       <div class="stream-below-info">
-        <f-block-box title="播主資訊" background-color="#f2ecf6">
+        <f-block-box :title="$t('account_type_subtype.streamer_info')" background-color="#f2ecf6">
           <div v-html="stream.description"></div>
         </f-block-box>
       </div>
       <div class="stream-comment">
-        <f-block-box title="熱門推薦" background-color="#f2ecf6">
-          <f-stream-container
-            :col-count="3"
-            :streams="filteredStreams"
-          ></f-stream-container>
+        <f-block-box :title="$t('account_type_subtype.hot_recommend')" background-color="#f2ecf6">
+          <f-stream-container :col-count="3" :streams="filteredStreams"></f-stream-container>
         </f-block-box>
       </div>
     </div>

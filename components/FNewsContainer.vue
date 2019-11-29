@@ -11,7 +11,7 @@
       </template>
     </div>
     <div class="more-btn-container">
-      <v-btn dark block @click="loadMore">載入更多新聞</v-btn>
+      <v-btn dark block @click="loadMore">{{$t('fNewsContainer.load_more_news')}}</v-btn>
     </div>
   </div>
 </template>

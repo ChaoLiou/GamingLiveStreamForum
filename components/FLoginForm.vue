@@ -4,14 +4,14 @@
       <v-icon>clear</v-icon>
     </v-btn>
     <v-card-title primary-title>
-      <div class="form-title">登入牽手直播</div>
+      <div class="form-title">{{$t('fLoginForm.login_website')}}</div>
     </v-card-title>
     <v-card-text class="tab-header">
-      <div class="tab-title">登入/註冊</div>
+      <div class="tab-title">{{$t('fLoginForm.loginout')}}</div>
     </v-card-text>
     <v-card-text class="content">
       <div class="phone-container">
-        <v-label>手機號碼</v-label>
+        <v-label>{{$t('fLoginForm.phone')}}</v-label>
         <v-select
           class="area-code__select"
           dark
@@ -30,15 +30,13 @@
           single-line
           hide-details
           v-model="phoneNumber"
-          placeholder="請輸入手機號碼"
+          :placeholder="$t('fLoginForm.input_phone_number')"
           @keyup="validationMessage.phoneNumber = ''"
         ></v-text-field>
-        <div class="validation-message">
-          {{ validationMessage.phoneNumber }}
-        </div>
+        <div class="validation-message">{{ validationMessage.phoneNumber }}</div>
       </div>
       <div class="captcha-container">
-        <v-label>圖文驗證碼</v-label>
+        <v-label>{{$t('fLoginForm.captcha_key')}}</v-label>
         <div class="captcha-grid">
           <v-text-field
             dark
@@ -46,20 +44,15 @@
             hide-details
             outline
             v-model="captchaInput"
-            placeholder="請輸入圖片內文字及數字"
+            :placeholder="$t('fLoginForm.captcha_key_input_placeholder')"
             @keyup="validationMessage.captchaInput = ''"
           ></v-text-field>
-          <f-identify
-            :identify-code="captchaKey"
-            @refresh="$emit('refresh-captcha')"
-          ></f-identify>
+          <f-identify :identify-code="captchaKey" @refresh="$emit('refresh-captcha')"></f-identify>
         </div>
-        <div class="validation-message">
-          {{ validationMessage.captchaInput }}
-        </div>
+        <div class="validation-message">{{ validationMessage.captchaInput }}</div>
       </div>
       <div class="sms-validation-container">
-        <v-label>簡訊驗證碼</v-label>
+        <v-label>{{$t('fLoginForm.sms_key')}}</v-label>
         <div class="sms-validation-grid">
           <v-text-field
             dark
@@ -67,13 +60,11 @@
             hide-details
             outline
             v-model="smsValidationInput"
-            placeholder="請輸入簡訊驗證碼"
+            :placeholder="$t('fLoginForm.sms_key_input_placeholder')"
             @keyup="validationMessage.smsValidationInput = ''"
           ></v-text-field>
-          <v-btn color="#8e75ae" dark @click="smsValidation">取得驗證碼</v-btn>
-          <div class="validation-message">
-            {{ validationMessage.smsValidationInput }}
-          </div>
+          <v-btn color="#8e75ae" dark @click="smsValidation">{{$t('fLoginForm.get_sms_key')}}</v-btn>
+          <div class="validation-message">{{ validationMessage.smsValidationInput }}</div>
         </div>
       </div>
       <div class="login-container">
@@ -82,41 +73,37 @@
             hide-details
             height="24px"
             v-model="rememberPhoneNumber"
-            label="記住手機號碼"
+            :label="$t('fLoginForm.remeber_phone')"
           ></v-checkbox>
           <v-checkbox
             hide-details
             height="24px"
             v-model="remainLoginStatus"
-            label="保持登入狀態"
+            :label="$t('fLoginForm.remain_login_status')"
           ></v-checkbox>
         </div>
-        <div class="login-tips">公用電腦請記得登出，或開啟無痕模式</div>
+        <div class="login-tips">{{$t('fLoginForm.login_tips')}}</div>
         <div class="validation-message">{{ validationMessage.login }}</div>
         <v-btn block color="#8e75ae" dark @click="login">登入</v-btn>
       </div>
       <!-- <div class="divider-container">
         <div class="line"></div>
-        <div>或是</div>
+        <div>{{$t(fLoginForm.or)}}</div>
         <div class="line"></div>
       </div>
       <div class="oauth-container">
-        <div>微信登入</div>
-        <div>QQ登入</div>
+        <div>{{$t(fLoginForm.login_by_wechat)}}</div>
+        <div>{{$t(fLoginForm.login_by_qq)}}</div>
       </div>-->
       <div>
-        <div class="login-claims">
-          登入後即代表您同意牽手論壇
-          <a>服務條款</a>
-          及
-          <a>隱私權政策</a>
-        </div>
+        <div class="login-claims" v-html="$t('fLoginForm.claims')"></div>
       </div>
     </v-card-text>
   </v-card>
 </template>
 <script>
 import FIdentify from "@/components/FIdentify";
+import areaCodes from "@/assets/json/options/areaCode";
 export default {
   components: {
     FIdentify
@@ -141,10 +128,7 @@ export default {
   },
   data() {
     return {
-      areaCodes: [
-        { text: "CN+86", value: "+86" },
-        { text: "TW+886", value: "+886" }
-      ],
+      areaCodes,
       selectedAreaCode: "+86",
       phoneNumber: "",
       captchaInput: "",
@@ -219,6 +203,10 @@ export default {
           } else {
             console.log("otp auth failed!");
             console.log({ ...this.data });
+            this.validationMessage.smsValidationInput = this.$t(
+              "fLoginForm.sms_key_input_validation_2"
+            );
+            return;
           }
         } else {
           this.$emit("redirect-register", data);
@@ -228,15 +216,21 @@ export default {
     inputValidation() {
       let success = true;
       if (!this.phoneNumber) {
-        this.validationMessage.phoneNumber = "手機號碼不能為空";
+        this.validationMessage.phoneNumber = this.$t(
+          "fLoginForm.phone_input_validation"
+        );
         success = false;
       }
       if (!this.captchaInput) {
-        this.validationMessage.captchaInput = "圖文驗證碼不能為空";
+        this.validationMessage.captchaInput = this.$t(
+          "fLoginForm.captcha_key_input_validation_1"
+        );
         success = false;
       }
       if (!this.smsValidationInput) {
-        this.validationMessage.smsValidationInput = "簡訊驗證碼不能為空";
+        this.validationMessage.smsValidationInput = this.$t(
+          "fLoginForm.sms_key_input_validation_1"
+        );
         success = false;
       }
       if (!success) {
@@ -244,7 +238,9 @@ export default {
       }
 
       if (this.captchaInput !== this.captchaKey) {
-        this.validationMessage.login = "圖文驗證碼錯誤";
+        this.validationMessage.login = this.$t(
+          "fLoginForm.captcha_key_input_validation_2"
+        );
         return false;
       }
 

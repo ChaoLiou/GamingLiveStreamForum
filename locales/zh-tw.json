@@ -1,0 +1,242 @@
+{
+  "_memberCols": {
+    "id": "ID",
+    "nickname": "暱稱",
+    "score": "積分",
+    "level": "用戶等級",
+    "gender": "性別",
+    "birthday": "生日",
+    "location": "居住地",
+    "email": "E-mail",
+    "phone": "手機號碼",
+    "wechat": "微信",
+    "qq": "QQ",
+    "weibo": "微博"
+  },
+  "_platforms": {
+    "douyu": "鬥魚直播",
+    "bilibili": "Bilibili",
+    "twitch": "Twitch",
+    "now": "Now直播",
+    "youtube": "Youtube",
+    "cc163": "CC直播",
+    "huya": "虎牙直播"
+  },
+  "_games": {
+    "jdqs": "絕地求生",
+    "jdqsm": "絕地求生M",
+    "lol": "英雄聯盟",
+    "wzry": "王者榮耀",
+    "chess": "自走棋",
+    "pubg": "和平菁英",
+    "identityv": "第五人格",
+    "apex": "Apex英雄",
+    "deadline": "黎明死線",
+    "csgo": "CS:GO",
+    "lolm": "傳說對決",
+    "overwatch": "守望先鋒"
+  },
+  "_tabs": {
+    "account": {
+      "info": "個人資訊",
+      "mydata": "我的資料",
+      "followedstreams": "追蹤實況",
+      "mystream": "我的實況",
+      "mymessage": "我的訊息",
+      "manage": "個人管理",
+      "myarticles": "我的文章",
+      "drafts": "草稿/排程文章",
+      "signature": "簽名檔設定",
+      "livestream": "我的實況",
+      "mailbox": "信件匣",
+      "sysnotification": "系統通知",
+      "myforums": "我的社區",
+      "quest": "任務/積分",
+      "friend": "好友/聊天"
+    },
+    "live": {
+      "recommend": "推薦實況",
+      "hot": "熱門遊戲"
+    },
+    "news": {
+      "main": "新聞",
+      "announcement": "公告",
+      "events": "活動",
+      "games": "賽事"
+    }
+  },
+  "index": {
+    "recommended_streams": "推薦實況",
+    "hot_streamers": "熱門主播榜",
+    "hot_games": "熱門遊戲",
+    "more_games": "更多遊戲"
+  },
+  "default": {
+    "hot_streamers": "熱門主播榜",
+    "stream_platform": "直播平台",
+    "followed_streams": "追蹤實況",
+    "hot_games": "熱門遊戲",
+    "loginout": "登入/註冊",
+    "locale": "語言",
+    "zh-tw": "前往繁體網站",
+    "zh-cn": "前往簡體網站"
+  },
+  "account_type_subtype": {
+    "stream_overview": "直播總覽",
+    "streamer_info": "播主資訊",
+    "hot_recommend": "熱門推薦",
+    "account_center": "個人中心"
+  },
+  "live_type_id": {
+    "amazing_streams": "精彩實況",
+    "load_more_streams": "載入更多直播"
+  },
+  "news_type_id": {
+    "newsletter": "新聞快報",
+    "news_comments": "新聞評語",
+    "news_relatives": "相關新聞",
+    "news_headline": "最新頭條",
+    "more": "更多"
+  },
+  "fStreamSettingForm": {
+    "stream_setup": "轉播設定",
+    "stream_platform": "實況平台",
+    "platform_id": "平台 ID",
+    "stream_rating": "實況分級",
+    "platform_id_input_placeholder": "請輸入平台ID",
+    "game_category": "遊戲分類",
+    "sync_with_stream": "實況同步",
+    "sync_with_stream_enabled_text": "同步到牽手實況若不符合規範請取消勾選",
+    "stream_rules_title": "實況規範",
+    "stream_rules_content": "<ol><li>本服務僅提供遊戲實況使用。</li><li>使用者需持有手機及電子支付認證。</li><li>近期因站上違規被處分者，會被限期禁止使用本服務。</li><li>設定關聯作品須遵守該社區版規，違規可能被禁止於該版宣傳。</li><li>標題與圖像需與實況內容相關。</li><li>內容須由本人經營，不可盜用他人實況。</li><li>內容不得涉及謾罵、人身攻擊。</li><li>無論分級為何，直播時皆須避免不必要的色情、血腥鏡頭。</li><li>對於違反規範者，站方有權力中止其使用權限。</li></ol>",
+    "agreed_all_rules": "我同意並遵守上述規範",
+    "cancel": "取消",
+    "submit": "確認送出",
+    "platform_id_input_validation": "平台ID不得能為空",
+    "rating_above_18y": "需滿18歲觀看",
+    "rating_all": "沒有年齡限制"
+  },
+  "fStreamPreview": {
+    "viewers_unit": "位觀眾"
+  },
+  "fStream": {
+    "streamer": "實況主",
+    "viewers_unit": "人觀看",
+    "back_to_streams_overview": "回實況總覽",
+    "relative_products": "關聯商品",
+    "like": "喜歡",
+    "subscribe": "訂閱"
+  },
+  "fRegisterForm": {
+    "fill_in_account_info": "填寫個人資料",
+    "upload": "上傳",
+    "uploaded_file_limits": "檔案格式：JPG﹑PNG(500KB 以內)",
+    "nickname": "暱稱",
+    "nickname_input_placeholder": "取個讓人印象深刻的暱稱吧",
+    "gender": "性別",
+    "finish": "完成",
+    "nickname_input_vaildation_1": "暱稱不能為空",
+    "nickname_input_vaildation_2": "暱稱太長了",
+    "avatar_input_vaildation_1": "檔案大小超過 500 KB",
+    "avatar_input_vaildation_2": "檔案類型不是 JPG 或 PNG"
+  },
+  "fNewsRelatives": {
+    "keywords": "關鍵字"
+  },
+  "fNewsPreview": {
+    "continue_reading": "繼續閱讀"
+  },
+  "fNewsDetail": {
+    "like": "讚",
+    "collect": "收藏"
+  },
+  "fNewsContainer": {
+    "load_more_news": "載入更多新聞"
+  },
+  "fFollowedStreams": {
+    "recommended_streams": "推薦實況",
+    "followed_streams": "追蹤實況",
+    "load_more_streams": "載入更多直播"
+  },
+  "fHomeNewsTabPage": {
+    "newsletter": "新聞快報",
+    "more_info": "更多資訊"
+  },
+  "fNewsComment": {
+    "report": "檢舉",
+    "comment_it": "發表新聞評語...（限50字）",
+    "collapse_to": "縮減至",
+    "expand_all": "顯示所有",
+    "comments_unit": "則評語"
+  },
+  "fMyMessage": {
+    "my_msg": "我的訊息",
+    "private_msg": "私訊",
+    "official_msg": "官方",
+    "online": "線上",
+    "no_any_msg": "目前沒有收到任何訊息喔~",
+    "stranger_msg": "陌生人",
+    "blacklist": "黑名單",
+    "select_one_contactor": "從左側選一個查看的訊息吧！"
+  },
+  "fMemberBlock": {
+    "high_level_member": "高級會員",
+    "ur_score": "你的積分",
+    "deposit": "儲值",
+    "score": "積分",
+    "account_center": "個人中心",
+    "logout": "登出"
+  },
+  "fLiveStream": {
+    "my_stream": "我的實況",
+    "apply_streamer": "申請播主",
+    "platform": "平台",
+    "stream_title": "直播標題",
+    "date": "日期",
+    "popularity": "人氣",
+    "not_streamer_default_text_1": "您還未申請成為我們的直播主",
+    "not_streamer_default_text_2": "快點下左上的「申請播主」與我們分享您的直播吧！"
+  },
+  "fMyData": {
+    "my_avatar": "我的頭像",
+    "update": "更新",
+    "uploaded_file_limits": "檔案格式：JPG﹑PNG(500KB 以內)",
+    "basic_info": "基本資訊",
+    "public": "公開",
+    "my_intro": "我的介紹",
+    "brief_intro": "簡介",
+    "brief_intro_textarea_info": "輸入不得超過500字元(約250中文字)",
+    "save": "儲存",
+    "avatar_input_validation_1": "檔案大小超過 500 KB",
+    "avatar_input_validation_2": "檔案類型不是 JPG 或 PNG"
+  },
+  "fLoginForm": {
+    "login_website": "登入牽手直播",
+    "loginout": "登入/註冊",
+    "phone": "手機號碼",
+    "input_phone_number": "請輸入手機號碼",
+    "captcha_key": "圖文驗證碼(點擊圖片更換)",
+    "captcha_key_input_placeholder": "請輸入圖片內文字及數字",
+    "sms_key": "簡訊驗證碼",
+    "sms_key_input_placeholder": "請輸入簡訊驗證碼",
+    "get_sms_key": "取得驗證碼",
+    "remeber_phone": "記住手機號碼",
+    "remain_login_status": "保持登入狀態",
+    "login_tips": "公用電腦請記得登出，或開啟無痕模式",
+    "claims": "登入後即代表您同意牽手論壇<a>服務條款</a>及<a>隱私權政策</a>",
+    "phone_input_validation": "手機號碼不能為空",
+    "captcha_key_input_validation_1": "圖文驗證碼不能為空",
+    "captcha_key_input_validation_2": "圖文驗證碼錯誤",
+    "sms_key_input_validation_1": "簡訊驗證碼不能為空",
+    "sms_key_input_validation_2": "簡訊驗證碼錯誤",
+    "or": "或是",
+    "login_by_wechat": "微信登入",
+    "login_by_qq": "QQ登入"
+  },
+  "fBlock": {
+    "see_more": "觀看更多"
+  },
+  "fBlockTitle": {
+    "see_more": "觀看更多"
+  }
+}

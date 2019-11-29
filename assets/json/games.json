@@ -1,61 +1,49 @@
 [
   {
-    "title": "絕地求生",
     "image": "/game_posters/絕地求生-285x380.jpg",
     "id": "jdqs"
   },
   {
-    "title": "絕地求生M",
     "image": "/game_posters/絕地求生Mobile-285x380.jpg",
     "id": "jdqsm"
   },
   {
-    "title": "英雄聯盟",
     "image": "/game_posters/英雄聯盟-285x380.jpg",
     "id": "lol"
   },
   {
-    "title": "王者榮耀",
     "image": "/game_posters/王者榮耀-285x380.jpg",
     "id": "wzry"
   },
   {
-    "title": "自走棋",
     "image": "/game_posters/自走棋-285x380.jpg",
     "id": "chess"
   },
   {
-    "title": "和平菁英",
     "image": "/game_posters/和平菁英-285x380.jpg",
     "id": "pubg"
   },
   {
-    "title": "第五人格",
     "image": "/game_posters/第五人格-285x380.jpg",
     "id": "identityv"
   },
   {
-    "title": "Apex英雄",
     "image": "/game_posters/Apex 英雄-285x380.jpg",
     "id": "apex"
   },
   {
-    "title": "黎明死線",
     "image": "/game_posters/黎明死線-285x380.jpg",
     "id": "deadline"
   },
   {
-    "title": "CS:GO",
     "image": "/game_posters/CS_GO-285x380.jpg",
     "id": "csgo"
   },
   {
-    "title": "傳說對決",
     "image": "/game_posters/傳說對決-285x380.jpg",
     "id": "lolm"
   },
   {
-    "title": "鬥陣特攻",
     "image": "/game_posters/鬥陣特攻-285x380.jpg",
     "id": "overwatch"
   }

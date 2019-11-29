@@ -23,13 +23,13 @@
       </div>
       <div class="f-stream__grid">
         <div class="f-stream__streamer">
-          <span>實況主:</span>
+          <span>{{$t("fStream.streamer")}}:</span>
           <a>{{ stream.streamer_name }}</a>
         </div>
-        <div class="f-stream__viewer">{{ viewers }}人觀看</div>
+        <div class="f-stream__viewer">{{ viewers }}{{$t("fStream.viewers_unit")}}</div>
         <div>
-          <v-btn depressed to="/live/recommend">回實況總覽</v-btn>
-          <v-btn depressed>關聯商品</v-btn>
+          <v-btn depressed to="/live/recommend">{{$t("fStream.back_to_streams_overview")}}</v-btn>
+          <v-btn depressed>{{$t("fStream.relative_products")}}</v-btn>
           <v-btn depressed icon>
             <v-icon>more_vert</v-icon>
           </v-btn>
@@ -44,11 +44,11 @@
           }"
         >
           <div class="stream-info">
-            <div class="stream-info__title">喜歡</div>
+            <div class="stream-info__title">{{$t("fStream.like")}}</div>
             <div class="stream-info__content">642</div>
           </div>
           <div class="stream-info">
-            <div class="stream-info__title">訂閱</div>
+            <div class="stream-info__title">{{$t("fStream.subscribe")}}</div>
             <div class="stream-info__content">887</div>
           </div>
         </div>

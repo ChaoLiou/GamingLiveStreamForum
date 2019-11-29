@@ -1,23 +1,23 @@
 <template>
   <div class="news-type-id">
-    <f-tab title="新聞快報" :tabs="tabs" link="/news"></f-tab>
+    <f-tab :title="$t('news_type_id.newsletter')" :tabs="tabs" link="/news" from="news"></f-tab>
     <div class="content-grid">
       <div class="content-grid__main">
         <template v-if="$route.params.id">
           <f-news-detail :news="newsDetail"></f-news-detail>
-          <f-block-box title="新聞評語">
+          <f-block-box :title="$t('news_type_id.news_comments')">
             <f-news-comment :source="newsDetail.comments"></f-news-comment>
           </f-block-box>
-          <f-block-box title="相關新聞">
+          <f-block-box :title="$t('news_type_id.news_relatives')">
             <f-news-relatives :keywords="newsDetail.keywords" :source="newsDetail.relatives"></f-news-relatives>
             <div class="more-link">
-              <a href="#">更多</a>
+              <a href="#">{{ $t("news_type_id.more") }}</a>
             </div>
           </f-block-box>
-          <f-block-box title="最新頭條">
+          <f-block-box :title="$t('news_type_id.news_headline')">
             <f-news-headlines :source="newsDetail.heads"></f-news-headlines>
             <div class="more-link">
-              <a href="#">更多</a>
+              <a href="#">{{ $t("news_type_id.more") }}</a>
             </div>
           </f-block-box>
         </template>
@@ -123,11 +123,11 @@ export default {
 <style scoped>
 .content-grid {
   display: grid;
-  grid-gap: 20px;
+  /* grid-gap: 20px; */
   grid-template-columns: auto 300px;
   margin-top: 70px;
-  margin-left: 20px;
-  margin-right: 20px;
+  /* margin-left: 20px;
+  margin-right: 20px; */
 }
 .content-grid__main {
   margin: 0px 30px;

@@ -10,7 +10,7 @@
         <nuxt-link v-else :to="to">{{ text }}</nuxt-link>
       </div>
       <div class="more" v-if="more" :style="moreLinkStyles">
-        <nuxt-link :to="to">{{ moreTitle }}></nuxt-link>
+        <nuxt-link :to="to">{{ moreTitle ? moreTitle : $t("fBlockTitle.see_more") }}></nuxt-link>
       </div>
       <div v-else class="tab-bar" :style="tabBarStyles">
         <div class="tab-container" :style="tabContainerStyles">
@@ -21,17 +21,8 @@
             :style="getTabStyles(index)"
           >
             <div class="tab__left-trangle" :style="tabLeftTriangleStyles"></div>
-            <div
-              class="tab__content"
-              :style="tabContentStyles"
-              @click="tabChange(index)"
-            >
-              {{ tab }}
-            </div>
-            <div
-              class="tab__right-trangle"
-              :style="tabRightTriangleStyles"
-            ></div>
+            <div class="tab__content" :style="tabContentStyles" @click="tabChange(index)">{{ tab }}</div>
+            <div class="tab__right-trangle" :style="tabRightTriangleStyles"></div>
           </div>
         </div>
       </div>
@@ -81,7 +72,7 @@ export default {
     },
     moreTitle: {
       type: String,
-      default: "觀看更多"
+      default: ""
     },
     icon: {
       type: String,

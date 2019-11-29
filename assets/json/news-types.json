@@ -1,6 +1,6 @@
 [
   {
-    "title": "新聞",
+    "title": "新闻",
     "value": "main"
   },
   {
@@ -8,11 +8,11 @@
     "value": "announcement"
   },
   {
-    "title": "活動",
+    "title": "活动",
     "value": "events"
   },
   {
-    "title": "賽事",
+    "title": "赛事",
     "value": "games"
   }
 ]

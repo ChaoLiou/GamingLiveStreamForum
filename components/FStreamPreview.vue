@@ -24,13 +24,13 @@
           max-height="200px"
         >
           <div class="fixed-mask play-mask">
-            <v-icon large>play_circle_outline</v-icon>
+            <v-img class="v-icon" src="/misc_icons/play_circle_outline.svg"></v-img>
             <div class="fixed-mask play-mask__background"></div>
           </div>
           <div class="fixed-mask live-mask">LIVE</div>
           <div class="fixed-mask viewer-mask">
             <div class="viewer-mask__container">
-              <div class="viewer-mask__content">{{ viewers }}位觀眾</div>
+              <div class="viewer-mask__content">{{ viewers }}{{$t('fStreamPreview.viewers_unit')}}</div>
               <div class="viewer-mask__background"></div>
             </div>
           </div>
@@ -50,22 +50,19 @@
           <v-img :src="stream.streamer_image"></v-img>
         </v-avatar>
         <div class="stream-brief__content">
-          <div
-            v-if="!player"
-            class="stream-brief__title text-truncate"
-            :title="stream.title"
-          >
-            <a v-if="toExternal" :href="stream.externalLink" target="_blank">{{
+          <div v-if="!player" class="stream-brief__title text-truncate" :title="stream.title">
+            <a v-if="toExternal" :href="stream.externalLink" target="_blank">
+              {{
               stream.title
-            }}</a>
-            <nuxt-link v-else :to="streamLink" target="_blank">{{
+              }}
+            </a>
+            <nuxt-link v-else :to="streamLink" target="_blank">
+              {{
               stream.title
-            }}</nuxt-link>
+              }}
+            </nuxt-link>
           </div>
-          <div
-            class="stream-brief__name text-truncate"
-            :title="stream.streamer_name"
-          >
+          <div class="stream-brief__name text-truncate" :title="stream.streamer_name">
             <a>{{ stream.streamer_name }}</a>
           </div>
           <div class="stream-brief__game text-truncate" :title="game">
@@ -74,9 +71,10 @@
           <div class="stream-brief__platform text-truncate" :title="platform">
             <a>{{ platform }}</a>
           </div>
-          <div v-if="player" class="stream-brief__viewers">
-            {{ viewers }}位觀眾
-          </div>
+          <div
+            v-if="player"
+            class="stream-brief__viewers"
+          >{{ viewers }}{{$t('fStreamPreview.viewers_unit')}}</div>
         </div>
       </div>
       <div class="stream-tags">
@@ -84,12 +82,9 @@
           class="tag"
           v-for="(tag, index) in tags.slice(0, player ? 2 : 2)"
           :key="index"
-          >{{ tag }}</span
-        >
+        >{{ tag }}</span>
       </div>
-      <div v-if="player" class="stream-description">
-        {{ stream.description }}
-      </div>
+      <div v-if="player" class="stream-description">{{ stream.description }}</div>
     </div>
   </div>
 </template>
@@ -162,11 +157,11 @@ export default {
     },
     game() {
       const target = games.find(x => x.id === this.stream.game);
-      return target ? target.title : this.stream.game;
+      return target ? this.$t(`_games.${target.id}`) : this.stream.game;
     },
     platform() {
       const target = platforms.find(x => x.id === this.stream.platform);
-      return target ? target.title : this.stream.platform;
+      return target ? this.$t(`_platforms.${target.id}`) : this.stream.platform;
     }
   },
   mounted() {},
@@ -270,19 +265,17 @@ export default {
 }
 .v-image:hover .play-mask .v-icon {
   opacity: 1;
-  transform: scale(2);
+  transform: scale(1);
 }
 .play-mask .v-icon {
   opacity: 0;
   transition: all 0.3s ease-out;
-  transform: scale(3);
+  transform: scale(2);
   color: rgba(255, 255, 255);
   width: 100%;
   height: 100%;
   z-index: 2;
   position: absolute;
-  left: 36px;
-  top: 36px;
 }
 .play-mask__background {
   top: 0px;

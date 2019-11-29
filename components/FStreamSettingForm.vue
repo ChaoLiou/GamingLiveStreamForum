@@ -4,11 +4,11 @@
       <v-icon>clear</v-icon>
     </v-btn>
     <v-card-title primary-title>
-      <div class="form-title">轉播設定</div>
+      <div class="form-title">{{ $t("fStreamSettingForm.stream_setup") }}</div>
     </v-card-title>
     <v-card-text class="content">
       <div>
-        <v-label>實況平台</v-label>
+        <v-label>{{ $t("fStreamSettingForm.stream_platform") }}</v-label>
         <v-select
           dark
           dense
@@ -22,22 +22,20 @@
         ></v-select>
       </div>
       <div>
-        <v-label>平台ID</v-label>
+        <v-label>{{ $t("fStreamSettingForm.platform_id") }}</v-label>
         <v-text-field
           dark
           single-line
           hide-details
           outline
           v-model="platformIdInput"
-          placeholder="請輸入平台ID"
+          :placeholder="$t('fStreamSettingForm.platform_id_input_placeholder')"
           @keyup="validationMessage.platformIdInput = ''"
         ></v-text-field>
-        <div class="validation-message">
-          {{ validationMessage.platformIdInput }}
-        </div>
+        <div class="validation-message">{{ validationMessage.platformIdInput }}</div>
       </div>
       <div>
-        <v-label>實況分級</v-label>
+        <v-label>{{ $t("fStreamSettingForm.stream_rating") }}</v-label>
         <v-select
           dark
           dense
@@ -51,7 +49,7 @@
         ></v-select>
       </div>
       <div>
-        <v-label>遊戲分類</v-label>
+        <v-label>{{ $t("fStreamSettingForm.game_category") }}</v-label>
         <v-select
           dark
           dense
@@ -65,48 +63,35 @@
         ></v-select>
       </div>
       <div>
-        <v-label>實況同步</v-label>
+        <v-label>{{ $t("fStreamSettingForm.sync_with_stream") }}</v-label>
         <v-checkbox
           hide-details
           v-model="streamSyncEnabled"
-          label="同步到OO實況若不符合規範請取消勾選"
+          :label="$t('fStreamSettingForm.sync_with_stream_enabled_text')"
         ></v-checkbox>
       </div>
     </v-card-text>
     <v-divider></v-divider>
     <v-card-text class="tos-block">
-      <div>實況規範：</div>
-      <div>
-        <ol>
-          <li>本服務僅提供遊戲實況使用。</li>
-          <li>使用者需持有手機及電子支付認證。</li>
-          <li>近期因站上違規被處分者，會被限期禁止使用本服務。</li>
-          <li>設定關聯作品須遵守該社區版規，違規可能被禁止於該版宣傳。</li>
-          <li>標題與圖像需與實況內容相關。</li>
-          <li>內容須由本人經營，不可盜用他人實況。</li>
-          <li>內容不得涉及謾罵、人身攻擊。</li>
-          <li>無論分級為何，直播時皆須避免不必要的色情、血腥鏡頭。</li>
-          <li>對於違反規範者，站方有權力中止其使用權限。</li>
-        </ol>
-      </div>
+      <div>{{ $t('fStreamSettingForm.stream_rules_title') }}：</div>
+      <div v-html="$t('fStreamSettingForm.stream_rules_content')"></div>
       <div class="agree-actions">
         <v-checkbox
           hide-details
           v-model="tosAgreed"
-          label="我同意並遵守上述規範"
+          :label="$t('fStreamSettingForm.agreed_all_rules')"
         ></v-checkbox>
       </div>
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn outline @click="$emit('close')">取消</v-btn>
+      <v-btn outline @click="$emit('close')">{{ $t('fStreamSettingForm.cancel') }}</v-btn>
       <v-btn
         :disabled="!tosAgreed"
         color="#55287e"
         :dark="tosAgreed"
         @click="submit"
-        >確認送出</v-btn
-      >
+      >{{ $t('fStreamSettingForm.submit') }}</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -125,11 +110,11 @@ export default {
       },
       ratingOptions: [
         {
-          text: "需滿18歲觀看",
+          text: this.$t("fStreamSettingForm.rating_above_18y"),
           value: 0
         },
         {
-          text: "沒有年齡限制",
+          text: this.$t("fStreamSettingForm.rating_all"),
           value: 1
         }
       ],
@@ -139,10 +124,13 @@ export default {
   },
   computed: {
     gameOptions() {
-      return games.map(x => ({ value: x.id, text: x.title }));
+      return games.map(x => ({ value: x.id, text: this.$t(`_games.${x.id}`) }));
     },
     platformOptions() {
-      return platforms.map(x => ({ value: x.id, text: x.title }));
+      return platforms.map(x => ({
+        value: x.id,
+        text: this.$t(`_platforms.${x.id}`)
+      }));
     }
   },
   mounted() {
@@ -152,7 +140,9 @@ export default {
   methods: {
     submit() {
       if (!this.platformIdInput) {
-        this.validationMessage.platformIdInput = "平台ID不得能為空";
+        this.validationMessage.platformIdInput = this.$t(
+          "fStreamSettingForm.platform_id_input_validation"
+        );
         return;
       }
     }

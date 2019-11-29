@@ -1,22 +1,18 @@
 [
   {
     "type": "main",
-    "title": "新聞",
     "link": "/news/main"
   },
   {
     "type": "announcement",
-    "title": "公告",
     "link": "/news/announcement"
   },
   {
     "type": "events",
-    "title": "活動",
     "link": "/news/events"
   },
   {
     "type": "games",
-    "title": "賽事",
     "link": "/news/games"
   }
 ]

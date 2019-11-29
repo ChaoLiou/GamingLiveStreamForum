@@ -1,15 +1,15 @@
 <template>
   <div class="account">
-    <f-tab title="個人中心" :tabs="tabs"></f-tab>
+    <f-tab :title="$t('account_type_subtype.account_center')" :tabs="tabs" from="account"></f-tab>
     <div class="content">
-      <f-block-box :title="currentTab.title">
+      <f-block-box :title="$t(`_tabs.account.${currentTab.type}`)">
         <div class="side-menu">
           <nuxt-link
             v-for="(item, index) in subtabs"
             :key="index"
             :class="[item.active ? 'active' : '']"
             :to="item.link"
-          >{{ item.title }}</nuxt-link>
+          >{{ $t(`_tabs.account.${item.type}`) }}</nuxt-link>
         </div>
       </f-block-box>
       <div class="content__main">

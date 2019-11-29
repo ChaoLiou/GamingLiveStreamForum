@@ -1,0 +1,242 @@
+{
+  "_memberCols": {
+    "id": "ID",
+    "nickname": "暱称",
+    "score": "积分",
+    "level": "用户等级",
+    "gender": "性别",
+    "birthday": "生日",
+    "location": "居住地",
+    "email": "E-mail",
+    "phone": "手机号码",
+    "wechat": "微信",
+    "qq": "QQ",
+    "weibo": "微博"
+  },
+  "_platforms": {
+    "douyu": "斗鱼直播",
+    "bilibili": "Bilibili",
+    "twitch": "Twitch",
+    "now": "Now直播",
+    "youtube": "Youtube",
+    "cc163": "CC直播",
+    "huya": "虎牙直播"
+  },
+  "_games": {
+    "jdqs": "绝地求生",
+    "jdqsm": "绝地求生M",
+    "lol": "英雄联盟",
+    "wzry": "王者荣耀",
+    "chess": "自走棋",
+    "pubg": "和平菁英",
+    "identityv": "第五人格",
+    "apex": "Apex英雄",
+    "deadline": "黎明死线",
+    "csgo": "CS:GO",
+    "lolm": "传说对决",
+    "overwatch": "守望先锋"
+  },
+  "_tabs": {
+    "account": {
+      "info": "个人资讯",
+      "mydata": "我的资料",
+      "followedstreams": "追踪实况",
+      "mystream": "我的实况",
+      "mymessage": "我的讯息",
+      "manage": "个人管理",
+      "myarticles": "我的文章",
+      "drafts": "草稿/排程文章",
+      "signature": "签名档设定",
+      "livestream": "我的实况",
+      "mailbox": "信件匣",
+      "sysnotification": "系统通知",
+      "myforums": "我的社区",
+      "quest": "任务/积分",
+      "friend": "好友/聊天"
+    },
+    "live": {
+      "recommend": "推荐实况",
+      "hot": "热门游戏"
+    },
+    "news": {
+      "main": "新闻",
+      "announcement": "公告",
+      "events": "活动",
+      "games": "赛事"
+    }
+  },
+  "index": {
+    "recommended_streams": "推荐实况",
+    "hot_streamers": "热门主播榜",
+    "hot_games": "热门游戏",
+    "more_games": "更多游戏"
+  },
+  "default": {
+    "hot_streamers": "热门主播榜",
+    "stream_platform": "直播平台",
+    "followed_streams": "追踪实况",
+    "hot_games": "热门游戏",
+    "loginout": "登入/注册",
+    "locale": "语言",
+    "zh-tw": "前往繁体网站",
+    "zh-cn": "前往简体网站"
+  },
+  "account_type_subtype": {
+    "stream_overview": "直播总览",
+    "streamer_info": "播主资讯",
+    "hot_recommend": "热门推荐",
+    "account_center": "个人中心"
+  },
+  "live_type_id": {
+    "amazing_streams": "精彩实况",
+    "load_more_streams": "载入更多直播"
+  },
+  "news_type_id": {
+    "newsletter": "新闻快报",
+    "news_comments": "新闻评语",
+    "news_relatives": "相关新闻",
+    "news_headline": "最新头条",
+    "more": "更多"
+  },
+  "fStreamSettingForm": {
+    "stream_setup": "转播设定",
+    "stream_platform": "实况平台",
+    "platform_id": "平台 ID",
+    "stream_rating": "实况分级",
+    "platform_id_input_placeholder": "请输入平台ID",
+    "game_category": "游戏分类",
+    "sync_with_stream": "实况同步",
+    "sync_with_stream_enabled_text": "同步到牵手实况若不符合规范请取消勾选",
+    "stream_rules_title": "实况规范",
+    "stream_rules_content": "<ol><li>本服务仅提供游戏实况使用。</li><li>使用者需持有手机及电子支付认证。</li><li>近期因站上违规被处分者，会被限期禁止使用本服务。</li><li>设定关联作品须遵守该社区版规，违规可能被禁止于该版宣传。</li><li>标题与图像需与实况内容相关。</li><li>内容须由本人经营，不可盗用他人实况。</li><li>内容不得涉及谩骂、人身攻击。</li><li>无论分级为何，直播时皆须避免不必要的色情、血腥镜头。</li><li>对于违反规范者，站方有权力中止其使用权限。</li></ol>",
+    "agreed_all_rules": "我同意并遵守上述规范",
+    "cancel": "取消",
+    "submit": "确认送出",
+    "platform_id_input_validation": "平台ID不得能为空",
+    "rating_above_18y": "需满18岁观看",
+    "rating_all": "没有年龄限制"
+  },
+  "fStreamPreview": {
+    "viewers_unit": "位观众"
+  },
+  "fStream": {
+    "streamer": "实况主",
+    "viewers_unit": "人观看",
+    "back_to_streams_overview": "回实况总览",
+    "relative_products": "关联商品",
+    "like": "喜欢",
+    "subscribe": "订阅"
+  },
+  "fRegisterForm": {
+    "fill_in_account_info": "填写个人资料",
+    "upload": "上传",
+    "uploaded_file_limits": "档案格式：JPG﹑PNG(500KB 以内)",
+    "nickname": "暱称",
+    "nickname_input_placeholder": "取个让人印象深刻的暱称吧",
+    "gender": "性别",
+    "finish": "完成",
+    "nickname_input_vaildation_1": "暱称不能为空",
+    "nickname_input_vaildation_2": "暱称太长了",
+    "avatar_input_vaildation_1": "档案大小超过 500 KB",
+    "avatar_input_vaildation_2": "档案类型不是 JPG 或 PNG"
+  },
+  "fNewsRelatives": {
+    "keywords": "关键字"
+  },
+  "fNewsPreview": {
+    "continue_reading": "继续阅读"
+  },
+  "fNewsDetail": {
+    "like": "赞",
+    "collect": "收藏"
+  },
+  "fNewsContainer": {
+    "load_more_news": "载入更多新闻"
+  },
+  "fFollowedStreams": {
+    "recommended_streams": "推荐实况",
+    "followed_streams": "追踪实况",
+    "load_more_streams": "载入更多直播"
+  },
+  "fHomeNewsTabPage": {
+    "newsletter": "新闻快报",
+    "more_info": "更多资讯"
+  },
+  "fNewsComment": {
+    "report": "检举",
+    "comment_it": "发表新闻评语...（限50字）",
+    "collapse_to": "缩减至",
+    "expand_all": "显示所有",
+    "comments_unit": "则评语"
+  },
+  "fMyMessage": {
+    "my_msg": "我的讯息",
+    "private_msg": "私讯",
+    "official_msg": "官方",
+    "online": "线上",
+    "no_any_msg": "目前没有收到任何讯息喔~",
+    "stranger_msg": "陌生人",
+    "blacklist": "黑名单",
+    "select_one_contactor": "从左侧选一个查看的讯息吧！"
+  },
+  "fMemberBlock": {
+    "high_level_member": "高级会员",
+    "ur_score": "你的积分",
+    "deposit": "储值",
+    "score": "积分",
+    "account_center": "个人中心",
+    "logout": "登出"
+  },
+  "fLiveStream": {
+    "my_stream": "我的实况",
+    "apply_streamer": "申请播主",
+    "platform": "平台",
+    "stream_title": "直播标题",
+    "date": "日期",
+    "popularity": "人气",
+    "not_streamer_default_text_1": "您还未申请成为我们的直播主",
+    "not_streamer_default_text_2": "快点下左上的「申请播主」与我们分享您的直播吧！"
+  },
+  "fMyData": {
+    "my_avatar": "我的头像",
+    "update": "更新",
+    "uploaded_file_limits": "档案格式：JPG﹑PNG(500KB 以内)",
+    "basic_info": "基本资讯",
+    "public": "公开",
+    "my_intro": "我的介绍",
+    "brief_intro": "简介",
+    "brief_intro_textarea_info": "输入不得超过500字元(约250中文字)",
+    "save": "储存",
+    "avatar_input_validation_1": "档案大小超过 500 KB",
+    "avatar_input_validation_2": "档案类型不是 JPG 或 PNG"
+  },
+  "fLoginForm": {
+    "login_website": "登入牵手直播",
+    "loginout": "登入/注册",
+    "phone": "手机号码",
+    "input_phone_number": "请输入手机号码",
+    "captcha_key": "图文验证码(点击图片更换)",
+    "captcha_key_input_placeholder": "请输入图片内文字及数字",
+    "sms_key": "简讯验证码",
+    "sms_key_input_placeholder": "请输入简讯验证码",
+    "get_sms_key": "取得验证码",
+    "remeber_phone": "记住手机号码",
+    "remain_login_status": "保持登入状态",
+    "login_tips": "公用电脑请记得登出，或开启无痕模式",
+    "claims": "登入后即代表您同意牵手论坛<a>服务条款</a>及<a>隐私权政策</a>",
+    "phone_input_validation": "手机号码不能为空",
+    "captcha_key_input_validation_1": "图文验证码不能为空",
+    "captcha_key_input_validation_2": "图文验证码错误",
+    "sms_key_input_validation_1": "简讯验证码不能为空",
+    "sms_key_input_validation_2": "简讯验证码错误",
+    "or": "或是",
+    "login_by_wechat": "微信登入",
+    "login_by_qq": "QQ登入"
+  },
+  "fBlock": {
+    "see_more": "观看更多"
+  },
+  "fBlockTitle": {
+    "see_more": "观看更多"
+  }
+}

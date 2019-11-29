@@ -61,7 +61,7 @@ export default {
     },
     moreTitle: {
       type: String,
-      default: "觀看更多"
+      default: undefined
     },
     icon: {
       type: String,

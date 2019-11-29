@@ -5,7 +5,7 @@
       :line-height="0"
       :content-left-margin="10"
       :content-right-margin="30"
-      title="我的訊息"
+      :title="$t('fMyMessage.my_msg')"
       background-color="#eadbf8"
     >
       <div class="chat-form">
@@ -16,7 +16,7 @@
                 <template v-slot:badge>
                   <span v-if="newMessage"></span>
                 </template>
-                <span>私訊</span>
+                <span>{{$t('fMyMessage.private_msg')}}</span>
               </v-badge>
             </div>-->
             <div :class="[selectedTab === 'amt' ? 'active' : '']" @click="selectedTab = 'amt'">
@@ -24,7 +24,7 @@
                 <template v-slot:badge>
                   <span v-if="newAnnoucement"></span>
                 </template>
-                <span>官方</span>
+                <span>{{$t('fMyMessage.official_msg')}}</span>
               </v-badge>
             </div>
           </div>
@@ -48,7 +48,8 @@
                   <div class="item__title">
                     <div class="item__title-name text-truncate" :title="chat.name">{{chat.name}}</div>
                     <div v-if="chat.status.online">
-                      <span class="online-icon"></span>線上
+                      <span class="online-icon"></span>
+                      {{$t('fMyMessage.online')}}
                     </div>
                     <div v-else>{{chat.status.lasttime}}</div>
                   </div>
@@ -60,13 +61,13 @@
                 </div>
               </div>
             </template>
-            <div v-else class="none-info__chat">目前沒有收到任何訊息喔~</div>
+            <div v-else class="none-info__chat">{{$t('fMyMessage.no_any_msg')}}</div>
           </div>
           <!-- <div class="collapsed-drawer">
-            <div>陌生人 ＞</div>
+            <div>{{$t('fMyMessage.stranger')}} ＞</div>
           </div>
           <div class="collapsed-drawer">
-            <div>黑名單 ＞</div>
+            <div>{{$t('fMyMessage.blacklist')}} ＞</div>
           </div>-->
         </div>
         <div class="chat-form__room-area">
@@ -92,7 +93,7 @@
                 <span class="msg-content__datetime">{{history.datetime}}</span>
               </div>
             </template>
-            <div v-else class="none-info__history">從左側選一個查看的訊息吧！</div>
+            <div v-else class="none-info__history">{{$t('fMyMessage.select_one_contactor')}}</div>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@
   <v-img class="f-image-preview" :src="image">
     <slot></slot>
     <div class="fixed-mask play-mask">
-      <v-icon large>play_circle_outline</v-icon>
+      <v-img class="v-icon" src="/misc_icons/play_circle_outline.svg"></v-img>
       <div class="fixed-mask play-mask__background"></div>
     </div>
     <div class="fixed-mask live-mask">LIVE</div>
@@ -40,19 +40,17 @@ export default {
 }
 .v-image:hover .play-mask .v-icon {
   opacity: 1;
-  transform: scale(2);
+  transform: scale(1);
 }
 .play-mask .v-icon {
   opacity: 0;
   transition: all 0.3s ease-out;
-  transform: scale(3);
+  transform: scale(2);
   color: rgba(255, 255, 255);
   width: 100%;
   height: 100%;
   z-index: 2;
   position: absolute;
-  left: 36px;
-  top: 36px;
 }
 .play-mask__background {
   top: 0px;
