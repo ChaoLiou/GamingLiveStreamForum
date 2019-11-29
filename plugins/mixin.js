@@ -7,7 +7,7 @@ Vue.mixin({
     return {
       apiOrigin: "https://woolive.ark-program.com",
       memberApiPrefix: "http://13.76.2.148:8000/api/v1",
-      // googleAPIKey: "AIzaSyA7m7LP26mFpKNuRGa7BQFGwuv3w-HpJz4",
+      googleAPIKey: "AIzaSyA7m7LP26mFpKNuRGa7BQFGwuv3w-HpJz4",
       internals: ["youtube", "twitch", "douyu"],
       cookie_ns: "glsf",
       cookieKeys: ["id", "token"]
