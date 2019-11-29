@@ -62,7 +62,7 @@
         </div>
       </v-toolbar-items>
       <v-spacer></v-spacer>
-      <div>
+      <!-- <div>
         <v-menu offset-y>
           <template v-slot:activator="{ on }">
             <v-btn dark v-on="on">{{$t('default.locale')}}</v-btn>
@@ -78,15 +78,15 @@
             </v-list-tile>
           </v-list>
         </v-menu>
-      </div>
-      <div class="login-container">
+      </div>-->
+      <!-- <div class="login-container">
         <f-member-block v-if="loggedin" :member="member" @logout="logoutMember"></f-member-block>
         <v-btn v-else @click="openLoginForm">
           {{
           $t("default.loginout")
           }}
         </v-btn>
-      </div>
+      </div>-->
     </v-toolbar>
     <v-content>
       <nuxt />
@@ -139,7 +139,7 @@ export default {
   },
   data() {
     return {
-      drawer: true,
+      drawer: false,
       dialog: false,
       rev,
       needRegisteration: false,
@@ -188,8 +188,10 @@ export default {
       this.data = data;
     },
     openLoginForm() {
-      this.dialog = true;
-      this.generateCaptchaKey();
+      this.dialog = !this.dialog;
+      if (this.dialog) {
+        this.generateCaptchaKey();
+      }
     },
     generateCaptchaKey() {
       this.captchaKey = helper.randomString(5, "aA#");
@@ -198,6 +200,7 @@ export default {
       this.dialog = false;
       this.needRegisteration = false;
       this.loggedin = loggedin;
+      this.drawer = loggedin;
     },
     closeLoginForm(id) {
       this.dialog = false;
@@ -206,6 +209,7 @@ export default {
         this.login(id).then(member => {
           this.member = member;
           this.loggedin = true;
+          this.drawer = true;
         });
       }
     },

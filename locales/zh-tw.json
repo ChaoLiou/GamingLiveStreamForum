@@ -51,7 +51,9 @@
       "mailbox": "信件匣",
       "sysnotification": "系統通知",
       "myforums": "我的社區",
-      "quest": "任務/積分",
+      "questnscore": "任務/積分",
+      "quest": "任務中心",
+      "score": "積分中心",
       "friend": "好友/聊天"
     },
     "live": {
@@ -238,5 +240,28 @@
   },
   "fBlockTitle": {
     "see_more": "觀看更多"
+  },
+  "fQuestCenter": {
+    "quest_center": "任務中心",
+    "daily_quest": "每日任務",
+    "series_quest": "系列任務",
+    "holding_now": "當前持有",
+    "unit": "點",
+    "quest_name": "任務名稱",
+    "quest_content": "任務內容",
+    "remaing_time": "剩餘時間",
+    "score_reward": "積分獎勵",
+    "finished_or_not": "是否完成",
+    "finished": "已完成",
+    "finishable": "領取",
+    "unfinished": "未完成",
+    "quest_finished": "任務達成！",
+    "quest_finished_msg": "<p>恭喜您!<br />您已完成任務，並且獲得了獎勵。</p><p>但在牽手直播世界的冒險還在繼續者，在這繁華精彩的世界中尋找更加璀璨耀眼的寶藏吧~\\(^_^)/</p><div>---牽手小幫手</div>",
+    "submit": "確認",
+    "hour": "小時",
+    "minute": "分"
+  },
+  "fScoreCenter": {
+    "score_center": "積分中心"
   }
 }

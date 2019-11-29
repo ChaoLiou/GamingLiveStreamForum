@@ -7,8 +7,7 @@ Vue.mixin({
     return {
       apiOrigin: "https://woolive.ark-program.com",
       memberApiPrefix: "http://13.76.2.148:8000/api/v1",
-      // googleAPIKey: "AIzaSyBP2admYTppwm4L9FP7YpAX2DAA3oO61sU",
-      googleAPIKey: "AIzaSyA7m7LP26mFpKNuRGa7BQFGwuv3w-HpJz4",
+      // googleAPIKey: "AIzaSyA7m7LP26mFpKNuRGa7BQFGwuv3w-HpJz4",
       internals: ["youtube", "twitch", "douyu"],
       cookie_ns: "glsf",
       cookieKeys: ["id", "token"]
@@ -17,6 +16,20 @@ Vue.mixin({
   computed: {
     cookieKeysWithNS() {
       return this.cookieKeys.map(key => `${this.cookie_ns}.${key}`);
+    },
+    hotIcon() {
+      const map = {
+        "zh-tw": "/platform_icons/icn_hot_B.png",
+        "zh-cn": "/platform_icons/icn_hot_B_zh-cn.png"
+      };
+      return map[this.$i18n.locale];
+    },
+    landingBackground() {
+      const map = {
+        "zh-tw": "landing-background.png",
+        "zh-cn": "landing-background_zh-cn.png"
+      };
+      return map[this.$i18n.locale];
     }
   },
   methods: {

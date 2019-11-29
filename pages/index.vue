@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    <div class="landing-background"></div>
+    <div class="landing-background" :style="{ background: `url(/${landingBackground}) no-repeat` }"></div>
     <div class="landing">
       <f-home-stream-carousel :streams="streams.all.slice(0, 5)"></f-home-stream-carousel>
     </div>
@@ -25,7 +25,7 @@
           <f-stream-ranking :streams="streamRanking"></f-stream-ranking>
         </f-block>
         <f-block
-          icon="/platform_icons/icn_hot_B.png"
+          :icon="hotIcon"
           :title="$t('index.hot_games')"
           to="/live/hot"
           more
@@ -129,7 +129,6 @@ export default {
   position: absolute;
   left: 0px;
   top: 0px;
-  background: url(~static/landing-background.png) no-repeat;
   background-size: cover;
   width: 100vw;
   height: 783px;

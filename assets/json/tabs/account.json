@@ -56,11 +56,22 @@
     ]
   },
   {
-    "type": "quest",
-    "link": "/account/quest"
+    "type": "questnscore",
+    "link": "/account/questnscore/quest",
+    "subtabs": [
+      {
+        "type": "quest",
+        "link": "/account/questnscore/quest"
+      },
+      {
+        "type": "score",
+        "link": "/account/questnscore/score"
+      }
+    ]
   },
   {
     "type": "friend",
-    "link": "/account/friend"
+    "link": "/account/friend",
+    "subtabs": []
   }
 ]

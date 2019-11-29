@@ -1,0 +1,37 @@
+[
+  {
+    "name": "每日現身",
+    "content": "牽友，就是你！我在這邊每日的等待就是等你現身！",
+    "rewards": 20,
+    "status": "finished",
+    "type": "daily"
+  },
+  {
+    "name": "愛的注視",
+    "content": "向您關注的直播主連續投以5分鐘熱情的目光吧！",
+    "rewards": 20,
+    "status": "finishable",
+    "type": "daily"
+  },
+  {
+    "name": "講送者",
+    "content": "不管是新聞還是直播，給他們一個大大的讚！",
+    "rewards": 20,
+    "status": "unfinished",
+    "type": "daily"
+  },
+  {
+    "name": "熱烈聲援",
+    "content": "地方的直播主需要動力，對他們拋出你的積分以示鼓勵吧！",
+    "rewards": 20,
+    "status": "unfinished",
+    "type": "daily"
+  },
+  {
+    "name": "新秀之星",
+    "content": "我們在等的就是像你這樣的人才！趕緊申請直播，邁出稱霸牽手的第一步吧！",
+    "rewards": 800,
+    "status": "finished",
+    "type": "series"
+  }
+]

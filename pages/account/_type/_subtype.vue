@@ -17,6 +17,8 @@
         <f-followed-streams v-else-if="$route.params.subtype === 'followedstreams'"></f-followed-streams>
         <f-my-message v-else-if="$route.params.subtype === 'mymessage'"></f-my-message>
         <f-live-stream v-else-if="$route.params.subtype === 'livestream'"></f-live-stream>
+        <f-quest-center v-else-if="$route.params.subtype === 'quest'"></f-quest-center>
+        <f-score-center v-else-if="$route.params.subtype === 'score'"></f-score-center>
       </div>
     </div>
   </div>
@@ -29,6 +31,8 @@ import FMyData from "@/components/FMyData";
 import FFollowedStreams from "@/components/FFollowedStreams";
 import FMyMessage from "@/components/FMyMessage";
 import FLiveStream from "@/components/FLiveStream";
+import FQuestCenter from "@/components/FQuestCenter";
+import FScoreCenter from "@/components/FScoreCenter";
 export default {
   components: {
     FTab,
@@ -36,7 +40,9 @@ export default {
     FMyData,
     FFollowedStreams,
     FMyMessage,
-    FLiveStream
+    FLiveStream,
+    FQuestCenter,
+    FScoreCenter
   },
   data() {
     return {

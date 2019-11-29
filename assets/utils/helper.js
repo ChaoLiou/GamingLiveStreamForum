@@ -1,7 +1,8 @@
 export default {
   groupby,
   random,
-  randomString
+  randomString,
+  countdown
 };
 
 function groupby(list, key) {
@@ -36,4 +37,30 @@ function randomString(length, chars) {
   for (var i = length; i > 0; --i)
     result += mask[Math.floor(Math.random() * mask.length)];
   return result;
+}
+
+function countdown() {
+  const rightNowDate = new Date();
+  const rightNowTime = rightNowDate.getTime();
+  const tomorrowBeginingTime = new Date(
+    rightNowDate.getFullYear(),
+    rightNowDate.getMonth(),
+    rightNowDate.getDate() + 1
+  ).getTime();
+  const diffTime = tomorrowBeginingTime - rightNowTime;
+  const totalMillisecondsInRange = {
+    day: 1000 * 60 * 60 * 24,
+    hour: 1000 * 60 * 60,
+    minute: 1000 * 60,
+    second: 1000
+  };
+  return {
+    hour: Math.floor(
+      (diffTime % totalMillisecondsInRange.day) / totalMillisecondsInRange.hour
+    ),
+    minute: Math.floor(
+      (diffTime % totalMillisecondsInRange.hour) /
+        totalMillisecondsInRange.minute
+    )
+  };
 }

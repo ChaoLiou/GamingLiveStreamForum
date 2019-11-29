@@ -5,7 +5,7 @@
       <f-block
         :icon="
           $route.params.type === 'hot'
-            ? '/platform_icons/icn_hot_B.png'
+            ? hotIcon
             : '/platform_icons/icn_push_B.png'
         "
         :to="`/live/${$route.params.type}`"

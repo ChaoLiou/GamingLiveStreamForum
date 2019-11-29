@@ -41,8 +41,8 @@ export default {
         return {
           key: g.key,
           list: g.list
-            .sort((a, b) => (a.image ? -1 : 1))
             .sort((a, b) => new Date(b.time) - new Date(a.time))
+            .sort((a, b) => (a.image ? -1 : 1))
         };
       });
       return groups;

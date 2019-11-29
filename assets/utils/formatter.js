@@ -5,8 +5,24 @@ export default {
   fstring,
   fsource,
   fpreview,
-  favatar
+  favatar,
+  fscores
 };
+
+function fscores(scores, unit = 3) {
+  if (!scores) {
+    return;
+  }
+  const res = [];
+  const scores_parts_reversed = [...`${scores}`].reverse();
+  scores_parts_reversed.forEach((x, i) => {
+    if (i && i % unit === 0) {
+      res.unshift(",");
+    }
+    res.unshift(x);
+  });
+  return res.join("");
+}
 
 function fviewers(viewers, locale = "zh-cn") {
   if (!viewers) return "";

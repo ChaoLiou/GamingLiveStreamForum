@@ -143,7 +143,9 @@ export default {
 
         try {
           const formData = new FormData();
-          formData.append("avatar", this.avatar ? this.avatar : {});
+          if (this.avatar) {
+            formData.append("avatar", this.avatar);
+          }
           formData.append("nickname", this.nickname);
           formData.append("gender", this.selectedGender);
           const { data } = await this.$axios.put(

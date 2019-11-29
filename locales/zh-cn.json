@@ -51,7 +51,9 @@
       "mailbox": "信件匣",
       "sysnotification": "系统通知",
       "myforums": "我的社区",
-      "quest": "任务/积分",
+      "questnscore": "任务/积分",
+      "quest": "任务中心",
+      "score": "积分中心",
       "friend": "好友/聊天"
     },
     "live": {
@@ -238,5 +240,28 @@
   },
   "fBlockTitle": {
     "see_more": "观看更多"
+  },
+  "fQuestCenter": {
+    "quest_center": "任务中心",
+    "daily_quest": "每日任务",
+    "series_quest": "系列任务",
+    "holding_now": "当前持有",
+    "unit": "点",
+    "quest_name": "任务名称",
+    "quest_content": "任务内容",
+    "remaing_time": "剩馀时间",
+    "score_reward": "积分奖励",
+    "finished_or_not": "是否完成",
+    "finished": "已完成",
+    "finishable": "领取",
+    "unfinished": "未完成",
+    "quest_finished": "任务达成！",
+    "quest_finished_msg": "<p>恭喜您!<br />您已完成任务，并且获得了奖励。</p><p>但在牵手直播世界的冒险还在继续者，在这繁华精彩的世界中寻找更加璀璨耀眼的宝藏吧~\\(^_^)/</p><div>---牵手小帮手</div>",
+    "submit": "确认",
+    "hour": "小时",
+    "minute": "分"
+  },
+  "fScoreCenter": {
+    "score_center": "积分中心"
   }
 }
