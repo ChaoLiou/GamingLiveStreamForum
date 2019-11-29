@@ -168,7 +168,6 @@ export default {
     }
   },
   mounted() {
-    console.log();
     this.generateCaptchaKey();
     this.getMemberByLoginuser().then(member => {
       this.member = member;
