@@ -2,7 +2,7 @@
   <div class="index">
     <div class="landing-background" :style="{ background: `url(/${landingBackground}) no-repeat` }"></div>
     <div class="landing">
-      <f-home-stream-carousel :streams="streams.all.slice(0, 5)"></f-home-stream-carousel>
+      <f-home-stream-carousel :streams="streams.douyu.slice(0, 5)"></f-home-stream-carousel>
     </div>
     <div class="content-grid">
       <div class="content-grid__main">
