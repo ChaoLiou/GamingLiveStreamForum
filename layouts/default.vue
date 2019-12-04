@@ -1,6 +1,6 @@
 <template>
   <v-app class="default">
-    <!-- <v-btn
+    <v-btn
       v-if="loggedin"
       icon
       label
@@ -10,7 +10,7 @@
       <v-icon large>{{
         drawer ? "keyboard_arrow_left" : "keyboard_arrow_right"
       }}</v-icon>
-    </v-btn> -->
+    </v-btn>
     <v-navigation-drawer
       v-if="member"
       v-model="drawer"
