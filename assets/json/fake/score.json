@@ -1,0 +1,38 @@
+[
+  {
+    "date": "2019-11-26",
+    "id": "X61Y68273",
+    "content": "500點換取微信紅包100元",
+    "amount": 9,
+    "scores": 500,
+    "remarks": "10月份的營收，給老豆買碗魚翅湯",
+    "status": "processing"
+  },
+  {
+    "date": "2019-11-15",
+    "id": "P56L67345",
+    "content": "100點換取微信紅包20元",
+    "amount": 1,
+    "scores": 100,
+    "remarks": "大概會是兩天後的方便麵錢吧......",
+    "status": "finished"
+  },
+  {
+    "date": "2019-11-05",
+    "id": "S49X52660",
+    "content": "100點換取微信紅包20元",
+    "amount": 1,
+    "scores": 100,
+    "remarks": "隔壁妹子好可愛，找時間光顧一下",
+    "status": "finished"
+  },
+  {
+    "date": "2019-10-29",
+    "id": "G87S52770",
+    "content": "100點換取微信紅包20元",
+    "amount": 1,
+    "scores": 100,
+    "remarks": "媽呀，我真的賺錢了耶",
+    "status": "failed"
+  }
+]

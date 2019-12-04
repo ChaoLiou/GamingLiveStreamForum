@@ -34,7 +34,7 @@
     "deadline": "黎明死線",
     "csgo": "CS:GO",
     "lolm": "傳說對決",
-    "overwatch": "守望先鋒"
+    "overwatch": "鬥陣特工"
   },
   "_tabs": {
     "account": {
@@ -262,6 +262,52 @@
     "minute": "分"
   },
   "fScoreCenter": {
-    "score_center": "積分中心"
+    "score_center": "積分中心",
+    "my_scores": "我的積分",
+    "account_info": "帳號資訊",
+    "holding_now": "當前持有",
+    "account_accumulated": "帳戶累計",
+    "manipulate_score": "積分操作",
+    "amount": "數量",
+    "program_consumed": "方案消耗",
+    "unit": "點",
+    "remarks": "備註事項",
+    "manipulate_score_input_placeholder": "請選擇積分兌換方案",
+    "remarks_input_placeholder": "可以輸入15字要留給自己的備忘語句喔~",
+    "submit_to_apply": "提交申請",
+    "manipulate_score_records": "積分操作紀錄",
+    "time_filter": "篩選時間",
+    "process_status": "處理狀態",
+    "search_in_range": "範圍查詢",
+    "search_id": "單號搜尋",
+    "manipulate_date": "操作時間",
+    "id": "單號",
+    "program": "兌換方案",
+    "scores_consumed": "消耗積分",
+    "status_info": "狀態訊息",
+    "status_info_msg_1": "<p>親愛的牽友您好~<br />已收到您提出的申請，<br />請耐心等候工作天2-3天喔~<span>\\(^_^)/</span></p><div>---牽手小幫手</div>",
+    "submit": "確認",
+    "status_info_msg_2": "<p>親愛的牽友您好~<br />兌換已順利完成，請檢察您的電子錢包喔~<span>\\(^_^)/</span></p><div>---牽手小幫手</div>",
+    "status_info_msg_3": "<p>積分兌換的過程中出了一點問題，<br />原因是您沒有於帳戶資訊填寫銀行的相關資料。<span>(=口=)\"</span><br />請幫我們填寫完成之後再提出一次申請喔～</p><div>---牽手小幫手</div>",
+    "account_info_claims": "<p>親愛的牽友您好：<br />為保護您的權益及確保我們在進行積分兌換時能讓您確實的取得獎勵，請煩請幫我們填寫您銀行的帳戶資訊。<br />這份資訊將不會公開讓其他的會員進行瀏覽，因此請放心填寫。</p>",
+    "import_location": "匯入地",
+    "bank_fullname": "銀行全名",
+    "bank_account": "戶頭帳號",
+    "acoount_name": "帳號名稱",
+    "bank_swift_code": "銀行SWIFT代碼",
+    "open_bank_location": "開戶銀行所在地",
+    "bank_belongs_city": "銀行所屬城市",
+    "check_company_account_or_not": "是否工商銀行帳號",
+    "yes": "是",
+    "no": "否",
+    "save_settings": "儲存設定",
+    "processing": "處理中",
+    "finished": "已完成",
+    "failed": "未完成",
+    "current_scores_short": "當前點數不足",
+    "remarks_input_validation": "字數不得超過15",
+    "china": "大陸",
+    "taiwan": "台灣",
+    "hongkong": "香港"
   }
 }
