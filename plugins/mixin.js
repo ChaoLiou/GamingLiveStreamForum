@@ -6,14 +6,19 @@ Vue.mixin({
   data() {
     return {
       apiOrigin: "https://woolive.ark-program.com",
-      memberApiPrefix: "https://hands-in-hands.com:8000//api/v1",
-      googleAPIKey: "AIzaSyA7m7LP26mFpKNuRGa7BQFGwuv3w-HpJz4",
+      memberApiOrigin: "https://hands-in-hands.com:8000",
+      // googleAPIKey: "AIzaSyA7m7LP26mFpKNuRGa7BQFGwuv3w-HpJz4",
       internals: ["youtube", "twitch", "douyu"],
       cookie_ns: "glsf",
-      cookieKeys: ["id", "token"]
+      cookieKeys: ["id", "token"],
+      memberColsExluded: ["id", "level", "score", "phone"],
+      questColsExluded: ["id"]
     };
   },
   computed: {
+    memberApiPrefix() {
+      return `${this.memberApiOrigin}/api/v1`;
+    },
     cookieKeysWithNS() {
       return this.cookieKeys.map(key => `${this.cookie_ns}.${key}`);
     },
@@ -43,10 +48,80 @@ Vue.mixin({
       const member = await this.$axios.$get(
         `${this.memberApiPrefix}/user/${id}`
       );
+      console.log(member);
+      return this.mappingMember(id, member);
+    },
+    async memberUpdate(member) {
+      try {
+        const formData = new FormData();
+        Object.keys(member)
+          .filter(key => !this.memberColsExluded.includes(key))
+          .forEach(key => {
+            if (
+              key !== "avatar" ||
+              (member.avatar && typeof member.avatar !== typeof "")
+            ) {
+              console.log({
+                key: key,
+                raw_key: this.mapRawMemberCol(key),
+                value: member[key]
+              });
+              formData.append(this.mapRawMemberCol(key), member[key]);
+            }
+          });
+        const { data } = await this.$axios.put(
+          `${this.memberApiPrefix}/user/${member.id}/`,
+          formData
+        );
+        return this.mappingMember(member.id, data);
+      } catch (err) {
+        console.log({ action: "memberUpdate", err });
+      }
+    },
+    mapRawQuestCol(col) {
+      const map = {
+        id: "id",
+        name: "name",
+        description: "description",
+        score: "gamepoint"
+      };
+      return map[col];
+    },
+    mapRawMemberCol(col) {
+      const map = {
+        id: "id",
+        nickname: "nickname",
+        score: "gamepoint",
+        level: "level",
+        gender: "gender",
+        birthday: "birthday",
+        location: "live",
+        email: "email",
+        phone: "mobile",
+        wechat: "wechat",
+        qq: "qq",
+        weibo: "weblog",
+        avatar: "avatar",
+        intro: "introduce"
+      };
+      return map[col];
+    },
+    mappingMember(id, raw) {
       return {
-        ...member,
         id,
-        avatar: "/nobody.jpg"
+        nickname: raw.nickname,
+        score: raw.gamepoint,
+        level: raw.level,
+        gender: raw.gender,
+        birthday: raw.birthday,
+        location: raw.live,
+        email: raw.email,
+        phone: raw.mobile,
+        wechat: raw.wechat,
+        qq: raw.qq,
+        weibo: raw.weblog,
+        avatar: raw.avatar ? `${this.memberApiOrigin}${raw.avatar}` : undefined,
+        intro: raw.introduce
       };
     },
     mappingStream(raw) {
@@ -80,6 +155,71 @@ Vue.mixin({
       this.cookieKeysWithNS.forEach(key => {
         this.removeCookie(key);
       });
+    },
+    mappingQuest(raw) {
+      return {
+        id: raw.id,
+        name: raw.name,
+        description: raw.description,
+        score: raw.gamepoint
+      };
+    },
+    mappingQuestReversed(quest) {
+      return {
+        id: quest.id,
+        name: quest.name,
+        description: quest.description,
+        gamepoint: quest.score
+      };
+    },
+    async getQuests() {
+      const url = `${this.memberApiPrefix}/mission/list/`;
+      const res = await this.$axios.$get(url);
+      return res ? res.results.map(this.mappingQuest) : [];
+    },
+    async createQuest(quest) {
+      const url = `${this.memberApiPrefix}/mission/list/`;
+      const { data } = await this.$axios.$post(
+        url,
+        this.mappingQuestReversed(quest)
+      );
+      return data ? this.mappingQuest(data) : undefined;
+    },
+    async updateQuest(quest) {
+      const url = `${this.memberApiPrefix}/mission/${quest.id}/`;
+      const formData = new FormData();
+      Object.keys(quest)
+        .filter(key => !this.questColsExluded.includes(key))
+        .forEach(key => {
+          formData.append(this.mapRawQuestCol(key), quest[key]);
+        });
+      const { data } = await this.$axios.$put(url, formData);
+      return data ? this.mappingQuest(data) : undefined;
+    },
+    async deleteQuest(id) {
+      const url = `${this.memberApiPrefix}/mission/${id}/`;
+      const { data } = await this.$axios.$delete(url);
+      return data ? this.mappingQuest(data) : undefined;
+    },
+    async getUsers() {
+      const url = `${this.memberApiPrefix}/user/list/`;
+      const res = await this.$axios.$get(url);
+      return res ? res.results : [];
+    },
+    async assignQuestToUser(user, quest) {
+      const url = `${this.memberApiPrefix}/user-accpet-mission/list/${user.id}/`;
+      const { data } = await this.$axios.$post(url, {
+        id: 0,
+        user: user.id,
+        mission: quest.id,
+        finished: false
+      });
+      return data;
+    },
+    async getQuestFromUser(user) {
+      const url = `${this.memberApiPrefix}/user-accpet-mission/list/${user.id}`;
+      const res = await this.$axios.$get(url);
+      return res ? res.results : [];
     },
     async getNews(begin = 0, size = 20) {
       const url = `${this.apiOrigin}/news/list/gamer?begin=${begin}&size=${size}`;

@@ -1,4 +1,4 @@
-.v-text-field .v-input__control {
+/* .v-text-field .v-input__control {
   background: #55287e;
   border-radius: 5px;
   font-size: 18px;
@@ -52,17 +52,17 @@
   background: linear-gradient(45deg, #6540a7, 40%, #dab4ff, 60%, #6540a7);
   color: white;
   font-size: 24px;
-}
+} */
 .user-select_none {
   -webkit-user-select: none; /* Chrome all / Safari all */
   -moz-user-select: none; /* Firefox all */
   -ms-user-select: none; /* IE 10+ */
   user-select: none; /* Likely future */
 }
-.v-dialog__content {
+/* .v-dialog__content {
   z-index: 1000 !important;
 }
 .validation-message {
   margin-top: 5px !important;
   color: red;
-}
+} */

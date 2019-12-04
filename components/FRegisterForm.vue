@@ -4,7 +4,9 @@
       <v-icon>clear</v-icon>
     </v-btn>
     <v-card-title primary-title>
-      <div class="form-title">{{$t('fRegisterForm.fill_in_account_info')}}</div>
+      <div class="form-title">
+        {{ $t("fRegisterForm.fill_in_account_info") }}
+      </div>
     </v-card-title>
     <v-card-title class="avatar-container">
       <div>
@@ -18,13 +20,17 @@
           accept="image/jpeg, image/jpg, image/png"
         />
       </div>
-      <v-btn color="#8e75ae" dark @click="choose">{{$t('fRegisterForm.upload')}}</v-btn>
+      <v-btn color="#8e75ae" dark @click="choose">{{
+        $t("fRegisterForm.upload")
+      }}</v-btn>
       <div class="validation-message">{{ validationMessage.avatar }}</div>
-      <div class="upload-info">{{$t('fRegisterForm.uploaded_file_limits')}}</div>
+      <div class="upload-info">
+        {{ $t("fRegisterForm.uploaded_file_limits") }}
+      </div>
     </v-card-title>
     <v-card-text class="content">
       <div>
-        <v-label>{{$t('fRegisterForm.nickname')}}：</v-label>
+        <v-label>{{ $t("fRegisterForm.nickname") }}：</v-label>
         <v-text-field
           dark
           outline
@@ -41,11 +47,13 @@
               'nickname-counter',
               isNicknameOutOfLimit ? 'validation-message' : ''
             ]"
-          >{{ nicknameCounter }} / {{ nicknameCounterLimits }}</div>
+          >
+            {{ nicknameCounter }} / {{ nicknameCounterLimits }}
+          </div>
         </div>
       </div>
       <div>
-        <v-label>{{$t('fRegisterForm.gender')}}：</v-label>
+        <v-label>{{ $t("fRegisterForm.gender") }}：</v-label>
         <v-select
           class="gender__select"
           dark
@@ -60,7 +68,9 @@
         ></v-select>
       </div>
       <div class="register-container">
-        <v-btn block color="#8e75ae" dark @click="register">{{$t('fRegisterForm.finish')}}</v-btn>
+        <v-btn block color="#8e75ae" dark @click="register">{{
+          $t("fRegisterForm.finish")
+        }}</v-btn>
       </div>
     </v-card-text>
   </v-card>

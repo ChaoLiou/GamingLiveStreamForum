@@ -1,20 +1,31 @@
 <template>
-  <v-app>
-    <v-btn
+  <v-app class="default">
+    <!-- <v-btn
       v-if="loggedin"
       icon
       label
       :class="['expander-btn', drawer ? '' : 'collapsed']"
       @click="drawer = !drawer"
     >
-      <v-icon large>{{ drawer ? "keyboard_arrow_left" : "keyboard_arrow_right" }}</v-icon>
-    </v-btn>
-    <v-navigation-drawer v-if="member" v-model="drawer" clipped temporary fixed app>
+      <v-icon large>{{
+        drawer ? "keyboard_arrow_left" : "keyboard_arrow_right"
+      }}</v-icon>
+    </v-btn> -->
+    <v-navigation-drawer
+      v-if="member"
+      v-model="drawer"
+      clipped
+      temporary
+      fixed
+      app
+    >
       <v-list dark>
         <v-list-group active-class="white--text" prepend-icon="star">
           <template v-slot:activator>
             <v-list-tile>
-              <v-list-tile-title class="drawer-title">{{ $t("default.hot_streamers") }}</v-list-tile-title>
+              <v-list-tile-title class="drawer-title">{{
+                $t("default.hot_streamers")
+              }}</v-list-tile-title>
             </v-list-tile>
           </template>
           <v-list-tile
@@ -25,10 +36,16 @@
             <f-stream-inline-preview :stream="stream"></f-stream-inline-preview>
           </v-list-tile>
         </v-list-group>
-        <v-list-group active-class="white--text" prepend-icon="remove_red_eye" :value="true">
+        <v-list-group
+          active-class="white--text"
+          prepend-icon="remove_red_eye"
+          :value="true"
+        >
           <template v-slot:activator>
             <v-list-tile>
-              <v-list-tile-title class="drawer-title">{{ $t("default.followed_streams") }}</v-list-tile-title>
+              <v-list-tile-title class="drawer-title">{{
+                $t("default.followed_streams")
+              }}</v-list-tile-title>
             </v-list-tile>
           </template>
           <v-list-tile
@@ -44,13 +61,16 @@
     <v-toolbar fixed height="78px">
       <v-toolbar-items>
         <a class="home-link" @click="reload">
-          <v-img class="logo" src="/logo.png" width="150px" height="70px"></v-img>
+          <v-img
+            class="logo"
+            src="/logo.png"
+            width="150px"
+            height="70px"
+          ></v-img>
         </a>
         <div class="nav-items">
           <nuxt-link to="/live/recommend">
-            {{
-            $t("default.stream_platform")
-            }}
+            {{ $t("default.stream_platform") }}
           </nuxt-link>
           <nuxt-link to="/live/hot">{{ $t("default.hot_games") }}</nuxt-link>
         </div>
@@ -65,7 +85,7 @@
       <!-- <div>
         <v-menu offset-y>
           <template v-slot:activator="{ on }">
-            <v-btn dark v-on="on">{{$t('default.locale')}}</v-btn>
+            <v-btn dark v-on="on">{{ $t("default.locale") }}</v-btn>
           </template>
           <v-list>
             <v-list-tile
@@ -78,15 +98,17 @@
             </v-list-tile>
           </v-list>
         </v-menu>
-      </div>-->
-      <!-- <div class="login-container">
-        <f-member-block v-if="loggedin" :member="member" @logout="logoutMember"></f-member-block>
+      </div> -->
+      <div class="login-container">
+        <f-member-block
+          v-if="loggedin"
+          :member="member"
+          @logout="logoutMember"
+        ></f-member-block>
         <v-btn v-else @click="openLoginForm">
-          {{
-          $t("default.loginout")
-          }}
+          {{ $t("default.loginout") }}
         </v-btn>
-      </div>-->
+      </div>
     </v-toolbar>
     <v-content>
       <nuxt />
@@ -98,11 +120,17 @@
         <a
           href="https://github.com/ChaoLiou/GamingLiveStreamForum/commits/master"
           target="_blank"
-        >{{ rev.short }}</a>
+          >{{ rev.short }}</a
+        >
         - build at {{ rev.build_dt }}
       </div>
     </v-footer>
-    <v-dialog content-class="dialog-form" v-model="dialog" width="500px" scrollable>
+    <v-dialog
+      content-class="dialog-form"
+      v-model="dialog"
+      width="500px"
+      scrollable
+    >
       <f-register-form
         :data="data"
         v-if="needRegisteration"
@@ -306,5 +334,75 @@ export default {
 }
 .stream-preview-tile {
   height: 70px;
+}
+</style>
+<style>
+.default .v-text-field .v-input__control {
+  background: #55287e;
+  border-radius: 5px;
+  font-size: 18px;
+}
+.default .v-select__selections input {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+.default .v-text-field .v-input__slot,
+.default .v-select__selections {
+  border-radius: 5px !important;
+  border-color: #55287e !important;
+}
+.default .v-text-field--single-line .v-input__slot,
+.default .v-select__selections {
+  min-height: 38px !important;
+  height: 38px !important;
+}
+.default .v-input__slot:hover {
+  border-color: #55287e !important;
+}
+.default .v-input__append-inner {
+  margin-top: 4px !important;
+}
+.default .v-text-field__slot input {
+  margin: 0px !important;
+  padding: 3px 0px !important;
+}
+.default .v-menu__content .v-list {
+  background: #55287e;
+  border-radius: 5px !important;
+}
+.default .v-menu__content .v-list__tile__title {
+  font-size: 16px;
+}
+.default .v-select-list.v-card {
+  background: transparent !important;
+}
+.default .v-btn__content {
+  font-size: 16px;
+}
+.default .v-messages__message,
+.default .v-counter {
+  font-size: 16px;
+}
+.default .v-input--selection-controls {
+  margin: auto;
+  padding: 0px;
+}
+.default .v-btn.theme {
+  background: linear-gradient(45deg, #6540a7, 40%, #dab4ff, 60%, #6540a7);
+  color: white;
+  font-size: 24px;
+}
+.default .user-select_none {
+  -webkit-user-select: none; /* Chrome all / Safari all */
+  -moz-user-select: none; /* Firefox all */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none; /* Likely future */
+}
+.default .v-dialog__content {
+  z-index: 1000 !important;
+}
+.default .validation-message {
+  margin-top: 5px !important;
+  color: red;
 }
 </style>

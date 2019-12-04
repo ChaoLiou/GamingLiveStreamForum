@@ -1,6 +1,10 @@
 <template>
   <div class="account">
-    <f-tab :title="$t('account_type_subtype.account_center')" :tabs="tabs" from="account"></f-tab>
+    <f-tab
+      :title="$t('account_type_subtype.account_center')"
+      :tabs="tabs"
+      from="account"
+    ></f-tab>
     <div class="content">
       <f-block-box :title="$t(`_tabs.account.${currentTab.type}`)">
         <div class="side-menu">
@@ -9,18 +13,40 @@
             :key="index"
             :class="[item.active ? 'active' : '']"
             :to="item.link"
-          >{{ $t(`_tabs.account.${item.type}`) }}</nuxt-link>
+            >{{ $t(`_tabs.account.${item.type}`) }}</nuxt-link
+          >
         </div>
       </f-block-box>
       <div class="content__main">
-        <f-my-data v-if="$route.params.subtype === 'mydata'" :member="member"></f-my-data>
-        <f-followed-streams v-else-if="$route.params.subtype === 'followedstreams'"></f-followed-streams>
-        <f-my-message v-else-if="$route.params.subtype === 'mymessage'"></f-my-message>
-        <f-live-stream v-else-if="$route.params.subtype === 'livestream'"></f-live-stream>
-        <f-quest-center v-else-if="$route.params.subtype === 'quest'"></f-quest-center>
-        <f-score-center v-else-if="$route.params.subtype === 'score'"></f-score-center>
+        <f-my-data
+          v-if="$route.params.subtype === 'mydata'"
+          :member="member"
+          :loading="loading"
+          @save="save"
+        ></f-my-data>
+        <f-followed-streams
+          v-else-if="$route.params.subtype === 'followedstreams'"
+        ></f-followed-streams>
+        <f-my-message
+          v-else-if="$route.params.subtype === 'mymessage'"
+        ></f-my-message>
+        <f-live-stream
+          v-else-if="$route.params.subtype === 'livestream'"
+        ></f-live-stream>
+        <f-quest-center
+          v-else-if="$route.params.subtype === 'quest'"
+        ></f-quest-center>
+        <f-score-center
+          v-else-if="$route.params.subtype === 'score'"
+        ></f-score-center>
       </div>
     </div>
+    <v-snackbar v-model="response.show" multi-line right :timeout="5000" top>
+      {{ response.message }}
+      <v-btn color="#eadbf8" flat @click="response.show = false">
+        OK
+      </v-btn>
+    </v-snackbar>
   </div>
 </template>
 <script>
@@ -33,6 +59,7 @@ import FMyMessage from "@/components/FMyMessage";
 import FLiveStream from "@/components/FLiveStream";
 import FQuestCenter from "@/components/FQuestCenter";
 import FScoreCenter from "@/components/FScoreCenter";
+import FAccountInfoVue from "../../../components/FAccountInfo.vue";
 export default {
   components: {
     FTab,
@@ -46,25 +73,14 @@ export default {
   },
   data() {
     return {
+      response: {
+        show: false,
+        message: ""
+      },
       tabs: [],
       subtabs: [],
-      member: {
-        avatar: "/nobody.jpg",
-        id: "08949527",
-        nickname: "User",
-        score: 999,
-        level: "資深老司機",
-        gender: 1,
-        birthday: "2019-08-08",
-        location: 0,
-        email: "JJharden080@qq.com",
-        phone: "168455998542",
-        wechat: "85698542",
-        qq: "85698542",
-        weibo: "https://tw.weibo.com/divajody",
-        intro:
-          "臣本布衣，躬耕於南陽，苟全性命於亂世，不求聞達於諸侯。先帝不以臣卑鄙，猥自枉屈，三顧臣於草廬之中，諮臣以當世之事，由是感激，遂許先帝以驅馳。後值傾覆，受任於敗軍之際，奉命於危難之間，爾來二十有一年矣！先帝知臣謹慎，故臨崩寄臣以大事也。受命以來，夙夜憂勤，恐託付不效，以傷先帝之明。故五月渡瀘，深入不毛。今南方已定，兵甲已足，當獎率三軍，北定中原，庶竭駑鈍，攘除奸凶，興復漢室，還於舊都；此臣所以報先帝而忠陛下之職分也。"
-      }
+      member: {},
+      loading: false
     };
   },
   computed: {
@@ -83,9 +99,18 @@ export default {
       ...x,
       active: this.$route.params.type === x.type
     }));
-    // this.getMemberByLoginuser().then(member => (this.member = member));
+    this.getMemberByLoginuser().then(member => (this.member = member));
   },
-  methods: {}
+  methods: {
+    save() {
+      this.loading = true;
+      this.memberUpdate(this.member).then(member => {
+        this.loading = false;
+        this.response = { show: true, message: "更新成功!" };
+        this.member = member ? member : this.member;
+      });
+    }
+  }
 };
 </script>
 <style scoped>
