@@ -1,10 +1,6 @@
 <template>
   <div class="account">
-    <f-tab
-      :title="$t('account_type_subtype.account_center')"
-      :tabs="tabs"
-      from="account"
-    ></f-tab>
+    <f-tab :title="$t('account_type_subtype.account_center')" :tabs="tabs" from="account"></f-tab>
     <div class="content">
       <f-block-box :title="$t(`_tabs.account.${currentTab.type}`)">
         <div class="side-menu">
@@ -13,8 +9,7 @@
             :key="index"
             :class="[item.active ? 'active' : '']"
             :to="item.link"
-            >{{ $t(`_tabs.account.${item.type}`) }}</nuxt-link
-          >
+          >{{ $t(`_tabs.account.${item.type}`) }}</nuxt-link>
         </div>
       </f-block-box>
       <div class="content__main">
@@ -24,28 +19,20 @@
           :loading="loading"
           @save="save"
         ></f-my-data>
-        <f-followed-streams
-          v-else-if="$route.params.subtype === 'followedstreams'"
-        ></f-followed-streams>
-        <f-my-message
-          v-else-if="$route.params.subtype === 'mymessage'"
-        ></f-my-message>
-        <f-live-stream
-          v-else-if="$route.params.subtype === 'livestream'"
-        ></f-live-stream>
-        <f-quest-center
-          v-else-if="$route.params.subtype === 'quest'"
-        ></f-quest-center>
+        <f-followed-streams v-else-if="$route.params.subtype === 'followedstreams'"></f-followed-streams>
+        <f-my-message v-else-if="$route.params.subtype === 'mymessage'"></f-my-message>
+        <f-live-stream v-else-if="$route.params.subtype === 'livestream'"></f-live-stream>
+        <f-quest-center :gamepoint="member.gamepoint" v-else-if="$route.params.subtype === 'quest'"></f-quest-center>
         <f-score-center
+          :gamepoint="member.gamepoint"
+          :accumulated-gamepoint="member.gamepoint"
           v-else-if="$route.params.subtype === 'score'"
         ></f-score-center>
       </div>
     </div>
     <v-snackbar v-model="response.show" multi-line right :timeout="5000" top>
       {{ response.message }}
-      <v-btn color="#eadbf8" flat @click="response.show = false">
-        OK
-      </v-btn>
+      <v-btn color="#eadbf8" flat @click="response.show = false">OK</v-btn>
     </v-snackbar>
   </div>
 </template>

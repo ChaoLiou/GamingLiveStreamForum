@@ -11,7 +11,8 @@ Vue.mixin({
       internals: ["youtube", "twitch", "douyu"],
       cookie_ns: "glsf",
       cookieKeys: ["id", "token"],
-      memberColsExluded: ["id", "level", "score", "phone"],
+      memberColsExluded: ["id", "level", "mobile"],
+      // memberColsExluded: ["id", "level", "gamepoint", "mobile"],
       questColsExluded: ["id"]
     };
   },
@@ -49,7 +50,7 @@ Vue.mixin({
         `${this.memberApiPrefix}/user/${id}`
       );
       console.log(member);
-      return this.mappingMember(id, member);
+      return member;
     },
     async memberUpdate(member) {
       try {
@@ -61,19 +62,14 @@ Vue.mixin({
               key !== "avatar" ||
               (member.avatar && typeof member.avatar !== typeof "")
             ) {
-              console.log({
-                key: key,
-                raw_key: this.mapRawMemberCol(key),
-                value: member[key]
-              });
-              formData.append(this.mapRawMemberCol(key), member[key]);
+              formData.append(key, member[key]);
             }
           });
         const { data } = await this.$axios.put(
           `${this.memberApiPrefix}/user/${member.id}/`,
           formData
         );
-        return this.mappingMember(member.id, data);
+        return data;
       } catch (err) {
         console.log({ action: "memberUpdate", err });
       }
@@ -86,43 +82,6 @@ Vue.mixin({
         score: "gamepoint"
       };
       return map[col];
-    },
-    mapRawMemberCol(col) {
-      const map = {
-        id: "id",
-        nickname: "nickname",
-        score: "gamepoint",
-        level: "level",
-        gender: "gender",
-        birthday: "birthday",
-        location: "live",
-        email: "email",
-        phone: "mobile",
-        wechat: "wechat",
-        qq: "qq",
-        weibo: "weblog",
-        avatar: "avatar",
-        intro: "introduce"
-      };
-      return map[col];
-    },
-    mappingMember(id, raw) {
-      return {
-        id,
-        nickname: raw.nickname,
-        score: raw.gamepoint,
-        level: raw.level,
-        gender: raw.gender,
-        birthday: raw.birthday,
-        location: raw.live,
-        email: raw.email,
-        phone: raw.mobile,
-        wechat: raw.wechat,
-        qq: raw.qq,
-        weibo: raw.weblog,
-        avatar: raw.avatar ? `${this.memberApiOrigin}${raw.avatar}` : undefined,
-        intro: raw.introduce
-      };
     },
     mappingStream(raw) {
       return {
@@ -156,34 +115,20 @@ Vue.mixin({
         this.removeCookie(key);
       });
     },
-    mappingQuest(raw) {
-      return {
-        id: raw.id,
-        name: raw.name,
-        description: raw.description,
-        score: raw.gamepoint
-      };
-    },
-    mappingQuestReversed(quest) {
-      return {
-        id: quest.id,
-        name: quest.name,
-        description: quest.description,
-        gamepoint: quest.score
-      };
-    },
     async getQuests() {
       const url = `${this.memberApiPrefix}/mission/list/`;
       const res = await this.$axios.$get(url);
-      return res ? res.results.map(this.mappingQuest) : [];
+      return res ? res.results : [];
+    },
+    async getQuestsByUser(id) {
+      const url = `${this.memberApiPrefix}/user-accpet-mission/list/${id}/`;
+      const res = await this.$axios.$get(url);
+      return res ? res.results : [];
     },
     async createQuest(quest) {
       const url = `${this.memberApiPrefix}/mission/list/`;
-      const { data } = await this.$axios.$post(
-        url,
-        this.mappingQuestReversed(quest)
-      );
-      return data ? this.mappingQuest(data) : undefined;
+      const { data } = await this.$axios.$post(url, quest);
+      return data;
     },
     async updateQuest(quest) {
       const url = `${this.memberApiPrefix}/mission/${quest.id}/`;
@@ -191,15 +136,15 @@ Vue.mixin({
       Object.keys(quest)
         .filter(key => !this.questColsExluded.includes(key))
         .forEach(key => {
-          formData.append(this.mapRawQuestCol(key), quest[key]);
+          formData.append(key, quest[key]);
         });
       const { data } = await this.$axios.$put(url, formData);
-      return data ? this.mappingQuest(data) : undefined;
+      return data;
     },
     async deleteQuest(id) {
       const url = `${this.memberApiPrefix}/mission/${id}/`;
       const { data } = await this.$axios.$delete(url);
-      return data ? this.mappingQuest(data) : undefined;
+      return data;
     },
     async getUsers() {
       const url = `${this.memberApiPrefix}/user/list/`;

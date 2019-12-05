@@ -2,16 +2,16 @@
   "_memberCols": {
     "id": "ID",
     "nickname": "暱称",
-    "score": "积分",
+    "gamepoint": "积分",
     "level": "用户等级",
     "gender": "性别",
     "birthday": "生日",
-    "location": "居住地",
+    "live": "居住地",
     "email": "E-mail",
-    "phone": "手机号码",
+    "mobile": "手机号码",
     "wechat": "微信",
     "qq": "QQ",
-    "weibo": "微博"
+    "weblog": "微博"
   },
   "_platforms": {
     "douyu": "斗鱼直播",
@@ -303,7 +303,7 @@
     "save_settings": "储存设定",
     "processing": "处理中",
     "finished": "已完成",
-    "failed": "未完成",
+    "failed": "未成功",
     "current_scores_short": "当前点数不足",
     "remarks_input_validation": "字数不得超过15",
     "china": "大陆",

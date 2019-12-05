@@ -1,21 +1,24 @@
 <template>
   <div class="f-score-center">
     <div class="manipulate-container">
-      <div class="scores-info">
-        {{ $t("fScoreCenter.holding_now") }}：{{ fscores(scores)
-        }}{{ $t("fScoreCenter.unit") }}
+      <div>
+        <img
+          style="display:inline;width:40px;height:40px;vertical-align:middle;margin-right:-15px"
+          src="/misc_icons/Coin.png"
+        />
+        <span>{{ $t("fScoreCenter.holding_now") }}：{{ fgamepoint(gamepoint) }}{{ $t("fScoreCenter.unit") }}</span>
       </div>
-      <div class="scores-info">
-        {{ $t("fScoreCenter.account_accumulated") }}：{{ fscores(scores)
-        }}{{ $t("fScoreCenter.unit") }}
+      <div>
+        <img
+          style="display:inline;width:40px;height:40px;vertical-align:middle;margin-right:-15px"
+          src="/misc_icons/Coin.png"
+        />
+        <span>{{ $t("fScoreCenter.account_accumulated") }}：{{ fgamepoint(accumulatedGamepoint)}}{{ $t("fScoreCenter.unit") }}</span>
       </div>
-      <div
-        style="display:grid;grid-template-columns:400px 300px;grid-column-gap:20px"
-      >
-        <div
-          style="display:grid;grid-template-columns:100px auto;align-items:center"
-        >
-          {{ $t("fScoreCenter.manipulate_score") }}：<v-select
+      <div style="display:grid;grid-template-columns:400px 300px;grid-column-gap:20px">
+        <div style="display:grid;grid-template-columns:100px auto;align-items:center">
+          {{ $t("fScoreCenter.manipulate_score") }}：
+          <v-select
             dark
             dense
             background-color="#55287e"
@@ -28,10 +31,9 @@
             :placeholder="$t('fScoreCenter.manipulate_score_input_placeholder')"
           ></v-select>
         </div>
-        <div
-          style="display:grid;grid-template-columns:60px 100px;align-items:center"
-        >
-          {{ $t("fScoreCenter.amount") }}：<v-select
+        <div style="display:grid;grid-template-columns:60px 100px;align-items:center">
+          {{ $t("fScoreCenter.amount") }}：
+          <v-select
             dark
             dense
             background-color="#55287e"
@@ -47,18 +49,15 @@
       <div style="display:grid;grid-template-columns:100px 100px 130px;">
         <div>{{ $t("fScoreCenter.program_consumed") }}：</div>
         <div>{{ scores_cost }}{{ $t("fScoreCenter.unit") }}</div>
-        <div v-if="isCurrntScoreShort" style="color:red;">
-          {{ $t("fScoreCenter.current_scores_short") }}
-        </div>
+        <div
+          v-if="isCurrntScoreShort"
+          style="color:red;"
+        >{{ $t("fScoreCenter.current_scores_short") }}</div>
       </div>
-      <div
-        style="display:grid;grid-template-columns:100px auto 100px;align-items:center"
-      >
+      <div style="display:grid;grid-template-columns:100px auto 100px;align-items:center">
         {{ $t("fScoreCenter.remarks") }}：
         <div>
-          <div class="validation-message">
-            {{ validationMessage.remarks }}
-          </div>
+          <div class="validation-message">{{ validationMessage.remarks }}</div>
           <v-text-field
             dark
             outline
@@ -73,8 +72,7 @@
           :disabled="!submitable"
           :class="[submitable ? 'theme' : '']"
           @click="submit"
-          >{{ $t("fScoreCenter.submit_to_apply") }}</v-btn
-        >
+        >{{ $t("fScoreCenter.submit_to_apply") }}</v-btn>
       </div>
     </div>
     <f-block
@@ -158,23 +156,20 @@
             :items="statusOptions"
             v-model="selectedStatus"
           ></v-select>
-          <v-btn class="theme" @click="searchByDateRange">{{
+          <v-btn class="theme" @click="searchByDateRange">
+            {{
             $t("fScoreCenter.search_in_range")
-          }}</v-btn>
+            }}
+          </v-btn>
         </div>
         <div class="id-search__grid">
           <div>{{ $t("fScoreCenter.search_id") }}：</div>
-          <v-text-field
-            v-model="searchedId"
-            dark
-            single-line
-            hide-details
-            persistent-hint
-            outline
-          ></v-text-field>
-          <v-btn class="theme" @click="searchById">{{
+          <v-text-field v-model="searchedId" dark single-line hide-details persistent-hint outline></v-text-field>
+          <v-btn class="theme" @click="searchById">
+            {{
             $t("fScoreCenter.search_id")
-          }}</v-btn>
+            }}
+          </v-btn>
         </div>
       </div>
     </f-block>
@@ -184,7 +179,7 @@
         <div>{{ $t("fScoreCenter.id") }}</div>
         <div>{{ $t("fScoreCenter.program") }}</div>
         <div>{{ $t("fScoreCenter.amount") }}</div>
-        <div>{{ $t("fScoreCenter.scores_consumed") }}</div>
+        <div style="justify-self:end">{{ $t("fScoreCenter.scores_consumed") }}</div>
         <div>{{ $t("fScoreCenter.remarks") }}</div>
         <div>{{ $t("fScoreCenter.process_status") }}</div>
       </div>
@@ -194,22 +189,20 @@
         <div class="grid-row__content">{{ item.content }}</div>
         <div>{{ item.amount }}</div>
         <div class="grid-row__scores">
-          {{ fscores(item.scores * item.amount) }}{{ $t("fScoreCenter.unit") }}
+          <img
+            style="display:inline;width:40px;height:40px;vertical-align:middle;margin-right:-15px"
+            src="/misc_icons/Coin.png"
+          />
+          <span>{{ fgamepoint(item.scores * item.amount) }}{{ $t("fScoreCenter.unit") }}</span>
         </div>
         <div class="grid-row__remark">{{ item.remarks }}</div>
         <div
           :class="['grid-row__status', item.status]"
           @click="openDialog(item)"
-        >
-          {{ $t(`fScoreCenter.${item.status}`) }}
-        </div>
+        >{{ $t(`fScoreCenter.${item.status}`) }}</div>
       </div>
     </div>
-    <v-dialog
-      content-class="dialog-notification"
-      max-width="500px"
-      v-model="dialog"
-    >
+    <v-dialog content-class="dialog-notification" max-width="500px" v-model="dialog">
       <v-card color="#eadbf8">
         <f-block
           :font-size="22"
@@ -223,9 +216,11 @@
           <div class="dialog__content" v-html="dialogContent"></div>
         </v-card-text>
         <v-card-actions>
-          <v-btn class="theme" @click="dialog = false">{{
+          <v-btn class="theme" @click="dialog = false">
+            {{
             $t("fScoreCenter.submit")
-          }}</v-btn>
+            }}
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -240,6 +235,16 @@ import { _ } from "underscore";
 export default {
   components: {
     FBlock
+  },
+  props: {
+    gamepoint: {
+      type: Number,
+      default: 0
+    },
+    accumulatedGamepoint: {
+      type: Number,
+      default: 0
+    }
   },
   data() {
     return {
@@ -325,11 +330,11 @@ export default {
     searchById() {},
     submit() {
       if (this.remarks.length > 15) {
+        this.validationMessage.remarks = this.$t(
+          "fScoreCenter.remarks_input_validation"
+        );
+        return;
       }
-      this.validationMessage.remarks = this.$t(
-        "fScoreCenter.remarks_input_validation"
-      );
-      return;
     },
 
     clickStatusButton(status) {
@@ -344,7 +349,7 @@ export default {
       )}${minute}${this.$t("fscoreCenter.minute")}`;
     },
     countdown: helper.countdown,
-    fscores: formatter.fscores
+    fgamepoint: formatter.fgamepoint
   }
 };
 </script>
@@ -358,7 +363,7 @@ export default {
   margin: 5px 0px;
 }
 .score__grid {
-  margin: -20px 10px;
+  margin: -20px 10px 10px 10px;
 }
 .score__grid > div {
   display: grid;

@@ -4,9 +4,7 @@
       <v-icon>clear</v-icon>
     </v-btn>
     <v-card-title primary-title>
-      <div class="form-title">
-        {{ $t("fRegisterForm.fill_in_account_info") }}
-      </div>
+      <div class="form-title">{{ $t("fRegisterForm.fill_in_account_info") }}</div>
     </v-card-title>
     <v-card-title class="avatar-container">
       <div>
@@ -20,13 +18,13 @@
           accept="image/jpeg, image/jpg, image/png"
         />
       </div>
-      <v-btn color="#8e75ae" dark @click="choose">{{
+      <v-btn color="#8e75ae" dark @click="choose">
+        {{
         $t("fRegisterForm.upload")
-      }}</v-btn>
+        }}
+      </v-btn>
       <div class="validation-message">{{ validationMessage.avatar }}</div>
-      <div class="upload-info">
-        {{ $t("fRegisterForm.uploaded_file_limits") }}
-      </div>
+      <div class="upload-info">{{ $t("fRegisterForm.uploaded_file_limits") }}</div>
     </v-card-title>
     <v-card-text class="content">
       <div>
@@ -47,9 +45,7 @@
               'nickname-counter',
               isNicknameOutOfLimit ? 'validation-message' : ''
             ]"
-          >
-            {{ nicknameCounter }} / {{ nicknameCounterLimits }}
-          </div>
+          >{{ nicknameCounter }} / {{ nicknameCounterLimits }}</div>
         </div>
       </div>
       <div>
@@ -68,9 +64,11 @@
         ></v-select>
       </div>
       <div class="register-container">
-        <v-btn block color="#8e75ae" dark @click="register">{{
+        <v-btn block color="#8e75ae" dark @click="register">
+          {{
           $t("fRegisterForm.finish")
-        }}</v-btn>
+          }}
+        </v-btn>
       </div>
     </v-card-text>
   </v-card>
@@ -309,14 +307,6 @@ img {
 .f-register-form .v-text-field__slot input {
   margin: 5px 0px !important;
   padding: 3px 0px !important;
-}
-.v-menu__content .v-list {
-  background: #55287e;
-  border-radius: 5px !important;
-}
-.v-menu__content .v-list__tile__title {
-  font-size: 16px;
-  color: white !important;
 }
 .v-select-list.v-card {
   background: transparent !important;

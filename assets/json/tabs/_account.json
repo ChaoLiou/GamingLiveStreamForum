@@ -1,0 +1,77 @@
+[
+  {
+    "type": "info",
+    "link": "/account/info/mydata",
+    "subtabs": [
+      {
+        "type": "mydata",
+        "link": "/account/info/mydata"
+      },
+      {
+        "type": "followedstreams",
+        "link": "/account/info/followedstreams"
+      },
+      {
+        "type": "mystream",
+        "link": "/account/info/mystream"
+      },
+      {
+        "type": "mymessage",
+        "link": "/account/info/mymessage"
+      }
+    ]
+  },
+  {
+    "type": "manage",
+    "link": "/account/manage/livestream",
+    "subtabs": [
+      {
+        "type": "myarticles",
+        "link": "/account/manage/myarticles"
+      },
+      {
+        "type": "drafts",
+        "link": "/account/manage/drafts"
+      },
+      {
+        "type": "signature",
+        "link": "/account/manage/signature"
+      },
+      {
+        "type": "livestream",
+        "link": "/account/manage/livestream"
+      },
+      {
+        "type": "mailbox",
+        "link": "/account/manage/mailbox"
+      },
+      {
+        "type": "sysnotification",
+        "link": "/account/manage/sysnotification"
+      },
+      {
+        "type": "myforums",
+        "link": "/account/manage/myforums"
+      }
+    ]
+  },
+  {
+    "type": "questnscore",
+    "link": "/account/questnscore/quest",
+    "subtabs": [
+      {
+        "type": "quest",
+        "link": "/account/questnscore/quest"
+      },
+      {
+        "type": "score",
+        "link": "/account/questnscore/score"
+      }
+    ]
+  },
+  {
+    "type": "friend",
+    "link": "/account/friend",
+    "subtabs": []
+  }
+]

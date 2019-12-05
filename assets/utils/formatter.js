@@ -6,11 +6,11 @@ export default {
   fsource,
   fpreview,
   favatar,
-  fscores
+  fgamepoint
 };
 
-function fscores(scores, unit = 3) {
-  if (!scores) {
+function fgamepoint(scores, unit = 3) {
+  if (!scores && scores !== 0) {
     return;
   }
   const res = [];

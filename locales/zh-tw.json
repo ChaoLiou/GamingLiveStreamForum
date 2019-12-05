@@ -6,12 +6,12 @@
     "level": "用戶等級",
     "gender": "性別",
     "birthday": "生日",
-    "location": "居住地",
+    "live": "居住地",
     "email": "E-mail",
-    "phone": "手機號碼",
+    "mobile": "手機號碼",
     "wechat": "微信",
     "qq": "QQ",
-    "weibo": "微博"
+    "weblog": "微博"
   },
   "_platforms": {
     "douyu": "鬥魚直播",
@@ -303,7 +303,7 @@
     "save_settings": "儲存設定",
     "processing": "處理中",
     "finished": "已完成",
-    "failed": "未完成",
+    "failed": "未成功",
     "current_scores_short": "當前點數不足",
     "remarks_input_validation": "字數不得超過15",
     "china": "大陸",

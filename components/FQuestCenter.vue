@@ -11,35 +11,49 @@
       <div class="content">
         <div class="tabs">
           <div
-            :class="[selectedTab === 'daily' ? 'selected': '']"
+            :class="[selectedTab === 'daily' ? 'selected' : '']"
             @click="selectedTab = 'daily'"
-          >{{$t('fQuestCenter.daily_quest')}}</div>
+          >{{ $t("fQuestCenter.daily_quest") }}</div>
           <div
-            :class="[selectedTab === 'series' ? 'selected': '']"
+            :class="[selectedTab === 'series' ? 'selected' : '']"
             @click="selectedTab = 'series'"
-          >{{$t('fQuestCenter.series_quest')}}</div>
+          >{{ $t("fQuestCenter.series_quest") }}</div>
         </div>
         <div class="tab-content">
-          <div
-            class="scores-info"
-          >{{$t('fQuestCenter.holding_now')}}：{{fscores(scores)}}{{$t('fQuestCenter.unit')}}</div>
+          <div class="gamepoint-info">
+            <img
+              style="display:inline;width:40px;height:40px;vertical-align:middle;margin-right:-15px"
+              src="/misc_icons/Coin.png"
+            />
+            <span>{{ $t("fQuestCenter.holding_now") }}：{{ fgamepoint(gamepoint) }}{{ $t("fQuestCenter.unit") }}</span>
+          </div>
           <div class="quest__grid">
             <div class="quest__grid-header">
-              <div>{{$t('fQuestCenter.quest_name')}}</div>
-              <div>{{$t('fQuestCenter.quest_content')}}</div>
-              <div>{{$t('fQuestCenter.remaing_time')}}</div>
-              <div>{{$t('fQuestCenter.score_reward')}}</div>
-              <div>{{$t('fQuestCenter.finished_or_not')}}</div>
+              <div>{{ $t("fQuestCenter.quest_name") }}</div>
+              <div>{{ $t("fQuestCenter.quest_content") }}</div>
+              <div>{{ $t("fQuestCenter.remaing_time") }}</div>
+              <div>{{ $t("fQuestCenter.score_reward") }}</div>
+              <div>{{ $t("fQuestCenter.finished_or_not") }}</div>
             </div>
-            <div class="quest__grid-row" v-for="(item, index) in list" :key="index">
-              <div>{{item.name}}</div>
-              <div class="grid-row__content">{{item.content}}</div>
-              <div>{{item.finished === 1 ? '--:--' : remaingTime}}</div>
-              <div>{{item.rewards}}</div>
+            <div
+              :class="['quest__grid-row', item.finished ? 'finished' : 'unfinished']"
+              v-for="(item, index) in list"
+              :key="index"
+            >
+              <div class="grid-row__name">{{ item.mission.name }}</div>
+              <div class="grid-row__content">{{ item.mission.description }}</div>
+              <div>{{ item.finished ? "--:--" : remaingTime }}</div>
+              <div>
+                <img
+                  style="display:inline;width:40px;height:40px;vertical-align:middle;margin-right:-15px"
+                  src="/misc_icons/Coin.png"
+                />
+                <span>{{ item.mission.gamepoint }}</span>
+              </div>
               <div
-                :class="['grid-row__status', item.status]"
-                @click="clickStatusButton(item.status)"
-              >{{$t(`fQuestCenter.${item.status}`)}}</div>
+                class="grid-row__status"
+                @click="clickStatusButton(item.finished)"
+              >{{ $t(`fQuestCenter.${item.finished ? 'finished' : 'unfinished'}`) }}</div>
             </div>
           </div>
         </div>
@@ -57,7 +71,11 @@
               <div class="dialog__content" v-html="$t('fQuestCenter.quest_finished_msg')"></div>
             </v-card-text>
             <v-card-actions>
-              <v-btn class="theme" @click="dialog = false">{{$t('fQuestCenter.submit')}}</v-btn>
+              <v-btn class="theme" @click="dialog = false">
+                {{
+                $t("fQuestCenter.submit")
+                }}
+              </v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -67,32 +85,62 @@
 </template>
 <script>
 import FBlock from "@/components/FBlock";
-import quest from "@/assets/json/fake/quest";
 import formatter from "@/assets/utils/formatter";
 import helper from "@/assets/utils/helper";
 export default {
   components: {
     FBlock
   },
+  props: {
+    gamepoint: {
+      type: Number,
+      default: 0
+    }
+  },
   data() {
     return {
       selectedTab: "daily",
-      scores: 9999999,
+      questTypes: [{ id: 0, type: "daily" }, { id: 1, type: "series" }],
       remaingTime: "",
-      dialog: true
+      dialog: false,
+      userQuests: [],
+      quests: []
     };
   },
   computed: {
     list() {
-      return quest.filter(x => x.type === this.selectedTab);
+      return this.userQuests
+        .map(uq => {
+          const target = this.quests.find(q => q.id === uq.mission);
+          return { ...uq, mission: target ? target : uq.mission };
+        })
+        .filter(x => {
+          const target = this.questTypes.find(
+            qt => qt.type === this.selectedTab
+          );
+          return target ? x.mission.missiontype === target.id : false;
+        });
     }
   },
   mounted() {
     this.initCountDown();
+    this.getQuests().then(quests => {
+      this.quests = quests ? quests : this.quests;
+      this.initUserQuests().then(
+        userQuests =>
+          (this.userQuests = userQuests ? userQuests : this.userQuests)
+      );
+    });
   },
   methods: {
+    async initUserQuests() {
+      const id = this.getCookie("id");
+      if (!!id) {
+        return await this.getQuestsByUser(parseInt(id));
+      }
+    },
     clickStatusButton(status) {
-      if (status === "finishable") {
+      if (status) {
         this.dialog = true;
       }
     },
@@ -103,7 +151,7 @@ export default {
       )}${minute}${this.$t("fQuestCenter.minute")}`;
     },
     countdown: helper.countdown,
-    fscores: formatter.fscores
+    fgamepoint: formatter.fgamepoint
   }
 };
 </script>
@@ -136,7 +184,7 @@ export default {
   border-radius: 0px 5px 5px 5px;
   font-size: 18px;
 }
-.scores-info {
+.gamepoint-info {
   color: #55287e;
   font-weight: bold;
   margin: 20px 15px;
@@ -166,6 +214,10 @@ export default {
 .grid-row__content {
   justify-self: start;
 }
+.finished .grid-row__content,
+.finished .grid-row__name {
+  text-decoration-line: line-through;
+}
 .grid-row__status {
   text-align: center;
   height: 30px;
@@ -175,7 +227,7 @@ export default {
   color: white;
   border-radius: 5px;
 }
-.grid-row__status.finished {
+.finished .grid-row__status {
   background: linear-gradient(
     135deg,
     orange,
@@ -185,11 +237,11 @@ export default {
     orange
   );
 }
-.grid-row__status.finishable {
+.finishable .grid-row__status {
   background: linear-gradient(135deg, #66448e, 30%, #67448e77, 70%, #66448e);
   cursor: pointer;
 }
-.grid-row__status.unfinished {
+.unfinished .grid-row__status {
   background: linear-gradient(
     135deg,
     grey,

@@ -15,25 +15,22 @@
           <v-card-text>
             <v-container grid-list-md>
               <v-layout wrap>
+                <v-flex xs12 sm12 md12>
+                  <v-text-field v-model="editedItem.name" label="任務名稱"></v-text-field>
+                </v-flex>
                 <v-flex xs12 sm6 md6>
-                  <v-text-field
-                    v-model="editedItem.name"
-                    label="任務名稱"
-                  ></v-text-field>
+                  <v-select :items="missionTypeOptions" v-model="editedItem.missiontype"></v-select>
                 </v-flex>
                 <v-flex xs12 sm6 md6>
                   <v-text-field
-                    :value="editedItem.score"
+                    :value="editedItem.gamepoint"
                     mask="#########"
-                    @input="scoreOnInput"
+                    @input="gamepointOnInput"
                     label="積分獎勵"
                   ></v-text-field>
                 </v-flex>
                 <v-flex xs12 sm12 md12>
-                  <v-textarea
-                    v-model="editedItem.description"
-                    label="任務內容"
-                  ></v-textarea>
+                  <v-textarea v-model="editedItem.description" label="任務內容"></v-textarea>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -57,33 +54,25 @@
       <template v-slot:items="props">
         <tr @click="props.expanded = !props.expanded">
           <td>{{ props.item.id }}</td>
+          <td>{{ missionTypeOptions.find(x => x.value === props.item.missiontype).text }}</td>
           <td>{{ props.item.name }}</td>
           <td class="text-xs-left">{{ props.item.description }}</td>
-          <td class="text-xs-right">{{ props.item.score }}</td>
+          <td class="text-xs-right">{{ props.item.gamepoint }}</td>
           <td class="justify-center align-center layout px-0">
-            <v-icon small class="mr-2" @click="editItem(props.item)">
-              edit
-            </v-icon>
-            <v-icon small @click="deleteItem(props.item)">
-              delete
-            </v-icon>
+            <v-icon small class="mr-2" @click.stop="editItem(props.item)">edit</v-icon>
+            <v-icon small @click.stop="deleteItem(props.item)">delete</v-icon>
           </td>
         </tr>
       </template>
       <template v-slot:expand="props">
         <div class="user-grid">
-          <v-card
-            v-for="(user, index) in questUserMap[props.item.id]"
-            :key="index"
-          >
-            <v-card-text> {{ user.id }} {{ user.nickname }} </v-card-text>
+          <v-card v-for="(user, index) in questUserMap[props.item.id]" :key="index">
+            <v-card-text>{{ user.id }} {{ user.nickname }}</v-card-text>
           </v-card>
         </div>
         <v-dialog v-model="innerDialog" max-width="500" scrollable>
           <template v-slot:activator="{ on }">
-            <v-btn dark v-on="on">
-              指定
-            </v-btn>
+            <v-btn dark v-on="on">指定</v-btn>
           </template>
           <v-card>
             <v-card-text>
@@ -98,15 +87,10 @@
                     :class="[selectedUser.id === user.id ? 'selected' : '']"
                   >
                     <v-list-tile-content>
-                      <v-list-tile-title>
-                        {{ user.id }} {{ user.nickname ? user.nickname : "--" }}
-                      </v-list-tile-title>
+                      <v-list-tile-title>{{ user.id }} {{ user.nickname ? user.nickname : "--" }}</v-list-tile-title>
                     </v-list-tile-content>
                   </v-list-tile>
-                  <v-divider
-                    v-if="index + 1 < users.length"
-                    :key="`divider-${index}`"
-                  ></v-divider>
+                  <v-divider v-if="index + 1 < users.length" :key="`divider-${index}`"></v-divider>
                 </template>
               </v-list>
             </v-card-text>
@@ -116,9 +100,7 @@
                 :dark="!!selectedUser.id"
                 @click="assignQuest(props)"
                 :disabled="!selectedUser.id"
-              >
-                指派
-              </v-btn>
+              >指派</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -130,6 +112,16 @@
 export default {
   layout: "dashboard-layout",
   data: () => ({
+    missionTypeOptions: [
+      {
+        text: "每日",
+        value: 0
+      },
+      {
+        text: "系列",
+        value: 1
+      }
+    ],
     dialog: false,
     innerDialog: false,
     headers: [
@@ -138,12 +130,13 @@ export default {
         align: "left",
         value: "id"
       },
+      { text: "任務類型", value: "missiontype" },
       {
         text: "任務名稱",
         value: "name"
       },
       { text: "任務內容", value: "description", sortable: false },
-      { text: "積分獎勵", value: "score" },
+      { text: "積分獎勵", value: "gamepoint", align: "right" },
       { text: "操作", value: "name", align: "center", sortable: false }
     ],
     quests: [],
@@ -152,13 +145,15 @@ export default {
       id: 0,
       name: "",
       description: "",
-      score: 0
+      gamepoint: 0,
+      missiontype: 0
     },
     defaultItem: {
       id: 0,
       name: "",
       description: "",
-      score: 0
+      gamepoint: 0,
+      missiontype: 0
     },
     users: [],
     selectedUser: {},
@@ -185,8 +180,8 @@ export default {
       props.expanded = false;
       this.innerDialog = false;
     },
-    scoreOnInput(val) {
-      this.editedItem.score = parseInt(val);
+    gamepointOnInput(val) {
+      this.editedItem.gamepoint = parseInt(val);
     },
     initialize() {
       this.questUserMap = {};

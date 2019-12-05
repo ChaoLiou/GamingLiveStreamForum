@@ -68,7 +68,7 @@
         </div>
       </div>
       <div class="login-container">
-        <div class="options-grid">
+        <!-- <div class="options-grid">
           <v-checkbox
             hide-details
             height="24px"
@@ -81,7 +81,7 @@
             v-model="remainLoginStatus"
             :label="$t('fLoginForm.remain_login_status')"
           ></v-checkbox>
-        </div>
+        </div>-->
         <div class="login-tips">{{$t('fLoginForm.login_tips')}}</div>
         <div class="validation-message">{{ validationMessage.login }}</div>
         <v-btn block color="#8e75ae" dark @click="login">登入</v-btn>

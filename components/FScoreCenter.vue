@@ -13,21 +13,15 @@
           <div
             :class="[selectedTab === 'myscores' ? 'selected' : '']"
             @click="selectedTab = 'myscores'"
-          >
-            {{ $t("fScoreCenter.my_scores") }}
-          </div>
+          >{{ $t("fScoreCenter.my_scores") }}</div>
           <div
             :class="[selectedTab === 'accountinfo' ? 'selected' : '']"
             @click="selectedTab = 'accountinfo'"
-          >
-            {{ $t("fScoreCenter.account_info") }}
-          </div>
+          >{{ $t("fScoreCenter.account_info") }}</div>
         </div>
         <div class="tab-content">
           <f-my-score v-if="selectedTab === 'myscores'"></f-my-score>
-          <f-account-info
-            v-else-if="selectedTab === 'accountinfo'"
-          ></f-account-info>
+          <f-account-info v-else-if="selectedTab === 'accountinfo'"></f-account-info>
         </div>
       </div>
     </f-block>
@@ -55,7 +49,7 @@ export default {
         dateFrom: false,
         dateTo: false
       },
-      selectedTab: "accountinfo",
+      selectedTab: "myscores",
       scores: 800,
       remaingTime: "",
       dialog: false,
@@ -140,7 +134,7 @@ export default {
       )}${minute}${this.$t("fscoreCenter.minute")}`;
     },
     countdown: helper.countdown,
-    fscores: formatter.fscores
+    fgamepoint: formatter.fgamepoint
   }
 };
 </script>
@@ -169,9 +163,7 @@ export default {
 }
 .tab-content {
   background: rgb(206, 206, 206);
-  max-height: 1000px;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  max-height: 900px;
   border-radius: 0px 5px 5px 5px;
   font-size: 18px;
 }

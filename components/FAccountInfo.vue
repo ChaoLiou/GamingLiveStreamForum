@@ -83,19 +83,6 @@
       </div>
       <div>
         <div>
-          {{ $t("fScoreCenter.open_bank_location")
-          }}<span class="info-required_mark">*</span>：
-        </div>
-        <v-text-field
-          dark
-          outline
-          single-line
-          hide-details
-          v-model="accountInfo.openBankLocation"
-        ></v-text-field>
-      </div>
-      <div>
-        <div>
           {{ $t("fScoreCenter.bank_belongs_city")
           }}<span class="info-required_mark">*</span>：
         </div>

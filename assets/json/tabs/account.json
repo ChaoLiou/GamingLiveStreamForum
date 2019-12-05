@@ -22,40 +22,6 @@
     ]
   },
   {
-    "type": "manage",
-    "link": "/account/manage/livestream",
-    "subtabs": [
-      {
-        "type": "myarticles",
-        "link": "/account/manage/myarticles"
-      },
-      {
-        "type": "drafts",
-        "link": "/account/manage/drafts"
-      },
-      {
-        "type": "signature",
-        "link": "/account/manage/signature"
-      },
-      {
-        "type": "livestream",
-        "link": "/account/manage/livestream"
-      },
-      {
-        "type": "mailbox",
-        "link": "/account/manage/mailbox"
-      },
-      {
-        "type": "sysnotification",
-        "link": "/account/manage/sysnotification"
-      },
-      {
-        "type": "myforums",
-        "link": "/account/manage/myforums"
-      }
-    ]
-  },
-  {
     "type": "questnscore",
     "link": "/account/questnscore/quest",
     "subtabs": [
@@ -68,10 +34,5 @@
         "link": "/account/questnscore/score"
       }
     ]
-  },
-  {
-    "type": "friend",
-    "link": "/account/friend",
-    "subtabs": []
   }
 ]

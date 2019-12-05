@@ -12,14 +12,10 @@
         <img
           ref="img"
           v-show="member.avatar"
-          :src="member.avatar"
+          :src="`${memberApiOrigin}${member.avatar}`"
           @click="choose"
         />
-        <div
-          class="default-image"
-          v-show="!member.avatar"
-          @click="choose"
-        ></div>
+        <div class="default-image" v-show="!member.avatar" @click="choose"></div>
         <input
           ref="fileInput"
           v-show="false"
@@ -28,9 +24,11 @@
           accept="image/jpeg, image/jpg, image/png"
         />
         <div class="avatar-actions">
-          <v-btn dark color="#8e75ae" @click="choose">{{
+          <v-btn dark color="#8e75ae" @click="choose">
+            {{
             $t("fMyData.update")
-          }}</v-btn>
+            }}
+          </v-btn>
           <div>{{ $t("fMyData.uploaded_file_limits") }}</div>
           <div class="validation-message">{{ validationMessage.avatar }}</div>
         </div>
@@ -52,9 +50,7 @@
               color: '#8e75ae',
               'grid-column': '3/-1'
             }"
-          >
-            {{ $t("fMyData.public") }}
-          </div>
+          >{{ $t("fMyData.public") }}</div>
         </div>
         <div class="member-col" v-for="(col, index) in memberCols" :key="index">
           <div>{{ $t(`_memberCols.${col.key}`) }}：</div>
@@ -106,12 +102,7 @@
           </v-menu>
           <div v-else>{{ member[col.key] }}</div>
           <div class="public-switch-container">
-            <v-switch
-              color="#8e75ae"
-              v-if="col.switch"
-              single-line
-              hide-details
-            ></v-switch>
+            <v-switch color="#8e75ae" v-if="col.switch" single-line hide-details></v-switch>
           </div>
         </div>
       </div>
@@ -127,23 +118,17 @@
       <div class="intro-container">
         <div class="intro-col">
           <div>{{ $t("fMyData.brief_intro") }}：</div>
-          <v-textarea
-            outline
-            hide-details
-            auto-grow
-            dark
-            v-model="member.intro"
-          ></v-textarea>
-          <div class="intro-input-info">
-            {{ $t("fMyData.brief_intro_textarea_info") }}
-          </div>
+          <v-textarea outline hide-details auto-grow dark v-model="member.introduce"></v-textarea>
+          <div class="intro-input-info">{{ $t("fMyData.brief_intro_textarea_info") }}</div>
         </div>
       </div>
     </f-block>
     <div class="save-all-btn">
-      <v-btn :loading="loading" block color="#8e75ae" dark @click="save">{{
+      <v-btn :loading="loading" block color="#8e75ae" dark @click="save">
+        {{
         $t("fMyData.save")
-      }}</v-btn>
+        }}
+      </v-btn>
     </div>
   </div>
 </template>
@@ -176,7 +161,7 @@ export default {
       memberCols,
       optionGroups: {
         gender: genderOptions,
-        location: locationOptions
+        live: locationOptions
       },
       datepickerMenu: false
     };
