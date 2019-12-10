@@ -1,9 +1,6 @@
 <template>
   <div class="f-stream-container">
-    <div
-      class="stream-grid"
-      :style="{ 'grid-template-columns': `repeat(${col}, 1fr)` }"
-    >
+    <div class="stream-grid">
       <template v-if="streams.length > 0">
         <f-stream-preview
           v-for="(item, index) in streams"
@@ -78,15 +75,15 @@ export default {
   position: absolute;
   font-weight: bold;
   padding: 30px;
-  top: calc(50% - 73px);
-  left: calc(50% - 271px);
+  top: calc(50% - 83px);
+  left: calc(50% - 281px);
   z-index: 2;
   background: white;
   font-size: 22px;
-  border: 10px solid #eadbf8;
+  border: 20px solid #eadbf8;
   box-shadow: 5px 8px 5px 3px rgba(0, 0, 0, 0.4);
 }
-@media (max-width: 1264px) {
+@media (max-width: 1367px) {
   .stream-grid {
     grid-template-columns: repeat(2, 1fr);
   }
