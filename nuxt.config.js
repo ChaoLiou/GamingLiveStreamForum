@@ -1,5 +1,6 @@
 const pkg = require("./package");
 const i18nOptions = require("./locales/i18n");
+const meta = require("./assets/json/meta");
 
 module.exports = {
   mode: "spa",
@@ -8,11 +9,12 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title: pkg.name,
+    title: meta.title,
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: pkg.description }
+      { hid: "keywords", name: "keywords", content: meta.keywords },
+      { hid: "description", name: "description", content: meta.description }
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },

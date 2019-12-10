@@ -8,20 +8,23 @@
       @click="drawer = !drawer"
     >
       <v-icon large>
-        {{
-        drawer ? "keyboard_arrow_left" : "keyboard_arrow_right"
-        }}
+        {{ drawer ? "keyboard_arrow_left" : "keyboard_arrow_right" }}
       </v-icon>
     </v-btn>
-    <v-navigation-drawer v-if="member" v-model="drawer" clipped temporary fixed app>
+    <v-navigation-drawer
+      v-if="$store.getters['member'] ? $store.getters['member'] : false"
+      v-model="drawer"
+      clipped
+      temporary
+      fixed
+      app
+    >
       <v-list dark>
         <v-list-group active-class="white--text" prepend-icon="star">
           <template v-slot:activator>
             <v-list-tile>
               <v-list-tile-title class="drawer-title">
-                {{
-                $t("default.hot_streamers")
-                }}
+                {{ $t("default.hot_streamers") }}
               </v-list-tile-title>
             </v-list-tile>
           </template>
@@ -33,13 +36,15 @@
             <f-stream-inline-preview :stream="stream"></f-stream-inline-preview>
           </v-list-tile>
         </v-list-group>
-        <v-list-group active-class="white--text" prepend-icon="remove_red_eye" :value="true">
+        <v-list-group
+          active-class="white--text"
+          prepend-icon="remove_red_eye"
+          :value="true"
+        >
           <template v-slot:activator>
             <v-list-tile>
               <v-list-tile-title class="drawer-title">
-                {{
-                $t("default.followed_streams")
-                }}
+                {{ $t("default.followed_streams") }}
               </v-list-tile-title>
             </v-list-tile>
           </template>
@@ -55,14 +60,26 @@
     </v-navigation-drawer>
     <v-toolbar fixed height="78px">
       <v-toolbar-items
-        :class="[searchInputFocused ? 'search-focused' : '', loggedin ? 'loggedin': '']"
+        :class="[
+          searchInputFocused ? 'search-focused' : '',
+          loggedin ? 'loggedin' : ''
+        ]"
       >
         <a class="home-link" @click="reload">
-          <v-img class="logo" src="/logo.png" width="150px" height="70px"></v-img>
+          <v-img
+            class="logo"
+            src="/logo.png"
+            width="150px"
+            height="70px"
+          ></v-img>
         </a>
         <div class="nav-items">
-          <nuxt-link to="/live/recommend">{{ $t("default.stream_platform") }}</nuxt-link>
-          <nuxt-link to="/live/hot">{{ $t("default.hot_games") }}</nuxt-link>
+          <nuxt-link to="/live/recommend">{{
+            $t("default.stream_platform")
+          }}</nuxt-link>
+          <nuxt-link to="/live/hot">
+            {{ $t("default.hot_games") }}
+          </nuxt-link>
         </div>
         <div :class="['search']">
           <input
@@ -93,8 +110,14 @@
         </v-menu>
         </div>-->
         <div class="login-container">
-          <f-member-block v-if="loggedin" :member="member" @logout="logoutMember"></f-member-block>
-          <v-btn v-else class="loginout-btn" @click="openLoginForm">{{ $t("default.loginout") }}</v-btn>
+          <f-member-block
+            v-if="loggedin"
+            :member="$store.getters['member']"
+            @logout="logoutMember"
+          ></f-member-block>
+          <v-btn v-else class="loginout-btn" @click="openLoginForm">{{
+            $t("default.loginout")
+          }}</v-btn>
         </div>
       </v-toolbar-items>
     </v-toolbar>
@@ -108,11 +131,17 @@
         <a
           href="https://github.com/ChaoLiou/GamingLiveStreamForum/commits/master"
           target="_blank"
-        >{{ rev.short }}</a>
+          >{{ rev.short }}</a
+        >
         - build at {{ rev.build_dt }}
       </div>
     </v-footer>
-    <v-dialog content-class="dialog-form" v-model="dialog" width="500px" scrollable>
+    <v-dialog
+      content-class="dialog-form"
+      v-model="dialog"
+      width="500px"
+      scrollable
+    >
       <f-register-form
         :data="data"
         v-if="needRegisteration"
@@ -157,7 +186,6 @@ export default {
       captchaKey: "",
       data: {},
       loggedin: false,
-      member: undefined,
       streams: [],
       rememberPhoneNumber: false,
       remainLoginStatus: false,
@@ -165,6 +193,9 @@ export default {
     };
   },
   watch: {
+    member(value) {
+      console.log(value);
+    },
     dialog(value) {
       if (!value) {
         this.username = undefined;
@@ -181,7 +212,7 @@ export default {
   mounted() {
     this.generateCaptchaKey();
     this.getMemberByLoginuser().then(member => {
-      this.member = member;
+      this.$store.commit("setMember", member);
       this.loggedin = !!member;
       this.drawer = !!member;
     });
@@ -219,7 +250,7 @@ export default {
       this.loggedin = !!id;
       if (this.loggedin) {
         this.login(id).then(member => {
-          this.member = member;
+          this.$store.commit("setMember", member);
           this.loggedin = true;
           this.drawer = true;
         });

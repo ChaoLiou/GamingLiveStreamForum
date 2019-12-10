@@ -22,15 +22,21 @@
             } 0px 0px`
           }"
           max-height="200px"
+          min-height="200px"
         >
           <div class="fixed-mask play-mask">
-            <v-img class="v-icon" src="/misc_icons/play_circle_outline.svg"></v-img>
+            <v-img
+              class="v-icon"
+              src="/misc_icons/play_circle_outline.svg"
+            ></v-img>
             <div class="fixed-mask play-mask__background"></div>
           </div>
           <div class="fixed-mask live-mask">LIVE</div>
           <div class="fixed-mask viewer-mask">
             <div class="viewer-mask__container">
-              <div class="viewer-mask__content">{{ viewers }}{{$t('fStreamPreview.viewers_unit')}}</div>
+              <div class="viewer-mask__content">
+                {{ viewers }}{{ $t("fStreamPreview.viewers_unit") }}
+              </div>
               <div class="viewer-mask__background"></div>
             </div>
           </div>
@@ -50,19 +56,22 @@
           <v-img :src="stream.streamer_image"></v-img>
         </v-avatar>
         <div class="stream-brief__content">
-          <div v-if="!player" class="stream-brief__title text-truncate" :title="stream.title">
+          <div
+            v-if="!player"
+            class="stream-brief__title text-truncate"
+            :title="stream.title"
+          >
             <a v-if="toExternal" :href="stream.externalLink" target="_blank">
-              {{
-              stream.title
-              }}
+              {{ stream.title }}
             </a>
             <nuxt-link v-else :to="streamLink" target="_blank">
-              {{
-              stream.title
-              }}
+              {{ stream.title }}
             </nuxt-link>
           </div>
-          <div class="stream-brief__name text-truncate" :title="stream.streamer_name">
+          <div
+            class="stream-brief__name text-truncate"
+            :title="stream.streamer_name"
+          >
             <a>{{ stream.streamer_name }}</a>
           </div>
           <div class="stream-brief__game text-truncate" :title="game">
@@ -71,10 +80,9 @@
           <div class="stream-brief__platform text-truncate" :title="platform">
             <a>{{ platform }}</a>
           </div>
-          <div
-            v-if="player"
-            class="stream-brief__viewers"
-          >{{ viewers }}{{$t('fStreamPreview.viewers_unit')}}</div>
+          <div v-if="player" class="stream-brief__viewers">
+            {{ viewers }}{{ $t("fStreamPreview.viewers_unit") }}
+          </div>
         </div>
       </div>
       <div class="stream-tags">
@@ -82,9 +90,12 @@
           class="tag"
           v-for="(tag, index) in tags.slice(0, player ? 2 : 2)"
           :key="index"
-        >{{ tag }}</span>
+          >{{ tag }}</span
+        >
       </div>
-      <div v-if="player" class="stream-description">{{ stream.description }}</div>
+      <div v-if="player" class="stream-description">
+        {{ stream.description }}
+      </div>
     </div>
   </div>
 </template>

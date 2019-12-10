@@ -6,9 +6,7 @@
           <v-icon>star_border</v-icon>
         </v-btn>
         <v-btn to="/live/recommend">
-          {{
-          $t("account_type_subtype.stream_overview")
-          }}
+          {{ $t("account_type_subtype.stream_overview") }}
         </v-btn>
       </div>
     </f-tab>
@@ -17,13 +15,22 @@
         <f-stream v-if="stream" :stream="stream"></f-stream>
       </div>
       <div class="stream-below-info">
-        <f-block-box :title="$t('account_type_subtype.streamer_info')" background-color="#f2ecf6">
+        <f-block-box
+          :title="$t('account_type_subtype.streamer_info')"
+          background-color="#f2ecf6"
+        >
           <div v-html="stream.description"></div>
         </f-block-box>
       </div>
       <div class="stream-comment">
-        <f-block-box :title="$t('account_type_subtype.hot_recommend')" background-color="#f2ecf6">
-          <f-stream-container :col-count="3" :streams="filteredStreams"></f-stream-container>
+        <f-block-box
+          :title="$t('account_type_subtype.hot_recommend')"
+          background-color="#f2ecf6"
+        >
+          <f-stream-container
+            :col="$vuetify.breakpoint.xl ? 4 : 2"
+            :streams="filteredStreams"
+          ></f-stream-container>
         </f-block-box>
       </div>
     </div>

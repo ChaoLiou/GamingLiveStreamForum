@@ -1,8 +1,13 @@
 <template>
   <div class="index">
-    <div class="landing-background" :style="{ background: `url(/${landingBackground}) no-repeat` }"></div>
+    <div
+      class="landing-background"
+      :style="{ background: `url(/${landingBackground}) no-repeat` }"
+    ></div>
     <div class="landing">
-      <f-home-stream-carousel :streams="streams.douyu.slice(0, 5)"></f-home-stream-carousel>
+      <f-home-stream-carousel
+        :streams="streams.douyu.slice(0, 5)"
+      ></f-home-stream-carousel>
     </div>
     <div class="content-grid">
       <div class="content-grid__main">
@@ -13,7 +18,9 @@
           to="/live/recommend"
           :title="$t('index.recommended_streams')"
         >
-          <f-stream-container :streams="streams.all.slice(0, 8)"></f-stream-container>
+          <f-stream-container
+            :streams="streams.all.slice(0, 8)"
+          ></f-stream-container>
         </f-block>
         <f-block
           :title="$t('index.hot_streamers')"
@@ -34,14 +41,17 @@
           <f-game-ranking></f-game-ranking>
         </f-block>
         <f-block
-          more
+          :more="available[item.id] === undefined || available[item.id]"
           :to="`/live/recommend/${item.id}`"
           :title="$t(`_platforms.${item.id}`)"
           :icon="item.icon"
           v-for="(item, index) in platforms"
           :key="index"
         >
-          <f-stream-container :streams="streams[item.id ? item.id : 'all']"></f-stream-container>
+          <f-stream-container
+            :available="available[item.id]"
+            :streams="streams[item.id ? item.id : 'all']"
+          ></f-stream-container>
         </f-block>
       </div>
       <div class="content-grid__side">
@@ -81,6 +91,10 @@ export default {
         cc163: [],
         huya: []
       },
+      available: {
+        youtube: false,
+        twitch: false
+      },
       platforms,
       selectedRankingType: -1
     };
@@ -102,10 +116,12 @@ export default {
       });
     this.getTwitchStreams(0, 8, true).then(streams => {
       streams.forEach(s => s.then(res => this.streams.twitch.push(res)));
+      this.available.twitch = streams && streams.length > 0;
     });
-    this.getYoutubeStreams(0, 8).then(
-      streams => (this.streams.youtube = streams)
-    );
+    this.getYoutubeStreams(0, 8).then(streams => {
+      this.streams.youtube = streams;
+      this.available.youtube = streams && streams.length > 0;
+    });
   },
   methods: {
     tabChange(index) {
@@ -148,7 +164,7 @@ export default {
 .content-grid__main > .f-home-news-area {
   margin-bottom: 45px;
 }
-@media (min-width: 1900px) {
+@media (min-width: 1905px) {
   .landing {
     height: 510px;
   }
@@ -156,7 +172,17 @@ export default {
     height: 863px;
   }
   .content-grid {
-    margin-top: 200px;
+    margin-top: 100px;
+  }
+}
+@media (min-width: 1264px) and (max-width: 1904px) {
+  .content-grid {
+    margin-top: 140px;
+  }
+}
+@media (max-width: 1265px) {
+  .content-grid {
+    margin-top: 160px;
   }
 }
 </style>

@@ -1,19 +1,31 @@
 <template>
   <div class="f-stream-ranking">
     <f-container-slide-control left @slide="goLeft"></f-container-slide-control>
-    <f-container-slide-control right @slide="goRight"></f-container-slide-control>
+    <f-container-slide-control
+      right
+      @slide="goRight"
+    ></f-container-slide-control>
     <div class="stream-ranking__grid" ref="content">
-      <div class="stream-ranking__item" v-for="(item, index) in streams" :key="index">
+      <div
+        class="stream-ranking__item"
+        v-for="(item, index) in streams"
+        :key="index"
+      >
         <div :class="['ranking-board', index < 3 ? 'ranking-board__icon' : '']">
           <v-img v-if="index < 3" :src="ranks[index]"></v-img>
-          <div v-else class="ranking-board__content font-italic font-weight-black">{{ index + 1 }}</div>
+          <div
+            v-else
+            class="ranking-board__content font-italic font-weight-black"
+          >
+            {{ index + 1 }}
+          </div>
         </div>
         <v-card class="stream-board" color="#eadbf8">
           <f-link :link="`/stream/${item.platform}/${item.id}`">
             <v-img
               class="stream-board__stream-avatar"
-              width="180px"
-              height="180px"
+              :width="$vuetify.breakpoint.lg ? '140px' : '180px'"
+              :height="$vuetify.breakpoint.lg ? '140px' : '180px'"
               :src="item.streamer_image"
             >
               <f-stream-viewers :viewers="item.viewers"></f-stream-viewers>
@@ -21,17 +33,23 @@
           </f-link>
           <div class="stream-board__stream-info">
             <f-link :link="getPlatformInfo(item.platform, 'link')" external>
-              <v-img width="46px" :src="getPlatformInfo(item.platform, 'icon')"></v-img>
+              <v-img
+                width="46px"
+                :src="getPlatformInfo(item.platform, 'icon')"
+              ></v-img>
             </f-link>
             <div class="stream-info__text">
               <div class="text-truncate">
-                <f-link :link="`/stream/${item.platform}/${item.id}`">{{ item.streamer_name }}</f-link>
+                <f-link :link="`/stream/${item.platform}/${item.id}`">{{
+                  item.streamer_name
+                }}</f-link>
               </div>
               <div>
                 <f-link
                   :link="getPlatformInfo(item.platform, 'link')"
                   external
-                >{{ $t(`_platforms.${item.platform}`) }}</f-link>
+                  >{{ $t(`_platforms.${item.platform}`) }}</f-link
+                >
               </div>
             </div>
           </div>
@@ -171,5 +189,17 @@ export default {
   margin-left: 10px;
   color: #6540a7;
   font-size: 18px;
+}
+@media (max-width: 1904px) and (min-width: 1264px) {
+  .stream-board {
+    width: 160px;
+    height: 220px;
+  }
+  .ranking-board {
+    left: 40px;
+  }
+  .stream-board__stream-info {
+    grid-template-columns: 46px 94px;
+  }
 }
 </style>

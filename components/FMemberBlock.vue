@@ -38,16 +38,35 @@
       :close-on-content-click="false"
     >
       <template v-slot:activator="{ on }">
-        <div :class="['member-avatar__btn', menu ? 'active' : '']" v-on="on" @click="menu = !menu">
-          <v-img height="45px" width="45px" contain :src="`${memberApiOrigin}${member.avatar}`"></v-img>
-          <v-icon large>{{ menu ? "arrow_drop_up" : "arrow_drop_down" }}</v-icon>
+        <div
+          :class="['member-avatar__btn', menu ? 'active' : '']"
+          v-on="on"
+          @click="menu = !menu"
+        >
+          <v-img
+            height="45px"
+            width="45px"
+            contain
+            :src="`${memberApiOrigin}${member.avatar}`"
+          ></v-img>
+          <v-icon large>{{
+            menu ? "arrow_drop_up" : "arrow_drop_down"
+          }}</v-icon>
         </div>
       </template>
       <v-card class="member-content" color="#8e75ae">
         <v-card-title class="member-content__header">
-          <v-img height="80px" width="80px" contain :src="`${memberApiOrigin}${member.avatar}`"></v-img>
+          <v-img
+            v-if="member.avatar"
+            height="80px"
+            width="80px"
+            contain
+            :src="`${memberApiOrigin}${member.avatar}`"
+          ></v-img>
           <div class="member-content__header_info">
-            <div class="member-content__header_title">{{ member.nickname }}</div>
+            <div class="member-content__header_title">
+              {{ member.nickname }}
+            </div>
             <div>ID：{{ member.id }}</div>
             <div>{{ $t("fMemberBlock.high_level_member") }}</div>
           </div>
@@ -60,24 +79,34 @@
           <div class="member-content__body_coins">
             <div class="body__coin">
               <div class="body__coin_title">{{ $t("fMemberBlock.score") }}</div>
-              <div class="body__coin_amount">{{fgamepoint(member.gamepoint)}}</div>
+              <div class="body__coin_amount">
+                {{ fgamepoint(member.gamepoint) }}
+              </div>
             </div>
             <div class="body__coin">
               <div class="body__coin_title">{{ $t("fMemberBlock.score") }}</div>
-              <div class="body__coin_amount">{{fgamepoint(member.gamepoint)}}</div>
+              <div class="body__coin_amount">
+                {{ fgamepoint(member.gamepoint) }}
+              </div>
             </div>
             <div class="body__coin">
               <div class="body__coin_title">{{ $t("fMemberBlock.score") }}</div>
-              <div class="body__coin_amount">{{fgamepoint(member.gamepoint)}}</div>
+              <div class="body__coin_amount">
+                {{ fgamepoint(member.gamepoint) }}
+              </div>
             </div>
             <div class="body__coin">
               <div class="body__coin_title">{{ $t("fMemberBlock.score") }}</div>
-              <div class="body__coin_amount">{{fgamepoint(member.gamepoint)}}</div>
+              <div class="body__coin_amount">
+                {{ fgamepoint(member.gamepoint) }}
+              </div>
             </div>
           </div>
         </v-card-title>
         <v-card-actions>
-          <div @click="redirectToAccountView">{{ $t("fMemberBlock.account_center") }}</div>
+          <div @click="redirectToAccountView">
+            {{ $t("fMemberBlock.account_center") }}
+          </div>
           <v-divider vertical></v-divider>
           <div @click="logoutMember">{{ $t("fMemberBlock.logout") }}</div>
         </v-card-actions>

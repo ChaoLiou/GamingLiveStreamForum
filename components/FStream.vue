@@ -23,13 +23,17 @@
       </div>
       <div class="f-stream__grid">
         <div class="f-stream__streamer">
-          <span>{{$t("fStream.streamer")}}:</span>
+          <span>{{ $t("fStream.streamer") }}:</span>
           <a>{{ stream.streamer_name }}</a>
         </div>
-        <div class="f-stream__viewer">{{ viewers }}{{$t("fStream.viewers_unit")}}</div>
+        <div class="f-stream__viewer">
+          {{ viewers }}{{ $t("fStream.viewers_unit") }}
+        </div>
         <div>
-          <v-btn depressed to="/live/recommend">{{$t("fStream.back_to_streams_overview")}}</v-btn>
-          <v-btn depressed>{{$t("fStream.relative_products")}}</v-btn>
+          <v-btn depressed to="/live/recommend">{{
+            $t("fStream.back_to_streams_overview")
+          }}</v-btn>
+          <v-btn depressed>{{ $t("fStream.relative_products") }}</v-btn>
           <v-btn depressed icon>
             <v-icon>more_vert</v-icon>
           </v-btn>
@@ -44,17 +48,19 @@
           }"
         >
           <div class="stream-info">
-            <div class="stream-info__title">{{$t("fStream.like")}}</div>
+            <div class="stream-info__title">{{ $t("fStream.like") }}</div>
             <div class="stream-info__content">642</div>
           </div>
           <div class="stream-info">
-            <div class="stream-info__title">{{$t("fStream.subscribe")}}</div>
+            <div class="stream-info__title">{{ $t("fStream.subscribe") }}</div>
             <div class="stream-info__content">887</div>
           </div>
         </div>
       </div>
     </div>
-    <div :class="['f-stream__chat', stream.externalLink ? 'external-link' : '']">
+    <div
+      :class="['f-stream__chat', stream.externalLink ? 'external-link' : '']"
+    >
       <div v-if="stream.externalLink"></div>
       <!-- <f-temp-ad v-if="stream.externalLink"></f-temp-ad> -->
       <iframe
@@ -112,9 +118,6 @@ export default {
   justify-self: start;
   font-size: 20px;
 }
-.f-stream__title-video {
-  height: 382.5px;
-}
 .f-stream__grid {
   display: grid;
   grid-template-columns: auto 200px;
@@ -150,16 +153,24 @@ export default {
 .f-link {
   height: 100%;
 }
-@media (min-width: 1904px) {
+@media (min-width: 1905px) {
   .f-stream {
     grid-template-columns: minmax(1280px, auto) 435px;
     height: 100vh;
   }
   .f-stream__title-video {
-    height: calc(100% - 300px);
+    width: calc((100vh - 180px) * 16 / 9);
+    height: calc(100vh - 180px);
+    margin: auto;
   }
   .f-stream__chat {
     width: 435px;
+  }
+}
+@media (max-width: 1904px) and (min-width: 1265px) {
+  .f-stream__title-video {
+    width: calc(100vw - 200px - 340px);
+    height: calc((100vw - 200px - 340px) * 9 / 16);
   }
 }
 @media (max-width: 1264px) {
@@ -170,8 +181,10 @@ export default {
   .f-stream {
     grid-template-columns: 1fr;
   }
-  .f-stream__main {
+  .f-stream__main,
+  .f-stream__title-video {
     width: calc(100vw - 200px);
+    height: calc((100vw - 200px) * 9 / 16);
   }
   .f-stream__chat.external-link {
     display: none;
