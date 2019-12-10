@@ -301,6 +301,11 @@ export default {
   width: fit-content;
   margin: auto;
 }
+@media (max-width: 1264px) {
+  .msg-content {
+    max-width: 80%;
+  }
+}
 </style>
 <style>
 .f-my-message .v-badge__badge {

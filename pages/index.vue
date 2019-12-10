@@ -137,7 +137,7 @@ export default {
 .content-grid {
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: auto 300px;
+  grid-template-columns: auto 20vw;
   margin-top: 120px;
   margin-left: 20px;
   margin-right: 20px;

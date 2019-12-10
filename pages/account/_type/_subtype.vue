@@ -125,4 +125,10 @@ export default {
   margin: 0px 10px;
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
+@media (max-width: 1264px) {
+  .content {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
 </style>

@@ -46,4 +46,10 @@ export default {
 .f-home-news-area > div {
   margin: 10px;
 }
+@media (max-width: 1264px) {
+  .f-home-news-area {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
 </style>

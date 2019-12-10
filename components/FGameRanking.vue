@@ -71,4 +71,9 @@ export default {
   font-weight: bold;
   height: 60px;
 }
+@media (max-width: 1264px) {
+  .f-game-ranking {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 </style>

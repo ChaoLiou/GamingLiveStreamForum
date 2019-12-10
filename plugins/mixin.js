@@ -6,13 +6,12 @@ Vue.mixin({
   data() {
     return {
       apiOrigin: "https://woolive.ark-program.com",
-      memberApiOrigin: "https://hands-in-hands.com:8000",
-      // googleAPIKey: "AIzaSyA7m7LP26mFpKNuRGa7BQFGwuv3w-HpJz4",
+      memberApiOrigin: "https://www.qianshoudianjing.com:8000",
+      googleAPIKey: "AIzaSyC6NF1FtqPjNEuHhsQQOVa7aCCEsxOW_5I",
       internals: ["youtube", "twitch", "douyu"],
       cookie_ns: "glsf",
       cookieKeys: ["id", "token"],
-      memberColsExluded: ["id", "level", "mobile"],
-      // memberColsExluded: ["id", "level", "gamepoint", "mobile"],
+      memberColsExluded: ["id", "level", "gamepoint", "mobile"],
       questColsExluded: ["id"]
     };
   },
@@ -215,10 +214,13 @@ Vue.mixin({
       // if (!src) {
       //   twitchStreams = await this.getTwitchStreams(0, size, true, sort);
       // }
-      return streams
-        .map(this.mappingStream)
-        .concat(twitchStreams)
-        .sort((a, b) => b.viewers - a.viewers);
+      return (
+        streams
+          .map(this.mappingStream)
+          // .filter(x => x.platform !== "bilibili")
+          .concat(twitchStreams)
+          .sort((a, b) => b.viewers - a.viewers)
+      );
     },
     async getStream(id) {
       const url = `${this.apiOrigin}/stream/findByBaseId/${id}`;

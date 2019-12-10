@@ -54,7 +54,9 @@
       </v-list>
     </v-navigation-drawer>
     <v-toolbar fixed height="78px">
-      <v-toolbar-items>
+      <v-toolbar-items
+        :class="[searchInputFocused ? 'search-focused' : '', loggedin ? 'loggedin': '']"
+      >
         <a class="home-link" @click="reload">
           <v-img class="logo" src="/logo.png" width="150px" height="70px"></v-img>
         </a>
@@ -62,15 +64,18 @@
           <nuxt-link to="/live/recommend">{{ $t("default.stream_platform") }}</nuxt-link>
           <nuxt-link to="/live/hot">{{ $t("default.hot_games") }}</nuxt-link>
         </div>
-        <div class="search">
-          <input type="text" class="search__text" />
+        <div :class="['search']">
+          <input
+            type="text"
+            class="search__text"
+            @focus="searchInputFocused = true"
+            @blur="searchInputFocused = false"
+          />
           <v-btn icon class="search__action">
             <v-icon>search</v-icon>
           </v-btn>
         </div>
-      </v-toolbar-items>
-      <v-spacer></v-spacer>
-      <!-- <div>
+        <!-- <div>
         <v-menu offset-y>
           <template v-slot:activator="{ on }">
             <v-btn dark v-on="on">{{ $t("default.locale") }}</v-btn>
@@ -86,11 +91,12 @@
             </v-list-tile>
           </v-list>
         </v-menu>
-      </div>-->
-      <div class="login-container">
-        <f-member-block v-if="loggedin" :member="member" @logout="logoutMember"></f-member-block>
-        <v-btn v-else @click="openLoginForm">{{ $t("default.loginout") }}</v-btn>
-      </div>
+        </div>-->
+        <div class="login-container">
+          <f-member-block v-if="loggedin" :member="member" @logout="logoutMember"></f-member-block>
+          <v-btn v-else class="loginout-btn" @click="openLoginForm">{{ $t("default.loginout") }}</v-btn>
+        </div>
+      </v-toolbar-items>
     </v-toolbar>
     <v-content>
       <nuxt />
@@ -143,6 +149,7 @@ export default {
   },
   data() {
     return {
+      searchInputFocused: false,
       drawer: false,
       dialog: false,
       rev,
@@ -235,9 +242,21 @@ export default {
 .v-toolbar__items {
   height: 100%;
   margin-top: 8px;
+  margin-right: 40px;
+  display: grid;
+  grid-template-columns: 180px 240px auto 130px;
+  width: calc(100vw - 60px);
+}
+.v-toolbar__items.loggedin {
+  grid-template-columns: 180px 240px auto 290px;
 }
 .v-content {
   margin-top: 86px;
+}
+.login-container {
+  display: grid;
+  justify-items: end;
+  align-items: center;
 }
 .logo {
   margin-right: 50px;
@@ -265,7 +284,7 @@ export default {
 .search {
   margin-left: 20px;
   display: grid;
-  grid-template-columns: 5fr 1fr;
+  grid-template-columns: auto 80px;
   align-items: center;
   height: inherit;
 }
@@ -275,7 +294,7 @@ export default {
   border-radius: 15px 0px 0px 15px;
   outline-color: transparent;
   height: 43px;
-  width: 450px;
+  width: 100%;
 }
 .search__action {
   border-radius: 0px 15px 15px 0px;
@@ -283,11 +302,6 @@ export default {
   height: 43px;
   width: 60px;
   margin-left: 0px;
-}
-.login-container {
-  height: 100%;
-  display: grid;
-  align-items: center;
 }
 .v-navigation-drawer {
   margin-top: 86px !important;
@@ -312,6 +326,18 @@ export default {
 }
 .stream-preview-tile {
   height: 70px;
+}
+@media (max-width: 1264px) {
+  .v-toolbar__items.search-focused {
+    grid-template-columns: 170px calc(100vw - 170px - 30px);
+  }
+  .search-focused .search {
+    margin-left: 0px;
+  }
+  .search-focused .nav-items,
+  .search-focused .login-container {
+    display: none;
+  }
 }
 </style>
 <style>
@@ -383,5 +409,12 @@ export default {
 .default .validation-message {
   margin-top: 5px !important;
   color: red;
+}
+.default .v-toolbar__content {
+  display: grid;
+  grid-template-columns: auto 300px;
+}
+.loginout-btn .v-btn__content {
+  font-size: 22px !important;
 }
 </style>

@@ -123,14 +123,11 @@ export default {
 <style scoped>
 .content-grid {
   display: grid;
-  /* grid-gap: 20px; */
-  grid-template-columns: auto 300px;
+  grid-template-columns: auto 20vw;
   margin-top: 70px;
-  /* margin-left: 20px;
-  margin-right: 20px; */
 }
 .content-grid__main {
-  margin: 0px 30px;
+  /* margin: 0px 30px; */
 }
 .content-grid__main > div {
   margin-bottom: 20px;
@@ -150,5 +147,15 @@ export default {
 .more-link:hover a {
   color: #0055aa;
   text-decoration: underline;
+}
+@media (max-width: 1264px) {
+  .content-grid__side {
+    display: none;
+  }
+  .content-grid__main {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: calc(100vw - 40px);
+  }
 }
 </style>

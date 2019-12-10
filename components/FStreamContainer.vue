@@ -1,6 +1,6 @@
 <template>
   <div class="f-stream-container">
-    <div class="stream-grid" :style="{ 'grid-template-columns': `repeat(${colCount}, 1fr)`}">
+    <div class="stream-grid">
       <f-stream-preview
         v-for="(item, index) in streams"
         :preview-image-ratio="previewImageRatio"
@@ -23,10 +23,6 @@ export default {
       default() {
         return [];
       }
-    },
-    colCount: {
-      type: Number,
-      default: 4
     }
   },
   data() {
@@ -42,5 +38,11 @@ export default {
   margin-top: 10px;
   display: grid;
   grid-gap: 15px;
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 1264px) {
+  .stream-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 </style>

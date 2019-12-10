@@ -92,7 +92,7 @@ export default {
 .stream-below-info,
 .stream-comment {
   margin-top: 20px;
-  width: calc(100% - 340px);
+  width: calc(100% - 345px);
 }
 .f-tab__grid {
   display: grid;
@@ -106,11 +106,17 @@ export default {
   color: white;
   font-size: 16px;
 }
-@media (min-width: 1900px) {
+@media (min-width: 1904px) {
   .stream-below-info,
   .stream-comment {
     margin-top: 20px;
     width: calc(100% - 435px);
+  }
+}
+@media (max-width: 1264px) {
+  .stream-below-info,
+  .stream-comment {
+    width: calc(100%);
   }
 }
 </style>

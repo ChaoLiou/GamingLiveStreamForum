@@ -28,6 +28,9 @@ export default {
   grid-template-columns: repeat(5, 180px);
   grid-column-gap: 15px;
   margin-bottom: 40px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  max-width: calc(100vw - 40px);
 }
 .news-headline__item {
   justify-items: center;

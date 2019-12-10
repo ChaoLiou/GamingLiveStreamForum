@@ -54,8 +54,9 @@
         </div>
       </div>
     </div>
-    <div class="f-stream__chat">
-      <f-temp-ad v-if="stream.externalLink"></f-temp-ad>
+    <div :class="['f-stream__chat', stream.externalLink ? 'external-link' : '']">
+      <div v-if="stream.externalLink"></div>
+      <!-- <f-temp-ad v-if="stream.externalLink"></f-temp-ad> -->
       <iframe
         v-else
         frameborder="0"
@@ -116,7 +117,7 @@ export default {
 }
 .f-stream__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto 200px;
   margin: 10px;
 }
 .f-stream__viewer {
@@ -149,7 +150,7 @@ export default {
 .f-link {
   height: 100%;
 }
-@media (min-width: 1900px) {
+@media (min-width: 1904px) {
   .f-stream {
     grid-template-columns: minmax(1280px, auto) 435px;
     height: 100vh;
@@ -159,6 +160,28 @@ export default {
   }
   .f-stream__chat {
     width: 435px;
+  }
+}
+@media (max-width: 1264px) {
+  .stream-below-info,
+  .stream-comment {
+    width: calc(100%);
+  }
+  .f-stream {
+    grid-template-columns: 1fr;
+  }
+  .f-stream__main {
+    width: calc(100vw - 200px);
+  }
+  .f-stream__chat.external-link {
+    display: none;
+  }
+  .f-stream__chat,
+  .f-stream__chat iframe {
+    position: relative;
+    height: 400px;
+    top: 0px;
+    width: calc(100vw - 200px);
   }
 }
 </style>

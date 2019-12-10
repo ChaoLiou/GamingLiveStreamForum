@@ -7,22 +7,10 @@
       'margin-top': $vuetify.breakpoint.xl ? '-80px' : '0px'
     }"
   >
-    <v-btn
-      large
-      icon
-      class="slide-btn slide-btn__prev"
-      dark
-      @click="moveTo(false)"
-    >
+    <v-btn large icon class="slide-btn slide-btn__prev" dark @click="moveTo(false)">
       <v-icon large>keyboard_arrow_left</v-icon>
     </v-btn>
-    <v-btn
-      large
-      icon
-      class="slide-btn slide-btn__next"
-      dark
-      @click="moveTo(true)"
-    >
+    <v-btn large icon class="slide-btn slide-btn__next" dark @click="moveTo(true)">
       <v-icon large>keyboard_arrow_right</v-icon>
     </v-btn>
     <div class="stream-preview__container">
@@ -64,8 +52,18 @@ export default {
     return {
       fstreams: [],
       gap: 60,
-      width: this.$vuetify.breakpoint.xl ? 1092 : 764,
-      height: this.$vuetify.breakpoint.xl ? 615 : 430
+      // width: this.$vuetify.breakpoint.xl ? 1092 : 764,
+      // height: this.$vuetify.breakpoint.xl ? 615 : 430,
+      width: {
+        xl: 1092,
+        lg: 764,
+        md: 550
+      }[this.$vuetify.breakpoint.name],
+      height: {
+        xl: 615,
+        lg: 430,
+        md: 310
+      }[this.$vuetify.breakpoint.name]
     };
   },
   computed: {
@@ -181,5 +179,7 @@ export default {
   -o-transition: all 0.45s cubic-bezier(0.25, 0.8, 0.5, 1);
   transition: all 0.45s cubic-bezier(0.25, 0.8, 0.5, 1);
   position: absolute;
+}
+@media (max-width: 1264px) {
 }
 </style>

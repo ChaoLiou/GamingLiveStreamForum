@@ -15,7 +15,7 @@
         />
         <span>{{ $t("fScoreCenter.account_accumulated") }}：{{ fgamepoint(accumulatedGamepoint)}}{{ $t("fScoreCenter.unit") }}</span>
       </div>
-      <div style="display:grid;grid-template-columns:400px 300px;grid-column-gap:20px">
+      <div style="display:grid;grid-template-columns:350px 100px;grid-column-gap:20px">
         <div style="display:grid;grid-template-columns:100px auto;align-items:center">
           {{ $t("fScoreCenter.manipulate_score") }}：
           <v-select
@@ -54,7 +54,9 @@
           style="color:red;"
         >{{ $t("fScoreCenter.current_scores_short") }}</div>
       </div>
-      <div style="display:grid;grid-template-columns:100px auto 100px;align-items:center">
+      <div
+        style="display:grid;grid-template-columns:100px minmax(auto, 400px) 100px;align-items:center"
+      >
         {{ $t("fScoreCenter.remarks") }}：
         <div>
           <div class="validation-message">{{ validationMessage.remarks }}</div>
@@ -363,6 +365,9 @@ export default {
   margin: 5px 0px;
 }
 .score__grid {
+  max-height: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
   margin: -20px 10px 10px 10px;
 }
 .score__grid > div {
@@ -445,6 +450,14 @@ export default {
   align-items: center;
   grid-column-gap: 5px;
   display: grid;
+}
+@media (max-width: 1264px) {
+  .all-filter__grid {
+    grid-template-columns: 1fr;
+  }
+  .score__grid > div {
+    grid-template-columns: 100px 100px 80px 40px 100px 80px 80px;
+  }
 }
 </style>
 <style>
