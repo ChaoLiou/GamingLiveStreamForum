@@ -90,6 +90,10 @@ export default {
   font-size: 18px;
 }
 @media (max-width: 600px) {
+  .f-news-preview {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
   .f-news-preview.multiple-line {
     grid-template-columns: 1fr;
   }
