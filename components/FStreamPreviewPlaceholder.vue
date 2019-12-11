@@ -19,7 +19,7 @@
         }`
       }"
     >
-      <v-avatar size="80px">
+      <v-avatar :size="$vuetify.breakpoint.xs ? '40px' : '80px'">
         <v-img :style="{ 'background-color': imageBackgroundColor }"></v-img>
       </v-avatar>
       <div class="stream-brief__content">
@@ -74,5 +74,11 @@ export default {
 .stream-brief__content > div:first-child {
   background: #6f5ba3;
   width: 90%;
+}
+@media (max-width: 600px) {
+  .stream-brief__content > div {
+    margin-top: 4px;
+    height: 14px;
+  }
 }
 </style>
