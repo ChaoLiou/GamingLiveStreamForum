@@ -11,13 +11,13 @@
     >
       <div>{{ news.time }}</div>
       <v-btn small color="primary" width="100px">
-        <v-icon left small>thumb_up</v-icon>{{$t('fNewsDetail.like')}}
+        <v-icon left small>thumb_up</v-icon>{{ $t("fNewsDetail.like") }}
       </v-btn>
     </div>
     <v-divider></v-divider>
     <div class="news-detail__content" v-html="fcontent"></div>
     <v-btn small color="primary" width="100px">
-      <v-icon left small>local_offer</v-icon>{{$t('fNewsDetail.collect')}}
+      <v-icon left small>local_offer</v-icon>{{ $t("fNewsDetail.collect") }}
     </v-btn>
   </div>
 </template>
@@ -56,6 +56,11 @@ export default {
 }
 </style>
 <style>
+.f-news-detail .GN-thumbnail,
+.video-container {
+  width: fit-content !important;
+  margin: auto !important;
+}
 .f-news-detail ul {
   list-style: none;
 }

@@ -19,6 +19,7 @@
           :title="$t('index.recommended_streams')"
         >
           <f-stream-container
+            narrow
             :streams="streams.all.slice(0, 8)"
           ></f-stream-container>
         </f-block>
@@ -49,6 +50,7 @@
           :key="index"
         >
           <f-stream-container
+            narrow
             :available="available[item.id]"
             :streams="streams[item.id ? item.id : 'all']"
           ></f-stream-container>
@@ -182,7 +184,7 @@ export default {
 }
 @media (max-width: 1265px) {
   .content-grid {
-    margin-top: 160px;
+    margin-top: 80px;
   }
 }
 </style>

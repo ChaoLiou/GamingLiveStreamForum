@@ -7,8 +7,13 @@
             <div
               class="carousel__title text-truncate"
               :style="{ top: `calc(${height} - 30px)` }"
-            >{{ item.title }}</div>
-            <div class="carousel__title-shadow" :style="{ top: `calc(${height} - 40px)` }"></div>
+            >
+              {{ item.title }}
+            </div>
+            <div
+              class="carousel__title-shadow"
+              :style="{ top: `calc(${height} - 40px)` }"
+            ></div>
           </v-img>
         </nuxt-link>
       </v-carousel-item>
@@ -43,6 +48,7 @@ export default {
 <style scoped>
 .v-carousel {
   border-radius: 5px;
+  padding: 0px 10px;
 }
 .carousel__title,
 .carousel__title-shadow {

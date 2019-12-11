@@ -1,6 +1,10 @@
 <template>
   <div class="live-type-id">
-    <f-tab :title="$t('live_type_id.amazing_streams')" :tabs="tabs" from="live"></f-tab>
+    <f-tab
+      :title="$t('live_type_id.amazing_streams')"
+      :tabs="tabs"
+      from="live"
+    ></f-tab>
     <div class="content">
       <f-block
         :icon="
@@ -11,7 +15,9 @@
         :to="`/live/${$route.params.type}`"
         :title="mainTitle"
       >
-        <f-home-stream-carousel :streams="fstreams_slice5"></f-home-stream-carousel>
+        <f-home-stream-carousel
+          :streams="fstreams_slice5"
+        ></f-home-stream-carousel>
       </f-block>
       <div>
         <div v-if="multiple">
@@ -19,12 +25,14 @@
             more
             :to="`/live/${$route.params.type}/${item.id}`"
             :title="$t(`${localeKey}.${item.id}`)"
-            :icon="item.icon"
+            :icon="item.icon ? item.icon : '/platform_icons/icn_Game_B.png'"
             v-for="(item, index) in multipleSource"
             :key="index"
             v-show="getFStreams(item.id).length > 0"
           >
-            <f-stream-container :streams="getFStreams(item.id)"></f-stream-container>
+            <f-stream-container
+              :streams="getFStreams(item.id)"
+            ></f-stream-container>
           </f-block>
         </div>
         <div v-else>
@@ -36,9 +44,7 @@
     </div>
     <div class="more-btn-container" v-if="!multiple">
       <v-btn dark block @click="loadMore">
-        {{
-        $t("live_type_id.load_more_streams")
-        }}
+        {{ $t("live_type_id.load_more_streams") }}
       </v-btn>
     </div>
   </div>

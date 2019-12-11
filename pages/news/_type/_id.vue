@@ -1,6 +1,11 @@
 <template>
   <div class="news-type-id">
-    <f-tab :title="$t('news_type_id.newsletter')" :tabs="tabs" link="/news" from="news"></f-tab>
+    <f-tab
+      :title="$t('news_type_id.newsletter')"
+      :tabs="tabs"
+      link="/news"
+      from="news"
+    ></f-tab>
     <div class="content-grid">
       <div class="content-grid__main">
         <template v-if="$route.params.id">
@@ -9,7 +14,10 @@
             <f-news-comment :source="newsDetail.comments"></f-news-comment>
           </f-block-box>
           <f-block-box :title="$t('news_type_id.news_relatives')">
-            <f-news-relatives :keywords="newsDetail.keywords" :source="newsDetail.relatives"></f-news-relatives>
+            <f-news-relatives
+              :keywords="newsDetail.keywords"
+              :source="newsDetail.relatives"
+            ></f-news-relatives>
             <div class="more-link">
               <a href="#">{{ $t("news_type_id.more") }}</a>
             </div>
@@ -22,7 +30,11 @@
           </f-block-box>
         </template>
         <template v-else>
-          <f-home-news-carousel :source="carouselSource" :interval-seconds="10" height="60vh"></f-home-news-carousel>
+          <f-home-news-carousel
+            :source="carouselSource"
+            :interval-seconds="10"
+            height="60vh"
+          ></f-home-news-carousel>
           <f-news-container :source="fnews" @more="loadMore"></f-news-container>
         </template>
       </div>
@@ -127,7 +139,7 @@ export default {
   margin-top: 70px;
 }
 .content-grid__main {
-  /* margin: 0px 30px; */
+  margin: 0px 30px;
 }
 .content-grid__main > div {
   margin-bottom: 20px;

@@ -1,11 +1,15 @@
 <template>
   <div class="f-news-headlines">
-    <div class="news-headline__item" v-for="(head, index) in source" :key="index">
+    <div
+      class="news-headline__item"
+      v-for="(head, index) in source"
+      :key="index"
+    >
       <a :href="head.link" target="_blank">
         <v-img width="180px" :src="head.image"></v-img>
       </a>
       <div class="news-headline__title">
-        <a :href="head.link" target="_blank">{{head.title}}</a>
+        <a :href="head.link" target="_blank">{{ head.title }}</a>
       </div>
     </div>
   </div>

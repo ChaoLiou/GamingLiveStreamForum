@@ -28,7 +28,8 @@
           background-color="#f2ecf6"
         >
           <f-stream-container
-            :col="$vuetify.breakpoint.xl ? 4 : 2"
+            narrow
+            :max-col="3"
             :streams="filteredStreams"
           ></f-stream-container>
         </f-block-box>

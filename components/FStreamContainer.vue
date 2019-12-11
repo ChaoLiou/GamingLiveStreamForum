@@ -1,6 +1,9 @@
 <template>
-  <div class="f-stream-container">
-    <div class="stream-grid">
+  <div :class="['f-stream-container', narrow ? 'narrow' : '']">
+    <div
+      class="stream-grid"
+      :style="{ 'grid-template-columns': `repeat(${maxCol}, 1fr)` }"
+    >
       <template v-if="streams.length > 0">
         <f-stream-preview
           v-for="(item, index) in streams"
@@ -35,6 +38,10 @@ export default {
     FStreamPreviewPlaceholder
   },
   props: {
+    narrow: {
+      type: Boolean,
+      default: false
+    },
     available: {
       type: Boolean,
       default: true
@@ -45,7 +52,7 @@ export default {
         return [];
       }
     },
-    col: {
+    maxCol: {
       type: Number,
       default: 4
     }
@@ -66,7 +73,6 @@ export default {
   margin-top: 10px;
   display: grid;
   grid-gap: 15px;
-  grid-template-columns: repeat(4, 1fr);
 }
 .unavailable-viewing-tips {
   border-radius: 10px;
@@ -83,9 +89,14 @@ export default {
   border: 20px solid #eadbf8;
   box-shadow: 5px 8px 5px 3px rgba(0, 0, 0, 0.4);
 }
-@media (max-width: 1367px) {
+@media (max-width: 1280px) {
   .stream-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 1367px) {
+  .narrow .stream-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 </style>
