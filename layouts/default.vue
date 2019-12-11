@@ -61,6 +61,76 @@
         </v-list-group>
       </v-list>
     </v-navigation-drawer>
+    <v-navigation-drawer
+      class="mobile-side-menu"
+      v-model="toolbarDrawer"
+      clipped
+      temporary
+      right
+      fixed
+      app
+      :width="200"
+    >
+      <v-list dark dense>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              <f-member-block-mobile
+                v-if="loggedin"
+                :member="$store.getters['member']"
+                @logout="logoutMember"
+              ></f-member-block-mobile>
+              <v-btn v-else class="loginout-btn" @click="openLoginForm">{{
+                $t("default.loginout")
+              }}</v-btn>
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile @click="reload">
+          <v-list-tile-content>
+            <v-list-tile-title>{{ $t("default.homepage") }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile to="/news">
+          <v-list-tile-content>
+            <v-list-tile-title>{{ $t("default.hot_news") }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile to="/live/recommend">
+          <v-list-tile-content>
+            <v-list-tile-title>{{
+              $t("default.stream_platform")
+            }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile to="/live/hot">
+          <v-list-tile-content>
+            <v-list-tile-title>{{ $t("default.hot_games") }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile to="/account/info/mydata" v-if="loggedin">
+          <v-list-tile-content>
+            <v-list-tile-title>{{
+              $t("fMemberBlock.account_center")
+            }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile to="/account/info/followedstreams" v-if="loggedin">
+          <v-list-tile-content>
+            <v-list-tile-title>{{
+              $t("default.followed_streams")
+            }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile v-if="loggedin">
+          <v-list-tile-content>
+            <v-list-tile-title @click="logoutMember">{{
+              $t("fMemberBlock.logout")
+            }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
     <v-toolbar v-if="$vuetify.breakpoint.xs" fixed height="56px">
       <v-toolbar-items>
         <a class="home-link" @click="reload">
@@ -71,7 +141,11 @@
             height="45px"
           ></v-img>
         </a>
-        <v-toolbar-side-icon></v-toolbar-side-icon>
+        <v-toolbar-side-icon @click="toolbarDrawer = !toolbarDrawer"
+          ><v-icon>{{
+            toolbarDrawer ? "clear" : "menu"
+          }}</v-icon></v-toolbar-side-icon
+        >
       </v-toolbar-items>
     </v-toolbar>
     <v-toolbar v-else fixed height="78px">
@@ -156,6 +230,7 @@
       v-model="dialog"
       width="500px"
       scrollable
+      :fullscreen="$vuetify.breakpoint.xs"
     >
       <f-register-form
         :data="data"
@@ -182,6 +257,7 @@ import rev from "@/build/rev";
 import FLoginForm from "@/components/FLoginForm";
 import FRegisterForm from "@/components/FRegisterForm";
 import FMemberBlock from "@/components/FMemberBlock";
+import FMemberBlockMobile from "@/components/FMemberBlockMobile";
 import FStreamInlinePreview from "@/components/FStreamInlinePreview";
 import helper from "@/assets/utils/helper";
 export default {
@@ -189,10 +265,12 @@ export default {
     FLoginForm,
     FRegisterForm,
     FMemberBlock,
+    FMemberBlockMobile,
     FStreamInlinePreview
   },
   data() {
     return {
+      toolbarDrawer: false,
       searchInputFocused: false,
       drawer: false,
       dialog: false,
@@ -230,6 +308,7 @@ export default {
       this.$store.commit("setMember", member);
       this.loggedin = !!member;
       this.drawer = !!member;
+      this.toolbarDrawer = !!member;
     });
     this.getStreams(0, 4).then(streams => this.streams.push(...streams));
   },
@@ -247,6 +326,7 @@ export default {
     },
     openLoginForm() {
       this.dialog = !this.dialog;
+      this.toolbarDrawer = false;
       if (this.dialog) {
         this.generateCaptchaKey();
       }
@@ -259,6 +339,7 @@ export default {
       this.needRegisteration = false;
       this.loggedin = loggedin;
       this.drawer = loggedin;
+      this.toolbarDrawer = loggedin;
     },
     closeLoginForm(id) {
       this.dialog = false;
@@ -268,6 +349,7 @@ export default {
           this.$store.commit("setMember", member);
           this.loggedin = true;
           this.drawer = true;
+          this.toolbarDrawer = true;
         });
       }
     },
@@ -350,7 +432,6 @@ export default {
   margin-left: 0px;
 }
 .v-navigation-drawer {
-  margin-top: 86px !important;
   background: #8e75ae;
   z-index: 1000;
 }
@@ -372,6 +453,11 @@ export default {
 }
 .stream-preview-tile {
   height: 70px;
+}
+@media (min-width: 600px) {
+  .v-navigation-drawer {
+    margin-top: 86px !important;
+  }
 }
 @media (max-width: 1264px) {
   .v-toolbar__items.search-focused {
@@ -406,6 +492,9 @@ export default {
   }
   .v-toolbar {
     height: 56px;
+  }
+  .v-navigation-drawer {
+    margin-top: 56px !important;
   }
 }
 </style>
@@ -485,5 +574,34 @@ export default {
 }
 .loginout-btn .v-btn__content {
   font-size: 22px !important;
+}
+@media (max-width: 600px) {
+  .loginout-btn {
+    height: 30px;
+    width: 118px;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  .loginout-btn .v-btn__content {
+    font-size: 12px !important;
+    height: 30px;
+  }
+  .mobile-side-menu .v-list {
+    padding: 0px;
+  }
+  .mobile-side-menu .v-list > div:first-child {
+    background: #55287e;
+    height: 60px;
+  }
+  .mobile-side-menu .v-list > div:first-child .v-list__tile,
+  .mobile-side-menu .v-list > div:first-child .v-list__tile__title,
+  .mobile-side-menu .v-list > div:first-child .v-list__tile__content {
+    height: 100%;
+  }
+  .mobile-side-menu .v-list > div:first-child .v-list__tile__title {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+  }
 }
 </style>

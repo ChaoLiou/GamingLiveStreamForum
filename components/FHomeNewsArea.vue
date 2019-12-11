@@ -3,7 +3,9 @@
     <f-home-news-carousel
       :source="carouselSource"
       :interval-seconds="10"
-      height="calc((100vw - 20px) * 9 / 16)"
+      :height="
+        $vuetify.breakpoint.xs ? 'calc((100vw - 20px) * 9 / 16)' : undefined
+      "
     ></f-home-news-carousel>
     <f-home-news-tab-page :source="news"></f-home-news-tab-page>
   </div>

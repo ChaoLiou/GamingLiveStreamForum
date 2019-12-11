@@ -33,7 +33,7 @@
           <f-home-news-carousel
             :source="carouselSource"
             :interval-seconds="10"
-            height="60vh"
+            height="calc(100vw * 9 / 16)"
           ></f-home-news-carousel>
           <f-news-container :source="fnews" @more="loadMore"></f-news-container>
         </template>
@@ -168,6 +168,38 @@ export default {
     margin-left: 20px;
     margin-right: 20px;
     width: calc(100vw - 40px);
+  }
+}
+@media (max-width: 600px) {
+  .f-tab.fixed {
+    top: 56px;
+    height: 40px;
+  }
+  .content-grid__side {
+    display: none;
+  }
+  .content-grid {
+    margin-top: 110px;
+    grid-template-columns: 1fr;
+  }
+  .content-grid__main {
+    margin: 0px 10px;
+    width: calc(100vw - 20px);
+  }
+}
+</style>
+<style>
+@media (max-width: 600px) {
+  .news-type-id .f-tab__tabs {
+    width: 100vw;
+    grid-template-columns: repeat(4, 1fr) !important;
+    height: 40px;
+  }
+  .news-type-id .f-tab__tabs a > div {
+    font-size: 14px;
+  }
+  .news-type-id .f-tab__tabs > div:first-child {
+    display: none;
   }
 }
 </style>

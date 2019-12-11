@@ -269,4 +269,6 @@ export default {
   top: 67px !important;
   z-index: 1000 !important;
 }
+@media (max-width: 600px) {
+}
 </style>

@@ -2,7 +2,7 @@
   "_memberCols": {
     "id": "ID",
     "nickname": "暱稱",
-    "score": "積分",
+    "gamepoint": "積分",
     "level": "用戶等級",
     "gender": "性別",
     "birthday": "生日",
@@ -76,6 +76,8 @@
   "default": {
     "hot_streamers": "熱門主播榜",
     "stream_platform": "直播平台",
+    "hot_news": "新聞快報",
+    "homepage": "首頁",
     "followed_streams": "追蹤實況",
     "hot_games": "熱門遊戲",
     "loginout": "登入/註冊",

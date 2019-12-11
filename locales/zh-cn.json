@@ -76,6 +76,8 @@
   "default": {
     "hot_streamers": "热门主播榜",
     "stream_platform": "直播平台",
+    "hot_news": "新闻快报",
+    "homepage": "首页",
     "followed_streams": "追踪实况",
     "hot_games": "热门游戏",
     "loginout": "登入/注册",

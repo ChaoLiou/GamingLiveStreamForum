@@ -34,6 +34,14 @@
                 <a>{{ stream.platform }}</a>
               </div> -->
             </div>
+            <div class="fixed-mask viewer-mask">
+              <div class="viewer-mask__container">
+                <div class="viewer-mask__content">
+                  {{ viewers }}{{ $t("fStreamPreview.viewers_unit") }}
+                </div>
+                <div class="viewer-mask__background"></div>
+              </div>
+            </div>
           </div>
         </f-link>
       </div>
@@ -54,14 +62,6 @@
               <v-img :src="logoImageSource"></v-img>
             </v-avatar>
           </f-link>
-          <div class="fixed-mask viewer-mask">
-            <div class="viewer-mask__container">
-              <div class="viewer-mask__content">
-                {{ viewers }}{{ $t("fStreamPreview.viewers_unit") }}
-              </div>
-              <div class="viewer-mask__background"></div>
-            </div>
-          </div>
         </f-image-preview>
       </f-link>
     </v-card>
@@ -139,12 +139,16 @@ export default {
     if (this.$refs && this.$refs.frame) {
       this.$refs.frame.onload = () => {
         this.frameLoaded = true;
+        this.$emit("loaded");
       };
     }
   }
 };
 </script>
 <style scoped>
+.f-home-stream-preview-mobile {
+  min-width: 100%;
+}
 .stream-preview__container {
   background: linear-gradient(0deg, #d6d5d5, white);
   width: 100%;
@@ -182,13 +186,13 @@ export default {
 }
 .stream-frame__info {
   width: 100%;
-  height: 125px;
+  height: 100%;
   position: absolute;
   z-index: 4;
 }
 .stream-frame__block {
   width: 100%;
-  height: 125px;
+  height: 100%;
   position: absolute;
   z-index: 4;
   cursor: pointer;
@@ -199,7 +203,8 @@ export default {
   justify-self: center;
 }
 .stream-brief > div {
-  margin: 5px;
+  margin-top: 5px;
+  margin-left: 5px;
 }
 .stream-brief__title a {
   font-weight: 900;
@@ -264,6 +269,6 @@ export default {
   background: #b9b9b9;
   opacity: 0.8;
   z-index: 1;
-  border-radius: 10px 0px 0px 0px;
+  border-radius: 10px 0px 5px 0px;
 }
 </style>

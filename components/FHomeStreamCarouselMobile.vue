@@ -1,11 +1,12 @@
 <template>
-  <div class="f-home-stream-carousel-mobile">
-    <div class="carousel-grid">
+  <div class="f-home-stream-carousel-mobile" ref="carousel">
+    <div class="carousel-grid" ref="container">
       <f-home-stream-preview-mobile
         v-for="(item, index) in fstreams"
         :key="index"
         :player="item.player"
         :stream="item"
+        @loaded="scroll"
       ></f-home-stream-preview-mobile>
     </div>
   </div>
@@ -68,7 +69,19 @@ export default {
       this.fstreams = fstreams;
     }
   },
+  updated() {
+    if (this.fstreams.length > 0) {
+    }
+  },
   methods: {
+    scroll() {
+      const container = this.$refs.container;
+      const carousel = this.$refs.carousel;
+      if (carousel && container) {
+        container.scrollLeft =
+          carousel.scrollWidth / 2 + carousel.offsetWidth + 30;
+      }
+    },
     computedSequence(sequence) {
       let result = sequence.map((x, i) => x + 1);
       result.push(1);
@@ -80,14 +93,14 @@ export default {
 </script>
 <style scoped>
 .f-home-stream-carousel-mobile {
-  max-width: 100vw;
-  overflow-x: scroll;
-  overflow-y: hidden;
 }
 .carousel-grid {
   display: grid;
   grid-template-columns: repeat(5, calc(100vw - 60px));
   grid-gap: 10px;
   height: calc((100vw - 60px) * 9 / 16);
+  overflow-x: scroll;
+  overflow-y: hidden;
+  max-width: 100vw;
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div class="live-type-id">
     <f-tab
+      v-if="!$vuetify.breakpoint.xs"
       :title="$t('live_type_id.amazing_streams')"
       :tabs="tabs"
       from="live"
@@ -14,8 +15,15 @@
         "
         :to="`/live/${$route.params.type}`"
         :title="mainTitle"
+        :content-left-margin="12"
+        :font-size="$vuetify.breakpoint.xs ? 16 : 30"
       >
+        <f-home-stream-carousel-mobile
+          v-if="$vuetify.breakpoint.xs"
+          :streams="fstreams_slice5"
+        ></f-home-stream-carousel-mobile>
         <f-home-stream-carousel
+          v-else
           :streams="fstreams_slice5"
         ></f-home-stream-carousel>
       </f-block>
@@ -23,6 +31,8 @@
         <div v-if="multiple">
           <f-block
             more
+            :content-left-margin="12"
+            :font-size="$vuetify.breakpoint.xs ? 16 : 30"
             :to="`/live/${$route.params.type}/${item.id}`"
             :title="$t(`${localeKey}.${item.id}`)"
             :icon="item.icon ? item.icon : '/platform_icons/icn_Game_B.png'"
@@ -36,7 +46,12 @@
           </f-block>
         </div>
         <div v-else>
-          <f-block :icon="platformIcon" :title="title">
+          <f-block
+            :content-left-margin="12"
+            :font-size="$vuetify.breakpoint.xs ? 16 : 30"
+            :icon="platformIcon"
+            :title="title"
+          >
             <f-stream-container :streams="fstreams"></f-stream-container>
           </f-block>
         </div>
@@ -53,6 +68,7 @@
 import FTab from "@/components/FTab";
 import FBlock from "@/components/FBlock";
 import FHomeStreamCarousel from "@/components/FHomeStreamCarousel";
+import FHomeStreamCarouselMobile from "@/components/FHomeStreamCarouselMobile";
 import FStreamContainer from "@/components/FStreamContainer";
 import liveTabs from "@/assets/json/tabs/live";
 import games from "@/assets/json/games";
@@ -62,6 +78,7 @@ export default {
     FTab,
     FBlock,
     FHomeStreamCarousel,
+    FHomeStreamCarouselMobile,
     FStreamContainer
   },
   data() {
@@ -170,7 +187,8 @@ export default {
         promises.forEach(p => p.then(res => this.streams.twitch.push(res)));
       });
       this.getYoutubeStreams(0, 20).then(streams => {
-        this.youtubeNextPageToken = streams[0].nextPageToken;
+        this.youtubeNextPageToken =
+          streams.length > 0 ? streams[0].nextPageToken : undefined;
         this.streams.youtube = streams;
       });
     }
@@ -206,7 +224,8 @@ export default {
             20,
             this.youtubeNextPageToken
           ).then(streams => {
-            this.youtubeNextPageToken = streams[0].nextPageToken;
+            this.youtubeNextPageToken =
+              streams.length > 0 ? streams[0].nextPageToken : undefined;
             this.streams[this.$route.params.id].push(...streams);
           });
         } else {
@@ -252,5 +271,10 @@ export default {
   width: 80%;
   margin: auto;
   background: linear-gradient(45deg, #6540a7, 49%, #dab4ff, 51%, #6540a7);
+}
+@media (max-width: 600px) {
+  .content {
+    margin: 20px 0px 0px 0px;
+  }
 }
 </style>
