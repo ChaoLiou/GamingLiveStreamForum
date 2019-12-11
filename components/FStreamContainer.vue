@@ -94,7 +94,7 @@ export default {
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
-@media (max-width: 1367px) {
+@media (max-width: 1366px) {
   .narrow .stream-grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
