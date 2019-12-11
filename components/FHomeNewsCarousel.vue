@@ -48,7 +48,6 @@ export default {
 <style scoped>
 .v-carousel {
   border-radius: 5px;
-  padding: 0px 10px;
 }
 .carousel__title,
 .carousel__title-shadow {
