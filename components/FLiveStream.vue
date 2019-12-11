@@ -10,7 +10,9 @@
     >
       <div>
         <div class="toolbar">
-          <v-btn class="theme" @click="dialog = true">{{$t('fLiveStream.apply_streamer')}}</v-btn>
+          <v-btn class="theme" @click="dialog = true">{{
+            $t("fLiveStream.apply_streamer")
+          }}</v-btn>
         </div>
         <div class="table-headers user-select_none">
           <div>
@@ -22,36 +24,30 @@
           <div @click="sortCol('platform')">
             <v-btn icon class="sorter-btn">
               <v-icon color="white">
-                {{
-                sort.col === "platform" ? sortIcon : ""
-                }}
+                {{ sort.col === "platform" ? sortIcon : "remove" }}
               </v-icon>
             </v-btn>
-            {{$t('fLiveStream.platform')}}
+            {{ $t("fLiveStream.platform") }}
           </div>
           <v-divider vertical></v-divider>
-          <div>{{$t('fLiveStream.stream_title')}}</div>
+          <div>{{ $t("fLiveStream.stream_title") }}</div>
           <v-divider vertical></v-divider>
           <div @click="sortCol('date')">
             <v-btn icon class="sorter-btn">
               <v-icon color="white">
-                {{
-                sort.col === "date" ? sortIcon : ""
-                }}
+                {{ sort.col === "date" ? sortIcon : "remove" }}
               </v-icon>
             </v-btn>
-            {{$t('fLiveStream.date')}}
+            {{ $t("fLiveStream.date") }}
           </div>
           <v-divider vertical></v-divider>
           <div @click="sortCol('viewers')">
             <v-btn icon class="sorter-btn">
               <v-icon color="white">
-                {{
-                sort.col === "viewers" ? sortIcon : ""
-                }}
+                {{ sort.col === "viewers" ? sortIcon : "remove" }}
               </v-icon>
             </v-btn>
-            {{$t('fLiveStream.popularity')}}
+            {{ $t("fLiveStream.popularity") }}
           </div>
         </div>
         <template v-if="vodList.length > 0">
@@ -61,22 +57,34 @@
             </div>
             <div class="vod-item__platform">{{ vod.platform }}</div>
             <div class="vod-item__content">
-              <v-img width="160px" height="90px" :src="vod.item.preview"></v-img>
+              <v-img
+                width="160px"
+                height="90px"
+                :src="vod.item.preview"
+              ></v-img>
               <div class="main-content">
-                <div class="main-content__title text-truncate">{{ vod.item.title }}</div>
-                <div class="main-content__description">{{ vod.item.description }}</div>
+                <div class="main-content__title text-truncate">
+                  {{ vod.item.title }}
+                </div>
+                <div class="main-content__description">
+                  {{ vod.item.description }}
+                </div>
               </div>
             </div>
             <div class="vod-item__date">{{ vod.date }}</div>
             <div class="vod-item__viewers">{{ fviewers(vod.viewers) }}</div>
           </div>
           <div class="pagination-container">
-            <v-pagination v-model="page" :length="maxPage" :total-visible="7"></v-pagination>
+            <v-pagination
+              v-model="page"
+              :length="maxPage"
+              :total-visible="7"
+            ></v-pagination>
           </div>
         </template>
         <div v-else class="none-info">
-          <div>{{$t('fLiveStream.not_streamer_default_text_1')}}</div>
-          <div>{{$t('fLiveStream.not_streamer_default_text_2')}}</div>
+          <div>{{ $t("fLiveStream.not_streamer_default_text_1") }}</div>
+          <div>{{ $t("fLiveStream.not_streamer_default_text_2") }}</div>
         </div>
       </div>
     </f-block>
@@ -163,7 +171,7 @@ export default {
   color: white;
   font-size: 18px;
   display: grid;
-  grid-template-columns: 100px 1px 120px 1px auto 1px 120px 1px 120px;
+  grid-template-columns: 80px 1px 120px 1px auto 1px 100px 1px 100px;
   justify-items: center;
   align-items: center;
 }
@@ -192,7 +200,7 @@ export default {
 }
 .vod-item {
   display: grid;
-  grid-template-columns: 100px 120px auto 120px 120px;
+  grid-template-columns: 80px 120px auto 100px 100px;
   grid-column-gap: 1px;
   justify-items: center;
   align-items: center;
@@ -237,6 +245,19 @@ export default {
 .pagination-container {
   width: fit-content;
   margin: 20px auto;
+}
+@media (max-width: 1264px) and (min-width: 960px) {
+  .vod-item__content .v-image {
+    justify-self: start;
+  }
+  .vod-item__content {
+    grid-template-columns: 1fr;
+    height: fit-content;
+    max-width: calc(100vw - 220px - 80px - 120px - 100px - 100px);
+  }
+  .main-content {
+    max-width: calc(100vw - 220px - 80px - 120px - 100px - 100px);
+  }
 }
 </style>
 <style>

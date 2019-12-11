@@ -12,8 +12,8 @@
         "link": "/account/info/followedstreams"
       },
       {
-        "type": "mystream",
-        "link": "/account/info/mystream"
+        "type": "livestream",
+        "link": "/account/info/livestream"
       },
       {
         "type": "mymessage",
