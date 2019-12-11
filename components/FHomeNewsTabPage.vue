@@ -5,7 +5,7 @@
       :text="$t('fHomeNewsTabPage.newsletter')"
       :content-left-margin="10"
       :content-right-margin="0"
-      :font-size="22"
+      :font-size="$vuetify.breakpoint.xs ? 16 : 22"
       :line-height="3"
       :tabs="newsTypes"
       @tab-change="tabChange"
@@ -15,14 +15,18 @@
         <div class="news-item" :key="index">
           <div class="news-tag">{{ item.type.title }}</div>
           <div class="news-title">
-            <nuxt-link target="_blank" :to="`/news/${item.type.value}/${item.id}`">{{ item.title }}</nuxt-link>
+            <nuxt-link
+              target="_blank"
+              :to="`/news/${item.type.value}/${item.id}`"
+              >{{ item.title }}</nuxt-link
+            >
           </div>
         </div>
         <v-divider :key="`divider-${index}`"></v-divider>
       </template>
     </div>
     <div class="more-link">
-      <nuxt-link to="/news">{{$t("fHomeNewsTabPage.more_info")}}></nuxt-link>
+      <nuxt-link to="/news">{{ $t("fHomeNewsTabPage.more_info") }}></nuxt-link>
     </div>
   </div>
 </template>
@@ -94,6 +98,8 @@ export default {
 .news-title > a {
   text-decoration: none;
   color: inherit;
+  max-height: 48px;
+  overflow: hidden;
 }
 .more-link {
   display: grid;

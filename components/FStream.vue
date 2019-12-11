@@ -5,7 +5,9 @@
         <v-avatar size="30px">
           <v-img :src="stream.streamer_image"></v-img>
         </v-avatar>
-        <div class="f-stream__title">{{ stream.title }}</div>
+        <div class="f-stream__title">
+          {{ stream.title }}
+        </div>
       </div>
       <div class="f-stream__title-video">
         <f-link v-if="stream.externalLink" :link="stream.externalLink" external>

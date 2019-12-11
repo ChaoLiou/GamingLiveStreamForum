@@ -10,7 +10,9 @@
         <nuxt-link v-else :to="to">{{ text }}</nuxt-link>
       </div>
       <div class="more" v-if="more" :style="moreLinkStyles">
-        <nuxt-link :to="to">{{ moreTitle ? moreTitle : $t("fBlockTitle.see_more") }}></nuxt-link>
+        <nuxt-link :to="to"
+          >{{ moreTitle ? moreTitle : $t("fBlockTitle.see_more") }}></nuxt-link
+        >
       </div>
       <div v-else class="tab-bar" :style="tabBarStyles">
         <div class="tab-container" :style="tabContainerStyles">
@@ -21,8 +23,17 @@
             :style="getTabStyles(index)"
           >
             <div class="tab__left-trangle" :style="tabLeftTriangleStyles"></div>
-            <div class="tab__content" :style="tabContentStyles" @click="tabChange(index)">{{ tab }}</div>
-            <div class="tab__right-trangle" :style="tabRightTriangleStyles"></div>
+            <div
+              class="tab__content"
+              :style="tabContentStyles"
+              @click="tabChange(index)"
+            >
+              {{ tab }}
+            </div>
+            <div
+              class="tab__right-trangle"
+              :style="tabRightTriangleStyles"
+            ></div>
           </div>
         </div>
       </div>
@@ -147,7 +158,7 @@ export default {
       return {
         height: `${this.height}px`,
         "margin-left": this.icon ? `${this.barMarginLeft}px` : undefined,
-        width: `calc(100% - 1px)`
+        width: `calc(100% - ${this.icon ? this.barMarginLeft : 0}px - 1px)`
       };
     },
     tabBarStyles() {
@@ -315,5 +326,10 @@ export default {
   font-size: 24px;
   color: #5e3b8b;
   font-weight: bold;
+}
+@media (max-width: 600px) {
+  .more a {
+    font-size: 14px;
+  }
 }
 </style>

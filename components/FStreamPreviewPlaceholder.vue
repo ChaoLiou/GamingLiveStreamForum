@@ -3,18 +3,19 @@
     <v-img
       :style="{
         'background-color': imageBackgroundColor,
-        'border-radius': `${imageBackgroundColor ? '15px' : undefined} ${
-          imageBackgroundColor ? '15px' : undefined
+        'border-radius': `${imageBackgroundColor ? '10px' : undefined} ${
+          imageBackgroundColor ? '10px' : undefined
         } 0px 0px`
       }"
-      min-height="200px"
+      :max-height="$vuetify.breakpoint.xs ? '100px' : '200px'"
+      :min-height="$vuetify.breakpoint.xs ? '100px' : '200px'"
     ></v-img>
     <div
       class="stream-brief"
       :style="{
         'background-color': backgroundColor,
-        'border-radius': `0px 0px  ${backgroundColor ? '15px' : undefined} ${
-          backgroundColor ? '15px' : undefined
+        'border-radius': `0px 0px  ${backgroundColor ? '10px' : undefined} ${
+          backgroundColor ? '10px' : undefined
         }`
       }"
     >

@@ -1,7 +1,7 @@
 <template>
   <v-app class="default">
     <v-btn
-      v-if="loggedin"
+      v-if="!$vuetify.breakpoint.xs && loggedin"
       icon
       label
       :class="['expander-btn', drawer ? '' : 'collapsed']"
@@ -12,7 +12,10 @@
       </v-icon>
     </v-btn>
     <v-navigation-drawer
-      v-if="$store.getters['member'] ? $store.getters['member'] : false"
+      v-if="
+        !$vuetify.breakpoint.xs &&
+          ($store.getters['member'] ? $store.getters['member'] : false)
+      "
       v-model="drawer"
       clipped
       temporary
@@ -58,7 +61,20 @@
         </v-list-group>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar fixed height="78px">
+    <v-toolbar v-if="$vuetify.breakpoint.xs" fixed height="56px">
+      <v-toolbar-items>
+        <a class="home-link" @click="reload">
+          <v-img
+            class="logo"
+            src="/logo.png"
+            width="100px"
+            height="45px"
+          ></v-img>
+        </a>
+        <v-toolbar-side-icon></v-toolbar-side-icon>
+      </v-toolbar-items>
+    </v-toolbar>
+    <v-toolbar v-else fixed height="78px">
       <v-toolbar-items
         :class="[
           searchInputFocused ? 'search-focused' : '',
@@ -125,7 +141,6 @@
       <nuxt />
     </v-content>
     <v-footer color="#025266" dark>
-      <v-spacer></v-spacer>
       <div>
         version:
         <a
@@ -368,6 +383,29 @@ export default {
   .search-focused .nav-items,
   .search-focused .login-container {
     display: none;
+  }
+}
+@media (max-width: 600px) {
+  .v-content {
+    margin-top: 0px;
+  }
+  .v-toolbar__items {
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 10px;
+    width: calc(100vw - 26px);
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .home-link {
+    align-self: center;
+  }
+  .v-toolbar__side-icon {
+    justify-self: end;
+    background: transparent;
+    color: black;
+  }
+  .v-toolbar {
+    height: 56px;
   }
 }
 </style>

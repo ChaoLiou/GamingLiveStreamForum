@@ -99,4 +99,15 @@ export default {
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
+@media (max-width: 600px) {
+  .stream-grid {
+    grid-gap: 5px;
+  }
+  .unavailable-viewing-tips {
+    width: 250px;
+    left: calc(50% - 125px);
+    top: calc(50% - 110px);
+    font-size: 16px;
+  }
+}
 </style>

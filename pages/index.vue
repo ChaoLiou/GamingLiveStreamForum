@@ -5,7 +5,12 @@
       :style="{ background: `url(/${landingBackground}) no-repeat` }"
     ></div>
     <div class="landing">
+      <f-home-stream-carousel-mobile
+        v-if="$vuetify.breakpoint.xs"
+        :streams="streams.douyu.slice(0, 5)"
+      ></f-home-stream-carousel-mobile>
       <f-home-stream-carousel
+        v-else
         :streams="streams.douyu.slice(0, 5)"
       ></f-home-stream-carousel>
     </div>
@@ -13,9 +18,11 @@
       <div class="content-grid__main">
         <f-home-news-area></f-home-news-area>
         <f-block
+          :content-left-margin="12"
           icon="/platform_icons/icn_push_B.png"
           more
           to="/live/recommend"
+          :font-size="$vuetify.breakpoint.xs ? 16 : 30"
           :title="$t('index.recommended_streams')"
         >
           <f-stream-container
@@ -24,8 +31,9 @@
           ></f-stream-container>
         </f-block>
         <f-block
+          :content-left-margin="12"
           :title="$t('index.hot_streamers')"
-          :font-size="30"
+          :font-size="$vuetify.breakpoint.xs ? 16 : 30"
           :line-height="3"
           icon="/platform_icons/icn_star_B.png"
           @tab-change="tabChange"
@@ -33,8 +41,10 @@
           <f-stream-ranking :streams="streamRanking"></f-stream-ranking>
         </f-block>
         <f-block
+          :content-left-margin="12"
           :icon="hotIcon"
           :title="$t('index.hot_games')"
+          :font-size="$vuetify.breakpoint.xs ? 16 : 30"
           to="/live/hot"
           more
           :more-title="$t('index.more_games')"
@@ -42,11 +52,13 @@
           <f-game-ranking></f-game-ranking>
         </f-block>
         <f-block
+          :content-left-margin="12"
           :more="available[item.id] === undefined || available[item.id]"
           :to="`/live/recommend/${item.id}`"
           :title="$t(`_platforms.${item.id}`)"
           :icon="item.icon"
           v-for="(item, index) in platforms"
+          :font-size="$vuetify.breakpoint.xs ? 16 : 30"
           :key="index"
         >
           <f-stream-container
@@ -64,6 +76,7 @@
 </template>
 <script>
 import FHomeStreamCarousel from "@/components/FHomeStreamCarousel";
+import FHomeStreamCarouselMobile from "@/components/FHomeStreamCarouselMobile";
 import FHomeNewsArea from "@/components/FHomeNewsArea";
 import FTempAd from "@/components/FTempAd";
 import FBlock from "@/components/FBlock";
@@ -74,6 +87,7 @@ import platforms from "@/assets/json/platforms";
 export default {
   components: {
     FHomeStreamCarousel,
+    FHomeStreamCarouselMobile,
     FHomeNewsArea,
     FTempAd,
     FBlock,
@@ -182,9 +196,25 @@ export default {
     margin-top: 140px;
   }
 }
-@media (max-width: 1265px) {
+@media (max-width: 1264px) and (min-width: 960px) {
   .content-grid {
     margin-top: 80px;
+  }
+}
+@media (max-width: 600px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    margin: 0px;
+  }
+  .content-grid__side {
+    display: none;
+  }
+  .landing-background {
+    display: none;
+  }
+  .landing {
+    margin: 86px 0px 30px 0px;
+    height: calc((100vw - 60px) * 9 / 16);
   }
 }
 </style>

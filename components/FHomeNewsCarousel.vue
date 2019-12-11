@@ -70,6 +70,12 @@ export default {
   opacity: 0.7;
   z-index: 1;
 }
+@media (max-width: 600px) {
+  .carousel__title {
+    font-size: 14px;
+    height: 20px;
+  }
+}
 </style>
 <style>
 .f-home-news-carousel .v-responsive__content {

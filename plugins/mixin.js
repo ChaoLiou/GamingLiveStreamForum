@@ -215,13 +215,11 @@ Vue.mixin({
       // if (!src) {
       //   twitchStreams = await this.getTwitchStreams(0, size, true, sort);
       // }
-      return (
-        streams
-          .map(this.mappingStream)
-          // .filter(x => x.platform !== "bilibili")
-          .concat(twitchStreams)
-          .sort((a, b) => b.viewers - a.viewers)
-      );
+      return streams
+        .map(this.mappingStream)
+        .filter(x => x.platform !== "bilibili")
+        .concat(twitchStreams)
+        .sort((a, b) => b.viewers - a.viewers);
     },
     async getStream(id) {
       const url = `${this.apiOrigin}/stream/findByBaseId/${id}`;

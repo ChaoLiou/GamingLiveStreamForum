@@ -7,8 +7,11 @@
       :key="index"
       :to="`/live/hot/${item.game.id}`"
     >
-      <v-img :title="getTitle(item.amount, item.amountByGroups)" :src="item.game.image"></v-img>
-      <div class="game-board__title">{{$t(`_games.${item.game.id}`)}}</div>
+      <v-img
+        :title="getTitle(item.amount, item.amountByGroups)"
+        :src="item.game.image"
+      ></v-img>
+      <div class="game-board__title">{{ $t(`_games.${item.game.id}`) }}</div>
     </v-card>
   </div>
 </template>
@@ -71,9 +74,25 @@ export default {
   font-weight: bold;
   height: 60px;
 }
-@media (max-width: 1264px) {
+@media (max-width: 1264px) and (min-width: 600px) {
   .f-game-ranking {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .f-game-ranking {
+    margin: 0px 0px 0px 10px;
+    grid-template-columns: repeat(6, 120px);
+    max-width: calc(100vw - 10px);
+    overflow-x: scroll;
+    overflow-y: hidden;
+    grid-gap: 10px;
+  }
+  .f-game-ranking > a {
+    margin-bottom: 10px;
+  }
+  .game-board__title {
+    font-size: 14px;
   }
 }
 </style>

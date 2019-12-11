@@ -1,6 +1,10 @@
 <template>
   <div class="f-home-news-area">
-    <f-home-news-carousel :source="carouselSource" :interval-seconds="10"></f-home-news-carousel>
+    <f-home-news-carousel
+      :source="carouselSource"
+      :interval-seconds="10"
+      height="calc((100vw - 20px) * 9 / 16)"
+    ></f-home-news-carousel>
     <f-home-news-tab-page :source="news"></f-home-news-tab-page>
   </div>
 </template>
@@ -49,7 +53,7 @@ export default {
 @media (max-width: 1264px) {
   .f-home-news-area {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: calc((100vw - 20px) * 9 / 16 + 20px) auto;
   }
 }
 </style>

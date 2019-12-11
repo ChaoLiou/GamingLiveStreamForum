@@ -17,12 +17,12 @@
           :src="imageSource"
           :style="{
             'background-color': backgroundColor,
-            'border-radius': `${backgroundColor ? '15px' : undefined} ${
-              backgroundColor ? '15px' : undefined
+            'border-radius': `${backgroundColor ? '10px' : undefined} ${
+              backgroundColor ? '10px' : undefined
             } 0px 0px`
           }"
-          max-height="200px"
-          min-height="200px"
+          :max-height="$vuetify.breakpoint.xs ? '100px' : '200px'"
+          :min-height="$vuetify.breakpoint.xs ? '100px' : '200px'"
         >
           <div class="fixed-mask play-mask">
             <v-img
@@ -46,13 +46,13 @@
     <div
       :style="{
         'background-color': backgroundColor,
-        'border-radius': `0px 0px  ${backgroundColor ? '15px' : undefined} ${
-          backgroundColor ? '15px' : undefined
+        'border-radius': `0px 0px  ${backgroundColor ? '10px' : undefined} ${
+          backgroundColor ? '10px' : undefined
         }`
       }"
     >
       <div class="stream-brief">
-        <v-avatar size="80px">
+        <v-avatar :size="$vuetify.breakpoint.xs ? '40px' : '80px'">
           <v-img :src="stream.streamer_image"></v-img>
         </v-avatar>
         <div class="stream-brief__content">
@@ -334,7 +334,7 @@ export default {
   background: #b9b9b9;
   opacity: 0.8;
   z-index: 1;
-  border-radius: 15px 0px 0px 0px;
+  border-radius: 10px 0px 0px 0px;
 }
 .stream-brief__title a {
   font-weight: 900;
@@ -349,6 +349,23 @@ export default {
 .player .stream-brief__name a,
 .player .stream-brief__game a {
   color: #6f5ba3;
+}
+@media (max-width: 600px) {
+  .stream-brief__content {
+    font-size: 12px;
+  }
+  .stream-brief__title a {
+    font-size: 14px;
+  }
+  .stream-tags > .tag {
+    font-size: 12px;
+  }
+  .stream-brief__content > div {
+    height: 14px;
+  }
+  .stream-brief__content > div:first-child {
+    height: 16px;
+  }
 }
 </style>
 <style>

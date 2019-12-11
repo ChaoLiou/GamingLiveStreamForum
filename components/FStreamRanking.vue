@@ -1,7 +1,12 @@
 <template>
   <div class="f-stream-ranking">
-    <f-container-slide-control left @slide="goLeft"></f-container-slide-control>
     <f-container-slide-control
+      v-if="!$vuetify.breakpoint.xs"
+      left
+      @slide="goLeft"
+    ></f-container-slide-control>
+    <f-container-slide-control
+      v-if="!$vuetify.breakpoint.xs"
       right
       @slide="goRight"
     ></f-container-slide-control>
@@ -12,7 +17,11 @@
         :key="index"
       >
         <div :class="['ranking-board', index < 3 ? 'ranking-board__icon' : '']">
-          <v-img v-if="index < 3" :src="ranks[index]"></v-img>
+          <v-img
+            :width="$vuetify.breakpoint.xs ? '60px' : '80px'"
+            v-if="index < 3"
+            :src="ranks[index]"
+          ></v-img>
           <div
             v-else
             class="ranking-board__content font-italic font-weight-black"
@@ -24,8 +33,20 @@
           <f-link :link="`/stream/${item.platform}/${item.id}`">
             <v-img
               class="stream-board__stream-avatar"
-              :width="$vuetify.breakpoint.lg ? '140px' : '180px'"
-              :height="$vuetify.breakpoint.lg ? '140px' : '180px'"
+              :width="
+                $vuetify.breakpoint.xs
+                  ? '100px'
+                  : $vuetify.breakpoint.lg
+                  ? '140px'
+                  : '180px'
+              "
+              :height="
+                $vuetify.breakpoint.xs
+                  ? '100px'
+                  : $vuetify.breakpoint.lg
+                  ? '140px'
+                  : '180px'
+              "
               :src="item.streamer_image"
             >
               <f-stream-viewers :viewers="item.viewers"></f-stream-viewers>
@@ -34,7 +55,7 @@
           <div class="stream-board__stream-info">
             <f-link :link="getPlatformInfo(item.platform, 'link')" external>
               <v-img
-                width="46px"
+                :width="$vuetify.breakpoint.xs ? '23px' : '46px'"
                 :src="getPlatformInfo(item.platform, 'icon')"
               ></v-img>
             </f-link>
@@ -200,6 +221,35 @@ export default {
   }
   .stream-board__stream-info {
     grid-template-columns: 46px 94px;
+  }
+}
+@media (max-width: 600px) {
+  .stream-board {
+    width: 120px;
+    height: 180px;
+    margin-top: 50px;
+  }
+  .stream-ranking__grid {
+    max-width: calc(100vw - 10px);
+    overflow-y: hidden;
+    overflow-x: scroll;
+    margin: 0px 0px 0px 10px;
+    grid-gap: 10px;
+  }
+  .ranking-board {
+    left: 30px;
+    width: 60px;
+  }
+  .stream-board__stream-info {
+    grid-template-columns: 23px 77px;
+  }
+  .stream-info__text {
+    font-size: 16px;
+  }
+  .ranking-board__content {
+    width: 60px;
+    height: 60px;
+    font-size: 35px;
   }
 }
 </style>

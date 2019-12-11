@@ -1,6 +1,9 @@
 <template>
   <div class="f-block">
-    <v-avatar class="f-block__icon" size="60px">
+    <v-avatar
+      class="f-block__icon"
+      :size="$vuetify.breakpoint.xs ? '42px' : '60px'"
+    >
       <v-img :src="icon"></v-img>
     </v-avatar>
     <f-block-title
@@ -92,5 +95,10 @@ export default {
   z-index: 3;
   left: 0px;
   top: -15px;
+}
+@media (max-width: 600px) {
+  .content {
+    padding-bottom: 20px;
+  }
 }
 </style>

@@ -4,9 +4,27 @@
       <div class="background" :style="backgroundStyles"></div>
       <div class="mask" :style="maskStyles"></div>
       <div class="rectangle" :style="rectangleStyles"></div>
+      <div v-if="tabs" class="rectangle second" :style="rectangleStyles2"></div>
       <svg
         class="triangle"
-        :style="triangleStyles"
+        :style="svgStyles"
+        viewBox="0 0 80 100"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M80,100
+           L80,0
+           C30,5 50,95 0,100z"
+          :fill="tabs ? 'purple' : backgroundColor"
+        />
+      </svg>
+      <div class="content" :style="contentStyles">
+        <nuxt-link :to="to">{{ text }}</nuxt-link>
+      </div>
+      <svg
+        v-if="tabs"
+        class="triangle"
+        :style="svgStyles2"
         viewBox="0 0 80 100"
         preserveAspectRatio="none"
       >
@@ -17,7 +35,7 @@
           :fill="backgroundColor"
         />
       </svg>
-      <div class="content" :style="contentStyles">
+      <div v-if="tabs" class="content second" :style="contentStyles2">
         <nuxt-link :to="to">{{ text }}</nuxt-link>
       </div>
     </div>
@@ -41,6 +59,18 @@ export default {
     backgroundColor: {
       type: String,
       default: "#fafafa"
+    },
+    tabs: {
+      type: Boolean,
+      default: false
+    },
+    secondText: {
+      type: String,
+      default: "Title-2"
+    },
+    secondTo: {
+      type: String,
+      default: "#"
     }
   },
   data() {
@@ -64,9 +94,15 @@ export default {
     titleWidth() {
       return this.fontSize * this.text.length + this.contentMargin;
     },
-    triangleStyles() {
+    svgStyles() {
       return {
         left: `${this.titleWidth}px`,
+        height: `${this.height}px`
+      };
+    },
+    svgStyles2() {
+      return {
+        left: `${this.titleWidth * 2}px`,
         height: `${this.height}px`
       };
     },
@@ -75,6 +111,14 @@ export default {
         width: `${this.titleWidth + 30}px`,
         height: `${this.height}px`,
         "background-color": this.backgroundColor
+      };
+    },
+    rectangleStyles2() {
+      return {
+        left: `${this.titleWidth + 30}px`,
+        width: `${this.titleWidth}px`,
+        height: `${this.height}px`,
+        "background-color": "purple"
       };
     },
     backgroundStyles() {
@@ -87,6 +131,14 @@ export default {
       return {
         "font-size": `${this.fontSize}px`,
         padding: `5px ${this.contentRightMargin}px 0px ${this.contentLeftMargin}px`
+      };
+    },
+    contentStyles2() {
+      return {
+        "font-size": `${this.fontSize}px`,
+        padding: `5px ${this.contentRightMargin}px 0px ${this.titleWidth +
+          this.contentLeftMargin +
+          30}px`
       };
     },
     barStyles() {
@@ -121,6 +173,9 @@ export default {
   top: 0px;
   left: 0px;
   display: grid;
+  z-index: 5;
+}
+.content.second {
   z-index: 4;
 }
 .rectangle {
@@ -130,6 +185,10 @@ export default {
   left: 0px;
   z-index: 2;
 }
+.rectangle.second {
+  background: purple;
+  z-index: 1;
+}
 .content a {
   text-decoration: none;
   color: white;
@@ -138,6 +197,5 @@ export default {
   top: 0px;
   position: absolute;
   z-index: 3;
-  /* border-bottom: 1px rgb(0, 0, 0, 0.5) solid; */
 }
 </style>
