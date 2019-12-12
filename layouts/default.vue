@@ -62,6 +62,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-navigation-drawer
+      v-if="$vuetify.breakpoint.xs"
       class="mobile-side-menu"
       v-model="toolbarDrawer"
       clipped
@@ -308,7 +309,7 @@ export default {
       this.$store.commit("setMember", member);
       this.loggedin = !!member;
       this.drawer = !!member;
-      this.toolbarDrawer = !!member;
+      // this.toolbarDrawer = !!member;
     });
     this.getStreams(0, 4).then(streams => this.streams.push(...streams));
   },
@@ -339,7 +340,7 @@ export default {
       this.needRegisteration = false;
       this.loggedin = loggedin;
       this.drawer = loggedin;
-      this.toolbarDrawer = loggedin;
+      // this.toolbarDrawer = loggedin;
     },
     closeLoginForm(id) {
       this.dialog = false;
@@ -349,7 +350,7 @@ export default {
           this.$store.commit("setMember", member);
           this.loggedin = true;
           this.drawer = true;
-          this.toolbarDrawer = true;
+          // this.toolbarDrawer = true;
         });
       }
     },

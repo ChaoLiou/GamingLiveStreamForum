@@ -124,7 +124,9 @@
     "viewers_unit": "位觀眾"
   },
   "fStream": {
+    "chatroom": "聊天室",
     "streamer": "實況主",
+    "vod": "過往影像",
     "viewers_unit": "人觀看",
     "back_to_streams_overview": "回實況總覽",
     "relative_products": "關聯商品",

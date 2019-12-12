@@ -29,14 +29,17 @@
             </div>
           </f-block-box>
         </template>
-        <template v-else>
-          <f-home-news-carousel
-            :source="carouselSource"
-            :interval-seconds="10"
-            height="calc(100vw * 9 / 16)"
-          ></f-home-news-carousel>
-          <f-news-container :source="fnews" @more="loadMore"></f-news-container>
-        </template>
+        <f-home-news-carousel
+          v-show="!$route.params.id"
+          :source="carouselSource"
+          :interval-seconds="10"
+          height="calc(100vw * 9 / 16)"
+        ></f-home-news-carousel>
+        <f-news-container
+          v-show="!$route.params.id"
+          :source="fnews"
+          @more="loadMore"
+        ></f-news-container>
       </div>
       <div class="content-grid__side">
         <f-temp-ad></f-temp-ad>
@@ -192,14 +195,11 @@ export default {
 @media (max-width: 600px) {
   .news-type-id .f-tab__tabs {
     width: 100vw;
-    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-columns: repeat(5, 1fr) !important;
     height: 40px;
   }
   .news-type-id .f-tab__tabs a > div {
     font-size: 14px;
-  }
-  .news-type-id .f-tab__tabs > div:first-child {
-    display: none;
   }
 }
 </style>

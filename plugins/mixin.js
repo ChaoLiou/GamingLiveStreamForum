@@ -231,7 +231,7 @@ Vue.mixin({
       return this.mappingStream(stream.info);
     },
     async getTwitchStreams(offset = 0, amount = 4, needTags, game) {
-      return [];
+      // return [];
       const url = `https://api.twitch.tv/kraken/streams/?offset=${offset}&limit=${amount}&language=zh-tw${
         game ? "&game=" + game : ""
       }`;
@@ -309,7 +309,7 @@ Vue.mixin({
       ).data;
     },
     async getYoutubeStreams(begin = 0, size = 20, nextPageToken) {
-      return [];
+      // return [];
       const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&eventType=live&type=video&videoCategoryId=20&maxResults=${size}&key=${
         this.googleAPIKey
       }&relevanceLanguage=zh-Hans&q=${[

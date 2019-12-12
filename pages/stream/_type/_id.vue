@@ -1,6 +1,6 @@
 <template>
   <div class="stream-type-id">
-    <f-tab :tabs="[]" :title="''">
+    <f-tab v-if="!$vuetify.breakpoint.xs" :tabs="[]" :title="''">
       <div class="f-tab__grid">
         <v-btn icon dark>
           <v-icon>star_border</v-icon>
@@ -10,7 +10,15 @@
         </v-btn>
       </div>
     </f-tab>
-    <div class="content">
+    <div v-if="$vuetify.breakpoint.xs" class="mobile-content">
+      <f-stream-mobile
+        v-if="stream"
+        :stream="stream"
+        :vods="filteredStreams"
+        @load-more="loadMore"
+      ></f-stream-mobile>
+    </div>
+    <div v-else class="content">
       <div>
         <f-stream v-if="stream" :stream="stream"></f-stream>
       </div>
@@ -40,26 +48,30 @@
 <script>
 import FTab from "@/components/FTab";
 import FStream from "@/components/FStream";
+import FStreamMobile from "@/components/FStreamMobile";
 import FBlockBox from "@/components/FBlockBox";
 import FStreamContainer from "@/components/FStreamContainer";
 export default {
   components: {
     FTab,
     FStream,
+    FStreamMobile,
     FBlockBox,
     FStreamContainer
   },
   data() {
     return {
       stream: {},
-      streams: []
+      streams: [],
+      pageIndex: 0,
+      pageSize: 4
     };
   },
   computed: {
     filteredStreams() {
       return this.streams
         .filter(x => x.id.toString() !== this.$route.params.id)
-        .slice(0, 12);
+        .slice(0, 12 + this.pageIndex * this.pageSize);
     }
   },
   mounted() {
@@ -86,7 +98,28 @@ export default {
       }
     }
   },
-  methods: {}
+  methods: {
+    loadMore() {
+      this.pageIndex++;
+      if (this.$route.params.type === "twitch") {
+        this.getTwitchStreams(this.pageIndex, this.pageSize, true).then(
+          streams => {
+            streams.forEach(s => s.then(res => this.streams.push(res)));
+          }
+        );
+      } else if (this.$route.params.type === "youtube") {
+        this.getYoutubeStreams(this.pageIndex, this.pageSize).then(
+          streams => (this.streams = streams)
+        );
+      } else {
+        this.getStreams(this.pageIndex, this.pageSize, {
+          src: this.$route.params.type
+        }).then(streams => {
+          this.streams.push(...streams);
+        });
+      }
+    }
+  }
 };
 </script>
 <style scoped>
@@ -113,6 +146,9 @@ export default {
   background: linear-gradient(45deg, #6540a7, 40%, #dab4ff, 60%, #6540a7);
   color: white;
   font-size: 16px;
+}
+.mobile-content {
+  margin-top: 56px;
 }
 @media (min-width: 1904px) {
   .stream-below-info,
