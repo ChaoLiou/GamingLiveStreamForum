@@ -82,10 +82,41 @@ export default {
   .f-news-detail .GN-thumbnail,
   .f-news-detail .GN-thumbnail img {
     width: calc(100vw - 30px) !important;
-    height: calc((100vw - 30px) * 437 / 776) !important;
+    height: auto !important;
   }
   .f-news-detail table {
-    /* display: none; */
+    display: none;
+    border: #aeaeae 2px solid;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  .f-news-detail table tbody {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  .f-news-detail table tr {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  .f-news-detail table td {
+    width: auto !important;
+    height: auto !important;
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 3px;
+    word-break: break-all;
+    word-wrap: break-word;
   }
 }
 </style>
