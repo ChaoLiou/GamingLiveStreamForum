@@ -18,7 +18,7 @@
       <div class="content-grid__main">
         <f-home-news-area></f-home-news-area>
         <f-block
-          :content-left-margin="12"
+          :content-left-margin="!$vuetify.breakpoint.xs ? undefined : 12"
           icon="/platform_icons/icn_push_B.png"
           more
           to="/live/recommend"
@@ -31,7 +31,7 @@
           ></f-stream-container>
         </f-block>
         <f-block
-          :content-left-margin="12"
+          :content-left-margin="!$vuetify.breakpoint.xs ? undefined : 12"
           :title="$t('index.hot_streamers')"
           :font-size="$vuetify.breakpoint.xs ? 16 : 30"
           :line-height="3"
@@ -41,7 +41,7 @@
           <f-stream-ranking :streams="streamRanking"></f-stream-ranking>
         </f-block>
         <f-block
-          :content-left-margin="12"
+          :content-left-margin="!$vuetify.breakpoint.xs ? undefined : 12"
           :icon="hotIcon"
           :title="$t('index.hot_games')"
           :font-size="$vuetify.breakpoint.xs ? 16 : 30"
@@ -52,7 +52,7 @@
           <f-game-ranking></f-game-ranking>
         </f-block>
         <f-block
-          :content-left-margin="12"
+          :content-left-margin="!$vuetify.breakpoint.xs ? undefined : 12"
           :more="available[item.id] === undefined || available[item.id]"
           :to="`/live/recommend/${item.id}`"
           :title="$t(`_platforms.${item.id}`)"

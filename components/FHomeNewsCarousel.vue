@@ -2,8 +2,12 @@
   <div class="f-home-news-carousel">
     <v-carousel hide-delimiters :interval="interval" :height="height">
       <v-carousel-item v-for="(item, i) in source" :key="i">
-        <nuxt-link target="_blank" :to="`/news/${item.type.value}/${item.id}`">
-          <v-img :src="item.image" :height="height">
+        <nuxt-link :to="`/news/${item.type.value}/${item.id}`">
+          <v-img
+            :contain="!$vuetify.breakpoint.xs"
+            :src="item.image"
+            :height="height"
+          >
             <div
               class="carousel__title text-truncate"
               :style="{ top: `calc(${height} - 30px)` }"
@@ -83,5 +87,9 @@ export default {
 }
 .f-home-news-carousel .v-image__image {
   border-radius: 5px;
+}
+.f-home-news-carousel .v-btn__content {
+  background: black;
+  opacity: 0.7;
 }
 </style>

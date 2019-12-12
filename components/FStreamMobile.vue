@@ -92,9 +92,15 @@ export default {
   },
   data() {
     return {
-      pageIndex: 0,
-      selectedTab: this.stream.chatSource ? "chatroom" : "streaminfo"
+      selectedTab: "chatroom"
     };
+  },
+  watch: {
+    stream(value) {
+      if (!value.chatSource) {
+        this.selectedTab = "streaminfo";
+      }
+    }
   },
   methods: {
     loadMore() {

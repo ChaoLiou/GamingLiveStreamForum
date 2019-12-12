@@ -15,7 +15,7 @@
         "
         :to="`/live/${$route.params.type}`"
         :title="mainTitle"
-        :content-left-margin="12"
+        :content-left-margin="!$vuetify.breakpoint.xs ? undefined : 12"
         :font-size="$vuetify.breakpoint.xs ? 16 : 30"
       >
         <f-home-stream-carousel-mobile
@@ -31,7 +31,7 @@
         <div v-if="multiple">
           <f-block
             more
-            :content-left-margin="12"
+            :content-left-margin="!$vuetify.breakpoint.xs ? undefined : 12"
             :font-size="$vuetify.breakpoint.xs ? 16 : 30"
             :to="`/live/${$route.params.type}/${item.id}`"
             :title="$t(`${localeKey}.${item.id}`)"
@@ -47,7 +47,7 @@
         </div>
         <div v-else>
           <f-block
-            :content-left-margin="12"
+            :content-left-margin="!$vuetify.breakpoint.xs ? undefined : 12"
             :font-size="$vuetify.breakpoint.xs ? 16 : 30"
             :icon="platformIcon"
             :title="title"

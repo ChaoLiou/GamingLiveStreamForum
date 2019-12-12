@@ -3,7 +3,7 @@
     <f-block
       :font-size="22"
       :line-height="0"
-      :content-left-margin="10"
+      :content-left-margin="!$vuetify.breakpoint.xs ? undefined : 10"
       :content-right-margin="30"
       :title="$t('fQuestCenter.quest_center')"
       background-color="#eadbf8"
@@ -62,7 +62,7 @@
             <f-block
               :font-size="22"
               :line-height="0"
-              :content-left-margin="10"
+              :content-left-margin="!$vuetify.breakpoint.xs ? undefined : 10"
               :content-right-margin="10"
               :title="$t('fQuestCenter.quest_finished')"
               background-color="#eadbf8"

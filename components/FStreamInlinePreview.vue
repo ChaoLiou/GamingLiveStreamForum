@@ -1,17 +1,19 @@
 <template>
-  <nuxt-link class="f-stream-inline-preview" :to="streamLink" target="_blank">
+  <nuxt-link class="f-stream-inline-preview" :to="streamLink">
     <v-avatar size="40px">
       <v-img :src="stream.streamer_image"></v-img>
     </v-avatar>
     <div>
       <div class="inline-preview__title">
-        <div class="text-truncate">{{stream.streamer_name}}</div>
+        <div class="text-truncate">{{ stream.streamer_name }}</div>
         <div class="viewers-info">
           <span class="rec-icon"></span>
-          {{viewers}}
+          {{ viewers }}
         </div>
       </div>
-      <div class="inline-preview__content text-truncate">{{stream.title}}</div>
+      <div class="inline-preview__content text-truncate">
+        {{ stream.title }}
+      </div>
     </div>
   </nuxt-link>
 </template>

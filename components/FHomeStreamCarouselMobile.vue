@@ -1,6 +1,15 @@
 <template>
   <div class="f-home-stream-carousel-mobile" ref="carousel">
-    <div class="carousel-grid" ref="container">
+    <div
+      class="carousel-grid"
+      ref="container"
+      :style="{
+        'grid-template-columns': `repeat(5, calc(100vw - ${shrinkSizeEachSide *
+          2}px))`,
+        height: `calc((100vw - ${shrinkSizeEachSide * 2}px) * 9 / 16)`,
+        'grid-gap': `${gap}px`
+      }"
+    >
       <f-home-stream-preview-mobile
         v-for="(item, index) in fstreams"
         :key="index"
@@ -23,6 +32,14 @@ export default {
       default() {
         return [];
       }
+    },
+    gap: {
+      type: Number,
+      default: 10
+    },
+    shrinkSizeEachSide: {
+      type: Number,
+      default: 30
     }
   },
   data() {
@@ -69,17 +86,15 @@ export default {
       this.fstreams = fstreams;
     }
   },
-  updated() {
-    if (this.fstreams.length > 0) {
-    }
-  },
   methods: {
     scroll() {
       const container = this.$refs.container;
       const carousel = this.$refs.carousel;
       if (carousel && container) {
         container.scrollLeft =
-          carousel.scrollWidth / 2 + carousel.offsetWidth + 30;
+          (carousel.offsetWidth - 2 * this.shrinkSizeEachSide) * 2 +
+          2 * this.gap -
+          this.shrinkSizeEachSide;
       }
     },
     computedSequence(sequence) {
@@ -96,9 +111,6 @@ export default {
 }
 .carousel-grid {
   display: grid;
-  grid-template-columns: repeat(5, calc(100vw - 60px));
-  grid-gap: 10px;
-  height: calc((100vw - 60px) * 9 / 16);
   overflow-x: scroll;
   overflow-y: hidden;
   max-width: 100vw;

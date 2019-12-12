@@ -15,7 +15,9 @@
       :more-title="moreTitle"
       :font-size="fontSize"
       :line-height="lineHeight"
-      :content-left-margin="contentLeftMargin"
+      :content-left-margin="
+        !$vuetify.breakpoint.xs ? undefined : contentLeftMargin
+      "
       :content-right-margin="contentRightMargin"
       :background-color="backgroundColor"
       @tab-change="index => $emit('tab-change', index)"

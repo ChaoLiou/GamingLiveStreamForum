@@ -61,10 +61,7 @@
             class="stream-brief__title text-truncate"
             :title="stream.title"
           >
-            <a v-if="toExternal" :href="stream.externalLink" target="_blank">
-              {{ stream.title }}
-            </a>
-            <nuxt-link v-else :to="streamLink" target="_blank">
+            <nuxt-link :to="streamLink">
               {{ stream.title }}
             </nuxt-link>
           </div>

@@ -60,10 +60,12 @@
               ></v-img>
             </f-link>
             <div class="stream-info__text">
-              <div class="text-truncate">
-                <f-link :link="`/stream/${item.platform}/${item.id}`">{{
-                  item.streamer_name
-                }}</f-link>
+              <div>
+                <f-link
+                  class="text-truncate"
+                  :link="`/stream/${item.platform}/${item.id}`"
+                  >{{ item.streamer_name }}</f-link
+                >
               </div>
               <div>
                 <f-link
@@ -147,6 +149,7 @@ export default {
   left: 60px;
   width: 80px;
   height: 100px;
+  line-height: 100px;
   text-align: center;
   margin: 0px auto 0px auto;
   z-index: 1;
@@ -202,9 +205,13 @@ export default {
 }
 @media (max-width: 600px) {
   .stream-board {
-    width: 120px;
+    width: 160px;
     height: 180px;
     margin-top: 50px;
+  }
+  .stream-board > .f-link {
+    margin: auto;
+    width: fit-content;
   }
   .stream-ranking__grid {
     max-width: calc(100vw - 10px);
@@ -214,19 +221,22 @@ export default {
     grid-gap: 10px;
   }
   .ranking-board {
-    left: 30px;
+    left: 50px;
     width: 60px;
   }
   .stream-board__stream-info {
-    grid-template-columns: 23px 77px;
+    grid-template-columns: 23px 117px;
   }
   .stream-info__text {
     font-size: 16px;
   }
   .ranking-board__content {
     width: 60px;
+    padding-right: 3px;
     height: 60px;
+    line-height: 60px;
     font-size: 35px;
+    vertical-align: middle;
   }
 }
 </style>

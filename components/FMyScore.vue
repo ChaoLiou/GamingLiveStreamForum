@@ -80,7 +80,7 @@
     <f-block
       :font-size="22"
       :line-height="0"
-      :content-left-margin="10"
+      :content-left-margin="!$vuetify.breakpoint.xs ? undefined : 10"
       :content-right-margin="30"
       :title="$t('fScoreCenter.manipulate_score_records')"
       background-color="rgb(206, 206, 206)"
@@ -209,7 +209,7 @@
         <f-block
           :font-size="22"
           :line-height="0"
-          :content-left-margin="10"
+          :content-left-margin="!$vuetify.breakpoint.xs ? undefined : 10"
           :content-right-margin="10"
           :title="$t('fScoreCenter.status_info')"
           background-color="#eadbf8"

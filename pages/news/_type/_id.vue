@@ -33,7 +33,7 @@
           v-show="!$route.params.id"
           :source="carouselSource"
           :interval-seconds="10"
-          height="calc(100vw * 9 / 16)"
+          :height="$vuetify.breakpoint.xs ? 'calc(100vw * 9 / 16)' : undefined"
         ></f-home-news-carousel>
         <f-news-container
           v-show="!$route.params.id"

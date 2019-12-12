@@ -109,20 +109,6 @@
             <v-list-tile-title>{{ $t("default.hot_games") }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile to="/account/info/mydata" v-if="loggedin">
-          <v-list-tile-content>
-            <v-list-tile-title>{{
-              $t("fMemberBlock.account_center")
-            }}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile to="/account/info/followedstreams" v-if="loggedin">
-          <v-list-tile-content>
-            <v-list-tile-title>{{
-              $t("default.followed_streams")
-            }}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
         <v-list-tile v-if="loggedin">
           <v-list-tile-content>
             <v-list-tile-title @click="logoutMember">{{
@@ -590,9 +576,23 @@ export default {
   .mobile-side-menu .v-list {
     padding: 0px;
   }
+  .mobile-side-menu .v-list .v-list__tile__title {
+    font-size: 22px !important;
+    margin: auto;
+    width: fit-content;
+    line-height: 60px;
+  }
+  .mobile-side-menu .v-list .v-list__tile,
+  .mobile-side-menu .v-list .v-list__tile__content,
+  .mobile-side-menu .v-list .v-list__tile__title {
+    height: inherit;
+  }
+  .mobile-side-menu .v-list > div {
+    height: 60px;
+  }
   .mobile-side-menu .v-list > div:first-child {
     background: #55287e;
-    height: 60px;
+    height: 80px;
   }
   .mobile-side-menu .v-list > div:first-child .v-list__tile,
   .mobile-side-menu .v-list > div:first-child .v-list__tile__title,

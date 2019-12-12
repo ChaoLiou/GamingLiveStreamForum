@@ -3,7 +3,7 @@
     <a v-if="external" target="_blank" :href="link">
       <slot></slot>
     </a>
-    <nuxt-link v-else target="_blank" :to="link">
+    <nuxt-link v-else :to="link">
       <slot></slot>
     </nuxt-link>
   </div>

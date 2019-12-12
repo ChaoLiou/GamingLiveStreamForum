@@ -3,7 +3,7 @@
     <f-block-title
       background-color="#e7d6fa"
       :text="$t('fHomeNewsTabPage.newsletter')"
-      :content-left-margin="10"
+      :content-left-margin="!$vuetify.breakpoint.xs ? undefined : 10"
       :content-right-margin="0"
       :font-size="$vuetify.breakpoint.xs ? 16 : 22"
       :line-height="3"
@@ -15,11 +15,9 @@
         <div class="news-item" :key="index">
           <div class="news-tag">{{ item.type.title }}</div>
           <div class="news-title">
-            <nuxt-link
-              target="_blank"
-              :to="`/news/${item.type.value}/${item.id}`"
-              >{{ item.title }}</nuxt-link
-            >
+            <nuxt-link :to="`/news/${item.type.value}/${item.id}`">{{
+              item.title
+            }}</nuxt-link>
           </div>
         </div>
         <v-divider :key="`divider-${index}`"></v-divider>

@@ -3,8 +3,8 @@
     <v-avatar size="40px" v-if="member.avatar">
       <v-img contain :src="`${memberApiOrigin}${member.avatar}`"></v-img>
     </v-avatar>
-    <div>
-      <div>
+    <div style="grid-template-rows:repeat(2, 1fr)">
+      <div class="text-truncate" style="max-width:130px">
         {{ member.nickname }}
       </div>
       <div
@@ -93,7 +93,7 @@ export default {
   grid-column-gap: 10px;
 }
 .f-member-block > div {
-  padding: 8px 0px 4px 8px;
+  padding: 0px 0px 0px 8px;
 }
 @media (max-width: 600px) {
   .f-member-block {
