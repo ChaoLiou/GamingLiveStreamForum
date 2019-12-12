@@ -14,7 +14,7 @@
             <span class="news-comment__time">{{ item.time }}</span>
           </span>
         </div>
-        <v-btn small class="report-btn">{{$t('fNewsComment.report')}}</v-btn>
+        <!-- <v-btn small class="report-btn">{{$t('fNewsComment.report')}}</v-btn> -->
       </div>
     </div>
     <div class="news-comment__input">
@@ -24,10 +24,11 @@
         dark
         single-line
         hide-details
-        append-outer-icon="send"
         clearable
-        @click:append-outer="() => {}"
       ></v-text-field>
+      <v-btn icon>
+        <v-icon>send</v-icon>
+      </v-btn>
     </div>
   </div>
 </template>
@@ -71,13 +72,15 @@ export default {
 <style scoped>
 .news-comment__item {
   display: grid;
-  grid-template-columns: 50px auto 50px;
+  grid-template-columns: 50px auto;
   padding: 5px;
   margin-bottom: 5px;
   background-color: #e7d6fa;
 }
 .news-comment__input {
   margin: 10px 5px 0px 5px;
+  display: grid;
+  grid-template-columns: auto 52px;
 }
 .report-btn {
   min-width: 40px;

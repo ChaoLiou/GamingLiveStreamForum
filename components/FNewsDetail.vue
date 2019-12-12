@@ -64,8 +64,28 @@ export default {
 .f-news-detail ul {
   list-style: none;
 }
-.video-container iframe {
-  width: 776px !important;
-  height: 436px !important;
+@media (min-width: 600px) {
+  .f-news-detail .video-container iframe {
+    width: 776px !important;
+    height: 437px !important;
+  }
+}
+@media (max-width: 600px) {
+  .f-news-detail ul {
+    padding: 0px;
+  }
+  .video-container,
+  .video-container iframe {
+    width: calc(100vw - 30px) !important;
+    height: calc((100vw - 30px) * 437 / 776) !important;
+  }
+  .f-news-detail .GN-thumbnail,
+  .f-news-detail .GN-thumbnail img {
+    width: calc(100vw - 30px) !important;
+    height: calc((100vw - 30px) * 437 / 776) !important;
+  }
+  .f-news-detail table {
+    /* display: none; */
+  }
 }
 </style>

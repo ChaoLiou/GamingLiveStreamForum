@@ -1,6 +1,6 @@
 <template>
   <div :class="{ 'multiple-line': news.image, 'f-news-preview': true }">
-    <nuxt-link :to="`/news/${news.type.value}/${news.id}`" target="_blank">
+    <nuxt-link :to="`/news/${news.type.value}/${news.id}`">
       <v-img
         v-if="news.image"
         width="180px"
@@ -11,22 +11,18 @@
     <div class="news-content">
       <div class="news-title">
         <span class="news-type">{{ news.type.title }}</span>
-        <nuxt-link
-          :to="`/news/${news.type.value}/${news.id}`"
-          target="_blank"
-          >{{ news.title }}</nuxt-link
-        >
+        <nuxt-link :to="`/news/${news.type.value}/${news.id}`">{{
+          news.title
+        }}</nuxt-link>
       </div>
       <div
         class="news-brief"
         v-html="news.brief ? news.brief.replace('繼續閱讀', '') : ''"
       ></div>
       <div class="more-link" v-if="news.image">
-        <nuxt-link
-          :to="`/news/${news.type.value}/${news.id}`"
-          target="_blank"
-          >{{ $t("fNewsPreview.continue_reading") }}</nuxt-link
-        >
+        <nuxt-link :to="`/news/${news.type.value}/${news.id}`">{{
+          $t("fNewsPreview.continue_reading")
+        }}</nuxt-link>
       </div>
     </div>
   </div>

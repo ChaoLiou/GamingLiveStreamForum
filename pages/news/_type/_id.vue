@@ -183,8 +183,8 @@ export default {
     grid-template-columns: 1fr;
   }
   .content-grid__main {
-    margin: 0px 10px;
-    width: calc(100vw - 20px);
+    margin: 0px 5px;
+    width: calc(100vw - 10px);
   }
 }
 </style>
