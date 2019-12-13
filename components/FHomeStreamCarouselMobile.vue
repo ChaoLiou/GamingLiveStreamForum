@@ -86,6 +86,9 @@ export default {
       this.fstreams = fstreams;
     }
   },
+  updated() {
+    this.scroll();
+  },
   methods: {
     scroll() {
       const container = this.$refs.container;
