@@ -15,7 +15,7 @@
       ></iframe>
     </div>
     <div class="stream-info">
-      <div class="tabs" v-if="stream.chatSource">
+      <div class="tabs" v-if="chatroomEnabled">
         <div
           :class="[selectedTab === 'chatroom' ? 'selected' : '']"
           @click="selectedTab = 'chatroom'"
@@ -95,9 +95,17 @@ export default {
       selectedTab: "chatroom"
     };
   },
+  computed: {
+    chatroomEnabled() {
+      return (
+        this.stream.chatSource &&
+        !(this.$vuetify.breakpoint.xs && this.stream.platform === "youtube")
+      );
+    }
+  },
   watch: {
     stream(value) {
-      if (!value.chatSource) {
+      if (!this.chatroomEnabled) {
         this.selectedTab = "streaminfo";
       }
     }
