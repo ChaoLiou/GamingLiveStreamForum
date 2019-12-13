@@ -71,6 +71,10 @@ export default {
   }
 }
 @media (max-width: 600px) {
+  .f-news-detail {
+    max-width: 100%;
+    overflow: hidden;
+  }
   .f-news-detail ul {
     padding: 0px;
   }
