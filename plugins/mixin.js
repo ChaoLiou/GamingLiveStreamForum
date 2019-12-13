@@ -63,7 +63,10 @@ Vue.mixin({
               key !== "avatar" ||
               (member.avatar && typeof member.avatar !== typeof "")
             ) {
-              formData.append(key, member[key]);
+              if (key === "birthday" && !member[key]) {
+              } else {
+                formData.append(key, member[key]);
+              }
             }
           });
         const { data } = await this.$axios.put(
