@@ -4,7 +4,9 @@
       <v-icon>clear</v-icon>
     </v-btn>
     <v-card-title primary-title>
-      <div class="form-title">{{ $t("fRegisterForm.fill_in_account_info") }}</div>
+      <div class="form-title">
+        {{ $t("fRegisterForm.fill_in_account_info") }}
+      </div>
     </v-card-title>
     <v-card-title class="avatar-container">
       <div>
@@ -19,12 +21,12 @@
         />
       </div>
       <v-btn color="#8e75ae" dark @click="choose">
-        {{
-        $t("fRegisterForm.upload")
-        }}
+        {{ $t("fRegisterForm.upload") }}
       </v-btn>
       <div class="validation-message">{{ validationMessage.avatar }}</div>
-      <div class="upload-info">{{ $t("fRegisterForm.uploaded_file_limits") }}</div>
+      <div class="upload-info">
+        {{ $t("fRegisterForm.uploaded_file_limits") }}
+      </div>
     </v-card-title>
     <v-card-text class="content">
       <div>
@@ -45,7 +47,9 @@
               'nickname-counter',
               isNicknameOutOfLimit ? 'validation-message' : ''
             ]"
-          >{{ nicknameCounter }} / {{ nicknameCounterLimits }}</div>
+          >
+            {{ nicknameCounter }} / {{ nicknameCounterLimits }}
+          </div>
         </div>
       </div>
       <div>
@@ -65,9 +69,7 @@
       </div>
       <div class="register-container">
         <v-btn block color="#8e75ae" dark @click="register">
-          {{
-          $t("fRegisterForm.finish")
-          }}
+          {{ $t("fRegisterForm.finish") }}
         </v-btn>
       </div>
     </v-card-text>
@@ -160,6 +162,7 @@ export default {
             `${this.memberApiPrefix}/user/${response.data.id}/`,
             formData
           );
+          this.$store.commit("setMember", data);
         } catch (err) {
           this.memberUpdated = false;
           console.dir(err);
