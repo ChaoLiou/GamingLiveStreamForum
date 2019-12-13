@@ -242,7 +242,7 @@ export default {
       this.platformIcon = platform
         ? platform.icon
         : this.$route.params.type == "hot"
-        ? "/platform_icons/icn_hot_B.png"
+        ? "/platform_icons/icn_Game_B.png"
         : "/platform_icons/icn_push_B.png";
     }
   }
