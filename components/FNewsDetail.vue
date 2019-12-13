@@ -80,7 +80,8 @@ export default {
     height: calc((100vw - 30px) * 437 / 776) !important;
   }
   .f-news-detail .GN-thumbnail,
-  .f-news-detail .GN-thumbnail img {
+  .f-news-detail .GN-thumbnail img,
+  .f-news-detail img {
     width: calc(100vw - 30px) !important;
     height: auto !important;
   }

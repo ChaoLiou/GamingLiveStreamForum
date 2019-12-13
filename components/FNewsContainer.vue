@@ -3,15 +3,22 @@
     <div>
       <template v-for="(item, index) in sourceGroupbyDate">
         <v-divider :key="`divider_${index}`"></v-divider>
-        <div :key="`title_${index}`" class="date-title">{{fdate(item.key)}}</div>
+        <div :key="`title_${index}`" class="date-title">
+          {{ fdate(item.key) }}
+        </div>
         <template v-for="(jtem, jndex) in item.list">
           <v-divider :key="`divider_${index}_${jndex}`"></v-divider>
-          <f-news-preview :key="`${index}_${jndex}`" :news="jtem"></f-news-preview>
+          <f-news-preview
+            :key="`${index}_${jndex}`"
+            :news="jtem"
+          ></f-news-preview>
         </template>
       </template>
     </div>
     <div class="more-btn-container">
-      <v-btn dark block @click="loadMore">{{$t('fNewsContainer.load_more_news')}}</v-btn>
+      <v-btn dark block @click="loadMore">{{
+        $t("fNewsContainer.load_more_news")
+      }}</v-btn>
     </div>
   </div>
 </template>
@@ -19,6 +26,7 @@
 import FNewsPreview from "@/components/FNewsPreview";
 import helper from "@/assets/utils/helper";
 import formatter from "@/assets/utils/formatter";
+import { _ } from "vue-underscore";
 export default {
   components: {
     FNewsPreview
@@ -40,8 +48,8 @@ export default {
       groups.forEach(g => {
         return {
           key: g.key,
-          list: g.list
-            .sort((a, b) => new Date(b.time) - new Date(a.time))
+          list: _.sortBy(g.list, "time")
+            .reverse()
             .sort((a, b) => (a.image ? -1 : 1))
         };
       });
