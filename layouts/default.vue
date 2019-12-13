@@ -65,6 +65,7 @@
       v-if="$vuetify.breakpoint.xs"
       class="mobile-side-menu"
       v-model="toolbarDrawer"
+      touchless
       clipped
       temporary
       right
