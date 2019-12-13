@@ -400,7 +400,7 @@ export default {
 .search {
   margin-left: 20px;
   display: grid;
-  grid-template-columns: auto 80px;
+  grid-template-columns: repeat(2, 1fr);
   align-items: center;
   height: inherit;
 }
