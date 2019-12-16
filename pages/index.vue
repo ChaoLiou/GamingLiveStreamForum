@@ -98,14 +98,7 @@ export default {
   data() {
     return {
       streams: {
-        all: [],
-        douyu: [],
-        bilibili: [],
-        twitch: [],
-        now: [],
-        youtube: [],
-        cc163: [],
-        huya: []
+        all: []
       },
       available: {
         youtube: false,
@@ -120,6 +113,11 @@ export default {
       const temp = this.streams.all.map(x => x);
       return temp.sort((a, b) => b.viewers - a.viewers).slice(0, 20);
     }
+  },
+  created() {
+    platforms.forEach(x => {
+      this.$set(this.streams, x.id, []);
+    });
   },
   mounted() {
     this.getStreams(0, 20).then(streams => (this.streams.all = streams));

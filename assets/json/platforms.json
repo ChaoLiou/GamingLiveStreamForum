@@ -42,5 +42,11 @@
     "icon": "/platform_icons/icn_huya.png",
     "link": "https://www.huya.com/",
     "id": "huya"
+  },
+  {
+    "title": "",
+    "icon": "/platform_icons/icn_FB_B.png",
+    "link": "https://www.facebook.com/watch/live/",
+    "id": "fb"
   }
 ]

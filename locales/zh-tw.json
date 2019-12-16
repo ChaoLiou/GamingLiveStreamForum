@@ -14,6 +14,7 @@
     "weblog": "微博"
   },
   "_platforms": {
+    "fb": "Facebook",
     "douyu": "鬥魚直播",
     "bilibili": "Bilibili",
     "twitch": "Twitch",

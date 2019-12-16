@@ -86,30 +86,8 @@ export default {
       tabs: [],
       multiple: true,
       multipleSource: [],
-      streams: {
-        all: [],
-        douyu: [],
-        bilibili: [],
-        twitch: [],
-        now: [],
-        youtube: [],
-        cc163: [],
-        huya: []
-      },
-      streamsByGame: {
-        jdqs: [],
-        jdqsm: [],
-        lol: [],
-        wzry: [],
-        chess: [],
-        pubg: [],
-        identityv: [],
-        apex: [],
-        deadline: [],
-        csgo: [],
-        lolm: [],
-        overwatch: []
-      },
+      streams: { all: [] },
+      streamsByGame: { all: [] },
       totals: 0,
       title: "",
       pageIndex: 0,
@@ -149,6 +127,14 @@ export default {
       }
       return target ? this.$t(`_tabs.live.${target.type}`) : "Title";
     }
+  },
+  created() {
+    platforms.forEach(x => {
+      this.$set(this.streams, x.id, []);
+    });
+    games.forEach(x => {
+      this.$set(this.streamsByGame, x.id, []);
+    });
   },
   mounted() {
     this.multiple = this.$route.params.id === undefined;
