@@ -366,6 +366,11 @@ Vue.mixin({
         platform: "youtube",
         tags: x.snippet.tags
       }))[0];
+    },
+    async getVodsOfStream(begin = 0, size = 12, id) {
+      const url = `${this.apiOrigin}/stream/histories/${id}?begin=${begin}&size=${size}`;
+      console.log(url);
+      return await this.$axios.$get(url);
     }
   }
 });

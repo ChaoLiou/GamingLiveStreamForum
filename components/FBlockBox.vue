@@ -3,6 +3,9 @@
     <f-block-box-title
       :background-color="backgroundColor"
       :text="title"
+      :second-text="secondTitle"
+      :tab="tab"
+      @click="tab => $emit('click', tab)"
     ></f-block-box-title>
     <div class="content">
       <slot></slot>
@@ -23,6 +26,18 @@ export default {
     backgroundColor: {
       type: String,
       default: "#fafafa"
+    },
+    tab: {
+      type: Boolean,
+      default: false
+    },
+    secondTitle: {
+      type: String,
+      default: "Title-2"
+    },
+    secondTo: {
+      type: String,
+      default: "#"
     }
   }
 };

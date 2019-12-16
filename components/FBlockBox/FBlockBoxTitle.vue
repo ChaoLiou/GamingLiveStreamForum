@@ -4,7 +4,7 @@
       <div class="background" :style="backgroundStyles"></div>
       <div class="mask" :style="maskStyles"></div>
       <div class="rectangle" :style="rectangleStyles"></div>
-      <div v-if="tabs" class="rectangle second" :style="rectangleStyles2"></div>
+      <div v-if="tab" class="rectangle second" :style="rectangleStyles2"></div>
       <svg
         class="triangle"
         :style="svgStyles"
@@ -15,14 +15,24 @@
           d="M80,100
            L80,0
            C30,5 50,95 0,100z"
-          :fill="tabs ? 'purple' : backgroundColor"
+          :fill="tab ? 'url(#Gradient2)' : backgroundColor"
         />
+        <defs>
+          <linearGradient id="Gradient2" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="41%" stop-color="purple" />
+            <stop offset="100%" stop-color="#66448e" />
+          </linearGradient>
+        </defs>
       </svg>
-      <div class="content" :style="contentStyles">
-        <nuxt-link :to="to">{{ text }}</nuxt-link>
+      <div
+        class="content"
+        :style="contentStyles"
+        @click="$emit('click', 'tab-1')"
+      >
+        <div>{{ text }}</div>
       </div>
       <svg
-        v-if="tabs"
+        v-if="tab"
         class="triangle"
         :style="svgStyles2"
         viewBox="0 0 80 100"
@@ -35,8 +45,13 @@
           :fill="backgroundColor"
         />
       </svg>
-      <div v-if="tabs" class="content second" :style="contentStyles2">
-        <nuxt-link :to="to">{{ text }}</nuxt-link>
+      <div
+        v-if="tab"
+        class="content second"
+        :style="contentStyles2"
+        @click="$emit('click', 'tab-2')"
+      >
+        <div>{{ secondText }}</div>
       </div>
     </div>
   </div>
@@ -60,7 +75,7 @@ export default {
       type: String,
       default: "#fafafa"
     },
-    tabs: {
+    tab: {
       type: Boolean,
       default: false
     },
@@ -102,7 +117,7 @@ export default {
     },
     svgStyles2() {
       return {
-        left: `${this.titleWidth * 2}px`,
+        left: `${this.titleWidth * 2 + 20}px`,
         height: `${this.height}px`
       };
     },
@@ -116,7 +131,7 @@ export default {
     rectangleStyles2() {
       return {
         left: `${this.titleWidth + 30}px`,
-        width: `${this.titleWidth}px`,
+        width: `${this.titleWidth + 20}px`,
         height: `${this.height}px`,
         "background-color": "purple"
       };
@@ -125,7 +140,7 @@ export default {
       return { height: `${this.height}px` };
     },
     maskStyles() {
-      return { left: `${this.titleWidth + 30}px`, height: `${this.height}px` };
+      return { left: `${this.titleWidth + 20}px`, height: `${this.height}px` };
     },
     contentStyles() {
       return {
@@ -144,6 +159,9 @@ export default {
     barStyles() {
       return { height: `${this.height + 3}px` };
     }
+  },
+  mounted() {
+    this.$emit("click", "tab-1");
   }
 };
 </script>
@@ -174,6 +192,7 @@ export default {
   left: 0px;
   display: grid;
   z-index: 5;
+  cursor: pointer;
 }
 .content.second {
   z-index: 4;
@@ -186,12 +205,8 @@ export default {
   z-index: 2;
 }
 .rectangle.second {
-  background: purple;
+  background: linear-gradient(180deg, purple, 70%, #66448e);
   z-index: 1;
-}
-.content a {
-  text-decoration: none;
-  color: white;
 }
 .triangle {
   top: 0px;

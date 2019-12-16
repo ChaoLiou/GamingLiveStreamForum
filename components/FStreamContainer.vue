@@ -5,37 +5,47 @@
       :style="{ 'grid-template-columns': `repeat(${maxCol}, 1fr)` }"
     >
       <template v-if="streams.length > 0">
-        <f-stream-preview
-          v-for="(item, index) in streams"
-          :preview-image-ratio="previewImageRatio"
-          :key="index"
-          :stream="item"
-          background-color="#eadbf8"
-        ></f-stream-preview>
+        <template v-if="type === 'stream'">
+          <f-stream-preview
+            v-for="(item, index) in streams"
+            :preview-image-ratio="previewImageRatio"
+            :key="index"
+            :stream="item"
+            background-color="#eadbf8"
+          ></f-stream-preview>
+        </template>
+        <template v-else-if="type === 'vod'">
+          <f-vod-preview
+            v-for="(item, index) in streams"
+            :preview-image-ratio="previewImageRatio"
+            :key="index"
+            :vod="item"
+            background-color="#eadbf8"
+          ></f-vod-preview>
+        </template>
       </template>
       <template v-else>
         <f-stream-preview-placeholder
-          v-for="(item, index) in 4"
+          v-for="(item, index) in maxCol"
           :available="available"
           :key="index"
         ></f-stream-preview-placeholder>
       </template>
     </div>
     <div v-if="!available" class="unavailable-viewing-tips">
-      <div>
-        该直播平台仅限中国台湾或中国香港等区域播放
-      </div>
-      <div>请转换您的IP至对应区域进行观赏</div>
+      <div v-html="msg"></div>
     </div>
   </div>
 </template>
 <script>
 import FStreamPreview from "@/components/FStreamPreview";
+import FVodPreview from "@/components/FVodPreview";
 import FStreamPreviewPlaceholder from "@/components/FStreamPreviewPlaceholder";
 export default {
   components: {
     FStreamPreview,
-    FStreamPreviewPlaceholder
+    FStreamPreviewPlaceholder,
+    FVodPreview
   },
   props: {
     narrow: {
@@ -46,6 +56,11 @@ export default {
       type: Boolean,
       default: true
     },
+    msg: {
+      type: String,
+      default:
+        "<div>该直播平台仅限中国台湾或中国香港等区域播放</div><div>请转换您的IP至对应区域进行观赏</div></div>"
+    },
     streams: {
       type: Array,
       default() {
@@ -55,6 +70,10 @@ export default {
     maxCol: {
       type: Number,
       default: 4
+    },
+    type: {
+      type: String,
+      default: "stream"
     }
   },
   data() {
@@ -81,6 +100,7 @@ export default {
   position: absolute;
   font-weight: bold;
   padding: 30px;
+  width: 562px;
   top: calc(50% - 83px);
   left: calc(50% - 281px);
   z-index: 2;
@@ -106,7 +126,7 @@ export default {
   .unavailable-viewing-tips {
     width: 250px;
     left: calc(50% - 125px);
-    top: calc(50% - 110px);
+    top: 0px;
     font-size: 16px;
   }
 }

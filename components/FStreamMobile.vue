@@ -46,21 +46,35 @@
           >
             <div v-html="stream.description"></div>
           </f-block-box>
-          <f-block-box :title="$t('fStream.vod')" background-color="#f2ecf6">
+          <f-block-box
+            :title="$t('account_type_subtype.hot_recommend')"
+            :second-title="$t('fStream.vod')"
+            background-color="#f2ecf6"
+            tab
+            @click="switchTab"
+          >
             <f-stream-container
               narrow
-              :max-col="1"
-              :streams="vods"
+              :max-col="2"
+              :streams="source"
+              :available="selectedTab2 === 'tab-1' || source.length > 0"
+              :msg="$t('account_type_subtype.no_vod_msg')"
+              :type="selectedTab2 === 'tab-1' ? 'stream' : 'vod'"
             ></f-stream-container>
-            <div>
-              <v-btn class="theme" dark block @click="loadMore">
+            <div v-if="source.length > 0">
+              <v-btn
+                :class="[moreEnabled ? 'theme' : '']"
+                :dark="moreEnabled"
+                block
+                @click="loadMore"
+                :disabled="!moreEnabled"
+              >
                 {{ $t("fFollowedStreams.load_more_streams") }}
               </v-btn>
             </div>
           </f-block-box>
         </div>
       </div>
-      <div></div>
     </div>
   </div>
 </template>
@@ -83,16 +97,21 @@ export default {
         return {};
       }
     },
-    vods: {
+    source: {
       type: Array,
       default() {
         return [];
       }
+    },
+    moreEnabled: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
-      selectedTab: "chatroom"
+      selectedTab: "chatroom",
+      selectedTab2: "tab-1"
     };
   },
   computed: {
@@ -110,7 +129,12 @@ export default {
       }
     }
   },
+  mounted() {},
   methods: {
+    switchTab(tab) {
+      this.selectedTab2 = tab;
+      this.$emit("click", tab);
+    },
     loadMore() {
       this.$emit("load-more");
     }

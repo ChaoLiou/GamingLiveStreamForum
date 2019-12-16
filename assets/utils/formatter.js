@@ -6,7 +6,9 @@ export default {
   fsource,
   fpreview,
   favatar,
-  fgamepoint
+  fgamepoint,
+  fduration,
+  fcreated
 };
 
 function fgamepoint(scores, unit = 3) {
@@ -98,4 +100,13 @@ function favatar(stream) {
     default:
       return stream.avatar;
   }
+}
+
+function fduration(seconds) {
+  return new Date(seconds * 1000).toISOString().substr(11, 8);
+}
+
+function fcreated(seconds) {
+  const date = new Date(seconds);
+  return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
 }

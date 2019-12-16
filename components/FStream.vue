@@ -1,5 +1,10 @@
 <template>
-  <div class="f-stream">
+  <div
+    :class="[
+      'f-stream',
+      stream.chatSource && !stream.externalLink ? '' : 'no-chat'
+    ]"
+  >
     <div class="f-stream__main">
       <div class="f-stream__title-info">
         <v-avatar size="30px">
@@ -60,13 +65,8 @@
         </div>
       </div>
     </div>
-    <div
-      :class="['f-stream__chat', stream.externalLink ? 'external-link' : '']"
-    >
-      <div v-if="stream.externalLink"></div>
-      <!-- <f-temp-ad v-if="stream.externalLink"></f-temp-ad> -->
+    <div class="f-stream__chat">
       <iframe
-        v-else
         frameborder="0"
         scrolling="yes"
         :src="stream.chatSource"
@@ -105,7 +105,7 @@ export default {
 <style scoped>
 .f-stream {
   display: grid;
-  grid-template-columns: minmax(680px, auto) 340px;
+  grid-template-columns: calc((100vw - 435px - 100px)) 340px;
   height: 100%;
 }
 .f-stream__main {
@@ -157,16 +157,15 @@ export default {
 }
 @media (min-width: 1905px) {
   .f-stream {
-    grid-template-columns: minmax(1280px, auto) 435px;
-    height: 100vh;
+    grid-template-columns: calc((100vw - 435px - 100px)) 435px;
   }
   .f-stream__title-video {
-    width: calc((100vh - 180px) * 16 / 9);
-    height: calc(100vh - 180px);
+    width: calc((100vw - 435px - 100px));
+    height: calc((100vw - 435px - 100px) * 9 / 16);
     margin: auto;
   }
   .f-stream__chat {
-    width: 435px;
+    width: 415px;
   }
 }
 @media (max-width: 1904px) and (min-width: 1265px) {
@@ -176,19 +175,26 @@ export default {
   }
 }
 @media (max-width: 1264px) {
+  .f-stream {
+    grid-template-columns: 1fr;
+    width: calc(100vw - 200px);
+  }
+  .f-stream.no-chat {
+    grid-template-rows: 1fr 0px;
+  }
   .stream-below-info,
   .stream-comment {
     width: calc(100%);
   }
-  .f-stream {
-    grid-template-columns: 1fr;
+  .f-stream__main {
+    width: calc(100vw - 200px);
+    height: calc((100vw - 200px) * 9 / 16 + 150px);
   }
-  .f-stream__main,
   .f-stream__title-video {
     width: calc(100vw - 200px);
     height: calc((100vw - 200px) * 9 / 16);
   }
-  .f-stream__chat.external-link {
+  .no-chat .f-stream__chat {
     display: none;
   }
   .f-stream__chat,

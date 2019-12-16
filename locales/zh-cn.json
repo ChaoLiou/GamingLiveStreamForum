@@ -90,7 +90,8 @@
     "stream_overview": "直播总览",
     "streamer_info": "播主资讯",
     "hot_recommend": "热门推荐",
-    "account_center": "个人中心"
+    "account_center": "个人中心",
+    "no_vod_msg": "该直播主无过往资料"
   },
   "live_type_id": {
     "amazing_streams": "精彩实况",
