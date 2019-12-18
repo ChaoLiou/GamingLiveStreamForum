@@ -4,14 +4,14 @@
       <v-icon>clear</v-icon>
     </v-btn>
     <v-card-title primary-title>
-      <div class="form-title">{{$t('fLoginForm.login_website')}}</div>
+      <div class="form-title">{{ $t("fLoginForm.login_website") }}</div>
     </v-card-title>
     <v-card-text class="tab-header">
-      <div class="tab-title">{{$t('fLoginForm.loginout')}}</div>
+      <div class="tab-title">{{ $t("fLoginForm.loginout") }}</div>
     </v-card-text>
     <v-card-text class="content">
       <div class="phone-container">
-        <v-label>{{$t('fLoginForm.phone')}}</v-label>
+        <v-label>{{ $t("fLoginForm.phone") }}</v-label>
         <v-select
           class="area-code__select"
           dark
@@ -33,10 +33,12 @@
           :placeholder="$t('fLoginForm.input_phone_number')"
           @keyup="validationMessage.phoneNumber = ''"
         ></v-text-field>
-        <div class="validation-message">{{ validationMessage.phoneNumber }}</div>
+        <div class="validation-message">
+          {{ validationMessage.phoneNumber }}
+        </div>
       </div>
       <div class="captcha-container">
-        <v-label>{{$t('fLoginForm.captcha_key')}}</v-label>
+        <v-label>{{ $t("fLoginForm.captcha_key") }}</v-label>
         <div class="captcha-grid">
           <v-text-field
             dark
@@ -47,12 +49,17 @@
             :placeholder="$t('fLoginForm.captcha_key_input_placeholder')"
             @keyup="validationMessage.captchaInput = ''"
           ></v-text-field>
-          <f-identify :identify-code="captchaKey" @refresh="$emit('refresh-captcha')"></f-identify>
+          <f-identify
+            :identify-code="captchaKey"
+            @refresh="$emit('refresh-captcha')"
+          ></f-identify>
         </div>
-        <div class="validation-message">{{ validationMessage.captchaInput }}</div>
+        <div class="validation-message">
+          {{ validationMessage.captchaInput }}
+        </div>
       </div>
       <div class="sms-validation-container">
-        <v-label>{{$t('fLoginForm.sms_key')}}</v-label>
+        <v-label>{{ $t("fLoginForm.sms_key") }}</v-label>
         <div class="sms-validation-grid">
           <v-text-field
             dark
@@ -63,8 +70,18 @@
             :placeholder="$t('fLoginForm.sms_key_input_placeholder')"
             @keyup="validationMessage.smsValidationInput = ''"
           ></v-text-field>
-          <v-btn color="#8e75ae" dark @click="smsValidation">{{$t('fLoginForm.get_sms_key')}}</v-btn>
-          <div class="validation-message">{{ validationMessage.smsValidationInput }}</div>
+          <div style="display:grid;justify-items:center">
+            <v-btn
+              v-show="phoneNumber"
+              color="#8e75ae"
+              dark
+              @click="smsValidation"
+              >{{ $t("fLoginForm.get_sms_key") }}</v-btn
+            >
+          </div>
+          <div class="validation-message">
+            {{ validationMessage.smsValidationInput }}
+          </div>
         </div>
       </div>
       <div class="login-container">
@@ -82,7 +99,7 @@
             :label="$t('fLoginForm.remain_login_status')"
           ></v-checkbox>
         </div>-->
-        <div class="login-tips">{{$t('fLoginForm.login_tips')}}</div>
+        <div class="login-tips">{{ $t("fLoginForm.login_tips") }}</div>
         <div class="validation-message">{{ validationMessage.login }}</div>
         <v-btn block color="#8e75ae" dark @click="login">登入</v-btn>
       </div>
@@ -154,7 +171,7 @@ export default {
   },
   watch: {
     captchaKey(value) {
-      this.captchaInput = value;
+      // this.captchaInput = value;
     },
     username(value) {
       const res = /^\+(886|86)(.*?)$/.exec(value);
@@ -168,7 +185,7 @@ export default {
     }
   },
   mounted() {
-    this.captchaInput = this.captchaKey;
+    // this.captchaInput = this.captchaKey;
   },
   methods: {
     async login() {
@@ -269,7 +286,7 @@ export default {
         }
       );
       if (data && data.uuid) {
-        this.smsValidationInput = data.otp;
+        // this.smsValidationInput = data.otp;
         this.uuid = data.uuid;
       }
     }
