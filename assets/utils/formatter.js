@@ -82,8 +82,6 @@ function fsource(stream) {
 
 function fpreview(stream) {
   switch (stream.src) {
-    case "bilibili":
-      return stream.roomImg.replace("https:", "http:");
     case "now":
       return stream.roomImg.replace("/360x", "/");
     case "huya":
@@ -96,7 +94,7 @@ function fpreview(stream) {
 function favatar(stream) {
   switch (stream.src) {
     case "bilibili":
-      return stream.avatar.replace("https:", "http:") + "@100w_100h.webp";
+      return stream.avatar + "@100w_100h.webp";
     default:
       return stream.avatar;
   }
