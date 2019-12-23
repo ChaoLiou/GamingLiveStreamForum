@@ -60,6 +60,10 @@
           v-for="(item, index) in platforms"
           :font-size="$vuetify.breakpoint.xs ? 16 : 30"
           :key="index"
+          v-show="
+            streams[item.id ? item.id : 'all'].length > 0 ||
+              ['twitch', 'youtube', 'fb'].includes(item.id)
+          "
         >
           <f-stream-container
             narrow
@@ -102,7 +106,8 @@ export default {
       },
       available: {
         youtube: false,
-        twitch: false
+        twitch: false,
+        fb: false
       },
       platforms,
       selectedRankingType: -1
@@ -124,9 +129,12 @@ export default {
     platforms
       .filter(x => !x.usingOfficialAPI)
       .forEach(p => {
-        this.getStreams(0, 8, { src: p.id }).then(
-          streams => (this.streams[p.id] = streams)
-        );
+        this.getStreams(0, 8, { src: p.id }).then(streams => {
+          this.streams[p.id] = streams;
+          if (p.id === "fb") {
+            this.available.fb = streams && streams.length > 0;
+          }
+        });
       });
     this.getTwitchStreams(0, 8, true).then(streams => {
       streams.forEach(s => s.then(res => this.streams.twitch.push(res)));
