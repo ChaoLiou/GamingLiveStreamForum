@@ -48,5 +48,11 @@
     "icon": "/platform_icons/icn_FB_B.png",
     "link": "https://www.facebook.com/watch/live/",
     "id": "fb"
+  },
+  {
+    "title": "",
+    "icon": "/platform_icons/icn_TS_B.png",
+    "link": "https://live.qq.com/",
+    "id": "egame"
   }
 ]
