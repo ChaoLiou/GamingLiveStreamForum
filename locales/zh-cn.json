@@ -22,7 +22,15 @@
     "youtube": "Youtube",
     "cc163": "CC直播",
     "huya": "虎牙直播",
-    "egame": "企鵝直播"
+    "egame": "企鹅电竞",
+    "longzhu": "龙珠直播",
+    "chushou": "触手直播",
+    "kuaishou": "快手直播",
+    "imba": "Imba TV",
+    "garena": "Garena LIVE",
+    "nimo": "NiMO TV",
+    "zhanqi": "战旗直播",
+    "kingkong": "金剛直播"
   },
   "_games": {
     "jdqs": "绝地求生",

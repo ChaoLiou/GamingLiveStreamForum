@@ -54,5 +54,53 @@
     "icon": "/platform_icons/icn_TS_B.png",
     "link": "https://egame.qq.com/",
     "id": "egame"
+  },
+  {
+    "title": "",
+    "icon": "/platform_icons/icn_longzhu_B.png",
+    "link": "https://www.longzhu.com/",
+    "id": "longzhu"
+  },
+  {
+    "title": "",
+    "icon": "/platform_icons/icn_chushou_B.png",
+    "link": "https://chushou.tv/",
+    "id": "chushou"
+  },
+  {
+    "title": "",
+    "icon": "/platform_icons/icn_kuaishou_B.png",
+    "link": "https://live.kuaishou.com/",
+    "id": "kuaishou"
+  },
+  {
+    "title": "",
+    "icon": "/platform_icons/icn_imba_B.png",
+    "link": "https://www.imbatv.cn/live",
+    "id": "imba"
+  },
+  {
+    "title": "",
+    "icon": "/platform_icons/icn_garena_B.png",
+    "link": "https://garena.live/?region=tw",
+    "id": "garena"
+  },
+  {
+    "title": "",
+    "icon": "/platform_icons/icn_NiMo_B.png",
+    "link": "https://www.nimo.tv/",
+    "id": "nimo"
+  },
+  {
+    "title": "",
+    "icon": "/platform_icons/icn_zhanqi_B.png",
+    "link": "https://www.zhanqi.tv/",
+    "id": "zhanqi"
+  },
+  {
+    "title": "",
+    "icon": "/platform_icons/icn_kingkong_B.png",
+    "link": "https://www.kingkong.com.tw/",
+    "id": "kingkong"
   }
 ]
