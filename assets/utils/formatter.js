@@ -8,7 +8,8 @@ export default {
   favatar,
   fgamepoint,
   fduration,
-  fcreated
+  fcreated,
+  fdatetime
 };
 
 function fgamepoint(scores, unit = 3) {
@@ -46,6 +47,15 @@ function fviewers(viewers, locale = "zh-cn") {
 function fdate(date) {
   const dateObj = new Date(date);
   return `${dateObj.getMonth() + 1} 月 ${dateObj.getDate()} 日`;
+}
+
+function fdatetime(datetime) {
+  const dateObj = new Date(datetime);
+  const hours = dateObj.getHours();
+  const minutes = dateObj.getMinutes();
+  return `${dateObj.getMonth() + 1} 月 ${dateObj.getDate()} 日 ${
+    hours >= 10 ? "" : "0"
+  }${hours}:${minutes >= 10 ? "" : "0"}${minutes}`;
 }
 
 function fstring(template, args) {

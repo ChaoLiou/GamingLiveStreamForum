@@ -19,49 +19,49 @@
                 <span>{{$t('fMyMessage.private_msg')}}</span>
               </v-badge>
             </div>-->
-            <div :class="[selectedTab === 'amt' ? 'active' : '']" @click="selectedTab = 'amt'">
-              <v-badge overlap right color="red">
+            <div
+              :class="[selectedTab === 'amt' ? 'active' : '']"
+              @click="selectedTab = 'amt'"
+            >
+              <v-badge
+                overlap
+                right
+                color="red"
+                :value="
+                  $store.getters['message_read'] &&
+                    (!$store.getters['message_read'].system ||
+                      !$store.getters['message_read'].alert)
+                "
+              >
                 <template v-slot:badge>
                   <span v-if="newAnnoucement"></span>
                 </template>
-                <span>{{$t('fMyMessage.official_msg')}}</span>
+                <span>{{ $t("fMyMessage.official_msg") }}</span>
               </v-badge>
             </div>
           </div>
-          <div :class="['history__list', scrollable.chat ? 'scrollable' : '']" ref="chatList">
+          <div
+            :class="['history__list', scrollable.chat ? 'scrollable' : '']"
+            ref="chatList"
+          >
             <template v-if="chatList.length > 0">
-              <div
-                :class="['history__item', selectedChat && chat.name === selectedChat.name ? 'selected' : '']"
+              <f-chat-history-item
+                :class="[
+                  'history__item',
+                  selectedChat &&
+                  chat.sender.nickname === selectedChat.sender.nickname
+                    ? 'selected'
+                    : ''
+                ]"
                 v-for="(chat, index) in chatList"
                 :key="index"
+                :chat="chat"
                 @click="selectedChat = chat"
-              >
-                <v-badge overlap right color="red">
-                  <template v-slot:badge>
-                    <span></span>
-                  </template>
-                  <v-avatar :color="chat.avatar ? 'white' : undefined">
-                    <v-img :src="chat.avatar"></v-img>
-                  </v-avatar>
-                </v-badge>
-                <div>
-                  <div class="item__title">
-                    <div class="item__title-name text-truncate" :title="chat.name">{{chat.name}}</div>
-                    <div v-if="chat.status.online">
-                      <span class="online-icon"></span>
-                      {{$t('fMyMessage.online')}}
-                    </div>
-                    <div v-else>{{chat.status.lasttime}}</div>
-                  </div>
-                  <div
-                    v-if="chat.histories.length > 0 "
-                    class="item__content text-truncate"
-                    :title="chat.histories[chat.histories.length - 1].content"
-                  >{{chat.histories[chat.histories.length - 1].content}}</div>
-                </div>
-              </div>
+              ></f-chat-history-item>
             </template>
-            <div v-else class="none-info__chat">{{$t('fMyMessage.no_any_msg')}}</div>
+            <div v-else class="none-info__chat">
+              {{ $t("fMyMessage.no_any_msg") }}
+            </div>
           </div>
           <!-- <div class="collapsed-drawer">
             <div>{{$t('fMyMessage.stranger')}} ＞</div>
@@ -73,27 +73,40 @@
         <div class="chat-form__room-area">
           <div class="contactor-info">
             <template v-if="selectedChat">
-              <v-avatar :color="selectedChat.avatar ? 'white' : undefined">
-                <v-img :src="selectedChat.avatar"></v-img>
+              <v-avatar
+                :color="selectedChat.sender.avatar ? 'white' : undefined"
+              >
+                <v-img
+                  :src="
+                    selectedChat.sender.avatar ? selectedChat.sender.avatar : ''
+                  "
+                ></v-img>
               </v-avatar>
-              <div>{{selectedChat.name}}</div>
+              <div>{{ selectedChat.sender.nickname }}</div>
             </template>
           </div>
           <div
-            :class="['chat-content-container', scrollable.history ? 'scrollable' : '']"
+            :class="[
+              'chat-content-container',
+              scrollable.history ? 'scrollable' : ''
+            ]"
             ref="chatContainer"
           >
-            <template v-if="selectedChat && selectedChat.histories.length > 0">
+            <template v-if="selectedChat">
               <div
                 class="msg-content msg-content__from"
-                v-for="(history, index) in selectedChat.histories"
+                v-for="(message, index) in messages"
                 :key="index"
               >
-                <div class="msg-content__main">{{history.content}}</div>
-                <span class="msg-content__datetime">{{history.datetime}}</span>
+                <div class="msg-content__main">{{ message.message }}</div>
+                <span class="msg-content__datetime">{{
+                  fdatetime(message.timestamp)
+                }}</span>
               </div>
             </template>
-            <div v-else class="none-info__history">{{$t('fMyMessage.select_one_contactor')}}</div>
+            <div v-else class="none-info__history">
+              {{ $t("fMyMessage.select_one_contactor") }}
+            </div>
           </div>
         </div>
       </div>
@@ -102,33 +115,66 @@
 </template>
 <script>
 import FBlock from "@/components/FBlock";
-import fakeAnnouncement from "@/assets/json/fake/announcement";
+import FChatHistoryItem from "@/components/FChatHistoryItem";
+import oms from "@/assets/json/official-member";
+import formatter from "@/assets/utils/formatter";
+import { _ } from "underscore";
 export default {
   components: {
-    FBlock
+    FBlock,
+    FChatHistoryItem
   },
   data() {
     return {
       newMessage: false,
       newAnnoucement: true,
       selectedTab: "amt",
-      fakeAnnouncement,
-      selectedChat: undefined,
+      allMTypeMessages: [],
+      selectedChat: { sender: {} },
       scrollable: {
         chat: false,
         history: false
-      }
+      },
+      oms
     };
   },
   computed: {
     chatList() {
-      return this.selectedTab === "amt" ? this.fakeAnnouncement : [];
+      return this.selectedTab === "amt" ? this.histories : [];
+    },
+    messages() {
+      let list = [];
+      if (this.selectedChat.mtype === 1) {
+        list = this.allMTypeMessages[0];
+      } else if (this.selectedChat.mtype === 2) {
+        list = this.allMTypeMessages[1];
+      }
+      return _.sortBy(list, "timestamp");
+    },
+    histories() {
+      return this.allMTypeMessages
+        .filter(x => x.length > 0)
+        .map(x => x[0])
+        .filter(x => x.mtype !== 0)
+        .map(x => {
+          const target = this.oms.find(y => y.id === x.mtype);
+          return x.sender
+            ? x
+            : {
+                ...x,
+                sender: {
+                  avatar: target ? target.avatar : "",
+                  nickname: target ? target.name : ""
+                }
+              };
+        });
     }
   },
   watch: {
     selectedTab() {
-      this.selectedChat =
-        this.chatList.length > 0 ? this.chatList[0] : undefined;
+      if (this.chatList.length > 0) {
+        this.selectedChat = this.chatList[0];
+      }
     }
   },
   updated() {
@@ -140,7 +186,18 @@ export default {
     this.$refs.chatContainer.scrollTop = this.$refs.chatContainer.scrollHeight;
   },
   mounted() {
-    this.selectedChat = this.chatList[0];
+    if (this.chatList.length > 0) {
+      this.selectedChat = this.chatList[0];
+    }
+    const id = this.getCookie("id");
+    if (!!id) {
+      this.getChatHistory(id).then(res => {
+        this.allMTypeMessages = res;
+      });
+    }
+  },
+  methods: {
+    fdatetime: formatter.fdatetime
   }
 };
 </script>
@@ -206,29 +263,6 @@ export default {
 }
 .history__item.selected {
   background: #9786ad;
-}
-.item__title {
-  color: white;
-  display: grid;
-  font-size: 18px;
-  grid-template-columns: 120px auto;
-  justify-items: end;
-}
-.online-icon {
-  width: 15px;
-  height: 15px;
-  margin-right: 10px;
-  border-radius: 50%;
-  display: inline-block;
-  background: green;
-}
-.item__title-name {
-  width: 100%;
-  justify-self: start;
-}
-.item__content {
-  font-size: 18px;
-  color: #55287e;
 }
 .contactor-info {
   display: grid;

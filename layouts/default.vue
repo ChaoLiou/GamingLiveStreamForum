@@ -80,6 +80,7 @@
               <f-member-block-mobile
                 v-if="loggedin"
                 :member="$store.getters['member']"
+                :message-read="$store.getters['message_read']"
                 @logout="logoutMember"
               ></f-member-block-mobile>
               <v-btn v-else class="loginout-btn" @click="openLoginForm">{{
@@ -191,6 +192,7 @@
           <f-member-block
             v-if="loggedin"
             :member="$store.getters['member']"
+            :message-read="$store.getters['message_read']"
             @logout="logoutMember"
           ></f-member-block>
           <v-btn v-else class="loginout-btn" @click="openLoginForm">{{
@@ -270,12 +272,13 @@ export default {
       streams: [],
       rememberPhoneNumber: false,
       remainLoginStatus: false,
-      username: undefined
+      username: undefined,
+      allMTypeMessages: []
     };
   },
   watch: {
-    member(value) {
-      console.log(value);
+    $route(value) {
+      this.updateMessageRead();
     },
     dialog(value) {
       if (!value) {
@@ -299,8 +302,26 @@ export default {
       // this.toolbarDrawer = !!member;
     });
     this.getStreams(0, 4).then(streams => this.streams.push(...streams));
+    this.updateMessageRead();
   },
   methods: {
+    updateMessageRead() {
+      const id = this.getCookie("id");
+      if (!!id) {
+        this.getChatHistory(id).then(res => {
+          const systemHistories = res[0];
+          const alertHistories = res[1];
+          const privateHistories = res[2];
+          this.$store.commit("setMessageRead", {
+            system: systemHistories.length === 0 || systemHistories[0].is_read,
+            alert: alertHistories.length === 0 || alertHistories[0].is_read,
+            private:
+              privateHistories.length === 0 || privateHistories[0].is_read
+          });
+          console.log({ default: this.$store.getters["message_read"] });
+        });
+      }
+    },
     reload() {
       if (this.$route.name.startsWith("index___")) {
         location.reload();

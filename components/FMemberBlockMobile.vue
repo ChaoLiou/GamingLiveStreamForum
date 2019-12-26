@@ -47,6 +47,12 @@ export default {
       default() {
         return {};
       }
+    },
+    messageRead: {
+      type: Object,
+      default() {
+        return {};
+      }
     }
   },
   data() {
@@ -59,13 +65,13 @@ export default {
   },
   computed: {
     frdIcon() {
-      return this.newFrd ? "/icn_frd1.png" : "/icn_frd2.png";
+      return !this.messageRead.private ? "/icn_frd1.png" : "/icn_frd2.png";
     },
     mailIcon() {
-      return this.newMail ? "/icn_mail1.png" : "/icn_mail2.png";
+      return !this.messageRead.system ? "/icn_mail1.png" : "/icn_mail2.png";
     },
     noticeIcon() {
-      return this.newNotice ? "/icn_notice1.png" : "/icn_notice2.png";
+      return !this.messageRead.alert ? "/icn_notice1.png" : "/icn_notice2.png";
     }
   },
   methods: {

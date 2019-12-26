@@ -4,7 +4,9 @@
       <v-icon>clear</v-icon>
     </v-btn>
     <v-card-title primary-title>
-      <div class="form-title">{{ $t("fLoginForm.login_website") }}</div>
+      <div class="form-title">
+        {{ $t("fLoginForm.login_website") }}
+      </div>
     </v-card-title>
     <v-card-text class="tab-header">
       <div class="tab-title">{{ $t("fLoginForm.loginout") }}</div>
@@ -73,10 +75,16 @@
           <div style="display:grid;justify-items:center">
             <v-btn
               v-show="phoneNumber"
+              :disabled="!smsValidationEnabled"
               color="#8e75ae"
-              dark
+              :outline="!smsValidationEnabled"
+              :dark="smsValidationEnabled"
               @click="smsValidation"
-              >{{ $t("fLoginForm.get_sms_key") }}</v-btn
+              >{{
+                smsValidationEnabled
+                  ? $t("fLoginForm.get_sms_key")
+                  : `${timeCounter}秒`
+              }}</v-btn
             >
           </div>
           <div class="validation-message">
@@ -156,7 +164,10 @@ export default {
         smsValidationInput: "",
         login: ""
       },
-      uuid: ""
+      uuid: "",
+      timeout: 60,
+      timeCounter: 0,
+      smsValidationEnabled: true
     };
   },
   computed: {
@@ -188,6 +199,17 @@ export default {
     // this.captchaInput = this.captchaKey;
   },
   methods: {
+    initTimer() {
+      this.smsValidationEnabled = false;
+      this.timeCounter = this.timeout;
+      const intervalId = setInterval(() => {
+        this.timeCounter--;
+        if (this.timeCounter === 0) {
+          clearInterval(intervalId);
+          this.smsValidationEnabled = true;
+        }
+      }, 1000);
+    },
     async login() {
       if (this.inputValidation()) {
         const data = {
@@ -285,6 +307,7 @@ export default {
           time: 90 * 2
         }
       );
+      this.initTimer();
       if (data && data.uuid) {
         // this.smsValidationInput = data.otp;
         this.uuid = data.uuid;
@@ -360,6 +383,8 @@ export default {
   margin-top: 0px;
   margin-bottom: 0px;
   margin-right: 0px;
+  border-width: 3px;
+  font-weight: bold;
 }
 .f-identify {
   margin-left: 8px;

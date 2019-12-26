@@ -371,6 +371,19 @@ Vue.mixin({
       const url = `${this.apiOrigin}/stream/histories/${id}?begin=${begin}&size=${size}`;
       console.log(url);
       return await this.$axios.$get(url);
+    },
+    async getChatHistory(id) {
+      const url = `${this.memberApiPrefix}/message/list1/${id}`;
+      console.log(url);
+      const histories = await this.$axios.$get(url);
+      return histories ? histories.results : [];
+    },
+    async doReadTheMessage(messageId) {
+      const url = `${this.memberApiPrefix}/message/${messageId}/`;
+      console.log(url);
+      return await this.$axios.$put(url, {
+        is_read: true
+      });
     }
   }
 });
