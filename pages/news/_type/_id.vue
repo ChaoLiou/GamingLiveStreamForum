@@ -192,6 +192,12 @@ export default {
 }
 </style>
 <style>
+ul.bh-grids-img li figcaption {
+  position: relative;
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+}
 @media (max-width: 600px) {
   .news-type-id .f-tab__tabs {
     width: 100vw;

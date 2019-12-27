@@ -9,12 +9,16 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title: meta.title,
+    title: meta.index.title,
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "keywords", name: "keywords", content: meta.keywords },
-      { hid: "description", name: "description", content: meta.description }
+      { hid: "keywords", name: "keywords", content: meta.index.keywords },
+      {
+        hid: "description",
+        name: "description",
+        content: meta.index.description
+      }
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },

@@ -51,18 +51,20 @@ export default {
   font-weight: bold;
 }
 .news-detail__content {
-  margin: 10px 0px;
+  margin: auto;
+  max-width: 938px;
   font-size: 18px;
 }
 </style>
 <style>
 .f-news-detail .GN-thumbnail,
 .video-container {
-  width: fit-content !important;
-  margin: auto !important;
+  /* width: fit-content !important;
+  margin: auto !important; */
 }
 .f-news-detail ul {
   list-style: none;
+  padding-left: 0px;
 }
 @media (min-width: 600px) {
   .f-news-detail .video-container iframe {

@@ -73,7 +73,31 @@ import FStreamContainer from "@/components/FStreamContainer";
 import liveTabs from "@/assets/json/tabs/live";
 import games from "@/assets/json/games";
 import platforms from "@/assets/json/platforms";
+import meta from "@/assets/json/meta";
 export default {
+  head() {
+    return {
+      title: this.$route.params.id
+        ? meta[this.$route.params.id].title
+        : meta.index.title,
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: this.$route.params.id
+            ? meta[this.$route.params.id].description
+            : meta.index.description
+        },
+        {
+          hid: "keywords",
+          name: "keywords",
+          content: this.$route.params.id
+            ? meta[this.$route.params.id].keywords
+            : meta.index.keywords
+        }
+      ]
+    };
+  },
   components: {
     FTab,
     FBlock,
