@@ -66,6 +66,42 @@ export default {
   list-style: none;
   padding-left: 0px;
 }
+.f-news-detail ul.bh-grids-img {
+  display: inline-block;
+  padding: 0;
+  width: 100%;
+  list-style: none;
+  box-sizing: border-box;
+}
+.f-news-detail ul.bh-grids-img li {
+  display: inline-block;
+}
+.f-news-detail ul.bh-grids-img li figcaption {
+  position: relative;
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+}
+.f-news-detail ul.bh-grids-img li figure {
+  margin: 4px auto 8px;
+  width: 100%;
+  text-align: center;
+  color: #666666;
+  font-size: 13px;
+}
+.f-news-detail ul.bh-grids-img .bh-grids-img-box {
+  margin: 4px 0;
+  float: left;
+}
+.f-news-detail ul.bh-grids-img img {
+  position: absolute;
+  width: 100%;
+  max-width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
 @media (min-width: 600px) {
   .f-news-detail .video-container iframe {
     width: 776px !important;
