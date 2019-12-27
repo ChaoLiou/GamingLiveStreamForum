@@ -190,7 +190,10 @@ export default {
       }
 
       if (target) {
-        this.$refs[`chat_${target.id}`][0].clickItem();
+        const chatHistoryItem = this.$refs[`chat_${target.id}`][0];
+        if (!chatHistoryItem.chatRead) {
+          chatHistoryItem.clickItem();
+        }
       }
     }
   },
