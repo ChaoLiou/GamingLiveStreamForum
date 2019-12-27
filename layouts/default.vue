@@ -300,9 +300,9 @@ export default {
       this.loggedin = !!member;
       this.drawer = !!member;
       // this.toolbarDrawer = !!member;
+      this.updateMessageRead();
     });
     this.getStreams(0, 4).then(streams => this.streams.push(...streams));
-    this.updateMessageRead();
   },
   methods: {
     updateMessageRead() {
@@ -359,6 +359,7 @@ export default {
           this.loggedin = true;
           this.drawer = true;
           // this.toolbarDrawer = true;
+          this.updateMessageRead();
         });
       }
     },

@@ -46,6 +46,7 @@
           >
             <template v-if="chatList.length > 0">
               <f-chat-history-item
+                :ref="`chat_${chat.id}`"
                 :class="[
                   'history__item',
                   selectedChat &&
@@ -56,7 +57,7 @@
                 v-for="(chat, index) in chatList"
                 :key="index"
                 :chat="chat"
-                @click="selectedChat = chat"
+                @click="clickHistoryItem(chat)"
               ></f-chat-history-item>
             </template>
             <div v-else class="none-info__chat">
@@ -165,16 +166,10 @@ export default {
                 sender: {
                   avatar: target ? target.avatar : "",
                   nickname: target ? target.name : ""
-                }
+                },
+                mtype_name: target.alias
               };
         });
-    }
-  },
-  watch: {
-    selectedTab() {
-      if (this.chatList.length > 0) {
-        this.selectedChat = this.chatList[0];
-      }
     }
   },
   updated() {
@@ -184,11 +179,22 @@ export default {
       this.$refs.chatContainer.scrollHeight >
       this.$refs.chatContainer.offsetHeight;
     this.$refs.chatContainer.scrollTop = this.$refs.chatContainer.scrollHeight;
+    if (this.histories.length > 0) {
+      let target = undefined;
+      if (this.$route.hash === "#system") {
+        target = this.histories.find(x => x.mtype_name === "system");
+        this.selectedChat = target;
+      } else if (this.$route.hash === "#alert") {
+        target = this.histories.find(x => x.mtype_name === "alert");
+        this.selectedChat = target;
+      }
+
+      if (target) {
+        this.$refs[`chat_${target.id}`][0].clickItem();
+      }
+    }
   },
   mounted() {
-    if (this.chatList.length > 0) {
-      this.selectedChat = this.chatList[0];
-    }
     const id = this.getCookie("id");
     if (!!id) {
       this.getChatHistory(id).then(res => {
@@ -197,6 +203,13 @@ export default {
     }
   },
   methods: {
+    clickHistoryItem(chat) {
+      this.selectedChat = chat;
+      this.$router.push({
+        path: "/account/info/mymessage",
+        hash: chat.mtype_name
+      });
+    },
     fdatetime: formatter.fdatetime
   }
 };

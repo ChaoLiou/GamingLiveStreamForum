@@ -1,12 +1,14 @@
 [
   {
     "id": 1,
+    "alias": "system",
     "name": "系统通知",
-    "avatar": "/misc_icons/shejiyeicondsczt23z14e.png"
+    "avatar": "/272670.jpg"
   },
   {
     "id": 2,
+    "alias": "alert",
     "name": "牵手快讯",
-    "avatar": "/nobody.jpg"
+    "avatar": "/272644.jpg"
   }
 ]

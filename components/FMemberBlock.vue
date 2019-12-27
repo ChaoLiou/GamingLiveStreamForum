@@ -6,7 +6,7 @@
       width="30px"
       contain
       :src="frdIcon"
-      @click="$router.push({ path: '/account/info/mymessage' })"
+      @click="goToPage('private')"
     ></v-img>
     <v-divider vertical></v-divider>
     <v-img
@@ -15,7 +15,7 @@
       width="30px"
       contain
       :src="noticeIcon"
-      @click="$router.push({ path: '/account/info/mymessage' })"
+      @click="goToPage('alert')"
     ></v-img>
     <v-divider vertical></v-divider>
     <v-img
@@ -24,7 +24,7 @@
       width="30px"
       contain
       :src="mailIcon"
-      @click="$router.push({ path: '/account/info/mymessage' })"
+      @click="goToPage('system')"
     ></v-img>
     <v-divider vertical></v-divider>
     <v-menu
@@ -151,6 +151,9 @@ export default {
     }
   },
   methods: {
+    goToPage(hash) {
+      this.$router.push({ path: "/account/info/mymessage", hash });
+    },
     fgamepoint: formatter.fgamepoint,
     logoutMember() {
       this.menu = false;

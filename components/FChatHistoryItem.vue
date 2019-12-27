@@ -13,7 +13,7 @@
         <div class="item__title-name text-truncate" :title="nickname">
           {{ nickname }}
         </div>
-        <div v-if="true">
+        <div v-if="!chat.sender">
           <span class="online-icon"></span>
           {{ $t("fMyMessage.online") }}
         </div>
@@ -61,24 +61,26 @@ export default {
   },
   methods: {
     clickItem() {
-      this.doReadTheMessage(this.chat.id).then(res => {
-        this.chatRead = true;
-        this.$store.commit("setMessageRead", {
-          system:
-            this.chat.mtype === 1
-              ? true
-              : this.$store.getters["message_read"].system,
-          alert:
-            this.chat.mtype === 2
-              ? true
-              : this.$store.getters["message_read"].alert,
-          private:
-            this.chat.mtype === 0
-              ? true
-              : this.$store.getters["message_read"].private
+      if (!this.chat.is_read) {
+        this.doReadTheMessage(this.chat.id).then(res => {
+          this.chatRead = true;
+          this.$store.commit("setMessageRead", {
+            system:
+              this.chat.mtype === 1
+                ? true
+                : this.$store.getters["message_read"].system,
+            alert:
+              this.chat.mtype === 2
+                ? true
+                : this.$store.getters["message_read"].alert,
+            private:
+              this.chat.mtype === 0
+                ? true
+                : this.$store.getters["message_read"].private
+          });
+          console.log({ item: this.$store.getters["message_read"] });
         });
-        console.log({ item: this.$store.getters["message_read"] });
-      });
+      }
       this.$emit("click");
     }
   }
@@ -91,6 +93,7 @@ export default {
   font-size: 18px;
   grid-template-columns: 120px auto;
   justify-items: end;
+  height: 27px;
 }
 .online-icon {
   width: 15px;
