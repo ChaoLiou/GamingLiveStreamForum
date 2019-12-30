@@ -182,7 +182,7 @@ export default {
   },
   watch: {
     captchaKey(value) {
-      // this.captchaInput = value;
+      this.captchaInput = value;
     },
     username(value) {
       const res = /^\+(886|86)(.*?)$/.exec(value);
@@ -196,7 +196,7 @@ export default {
     }
   },
   mounted() {
-    // this.captchaInput = this.captchaKey;
+    this.captchaInput = this.captchaKey;
   },
   methods: {
     initTimer() {
@@ -309,7 +309,7 @@ export default {
       );
       this.initTimer();
       if (data && data.uuid) {
-        // this.smsValidationInput = data.otp;
+        this.smsValidationInput = data.otp;
         this.uuid = data.uuid;
       }
     }
