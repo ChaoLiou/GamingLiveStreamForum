@@ -13,7 +13,7 @@
       <f-home-stream-preview-mobile
         v-for="(item, index) in fstreams"
         :key="index"
-        :player="item.player"
+        :player="true"
         :stream="item"
         @loaded="scroll"
       ></f-home-stream-preview-mobile>
