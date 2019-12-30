@@ -122,9 +122,10 @@
     </v-navigation-drawer>
     <v-toolbar v-if="$vuetify.breakpoint.xs" fixed height="56px">
       <v-toolbar-items>
-        <a class="home-link" @click="reload">
+        <a class="home-link" @click="reload" title="牵手电竞直播">
           <v-img
             class="logo"
+            alt="牵手电竞直播"
             src="/logo.png"
             width="100px"
             height="45px"
@@ -144,7 +145,7 @@
           loggedin ? 'loggedin' : ''
         ]"
       >
-        <a class="home-link" @click="reload">
+        <a class="home-link" @click="reload" title="牵手电竞直播">
           <v-img
             alt="牵手电竞直播"
             class="logo"
