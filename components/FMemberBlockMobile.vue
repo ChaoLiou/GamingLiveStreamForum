@@ -16,7 +16,7 @@
           width="20px"
           contain
           :src="noticeIcon"
-          @click="newNotice = !newNotice"
+          @click="goToPage('private')"
         ></v-img>
         <v-img
           class="tooltip-icon"
@@ -24,7 +24,7 @@
           width="20px"
           contain
           :src="mailIcon"
-          @click="newMail = !newMail"
+          @click="goToPage('alert')"
         ></v-img>
         <v-img
           class="tooltip-icon"
@@ -32,7 +32,7 @@
           width="20px"
           contain
           :src="frdIcon"
-          @click="newFrd = !newFrd"
+          @click="goToPage('system')"
         ></v-img>
       </div>
     </div>
@@ -75,6 +75,9 @@ export default {
     }
   },
   methods: {
+    goToPage(hash) {
+      this.$router.push({ path: "/account/info/mymessage", hash });
+    },
     fgamepoint: formatter.fgamepoint,
     logoutMember() {
       this.menu = false;
