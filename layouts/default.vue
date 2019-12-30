@@ -224,7 +224,6 @@
       v-model="dialog"
       width="500px"
       scrollable
-      :fullscreen="$vuetify.breakpoint.xs"
     >
       <f-register-form
         :data="data"

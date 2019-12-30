@@ -8,7 +8,7 @@
         {{ $t("fRegisterForm.fill_in_account_info") }}
       </div>
     </v-card-title>
-    <v-card-title class="avatar-container">
+    <v-card-text class="avatar-container">
       <div>
         <img v-show="avatar" ref="img" @click="choose" />
         <div class="default-image" v-show="!avatar" @click="choose"></div>
@@ -27,7 +27,7 @@
       <div class="upload-info">
         {{ $t("fRegisterForm.uploaded_file_limits") }}
       </div>
-    </v-card-title>
+    </v-card-text>
     <v-card-text class="content">
       <div>
         <v-label>{{ $t("fRegisterForm.nickname") }}：</v-label>
