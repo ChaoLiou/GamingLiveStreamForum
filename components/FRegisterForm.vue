@@ -8,27 +8,27 @@
         {{ $t("fRegisterForm.fill_in_account_info") }}
       </div>
     </v-card-title>
-    <v-card-text class="avatar-container">
-      <div>
-        <img v-show="avatar" ref="img" @click="choose" />
-        <div class="default-image" v-show="!avatar" @click="choose"></div>
-        <input
-          ref="fileInput"
-          v-show="false"
-          type="file"
-          @change="change"
-          accept="image/jpeg, image/jpg, image/png"
-        />
-      </div>
-      <v-btn color="#8e75ae" dark @click="choose">
-        {{ $t("fRegisterForm.upload") }}
-      </v-btn>
-      <div class="validation-message">{{ validationMessage.avatar }}</div>
-      <div class="upload-info">
-        {{ $t("fRegisterForm.uploaded_file_limits") }}
-      </div>
-    </v-card-text>
     <v-card-text class="content">
+      <div class="avatar-container">
+        <div>
+          <img v-show="avatar" ref="img" @click="choose" />
+          <div class="default-image" v-show="!avatar" @click="choose"></div>
+          <input
+            ref="fileInput"
+            v-show="false"
+            type="file"
+            @change="change"
+            accept="image/jpeg, image/jpg, image/png"
+          />
+        </div>
+        <v-btn color="#8e75ae" dark @click="choose">
+          {{ $t("fRegisterForm.upload") }}
+        </v-btn>
+        <div class="validation-message">{{ validationMessage.avatar }}</div>
+        <div class="upload-info">
+          {{ $t("fRegisterForm.uploaded_file_limits") }}
+        </div>
+      </div>
       <div>
         <v-label>{{ $t("fRegisterForm.nickname") }}：</v-label>
         <v-text-field
