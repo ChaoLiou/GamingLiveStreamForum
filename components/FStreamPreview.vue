@@ -11,7 +11,7 @@
       allowfullscreen="true"
     ></iframe>
     <template v-else>
-      <f-link :link="streamLink">
+      <nuxt-link :to="streamLink" :title="`${stream.streamer_name}直播间`">
         <v-img
           lazy
           :src="imageSource"
@@ -23,6 +23,7 @@
           }"
           :max-height="$vuetify.breakpoint.xs ? '100px' : '200px'"
           :min-height="$vuetify.breakpoint.xs ? '100px' : '200px'"
+          :alt="`${stream.streamer_name}直播间`"
         >
           <div class="fixed-mask play-mask">
             <v-img
@@ -41,7 +42,7 @@
             </div>
           </div>
         </v-img>
-      </f-link>
+      </nuxt-link>
     </template>
     <div
       :style="{

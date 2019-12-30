@@ -50,7 +50,8 @@ module.exports = {
     "@/plugins/vuetify",
     "@/plugins/mixin",
     "@/plugins/vue-cookie.js",
-    "@/plugins/underscore.js"
+    "@/plugins/underscore.js",
+    { src: "~plugins/ga.js", mode: "client" }
   ],
 
   /*

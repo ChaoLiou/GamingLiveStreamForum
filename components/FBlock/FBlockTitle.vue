@@ -7,10 +7,10 @@
       <div class="rectangle" :style="rectangleStyles"></div>
       <div class="content" :style="contentStyles">
         <div v-if="tabs.length > 0" @click="tabChange(-1)">{{ text }}</div>
-        <nuxt-link v-else :to="to">{{ text }}</nuxt-link>
+        <nuxt-link v-else :to="to" :title="text">{{ text }}</nuxt-link>
       </div>
       <div class="more" v-if="more" :style="moreLinkStyles">
-        <nuxt-link :to="to"
+        <nuxt-link :to="to" :title="text"
           >{{ moreTitle ? moreTitle : $t("fBlockTitle.see_more") }}></nuxt-link
         >
       </div>

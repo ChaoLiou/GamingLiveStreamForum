@@ -2,8 +2,12 @@
   <div class="f-home-news-carousel">
     <v-carousel hide-delimiters :interval="interval" :height="height">
       <v-carousel-item v-for="(item, i) in source" :key="i">
-        <nuxt-link :to="`/news/${item.type.value}/${item.id}`">
+        <nuxt-link
+          :to="`/news/${item.type.value}/${item.id}`"
+          :title="item.title"
+        >
           <v-img
+            :alt="item.title"
             :contain="!$vuetify.breakpoint.xs"
             :src="item.image"
             :height="height"

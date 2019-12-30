@@ -146,6 +146,7 @@
       >
         <a class="home-link" @click="reload">
           <v-img
+            alt="牵手电竞直播"
             class="logo"
             src="/logo.png"
             width="150px"
@@ -153,10 +154,12 @@
           ></v-img>
         </a>
         <div class="nav-items">
-          <nuxt-link to="/live/recommend">{{
-            $t("default.stream_platform")
-          }}</nuxt-link>
-          <nuxt-link to="/live/hot">
+          <nuxt-link
+            to="/live/recommend"
+            :title="$t('default.stream_platform')"
+            >{{ $t("default.stream_platform") }}</nuxt-link
+          >
+          <nuxt-link to="/live/hot" :title="$t('default.hot_games')">
             {{ $t("default.hot_games") }}
           </nuxt-link>
         </div>

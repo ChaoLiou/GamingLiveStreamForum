@@ -15,9 +15,11 @@
         <div class="news-item" :key="index">
           <div class="news-tag">{{ item.type.title }}</div>
           <div class="news-title">
-            <nuxt-link :to="`/news/${item.type.value}/${item.id}`">{{
-              item.title
-            }}</nuxt-link>
+            <nuxt-link
+              :to="`/news/${item.type.value}/${item.id}`"
+              :title="item.title"
+              >{{ item.title }}</nuxt-link
+            >
           </div>
         </div>
         <v-divider :key="`divider-${index}`"></v-divider>
