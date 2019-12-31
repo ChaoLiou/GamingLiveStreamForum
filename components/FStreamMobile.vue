@@ -148,7 +148,8 @@ export default {
   min-height: calc(100vw * 9 / 16);
 }
 .chatroom-frame {
-  height: calc(100vh - 56px - (100vw * 9 / 16) - 35px);
+  /* height: calc(100vh - 56px - (100vw * 9 / 16) - 35px); */
+  height: 100vh;
 }
 .tabs {
   display: grid;
