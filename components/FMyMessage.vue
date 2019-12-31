@@ -221,7 +221,7 @@ export default {
 .chat-form {
   display: grid;
   grid-template-columns: 320px auto;
-  height: calc(100vh - 300px);
+  height: calc(80px * 5 + 60px);
   margin: 0px 20px;
 }
 .chat-form__history-area {
@@ -256,10 +256,8 @@ export default {
 }
 .history__list {
   margin-top: 4px;
-  /* max-height: calc(100vh - 425px);
-  min-height: calc(100vh - 425px); */
-  max-height: calc(100vh - 345px);
-  min-height: calc(100vh - 345px);
+  max-height: calc(80px * 5);
+  min-height: calc(80px * 5);
   overflow-x: hidden;
   overflow-y: hidden;
 }

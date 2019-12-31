@@ -52,7 +52,13 @@ export default {
 .f-home-news-area > div {
   margin: 10px;
 }
-@media (max-width: 1264px) {
+@media (max-width: 1264px and min-width: 601px) {
+  .f-home-news-area {
+    grid-template-columns: 1fr;
+    grid-template-rows: calc((100vw - 20vw - 20px - 40px) * 9 / 16) auto;
+  }
+}
+@media (max-width: 600px) {
   .f-home-news-area {
     grid-template-columns: 1fr;
     grid-template-rows: calc((100vw - 20px) * 9 / 16 + 20px) auto;

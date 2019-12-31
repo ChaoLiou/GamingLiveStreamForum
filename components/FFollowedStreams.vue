@@ -8,7 +8,10 @@
       :title="$t('fFollowedStreams.recommended_streams')"
       background-color="#eadbf8"
     >
-      <f-stream-container :streams="streams.slice(0, 4)"></f-stream-container>
+      <f-stream-container
+        narrow
+        :streams="streams.slice(0, 4)"
+      ></f-stream-container>
     </f-block>
     <f-block
       :font-size="22"
@@ -18,7 +21,7 @@
       :title="$t('fFollowedStreams.followed_streams')"
       background-color="#eadbf8"
     >
-      <f-stream-container :streams="streams"></f-stream-container>
+      <f-stream-container narrow :streams="streams"></f-stream-container>
       <div class="more-btn-container">
         <v-btn dark block @click="loadMore">{{
           $t("fFollowedStreams.load_more_streams")

@@ -10,30 +10,33 @@
       <div
         style="display:grid;grid-template-columns:repeat(3, 1fr);width:120px"
       >
-        <v-img
-          class="tooltip-icon"
-          height="20px"
-          width="20px"
-          contain
-          :src="noticeIcon"
-          @click="goToPage('private')"
-        ></v-img>
-        <v-img
-          class="tooltip-icon"
-          height="20px"
-          width="20px"
-          contain
-          :src="mailIcon"
-          @click="goToPage('alert')"
-        ></v-img>
-        <v-img
-          class="tooltip-icon"
-          height="20px"
-          width="20px"
-          contain
-          :src="frdIcon"
-          @click="goToPage('system')"
-        ></v-img>
+        <nuxt-link to="/chatroom/alert">
+          <v-img
+            class="tooltip-icon"
+            height="20px"
+            width="20px"
+            contain
+            :src="noticeIcon"
+          ></v-img>
+        </nuxt-link>
+        <nuxt-link to="/chatroom/system">
+          <v-img
+            class="tooltip-icon"
+            height="20px"
+            width="20px"
+            contain
+            :src="mailIcon"
+          ></v-img>
+        </nuxt-link>
+        <nuxt-link to="#">
+          <v-img
+            class="tooltip-icon"
+            height="20px"
+            width="20px"
+            contain
+            :src="frdIcon"
+          ></v-img>
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -75,9 +78,6 @@ export default {
     }
   },
   methods: {
-    goToPage(hash) {
-      this.$router.push({ path: "/account/info/mymessage", hash });
-    },
     fgamepoint: formatter.fgamepoint,
     logoutMember() {
       this.menu = false;

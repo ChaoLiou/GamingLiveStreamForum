@@ -3,9 +3,13 @@
     <f-block-title
       background-color="#e7d6fa"
       :text="$t('fHomeNewsTabPage.newsletter')"
-      :content-left-margin="!$vuetify.breakpoint.xs ? undefined : 10"
+      :content-left-margin="
+        $vuetify.breakpoint.xs ? 10 : $vuetify.breakpoint.md ? 8 : undefined
+      "
       :content-right-margin="0"
-      :font-size="$vuetify.breakpoint.xs ? 16 : 22"
+      :font-size="
+        $vuetify.breakpoint.xs ? 16 : $vuetify.breakpoint.md ? 18 : 22
+      "
       :line-height="3"
       :tabs="newsTypes"
       @tab-change="tabChange"

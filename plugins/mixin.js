@@ -89,7 +89,7 @@ Vue.mixin({
     },
     mappingStream(raw) {
       return {
-        id: raw.baseId,
+        id: raw._id,
         source: formatter.fsource(raw),
         preview: formatter.fpreview(raw),
         viewers: raw.online,
