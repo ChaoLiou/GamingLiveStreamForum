@@ -368,7 +368,7 @@ Vue.mixin({
       }))[0];
     },
     async getVodsOfStream(begin = 0, size = 12, id) {
-      const url = `${this.apiOrigin}/stream/histories/${id}?begin=${begin}&size=${size}`;
+      const url = `${this.apiOrigin}/stream/v2/histories/${id}?begin=${begin}&size=${size}`;
       console.log(url);
       return await this.$axios.$get(url);
     },
