@@ -1,196 +1,21 @@
 <template>
   <div class="f-temp-ad">
-    <div>
-      <a
-        href="https://ani.gamer.com.tw/animeVideo.php?sn=13836"
-        target="_blank"
-        class="a-mercy-d"
-        data-mercy
-        data-si
-        data-ssn="201567"
-      >
-        <img
-          border="0"
-          src="https://p2.bahamut.com.tw/S/2KU/08/03c174ee1f36b7d91d3543a73d16g0k5.PNG"
-        />
+    <div v-for="(ad, index) in ads" :key="index">
+      <a :href="ad.link" target="_blank" :title="ad.name">
+        <img :alt="ad.name" border="0" :src="ad.src" />
       </a>
-      <br />
-      <img src="https://i2.bahamut.com.tw/spacer.gif" width="1" height="6" />
-    </div>
-    <div>
-      <a
-        href="https://ani.gamer.com.tw/animeVideo.php?sn=13822"
-        target="_blank"
-        class="a-mercy-d"
-        data-mercy
-        data-si
-        data-ssn="201584"
-      >
-        <img
-          border="0"
-          src="https://p2.bahamut.com.tw/S/2KU/00/fd3d065bab430e94387dcba16316jpo5.PNG"
-        />
-      </a>
-      <br />
-      <img src="https://i2.bahamut.com.tw/spacer.gif" width="1" height="6" />
-    </div>
-    <div>
-      <a
-        href="https://sro.digeam.com/intro/cbt/?utm_source=baha&amp;utm_campaign=sropre_regist_cbt"
-        target="_blank"
-        class="a-mercy-d"
-        data-mercy
-        data-si
-        data-ssn="201742"
-      >
-        <img
-          border="0"
-          src="https://p2.bahamut.com.tw/S/2KU/02/9b5b4dcdfa0646aa71a454753516ud25.JPG"
-        />
-      </a>
-      <br />
-      <img src="https://i2.bahamut.com.tw/spacer.gif" width="1" height="6" />
-    </div>
-    <div>
-      <a
-        href="http://www.toscampaign.com/supau"
-        target="_blank"
-        class="a-mercy-d"
-        data-mercy
-        data-si
-        data-ssn="201034"
-      >
-        <img
-          border="0"
-          src="https://p2.bahamut.com.tw/S/2KU/52/1ad17e41dba1281bacd619d8b116vbs5.JPG"
-        />
-      </a>
-      <br />
-      <img src="https://i2.bahamut.com.tw/spacer.gif" width="1" height="6" />
-    </div>
-    <div>
-      <a
-        href="https://ani.gamer.com.tw/animeVideo.php?sn=13832"
-        target="_blank"
-        class="a-mercy-d"
-        data-mercy
-        data-si
-        data-ssn="201566"
-      >
-        <img
-          border="0"
-          src="https://p2.bahamut.com.tw/S/2KU/07/b852463bb703cd1b61f5310ab016g0j5.PNG"
-        />
-      </a>
-      <br />
-      <img src="https://i2.bahamut.com.tw/spacer.gif" width="1" height="6" />
-    </div>
-    <div>
-      <a
-        href="https://app.adjust.com/fq02zbq?fallback=https%3A%2F%2Fhonkaiimpact3.mihoyo.com%2Ftw%2Fzh-tw"
-        target="_blank"
-        class="a-mercy-d"
-        data-mercy
-        data-si
-        data-ssn="201728"
-      >
-        <img
-          border="0"
-          src="https://p2.bahamut.com.tw/S/2KU/46/3058346daac174e3d809d1cd1a16rru5.PNG"
-        />
-      </a>
-      <br />
-      <img src="https://i2.bahamut.com.tw/spacer.gif" width="1" height="6" />
-    </div>
-    <div>
-      <a
-        href="https://go.onelink.me/0448/baham"
-        target="_blank"
-        class="a-mercy-d"
-        data-mercy
-        data-si
-        data-ssn="201408"
-      >
-        <img
-          border="0"
-          src="https://p2.bahamut.com.tw/S/2KU/09/7c553e03ea9a1d438f9793941b16kq15.JPG"
-        />
-      </a>
-      <br />
-      <img src="https://i2.bahamut.com.tw/spacer.gif" width="1" height="6" />
-    </div>
-    <div>
-      <a
-        href="https://ani.gamer.com.tw/animeVideo.php?sn=13844"
-        target="_blank"
-        class="a-mercy-d"
-        data-mercy
-        data-si
-        data-ssn="201375"
-      >
-        <img
-          border="0"
-          src="https://p2.bahamut.com.tw/S/2KU/73/f513102f107534066e3bfad52016kb55.PNG"
-        />
-      </a>
-      <br />
-      <img src="https://i2.bahamut.com.tw/spacer.gif" width="1" height="6" />
-    </div>
-    <div>
-      <a
-        href="https://rom.gnjoy.com.tw/"
-        target="_blank"
-        class="a-mercy-d"
-        data-mercy
-        data-si
-        data-ssn="201291"
-      >
-        <img
-          border="0"
-          src="https://p2.bahamut.com.tw/S/2KU/15/4054097c8aacffeee7c7c9660016p4j5.JPG"
-        />
-      </a>
-      <br />
-      <img src="https://i2.bahamut.com.tw/spacer.gif" width="1" height="6" />
-    </div>
-    <div>
-      <a
-        href="https://app.adjust.com/6gcd1yy"
-        target="_blank"
-        class="a-mercy-d"
-        data-mercy
-        data-si
-        data-ssn="201541"
-      >
-        <img
-          border="0"
-          src="https://p2.bahamut.com.tw/S/2KU/03/60221a57648be3ebbe6a1ff6c916okr5.JPG"
-        />
-      </a>
-      <br />
-      <img src="https://i2.bahamut.com.tw/spacer.gif" width="1" height="6" />
-    </div>
-    <div>
-      <a
-        href="https://go.onelink.me/jqic/d803a118"
-        target="_blank"
-        class="a-mercy-d"
-        data-mercy
-        data-si
-        data-ssn="200726"
-      >
-        <img
-          border="0"
-          src="https://p2.bahamut.com.tw/S/2KU/45/a0eac0a50bd5cb48cb839989ed16olx5.JPG"
-        />
-      </a>
-      <br />
-      <img src="https://i2.bahamut.com.tw/spacer.gif" width="1" height="6" />
     </div>
   </div>
 </template>
 <script>
-export default {};
+import ads from "@/assets/json/fake/ad.json";
+export default {
+  data() {
+    return {
+      ads
+    };
+  }
+};
 </script>
 <style scoped>
 .f-temp-ad,
