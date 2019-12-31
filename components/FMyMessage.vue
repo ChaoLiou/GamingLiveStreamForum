@@ -221,7 +221,6 @@ export default {
 .chat-form {
   display: grid;
   grid-template-columns: 320px auto;
-  height: calc(80px * 5 + 60px);
   margin: 0px 20px;
 }
 .chat-form__history-area {
