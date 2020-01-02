@@ -372,6 +372,12 @@ Vue.mixin({
       console.log(url);
       return await this.$axios.$get(url);
     },
+    async getVodOfStream(id) {
+      const url = `${this.apiOrigin}/stream/v2/history/${id}`;
+      console.log(url);
+      const vod = await this.$axios.$get(url);
+      return vod ? vod.info : undefined;
+    },
     async getChatHistory(id) {
       const url = `${this.memberApiPrefix}/message/list1/${id}`;
       console.log(url);

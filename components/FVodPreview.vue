@@ -1,6 +1,6 @@
 <template>
   <div :class="['f-vod-preview', player ? 'player' : '']">
-    <f-link :link="vodLink" external>
+    <f-link :link="vodLink">
       <v-img
         lazy
         :src="imageSource"
@@ -40,11 +40,11 @@
     >
       <div class="vod-brief">
         <div class="vod-brief__content">
-          <div class="vod-brief__name" :title="vod.created">
-            <a>{{ created }}</a>
+          <div class="vod-brief__name" :title="vod.createTime">
+            <a>{{ createTime }}</a>
           </div>
           <div v-if="!player" class="vod-brief__title" :title="vod.title">
-            <f-link :link="vodLink" external>
+            <f-link :link="vodLink">
               {{ vod.title }}
             </f-link>
           </div>
@@ -87,16 +87,18 @@ export default {
   },
   computed: {
     duration() {
-      return formatter.fduration(this.vod.durationSec);
+      return formatter.fduration(
+        this.vod.durationSec ? this.vod.durationSec : 0
+      );
     },
-    created() {
-      return formatter.fcreated(this.vod.createTime);
+    createTime() {
+      return formatter.fcreated(this.vod.createTime ? this.vod.createTime : 0);
     },
     toExternal() {
       return this.vod.platform === "bilibili";
     },
     vodLink() {
-      return this.vod.videoUrl;
+      return `/vod/${this.vod.src}/${this.vod.streamId}/${this.vod._id}`;
     },
     imageSource() {
       return this.vod.img;
