@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="f-vod__title-video">
-        <f-link v-if="vod.externalLink" :link="vod.externalLink" external>
+        <f-link v-if="vod.embeddedUrl" :link="vod.externalLink" external>
           <f-image-preview :image="vod.img"></f-image-preview>
         </f-link>
         <iframe
